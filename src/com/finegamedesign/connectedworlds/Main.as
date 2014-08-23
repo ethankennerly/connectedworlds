@@ -125,6 +125,10 @@ package com.finegamedesign.connectedworlds
                     var y:Number = e.currentTarget.mouseY;
                     var dot:DotClip = view.newDotAt(x, y);
                     if (null != dot) {
+                        if (model.lines) {
+                            model.lines = false;
+                            view.lines.visible = false;
+                        }
                         if (1 == model.answer(dot.x, dot.y)) {
                             if (model.complete)
                             {

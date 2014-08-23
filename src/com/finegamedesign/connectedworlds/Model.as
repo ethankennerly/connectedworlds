@@ -4,9 +4,10 @@ package com.finegamedesign.connectedworlds
     {
         internal var connections:Array;
         internal var connecting:Array;
+        internal var dots:Array;
         internal var inTrial:Boolean = false;
         /**
-         * Answer expects connections are numerically sorted.
+         * Answer expects each connection is numerically sorted.
          */
         internal var levels:Array = [
             // {connections: [[0, 0]], dots: [[0, 0]]},
@@ -16,7 +17,7 @@ package com.finegamedesign.connectedworlds
              dots: [[-160, 120], [0, -120], [160, 120]]}
         ];
         internal var level:int = 0;
-        internal var dots:Array;
+        internal var lines:Boolean;
 
         internal function populate():void
         {
@@ -25,6 +26,7 @@ package com.finegamedesign.connectedworlds
             for (var prop:String in params) {
                 this[prop] = Util.clone(params[prop]);
             }
+            lines = true;
         }
 
         internal function cancel():void
@@ -32,6 +34,9 @@ package com.finegamedesign.connectedworlds
             connecting = [];
         }
 
+        /**
+         * Answer expects each connection is numerically sorted.
+         */
         internal function answer(x:int, y:int):Boolean
         {
             var correct:Boolean = false;
