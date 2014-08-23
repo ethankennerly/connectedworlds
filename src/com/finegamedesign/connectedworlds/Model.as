@@ -4,45 +4,77 @@ package com.finegamedesign.connectedworlds
     {
         internal var inTrial:Boolean = false;
         internal var levels:Array = [
-            {dots: [[0, 0]]}
+            {connections: [[0, 0]], dots: [[0, 0]]},
+            {connections: [[0, 1]], dots: [[-160, 0], [160, 0]]}
         ];
-        internal var level:int = 1;
+        internal var level:int = 0;
         internal var dots:Array;
-
-        public function Model()
-        {
-        }
+        internal var connections:Array;
+        internal var connecting:Array;
 
         internal function populate():void
         {
-            var params:Object = levels[level - 1];
+            var params:Object = levels[level];
             for (var prop:String in params) {
-                this[prop] = params[prop];
+                this[prop] = Util.clone(params[prop]);
             }
+            connecting = [];
         }
 
-        internal function answer():Boolean
+        internal function cancel():void
         {
-            return true;
+            connecting = [];
+        }
+
+        internal function answer(x:int, y:int):Boolean
+        {
+            var correct:Boolean = false;
+            if (complete) {
+                correct = true;
+            }
+            var dotIndex:int = -1;
+            for (var d:int = 0; d < dots.length; d++) {
+                var dot:Array = dots[d];
+                if (x == dot[0] && y == dot[1]) {
+                    dotIndex = d;
+                    break;
+                }
+            }
+            if (dotIndex <= -1) {
+                throw new Error("Expected dot at " + x + ", " + y);
+            }
+            if (connecting.length <= 0) {
+                connecting.push(dotIndex);
+            }
+            connecting.push(dotIndex);
+            connecting.sort(Array.NUMERIC);
+            for (var c:int = connections.length - 1; 0 <= c; c--) {
+                var connection:Array = connections[c];
+                if (connecting[0] == connection[0] && connecting[1] == connection[1]) {
+                    connections.splice(c, 1);
+                    correct = true;
+                }
+            }
+            if (connecting[0] == connecting[1]) {
+                correct = true;
+            }
+            connecting = [dotIndex];
+            trace("Model.answer: " + correct + " x " + x + " y " + y);
+            return correct;
+        }
+
+        internal function get complete():Boolean
+        {
+            return connections.length <= 0;
         }
 
         internal function clear():void
         {
         }
 
-        internal function update():int
+        internal function levelUp():void
         {
-            return win();
-        }
-
-        /**
-         * TODO: If connecting, continue.  If all connected, win.  If an unspecified connection, lose.
-         * @return  0 continue, 1: win, -1: lose.
-         */
-        private function win():int
-        {
-            var winning:int = 0;
-            return winning;
+            level = (level + 1) % levels.length;
         }
     }
 }

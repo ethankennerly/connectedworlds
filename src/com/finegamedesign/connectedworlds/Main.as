@@ -42,35 +42,18 @@ package com.finegamedesign.connectedworlds
             view = new View(this);
             view.screen.canvas.addEventListener(
                 MouseEvent.MOUSE_MOVE,
-                onMouseMove, false, 0, true);
+                answer, false, 0, true);
             addEventListener(Event.ENTER_FRAME, update, false, 0, true);
             trial();
             // API.connect(root, "", "");
         }
 
-        private function restartTrial(e:MouseEvent):void
-        {
-            loopChannel.stop();
-            reset();
-            next();
-        }
-
         public function trial():void
         {
+            clear();
             model.inTrial = true;
             model.populate();
             view.populate(model);
-        }
-
-        internal function answer():void
-        {
-            var correct:Boolean = model.answer();
-            if (correct) {
-                // this.correct.play();
-            }
-            else {
-                // this.step.play();
-            }
         }
 
         private function update(event:Event):void
@@ -86,35 +69,11 @@ package com.finegamedesign.connectedworlds
                 FlxKongregate.init(FlxKongregate.connect);
             }
              */
-            if (model.inTrial) {
-                result(updateTrial());
-            }
-        }
-
-        private function updateTrial():int
-        {
-            if (keyMouse.pressed("MOUSE")) {
-                answer();
-            }
-            var winning:int = model.update();
-            return winning;
-        }
-
-        private function result(winning:int):void
-        {
-            if (!model.inTrial) {
-                return;
-            }
-            if (winning <= -1) {
-                lose();
-            }
-            else if (1 <= winning) {
-                win();
-            }
         }
 
         private function win():void
         {
+            model.levelUp();
             reset();
             // FlxKongregate.api.stats.submit("Score", Model.score);
             // API.postScore("Score", Model.score);
@@ -126,6 +85,7 @@ package com.finegamedesign.connectedworlds
             if (null != loopChannel) {
                 // loopChannel.stop();
             }
+            trial();
         }
 
         private function lose():void
@@ -136,12 +96,7 @@ package com.finegamedesign.connectedworlds
             // mouseChildren = false;
         }
 
-        public function next():void
-        {
-            restart();
-        }
-
-        public function restart():void
+        public function clear():void
         {
             if (model) {
                 model.clear();
@@ -153,16 +108,27 @@ package com.finegamedesign.connectedworlds
 
         // **
 
-        private function onMouseMove(e:Event):void
+        private function answer(e:Event):void
         {
             if (model.inTrial) {
                 if (keyMouse.pressed("MOUSE")) {
                     var x:Number = e.currentTarget.mouseX;
                     var y:Number = e.currentTarget.mouseY;
-                    var dot:DotClip = view.dotAt(x, y);
+                    var dot:DotClip = view.newDotAt(x, y);
                     if (null != dot) {
-                        trace("Main.onMouseMove: x " + dot.x + " y " + dot.y);
+                        if (1 == model.answer(dot.x, dot.y)) {
+                            if (model.complete)
+                            {
+                                win();
+                            }
+                        }
+                        else {
+                            lose();
+                        }
                     }
+                }
+                else {
+                    model.cancel();
                 }
             }
         }
