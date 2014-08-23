@@ -1,0 +1,154 @@
+TODO
+	Connect 1, 2, 3, 4 dots
+		See lines.
+		See dot.
+		As soon as you touch, lines disappear.
+		Mouse drag to connect dots.
+		Dot button.  Mouse press, mouse down, mouse release.
+		Draw line in progress.
+		Connect wrong dot.  Restart this shape.
+	Timer
+	Connect dots in drawings.
+		Illustrator CS4:
+			Export image from Flash CS4 in illustrator format.
+			Import dot and line location from illustrator.
+		Flash 11.6:
+			Read drawing locations.
+	Correct, more complicated drawing.
+	Connected.  Animate.
+	Animate reflecting dots (different colors).
+	Afterward, the image animates.
+
+THEME
+Connected Worlds
+
+REFERENCE GAMES
+	Brain Age:  Connect different dots
+	Connect the dots from memory
+	Connect the Dots  http://activities.raisingourkids.com/connect-dot-to-dot/016-connect-dots-sheets.html
+	Kids Connect the Dots http://www.androidtapp.com/kids-connect-the-dots/
+	Minimal lines to connect the dots
+	Dots
+	Galcon
+	Flow Free http://www.androidpit.com/flow-free-connect-the-dots
+	Space Dots:  https://play.google.com/store/apps/details?id=com.coragames.dtdng
+	Dots:  Game of Path and Memory.  https://play.google.com/store/apps/details?id=mobi.mindware.dots
+	Dropdot:  https://play.google.com/store/apps/details?id=nf.co.sumwu.dropdot
+	Super Mario World
+	Civilization
+	Risk
+	Starflight
+	Here Be Monsters
+	K-Dice
+	Starcraft
+	Bionic Commando
+	World of Warcraft
+	Legend of Zelda:  A Link to the Past   http://books.google.com/books?id=bKzLmblxQYEC&pg=PA112&lpg=PA112&dq=%22connected+worlds%22+game&source=bl&ots=pxXBl8cEyi&sig=KHZrVWdlOfOgp7tz7DydTKep47c&hl=en&sa=X&ei=_-33U8CUDcO1igLc2IHAAQ&ved=0CGIQ6AEwCTgK#v=onepage&q=%22connected%20worlds%22%20game&f=false
+	Legend of Zelda:  Wind Waker
+	Minecraft
+	http://www.coolmath-games.com/0-worlds-hardest-game/
+	Puzzle Pieces
+	Pipes  http://www.karthikchidambaram.com/wp-content/uploads/2014/02/teach-me-to-connect.gif
+	Connect 4  http://www.devonvsmith.com/2010/02/facebook-connect-from-fans-to-ticket-buyers/
+	Pente
+	Awari (Connect 6)
+	Trail Making
+	Reverse Trail Making
+
+REFERENCE TOYS
+	Jigsaw puzzles
+	Legos
+		http://www.mgefc.org/695999.ihtml
+	Pre hand writing worksheet http://printablekindergarten.com/wp-content/uploads/2013/08/PreHandwritingWorksheets3.jpg
+
+REFERENCE VERBS
+	Explore
+		Move
+		Observe
+		Shoot or Dodge
+	Connect
+		Rotate
+		Swap
+		Consider
+	Snap
+	Draw
+		Connect the dots [Matt]
+			http://bereanadvisors.com/wp-content/uploads/2013/03/red-connecting-the-dots.jpg
+	Trade [Justin]
+		Intergalactic [Justin]
+
+REFERENCE NOUNS
+	"World is a common name for the whole of human civilization, specifically human experience, history, or the human condition in general, worldwide, i.e. anywhere on Earth[2] or pertaining to anywhere on earth."
+	http://en.wikipedia.org/wiki/World
+	Dark matter, worm holes
+	http://en.wikipedia.org/wiki/Universe
+	Small world graphs
+	Social networks
+
+REFERENCE ART
+	Character looking at another.  http://thegraphicsfairy.com/wp-content/uploads/2013/07/Connect-Dots-Printable-GraphicsFairy2.jpg
+	http://www.videogamesblogger.com/2011/07/13/child-of-eden-wallpaper-2.htm/child-of-eden-wallpaper-connect-the-dots
+	Night image drawing.  http://theheavensdeclare.net/wp-content/uploads/2012/02/Feb-21-2012-e1357857365891.jpg
+	hedgehog http://www.branchfloridians.org/images/HEDGE.jpg
+	zodiac   http://cdn1.notonthehighstreet.com/system/product_images/images/001/300/620/original_personalised-zodiac-constellation-necklace.jpg?1380567552
+
+NAME BANK
+	Memory Star
+	Stars
+	Star Star
+	Connect the Stars
+	Star Draw
+	Star Lines
+	::
+	*-*
+	**
+	Star Drawing
+	Drawing with Stars
+	Constellation
+	Star Lines
+
+JOURNAL
+
+Chat with Diana.
+Memorize the image.
+Connect the dots to recreate the image.
+Afterward, the image animates.
+
+Connect then rotate the dots.
+Move the dots.
+
+Tween dots between images.
+
+Show image not entirely connected.
+
+Click "Memorized".  Then they disappear.
+
+Editor:  Place dots in one color.  Attach in another color.
+
+Or place dot objects.  Detect collision.
+Or scale endpoints of lines.  Overlapping endpoints are dot.
+
+Constellation.
+
+Distracting stars.
+
+
+Diana suggests:
+
+Choose to connect them.
+Civilizations.  Connect them.
+If superior:  displace, enslave, and dominate.
+If equal and different:  trade.
+
+variables:  education, wealth, health.
+
+idle units fight when crowded or when killing.
+land provides unique resources.
+trade increases resources.
+combos of resources upgrade units.
+
+
+
+Export image as Adobe Illustrator format.
+
+
