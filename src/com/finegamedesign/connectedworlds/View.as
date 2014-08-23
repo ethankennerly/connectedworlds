@@ -9,16 +9,29 @@ package com.finegamedesign.connectedworlds
     public class View
     {
         internal var dots:Array;
-        internal var lines:Sprite;
         internal var model:Model;
         internal var screen:Screen;
+        private var lines:Sprite;
+        private var connection:Sprite;
+        private var lineThickness:Number = 8.0;
+        private var lineColor:Number = 0x006699;
         private var previousDot:DotClip;
+        private var progress:Sprite;
+        private var progressColor:Number = 0xCCFFFF;
+        private var tutorClip:TutorClip;
 
         public function View(parent:DisplayObjectContainer)
         {
             screen = new Screen();
             parent.addChild(screen);
             lines = new Sprite();
+            progress = new Sprite();
+            connection = new Sprite();
+            tutorClip = new TutorClip();
+            tutorClip.gotoAndStop(1);
+            screen.canvas.addChild(lines);
+            screen.canvas.addChild(connection);
+            screen.canvas.addChild(progress);
         }
 
         internal function populate(model:Model):void
@@ -34,20 +47,49 @@ package com.finegamedesign.connectedworlds
                 dots.push(dot);
             }
             drawLines(lines);
-            screen.canvas.addChild(lines);
+            remove(tutorClip);
+        }
+
+        internal function clearLines():void
+        {
+            lines.graphics.clear();
         }
 
         private function drawLines(lines:Sprite):void
         {
-            lines.visible = true;
             lines.graphics.clear();
-            lines.graphics.lineStyle(8.0, 0x65FFFF);
+            lines.graphics.lineStyle(lineThickness, lineColor);
             for each(var ij:Array in model.connections) {
                 var xy0:Array = model.dots[ij[0]];
                 var xy1:Array = model.dots[ij[1]];
                 lines.graphics.moveTo(xy0[0], xy0[1]);
                 lines.graphics.lineTo(xy1[0], xy1[1]);
             }
+        }
+
+        internal function drawConnection(fromDotIndex:int, toDotIndex:int):void
+        {
+            if (fromDotIndex <= -1 || toDotIndex <= -1) {
+                return;
+            }
+            connection.graphics.lineStyle(lineThickness, lineColor);
+            var xy0:Array = model.dots[fromDotIndex];
+            var xy1:Array = model.dots[toDotIndex];
+            trace("View.drawConnection: from " + xy0 + " to " + xy1);
+            connection.graphics.moveTo(xy0[0], xy0[1]);
+            connection.graphics.lineTo(xy1[0], xy1[1]);
+        }
+
+        internal function drawProgress(dotIndex:int, 
+                x:Number, y:Number):void
+        {
+            progress.graphics.clear();
+            if (dotIndex <= -1) {
+                return;
+            }
+            progress.graphics.lineStyle(lineThickness, progressColor);
+            progress.graphics.moveTo(dots[dotIndex].x, dots[dotIndex].y);
+            progress.graphics.lineTo(x, y);
         }
 
         internal function newDotAt(x:Number, y:Number):DotClip
@@ -69,6 +111,7 @@ package com.finegamedesign.connectedworlds
         internal function cancel():void
         {
             previousDot = null;
+            drawProgress(-1, 0, 0);
         }
 
         private function near(dx:Number, dy:Number):Boolean
@@ -84,6 +127,8 @@ package com.finegamedesign.connectedworlds
                 remove(dot);
             }
             lines.graphics.clear();
+            connection.graphics.clear();
+            progress.graphics.clear();
 
             /*
             for (var c:int = screen.canvas.numChildren - 1; 
@@ -99,6 +144,12 @@ package com.finegamedesign.connectedworlds
             if (dot.parent && dot.parent.contains(dot)) {
                 dot.parent.removeChild(dot);
             }
+        }
+
+        internal function tutor():void
+        {
+            screen.canvas.addChild(tutorClip);
+            tutorClip.gotoAndPlay(1);
         }
     }
 }

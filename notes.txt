@@ -1,12 +1,6 @@
 TODO
 	Connect 1, 2, 3, 4 dots
-		Dot button.  Mouse press, mouse down, mouse release.
-		See lines.
-		See dot.
-		As soon as you touch, lines disappear.
-		Mouse drag to connect dots.
-		Draw line in progress.
-		Connect wrong dot.  Restart this shape.
+		While idle at first, tween circle connecting.
 	Connect dots in drawings.
 		Illustrator CS4:
 			Export image from Flash CS4 in illustrator format.

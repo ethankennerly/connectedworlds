@@ -5,6 +5,7 @@ package com.finegamedesign.connectedworlds
         internal var connections:Array;
         internal var connecting:Array;
         internal var dots:Array;
+        internal var from:int;
         internal var inTrial:Boolean = false;
         /**
          * Answer expects each connection is numerically sorted.
@@ -18,10 +19,13 @@ package com.finegamedesign.connectedworlds
         ];
         internal var level:int = 0;
         internal var lines:Boolean;
+        internal var to:int;
 
         internal function populate():void
         {
             connecting = [];
+            from = -1;
+            to = -1;
             var params:Object = levels[level];
             for (var prop:String in params) {
                 this[prop] = Util.clone(params[prop]);
@@ -32,16 +36,18 @@ package com.finegamedesign.connectedworlds
         internal function cancel():void
         {
             connecting = [];
+            from = -1;
+            to = -1;
         }
 
         /**
          * Answer expects each connection is numerically sorted.
          */
-        internal function answer(x:int, y:int):Boolean
+        internal function answer(x:int, y:int):int
         {
-            var correct:Boolean = false;
+            var correct:int = -1;
             if (complete) {
-                correct = true;
+                correct = 0;
             }
             var dotIndex:int = -1;
             for (var d:int = 0; d < dots.length; d++) {
@@ -63,13 +69,15 @@ package com.finegamedesign.connectedworlds
                 var connection:Array = connections[c];
                 if (connecting[0] == connection[0] && connecting[1] == connection[1]) {
                     connections.splice(c, 1);
-                    correct = true;
+                    correct = dotIndex;
                 }
             }
             if (connecting[0] == connecting[1]) {
-                correct = true;
+                correct = dotIndex;
             }
             connecting = [dotIndex];
+            from = to;
+            to = dotIndex;
             trace("Model.answer: " + correct + " x " + x + " y " + y + " connecting " + connecting);
             return correct;
         }

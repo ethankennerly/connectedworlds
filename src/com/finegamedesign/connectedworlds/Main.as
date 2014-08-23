@@ -54,6 +54,9 @@ package com.finegamedesign.connectedworlds
             model.inTrial = true;
             model.populate();
             view.populate(model);
+            if (0 == model.level) {
+                view.tutor();
+            }
         }
 
         private function update(event:Event):void
@@ -127,9 +130,11 @@ package com.finegamedesign.connectedworlds
                     if (null != dot) {
                         if (model.lines) {
                             model.lines = false;
-                            view.lines.visible = false;
+                            view.clearLines();
                         }
-                        if (1 == model.answer(dot.x, dot.y)) {
+                        var correct:int = model.answer(dot.x, dot.y);
+                        view.drawConnection(model.from, model.to);
+                        if (0 <= correct) {
                             if (model.complete)
                             {
                                 win();
@@ -139,6 +144,7 @@ package com.finegamedesign.connectedworlds
                             lose();
                         }
                     }
+                    view.drawProgress(model.to, x, y);
                 }
                 else {
                     model.cancel();
