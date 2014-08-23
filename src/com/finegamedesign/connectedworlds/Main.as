@@ -39,9 +39,12 @@ package com.finegamedesign.connectedworlds
             keyMouse.listen(stage);
             //+ loopChannel = loop.play(0);
             model = new Model();
-            view = new View();
+            view = new View(this);
+            view.screen.canvas.addEventListener(
+                MouseEvent.MOUSE_MOVE,
+                onMouseMove, false, 0, true);
             addEventListener(Event.ENTER_FRAME, update, false, 0, true);
-            reset();
+            trial();
             // API.connect(root, "", "");
         }
 
@@ -63,10 +66,10 @@ package com.finegamedesign.connectedworlds
         {
             var correct:Boolean = model.answer();
             if (correct) {
-                this.correct.play();
+                // this.correct.play();
             }
             else {
-                this.step.play();
+                // this.step.play();
             }
         }
 
@@ -145,6 +148,22 @@ package com.finegamedesign.connectedworlds
             }
             if (view) {
                 view.clear();
+            }
+        }
+
+        // **
+
+        private function onMouseMove(e:Event):void
+        {
+            if (model.inTrial) {
+                if (keyMouse.pressed("MOUSE")) {
+                    var x:Number = e.currentTarget.mouseX;
+                    var y:Number = e.currentTarget.mouseY;
+                    var dot:DotClip = view.dotAt(x, y);
+                    if (null != dot) {
+                        trace("Main.onMouseMove: x " + dot.x + " y " + dot.y);
+                    }
+                }
             }
         }
     }

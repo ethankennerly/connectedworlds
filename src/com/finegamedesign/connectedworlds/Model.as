@@ -4,9 +4,10 @@ package com.finegamedesign.connectedworlds
     {
         internal var inTrial:Boolean = false;
         internal var levels:Array = [
-            {}
+            {dots: [[0, 0]]}
         ];
         internal var level:int = 1;
+        internal var dots:Array;
 
         public function Model()
         {
