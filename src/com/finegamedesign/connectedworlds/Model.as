@@ -2,23 +2,29 @@ package com.finegamedesign.connectedworlds
 {
     public class Model
     {
+        internal var connections:Array;
+        internal var connecting:Array;
         internal var inTrial:Boolean = false;
+        /**
+         * Answer expects connections are numerically sorted.
+         */
         internal var levels:Array = [
-            {connections: [[0, 0]], dots: [[0, 0]]},
-            {connections: [[0, 1]], dots: [[-160, 0], [160, 0]]}
+            // {connections: [[0, 0]], dots: [[0, 0]]},
+            {connections: [[0, 1]], 
+             dots: [[-160, 0], [160, 0]]},
+            {connections: [[0, 1], [0, 2], [1, 2]], 
+             dots: [[-160, 120], [0, -120], [160, 120]]}
         ];
         internal var level:int = 0;
         internal var dots:Array;
-        internal var connections:Array;
-        internal var connecting:Array;
 
         internal function populate():void
         {
+            connecting = [];
             var params:Object = levels[level];
             for (var prop:String in params) {
                 this[prop] = Util.clone(params[prop]);
             }
-            connecting = [];
         }
 
         internal function cancel():void
@@ -59,8 +65,13 @@ package com.finegamedesign.connectedworlds
                 correct = true;
             }
             connecting = [dotIndex];
-            trace("Model.answer: " + correct + " x " + x + " y " + y);
+            trace("Model.answer: " + correct + " x " + x + " y " + y + " connecting " + connecting);
             return correct;
+        }
+
+        internal function get only():Boolean
+        {
+            return 0 == level && connecting.length <= 0;
         }
 
         internal function get complete():Boolean

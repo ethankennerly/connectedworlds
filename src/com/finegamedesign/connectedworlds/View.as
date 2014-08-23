@@ -48,6 +48,11 @@ package com.finegamedesign.connectedworlds
             return at;
         }
 
+        internal function cancel():void
+        {
+            previousDot = null;
+        }
+
         private function near(dx:Number, dy:Number):Boolean
         {
             var radius:Number = 40;
@@ -57,11 +62,18 @@ package com.finegamedesign.connectedworlds
 
         internal function clear():void
         {
+            for each(var dot:DotClip in dots) {
+                if (dot.parent && dot.parent.contains(dot)) {
+                    dot.parent.removeChild(dot);
+                }
+            }
+            /*
             for (var c:int = screen.canvas.numChildren - 1; 
                     0 <= c; c--) {
                 screen.canvas.removeChild(
                     screen.canvas.getChildAt(c));
             }
+             */
         }
     }
 }

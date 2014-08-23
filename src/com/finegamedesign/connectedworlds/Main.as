@@ -108,10 +108,19 @@ package com.finegamedesign.connectedworlds
 
         // **
 
-        private function answer(e:Event):void
+        private function answerFirst(e:MouseEvent):void
+        {
+            if (model.only) {
+                trace("Main.answerFirst");
+                answer(e, true);
+            }
+        }
+
+        private function answer(e:MouseEvent, down:Boolean=false):void
         {
             if (model.inTrial) {
-                if (keyMouse.pressed("MOUSE")) {
+                down = down || keyMouse.pressed("MOUSE");
+                if (down) {
                     var x:Number = e.currentTarget.mouseX;
                     var y:Number = e.currentTarget.mouseY;
                     var dot:DotClip = view.newDotAt(x, y);
@@ -129,6 +138,7 @@ package com.finegamedesign.connectedworlds
                 }
                 else {
                     model.cancel();
+                    view.cancel();
                 }
             }
         }
