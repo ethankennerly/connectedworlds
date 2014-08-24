@@ -44,7 +44,8 @@ package com.finegamedesign.connectedworlds
                 MouseEvent.MOUSE_MOVE,
                 answer, false, 0, true);
             addEventListener(Event.ENTER_FRAME, update, false, 0, true);
-            trial();
+            view.screen.addFrameScript(2, trial);
+            // trial();
             // API.connect(root, "", "");
         }
 
@@ -84,11 +85,13 @@ package com.finegamedesign.connectedworlds
 
         private function reset():void
         {
+            trace("Main.reset");
             model.inTrial = false;
             if (null != loopChannel) {
                 // loopChannel.stop();
             }
-            trial();
+            view.cancel();
+            view.screen.play();
         }
 
         private function lose():void
@@ -127,7 +130,10 @@ package com.finegamedesign.connectedworlds
                     var x:Number = e.currentTarget.mouseX;
                     var y:Number = e.currentTarget.mouseY;
                     var dot:DotClip = view.newDotAt(x, y);
-                    if (null != dot) {
+                    if (null == dot) {
+                        view.drawProgress(model.to, x, y);
+                    }
+                    else {
                         if (model.lines) {
                             model.lines = false;
                             view.clearLines();
@@ -144,7 +150,6 @@ package com.finegamedesign.connectedworlds
                             lose();
                         }
                     }
-                    view.drawProgress(model.to, x, y);
                 }
                 else {
                     model.cancel();

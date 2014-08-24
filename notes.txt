@@ -1,6 +1,7 @@
 TODO
 	Connect 1, 2, 3, 4 dots
-		While idle at first, tween circle connecting.
+		2014-08-23 Aaron may expect delay before transition.
+		2014-08-23 Aaron expects to emphasize circle at dot.
 	Connect dots in drawings.
 		Illustrator CS4:
 			Export image from Flash CS4 in illustrator format.

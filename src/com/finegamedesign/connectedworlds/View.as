@@ -18,20 +18,29 @@ package com.finegamedesign.connectedworlds
         private var previousDot:DotClip;
         private var progress:Sprite;
         private var progressColor:Number = 0xCCFFFF;
+        /**
+         * 2014-08-23 Aaron at The MADE expects to emphasize ring at dot.
+         */
         private var tutorClip:TutorClip;
 
         public function View(parent:DisplayObjectContainer)
         {
             screen = new Screen();
             parent.addChild(screen);
-            lines = new Sprite();
             progress = new Sprite();
             connection = new Sprite();
             tutorClip = new TutorClip();
+            tutorClip.mouseChildren = false;
+            tutorClip.mouseEnabled = false;
             tutorClip.gotoAndStop(1);
-            screen.canvas.addChild(lines);
-            screen.canvas.addChild(connection);
-            screen.canvas.addChild(progress);
+            screen.dots.mouseChildren = false;
+            screen.dots.mouseEnabled = false;
+            screen.lines.addChild(connection);
+            screen.lines.addChild(progress);
+            screen.lines.mouseChildren = false;
+            screen.lines.mouseEnabled = false;
+            remove(screen.dots.getChildAt(0));
+            remove(screen.lines.getChildAt(0));
         }
 
         internal function populate(model:Model):void
@@ -43,16 +52,16 @@ package com.finegamedesign.connectedworlds
                 var dot:DotClip = new StarClip();
                 dot.x = int(Math.round(xy[0]));
                 dot.y = int(Math.round(xy[1]));
-                screen.canvas.addChild(dot);
                 dots.push(dot);
+                screen.dots.addChild(dot);
             }
-            drawLines(lines);
+            drawLines(screen.lines);
             remove(tutorClip);
         }
 
         internal function clearLines():void
         {
-            lines.graphics.clear();
+            screen.lines.graphics.clear();
         }
 
         private function drawLines(lines:Sprite):void
@@ -126,17 +135,10 @@ package com.finegamedesign.connectedworlds
             for each(var dot:DotClip in dots) {
                 remove(dot);
             }
-            lines.graphics.clear();
+            remove(tutorClip);
+            screen.lines.graphics.clear();
             connection.graphics.clear();
             progress.graphics.clear();
-
-            /*
-            for (var c:int = screen.canvas.numChildren - 1; 
-                    0 <= c; c--) {
-                screen.canvas.removeChild(
-                    screen.canvas.getChildAt(c));
-            }
-             */
         }
 
         private function remove(dot:DisplayObject):void

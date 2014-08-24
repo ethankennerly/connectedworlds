@@ -15,7 +15,9 @@ package com.finegamedesign.connectedworlds
             {connections: [[0, 1]], 
              dots: [[-160, 0], [160, 0]]},
             {connections: [[0, 1], [0, 2], [1, 2]], 
-             dots: [[-160, 120], [0, -120], [160, 120]]}
+             dots: [[-160, 120], [0, -120], [160, 120]]},
+            {connections: [[0, 1], [0, 3], [1, 2], [2, 3]], 
+             dots: [[-120, -120], [-120, 120], [120, 120], [120, -120]]}
         ];
         internal var level:int = 0;
         internal var lines:Boolean;
