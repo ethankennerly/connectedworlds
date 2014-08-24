@@ -56,7 +56,7 @@ package com.finegamedesign.connectedworlds
             dots = [];
             this.model = model;
             for each(var xy:Array in model.dots) {
-                trace("View.populate: " + xy);
+                // trace("View.populate: " + xy);
                 var dot:DotClip = new StarClip();
                 dot.x = int(Math.round(xy[0]));
                 dot.y = int(Math.round(xy[1]));
@@ -69,7 +69,7 @@ package com.finegamedesign.connectedworlds
 
         internal function clearLines():void
         {
-            screen.play();
+            screen.gotoAndPlay("input");
         }
 
         private function drawLines(lines:Sprite):void
@@ -92,7 +92,7 @@ package com.finegamedesign.connectedworlds
             connection.graphics.lineStyle(lineThickness, lineColor);
             var xy0:Array = model.dots[fromDotIndex];
             var xy1:Array = model.dots[toDotIndex];
-            trace("View.drawConnection: from " + xy0 + " to " + xy1);
+            // trace("View.drawConnection: from " + xy0 + " to " + xy1);
             connection.graphics.moveTo(xy0[0], xy0[1]);
             connection.graphics.lineTo(xy1[0], xy1[1]);
         }

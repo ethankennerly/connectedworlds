@@ -45,7 +45,6 @@ package com.finegamedesign.connectedworlds
                 answer, false, 0, true);
             addEventListener(Event.ENTER_FRAME, update, false, 0, true);
             view.screen.addFrameScript(2, trial);
-            // trial();
             // API.connect(root, "", "");
         }
 
@@ -91,7 +90,7 @@ package com.finegamedesign.connectedworlds
                 // loopChannel.stop();
             }
             view.cancel();
-            view.screen.play();
+            view.screen.gotoAndPlay("end");
         }
 
         private function lose():void
@@ -155,6 +154,9 @@ package com.finegamedesign.connectedworlds
                     model.cancel();
                     view.cancel();
                 }
+            }
+            if (model.complete) {
+                view.screen.play();
             }
         }
     }
