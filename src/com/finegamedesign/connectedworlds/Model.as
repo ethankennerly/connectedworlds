@@ -7,21 +7,15 @@ package com.finegamedesign.connectedworlds
         internal var dots:Array;
         internal var from:int;
         internal var inTrial:Boolean = false;
-        /**
-         * Answer expects each connection is numerically sorted.
-         */
-        internal var levels:Array = [
-            // {connections: [[0, 0]], dots: [[0, 0]]},
-            {connections: [[0, 1]], 
-             dots: [[-160, 0], [160, 0]]},
-            {connections: [[0, 1], [0, 2], [1, 2]], 
-             dots: [[-160, 120], [0, -120], [160, 120]]},
-            {connections: [[0, 1], [0, 3], [1, 2], [2, 3]], 
-             dots: [[-120, -120], [-120, 120], [120, 120], [120, -120]]}
-        ];
         internal var level:int = 0;
+        internal var levels:Array;
         internal var lines:Boolean;
         internal var to:int;
+
+        public function Model():void
+        {
+            include "Levels.as"
+        }
 
         internal function populate():void
         {

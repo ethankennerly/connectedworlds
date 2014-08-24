@@ -1,7 +1,4 @@
 TODO
-	Connect 1, 2, 3, 4 dots
-		2014-08-23 Aaron may expect delay before transition.
-		2014-08-23 Aaron expects to emphasize circle at dot.
 	Connect dots in drawings.
 		Illustrator CS4:
 			Export image from Flash CS4 in illustrator format.
@@ -18,6 +15,11 @@ TODO
 	Animate reflecting dots (different colors).
 	Afterward, the image animates.
 	Timer
+	Score
+	Widen lines and stars for a finger's length.
+	Circle at tip.
+	Load your own illustrator files.
+	Draw your own images.
 
 THEME
 Connected Worlds
@@ -152,3 +154,29 @@ combos of resources upgrade units.
 Export image as Adobe Illustrator format.
 
 
+Sat 08/23/2014 
+17:30
+
+ActionScript separates lines.
+Python preprocesses into ActionScript dictionary. 
+
+Excerpt of source Illustrator format:
+
+%%EndSetup
+u
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+8.000000 w
+331.3 4.0 m
+167.6 287.5 L
+4.0 4.0 L
+331.3 4.0 L
+S
+U
+%%PageTrailer
+
+target:
+            {connections: [[0, 1], [0, 2], [1, 2]], 
+             dots: [[-160, 120], [0, -120], [160, 120]]},

@@ -13,11 +13,15 @@ package com.finegamedesign.connectedworlds
         internal var screen:Screen;
         private var lines:Sprite;
         private var connection:Sprite;
-        private var lineThickness:Number = 8.0;
+        private var lineThickness:Number = // 8.0;
+                                            32.0;
         private var lineColor:Number = 0x006699;
         private var previousDot:DotClip;
         private var progress:Sprite;
         private var progressColor:Number = 0xCCFFFF;
+        private var radius:Number = 24;
+                                    // 40;
+        private var radiusSquared:Number;
         /**
          * 2014-08-23 Aaron at The MADE expects to emphasize ring at dot.
          */
@@ -25,6 +29,7 @@ package com.finegamedesign.connectedworlds
 
         public function View(parent:DisplayObjectContainer)
         {
+            radiusSquared = radius * radius;
             screen = new Screen();
             parent.addChild(screen);
             progress = new Sprite();
@@ -35,12 +40,15 @@ package com.finegamedesign.connectedworlds
             tutorClip.gotoAndStop(1);
             screen.dots.mouseChildren = false;
             screen.dots.mouseEnabled = false;
-            screen.lines.addChild(connection);
-            screen.lines.addChild(progress);
+            screen.canvas.mouseChildren = false;
+            screen.canvas.mouseEnabled = false;
+            screen.canvas.addChild(connection);
+            screen.canvas.addChild(progress);
             screen.lines.mouseChildren = false;
             screen.lines.mouseEnabled = false;
             remove(screen.dots.getChildAt(0));
             remove(screen.lines.getChildAt(0));
+            remove(screen.canvas.getChildAt(0));
         }
 
         internal function populate(model:Model):void
@@ -61,7 +69,7 @@ package com.finegamedesign.connectedworlds
 
         internal function clearLines():void
         {
-            screen.lines.graphics.clear();
+            screen.play();
         }
 
         private function drawLines(lines:Sprite):void
@@ -125,8 +133,6 @@ package com.finegamedesign.connectedworlds
 
         private function near(dx:Number, dy:Number):Boolean
         {
-            var radius:Number = 40;
-            var radiusSquared:Number = radius * radius;
             return ((dx * dx + dy * dy) <= radiusSquared);
         }
 
@@ -150,7 +156,7 @@ package com.finegamedesign.connectedworlds
 
         internal function tutor():void
         {
-            screen.canvas.addChild(tutorClip);
+            screen.easel.addChild(tutorClip);
             tutorClip.gotoAndPlay(1);
         }
     }

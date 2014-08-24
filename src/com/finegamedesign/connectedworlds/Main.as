@@ -40,7 +40,7 @@ package com.finegamedesign.connectedworlds
             //+ loopChannel = loop.play(0);
             model = new Model();
             view = new View(this);
-            view.screen.canvas.addEventListener(
+            view.screen.easel.addEventListener(
                 MouseEvent.MOUSE_MOVE,
                 answer, false, 0, true);
             addEventListener(Event.ENTER_FRAME, update, false, 0, true);

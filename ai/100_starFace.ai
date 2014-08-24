@@ -1,0 +1,91 @@
+%!PS-Adobe-3.0 
+%%Creator: Adobe Illustrator(r) 6.0
+%%For: (Macromedia Flash) ()
+%%Title: (C:\archive\flash\connectedworlds\ai\100_starFace.ai)
+%%CreationDate: (08/23/14) (20:52:32)
+%%BoundingBox: 0 0 481 459
+%%HiResBoundingBox: 0.0 0.0 480.1 458.1
+%%DocumentProcessColors: Cyan Magenta Yellow Black
+%%DocumentNeededResources: procset Adobe_level2_AI5 1.0 0
+%%+ procset Adobe_screens_AI5 1.0 0
+%%+ procset Adobe_typography_AI5 1.0 0
+%%+ procset Adobe_blend_AI5 1.0 0
+%%+ procset Adobe_Illustrator_AI6_vars Adobe_Illustrator_AI6
+%%+ procset Adobe_Illustrator_AI5 1.0 0
+%AI5_FileFormat 2.0
+%AI3_ColorUsage: Color
+%AI3_TemplateBox: 306 396 306 396
+%AI3_TileBox: 258 -233 863 211
+%AI3_DocumentPreview: None
+%%EndComments
+%%BeginProlog
+%%IncludeResource: procset Adobe_level2_AI5 1.0 0
+%%IncludeResource: procset Adobe_screens_AI5 1.0 0
+%%IncludeResource: procset Adobe_typography_AI5 1.0 0
+%%IncludeResource: procset Adobe_blend_AI5 1.0 0
+%%IncludeResource: procset Adobe_Illustrator_AI6_vars Adobe_Illustrator_AI6
+%%IncludeResource: procset Adobe_Illustrator_AI5 1.0 0
+%%EndProlog
+%%BeginSetup
+Adobe_level2_AI5 /initialize get exec
+Adobe_screens_AI5 /initialize get exec
+Adobe_Illustrator_AI5_vars Adobe_Illustrator_AI5 Adobe_typography_AI5 /initialize get exec
+Adobe_Illustrator_AI5_vars Adobe_Illustrator_AI5 Adobe_blend_AI5 /initialize get exec
+Adobe_ColorImage_AI6 /initialize get exec
+Adobe_Illustrator_AI5 /initialize get exec
+0 Bn
+%%EndSetup
+u
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+32.000000 w
+272.1 168.0 m
+240.1 128.0 L
+204.1 164.0 L
+S
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+32.000000 w
+271.0 228.6 m
+273.1 267.4 L
+S
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+32.000000 w
+204.0 228.6 m
+206.1 267.4 L
+S
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+32.000000 w
+464.1 279.4 m
+355.1 149.0 L
+378.4 16.0 L
+240.1 69.0 L
+101.7 16.0 L
+117.1 164.0 L
+16.0 279.4 L
+159.1 313.0 L
+240.1 442.1 L
+319.1 309.0 L
+464.1 279.4 L
+S
+U
+%%PageTrailer
+gsave annotatepage grestore showpage
+%%Trailer
+Adobe_Illustrator_AI5 /terminate get exec
+Adobe_ColorImage_AI6 /terminate get exec
+Adobe_blend_AI5 /terminate get exec
+Adobe_typography_AI5 /terminate get exec
+Adobe_screens_AI5 /terminate get exec
+%Adobe_level2_AI5 /terminate get exec
+%%EOF
