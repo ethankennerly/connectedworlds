@@ -11,6 +11,11 @@ package com.finegamedesign.connectedworlds
         internal var dots:Array;
         internal var model:Model;
         internal var screen:Screen;
+        /**
+         * My illustration after image of baby girl sleeping:
+         * http://www.7sib.ir/sites/default/files/users/12/article/images/child-sleep.jpg
+         */
+        internal var backgroundClip:BackgroundClip;
         private var lines:Sprite;
         private var connection:Sprite;
         private var lineThickness:Number = // 8.0;
@@ -24,6 +29,7 @@ package com.finegamedesign.connectedworlds
         private var radiusSquared:Number;
         /**
          * 2014-08-23 Aaron at The MADE expects to emphasize ring at dot.
+         * Diagonal motion with finger to touch.  2014-08-23 Jennifer Russ expects to recognize icon and motion to swipe.  Got confused that it was a loading bar.  2014-08-24 Beth expects to see instructions on what to do.
          */
         private var tutorClip:TutorClip;
 
@@ -31,7 +37,11 @@ package com.finegamedesign.connectedworlds
         {
             radiusSquared = radius * radius;
             screen = new Screen();
+            backgroundClip = new BackgroundClip();
+            parent.addChild(backgroundClip);
+            backgroundClip.gotoAndPlay("begin");
             parent.addChild(screen);
+            screen.gotoAndStop(1);
             progress = new Sprite();
             connection = new Sprite();
             tutorClip = new TutorClip();
@@ -51,6 +61,12 @@ package com.finegamedesign.connectedworlds
             remove(screen.canvas.getChildAt(0));
         }
 
+        internal function end():void
+        {
+            backgroundClip.gotoAndPlay("end");
+            screen.addFrameScript(screen.totalFrames - 1, screen.stop);
+        }
+
         internal function populate(model:Model):void
         {
             dots = [];
@@ -65,6 +81,13 @@ package com.finegamedesign.connectedworlds
             }
             drawLines(screen.lines);
             remove(tutorClip);
+        }
+
+        internal function win():void
+        {
+            if ("trial" != backgroundClip.currentLabel) {
+                backgroundClip.gotoAndPlay("trial");
+            }
         }
 
         internal function clearLines():void
@@ -156,7 +179,7 @@ package com.finegamedesign.connectedworlds
 
         internal function tutor():void
         {
-            screen.easel.addChild(tutorClip);
+            progress.addChild(tutorClip);
             tutorClip.gotoAndPlay(1);
         }
     }

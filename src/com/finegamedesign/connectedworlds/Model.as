@@ -5,6 +5,7 @@ package com.finegamedesign.connectedworlds
         internal var connections:Array;
         internal var connecting:Array;
         internal var dots:Array;
+        internal var enabled:Boolean = false;
         internal var from:int;
         internal var inTrial:Boolean = false;
         internal var level:int = 0;
@@ -85,7 +86,7 @@ package com.finegamedesign.connectedworlds
 
         internal function get complete():Boolean
         {
-            return connections.length <= 0;
+            return null != connections && connections.length <= 0;
         }
 
         internal function clear():void
@@ -95,6 +96,7 @@ package com.finegamedesign.connectedworlds
         internal function levelUp():void
         {
             level = (level + 1) % levels.length;
+            enabled = 0 < level;
         }
     }
 }

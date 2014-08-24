@@ -1,19 +1,18 @@
 TODO
-	Connect dots in drawings.
-		Illustrator CS4:
-			Export image from Flash CS4 in illustrator format.
-			Import dot and line location from illustrator.
-		Flash 11.6:
-			Read drawing locations.
-	Connect. hear chime.
-	Correct, more complicated drawing.
-	All connected.  hear twinkling chimes.
-	Misconnection.  Hear dissonant chime.
-	Connected.  Animate.
 	Reflect.
 	Rotate.
 	Animate reflecting dots (different colors).
-	Afterward, the image animates.
+	Outro:  You win.
+	4pm
+		Connect. hear chime.
+		Correct, more complicated drawing.
+		All connected.  hear twinkling chimes.
+		Misconnection.  Hear dissonant chime.
+		Connected.  Animate.
+		Afterward, the image animates.
+	6pm upload to finegamedesign.com, screenshot, ludumdare
+	---
+	Tint lines to black
 	Timer
 	Score
 	Widen lines and stars for a finger's length.

@@ -45,7 +45,27 @@ package com.finegamedesign.connectedworlds
                 answer, false, 0, true);
             addEventListener(Event.ENTER_FRAME, update, false, 0, true);
             view.screen.addFrameScript(2, trial);
+            view.screen.addFrameScript(view.screen.totalFrames - 1, trialLoop);
+            // var trialFrame:int = 105;
+            // view.backgroundClip.addFrameScript(trialFrame, trialEnable);
             // API.connect(root, "", "");
+        }
+
+        private function trialEnable():void
+        {
+            model.enabled = true;
+            view.backgroundClip.stop();
+            view.screen.gotoAndPlay("begin");
+        }
+
+        private function trialLoop():void
+        {
+            if (model.enabled) {
+                view.screen.gotoAndPlay("begin");
+            }
+            else {
+                view.screen.gotoAndStop(view.screen.totalFrames);
+            }
         }
 
         public function trial():void
@@ -72,11 +92,23 @@ package com.finegamedesign.connectedworlds
                 FlxKongregate.init(FlxKongregate.connect);
             }
              */
+            if (keyMouse.justPressed("ENTER")) {
+                win();
+            }
+            if (!model.enabled && !model.inTrial && "trialEnable" == view.backgroundClip.currentLabel) {
+                trialEnable();
+            }
         }
 
         private function win():void
         {
             model.levelUp();
+            if (!model.enabled) {
+                view.end();
+            }
+            else {
+                view.win();
+            }
             reset();
             // FlxKongregate.api.stats.submit("Score", Model.score);
             // API.postScore("Score", Model.score);
@@ -113,18 +145,10 @@ package com.finegamedesign.connectedworlds
 
         // **
 
-        private function answerFirst(e:MouseEvent):void
-        {
-            if (model.only) {
-                trace("Main.answerFirst");
-                answer(e, true);
-            }
-        }
-
-        private function answer(e:MouseEvent, down:Boolean=false):void
+        private function answer(e:MouseEvent):void
         {
             if (model.inTrial) {
-                down = down || keyMouse.pressed("MOUSE");
+                var down:Boolean = keyMouse.pressed("MOUSE");
                 if (down) {
                     var x:Number = e.currentTarget.mouseX;
                     var y:Number = e.currentTarget.mouseY;
