@@ -20,6 +20,7 @@ package com.finegamedesign.connectedworlds
         internal var levels:Array;
         internal var lines:Boolean;
         internal var to:int;
+        internal var referee:Referee;
 
         public function Model():void
         {
@@ -36,6 +37,10 @@ package com.finegamedesign.connectedworlds
                 this[prop] = Util.clone(params[prop]);
             }
             lines = true;
+            if (null == referee) {
+                referee = new Referee();
+            }
+            referee.connectionTrial += connections.length;
         }
 
         internal function cancel():void
@@ -83,7 +88,7 @@ package com.finegamedesign.connectedworlds
             connecting = [dotIndex];
             from = to;
             to = dotIndex;
-            trace("Model.answer: " + correct + " x " + x + " y " + y + " connecting " + connecting);
+            // trace("Model.answer: " + correct + " x " + x + " y " + y + " connecting " + connecting);
             return correct;
         }
 
@@ -103,6 +108,7 @@ package com.finegamedesign.connectedworlds
 
         internal function levelUp():void
         {
+            referee.record();
             level = (level + 1) % levels.length;
             enabled = 0 < level;
         }
