@@ -1,9 +1,11 @@
 TODO
-	2014-08-24 Star face.  End.  Diana at The MADE expects more challenging.
-		Distractors.
-		Rotate 180.
-		Reflect horizontal, vertical.
-		Animate reflecting dots (different colors).
+	kerry expects score.
+		Number.
+		Count stars per minute.
+		Trace digits.
+	Fix outro.
+	illustrations
+		Arms up in joy.
 	4pm
 		Connect. hear chime.
 		Correct, more complicated drawing.
@@ -11,7 +13,10 @@ TODO
 		Misconnection.  Hear dissonant chime.
 		Connected.  Animate.
 		Afterward, the image animates.
-	6pm upload to finegamedesign.com, screenshot, ludumdare
+	Difficulty
+		Reflect horizontal, vertical.
+		Animate reflecting dots (different colors).
+		Rotate 180, like rotation matrix.
 	---
 	Tint lines to black
 	Variety each time you play.
@@ -21,6 +26,12 @@ TODO
 	Circle at tip.
 	Load your own illustrator files.
 	Draw your own images.
+
+CREDITS
+Idea inspired by conversations with Matt and Diana at The MADE.
+Playtesters:  Diana Salles, Jennifer Russ, Bethany.  
+Post compo playtesters also include:  Anders, Aubrey, Kerry.
+Made at themade.org
 
 THEME
 Connected Worlds
@@ -94,6 +105,7 @@ REFERENCE ART
 	Night image drawing.  http://theheavensdeclare.net/wp-content/uploads/2012/02/Feb-21-2012-e1357857365891.jpg
 	hedgehog http://www.branchfloridians.org/images/HEDGE.jpg
 	zodiac   http://cdn1.notonthehighstreet.com/system/product_images/images/001/300/620/original_personalised-zodiac-constellation-necklace.jpg?1380567552
+	girl wink  http://www.clipartbest.com/clipart-ncBGGd4cA
 
 NAME BANK
 	Memory Star

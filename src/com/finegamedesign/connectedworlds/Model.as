@@ -9,6 +9,14 @@ package com.finegamedesign.connectedworlds
         internal var from:int;
         internal var inTrial:Boolean = false;
         internal var level:int = 0;
+        /**
+         * Several levels.
+         *
+         * Change log:
+         * Reorder Heart, Star, Taurus, Butterfly, Moon, Bunny.
+		 * 2014-08-24 Diana, Anders, Aubrey, Kerry expect ascending challenge.  Got frustrated at Moon and Bunny.
+         * Aries.  Taurus.  Cancer.  Distractors. Star girl.  2014-08-24 Star face.  End.  Diana Salles expects more challenging.
+         */
         internal var levels:Array;
         internal var lines:Boolean;
         internal var to:int;

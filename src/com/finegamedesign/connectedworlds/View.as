@@ -73,7 +73,7 @@ package com.finegamedesign.connectedworlds
             this.model = model;
             for each(var xy:Array in model.dots) {
                 // trace("View.populate: " + xy);
-                var dot:DotClip = new StarClip();
+                var dot:DotClip = new DotClip();
                 dot.x = int(Math.round(xy[0]));
                 dot.y = int(Math.round(xy[1]));
                 dots.push(dot);

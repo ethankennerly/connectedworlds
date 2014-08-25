@@ -2,9 +2,9 @@
 %%Creator: Adobe Illustrator(r) 6.0
 %%For: (Macromedia Flash) ()
 %%Title: (C:\archive\flash\connectedworlds\ai\035_smile.ai)
-%%CreationDate: (08/24/14) (16:13:25)
-%%BoundingBox: 0 0 540 346
-%%HiResBoundingBox: 0.0 0.0 540.0 345.4
+%%CreationDate: (08/24/14) (21:21:56)
+%%BoundingBox: 0 0 556 313
+%%HiResBoundingBox: 0.0 0.0 556.0 313.0
 %%DocumentProcessColors: Cyan Magenta Yellow Black
 %%DocumentNeededResources: procset Adobe_level2_AI5 1.0 0
 %%+ procset Adobe_screens_AI5 1.0 0
@@ -15,7 +15,7 @@
 %AI5_FileFormat 2.0
 %AI3_ColorUsage: Color
 %AI3_TemplateBox: 306 396 306 396
-%AI3_TileBox: 284 -279 888 165
+%AI3_TileBox: 292 -279 896 165
 %AI3_DocumentPreview: None
 %%EndComments
 %%BeginProlog
@@ -40,45 +40,45 @@ u
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
-16.000000 w
-532.0 173.1 m
-524.0 185.1 L
+32.000000 w
+417.0 105.9 m
+285.0 16.0 L
+142.0 96.9 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
 32.000000 w
-409.0 105.9 m
-277.0 16.0 L
-134.0 96.9 L
+540.0 173.1 m
+532.0 185.1 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
 32.000000 w
-195.9 242.2 m
-200.7 329.4 L
+203.9 241.6 m
+160.0 294.4 L
+106.0 238.0 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
 32.000000 w
-346.6 242.2 m
-351.3 329.4 L
+26.0 171.1 m
+16.0 185.1 L
 S
-u
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
-16.000000 w
-18.0 171.1 m
-8.0 185.1 L
+32.000000 w
+354.6 241.6 m
+393.0 297.0 L
+446.0 243.9 L
 S
-U
 U
 %%PageTrailer
 gsave annotatepage grestore showpage
