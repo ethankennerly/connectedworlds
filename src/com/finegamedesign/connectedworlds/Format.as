@@ -29,6 +29,7 @@ package com.finegamedesign.connectedworlds
         /**
          * @param   graphsLeftToRight   Horizontally arranged objects of left to right.  
          * @param   spacing     Horizontal space between each graph.
+         * @param   yScale  Flatten original coordinates.  I accidentally placed the dots too high.
          * @return  Dots and connections centered.  
          */
         private static function concat(graphsLeftToRight:Array, spacing:int = 60, yScale:Number=0.9):Object

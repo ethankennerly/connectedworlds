@@ -29,12 +29,6 @@ TODO
 	Load your own illustrator files.
 	Draw your own images.
 
-CREDITS
-Idea inspired by conversations with Matt and Diana at The MADE.
-Playtesters:  Diana Salles, Jennifer Russ, Bethany.  
-Post compo playtesters also include:  Anders, Aubrey, Kerry.
-Made at themade.org
-
 THEME
 Connected Worlds
 

@@ -141,6 +141,9 @@ def center(coordinates, vertical=True):
     >>> center(dots)
     >>> dots
     [[163, 142], [0, -142], [-164, 142]]
+
+    If not vertical, manually set y to 240 (half screen).
+    Because 0 has no pips above it.
     """
     invert(coordinates)
     xMin = 99999
