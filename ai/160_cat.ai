@@ -1,10 +1,10 @@
 %!PS-Adobe-3.0 
 %%Creator: Adobe Illustrator(r) 6.0
 %%For: (Macromedia Flash) ()
-%%Title: (C:\archive\flash\connectedworlds\ai\100_starFace.ai)
-%%CreationDate: (08/24/14) (17:37:54)
-%%BoundingBox: 0 0 481 459
-%%HiResBoundingBox: 0.0 0.0 480.1 458.1
+%%Title: (C:\archive\flash\connectedworlds\ai\160_cat.ai)
+%%CreationDate: (08/24/14) (17:39:50)
+%%BoundingBox: 0 0 600 380
+%%HiResBoundingBox: 0.0 0.0 599.1 380.0
 %%DocumentProcessColors: Cyan Magenta Yellow Black
 %%DocumentNeededResources: procset Adobe_level2_AI5 1.0 0
 %%+ procset Adobe_screens_AI5 1.0 0
@@ -15,7 +15,7 @@
 %AI5_FileFormat 2.0
 %AI3_ColorUsage: Color
 %AI3_TemplateBox: 306 396 306 396
-%AI3_TileBox: 258 -233 863 211
+%AI3_TileBox: 317 -272 922 172
 %AI3_DocumentPreview: None
 %%EndComments
 %%BeginProlog
@@ -41,42 +41,94 @@ u
 1 j
 1 J
 32.000000 w
-464.1 279.4 m
-355.1 149.0 L
-378.4 16.0 L
-240.1 69.0 L
-101.7 16.0 L
-117.1 164.0 L
-16.0 279.4 L
-162.1 315.0 L
-240.1 442.1 L
-319.1 309.0 L
-464.1 279.4 L
+382.4 310.0 m
+334.8 350.0 L
+272.3 360.0 L
+211.3 324.0 L
+124.3 364.0 L
+162.3 268.0 L
+124.5 222.0 L
+137.1 102.0 L
+204.3 40.0 L
+305.3 16.0 L
+400.6 38.0 L
+445.4 84.0 L
+467.9 200.0 L
+430.1 246.0 L
+461.3 356.0 L
+382.4 310.0 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
 32.000000 w
-286.1 170.0 m
-240.1 128.0 L
-190.1 165.0 L
+520.9 196.8 m
+583.1 227.2 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
 32.000000 w
-203.1 234.0 m
-203.1 262.2 L
+298.6 93.0 m
+298.3 134.0 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
 32.000000 w
-280.1 232.0 m
-280.1 262.2 L
+26.1 28.6 m
+88.3 59.0 L
+S
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+32.000000 w
+16.0 114.8 m
+81.5 121.2 L
+S
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+32.000000 w
+513.6 142.8 m
+579.1 149.2 L
+S
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+32.000000 w
+504.6 84.7 m
+563.7 43.5 L
+S
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+32.000000 w
+364.3 178.0 m
+364.6 223.0 L
+S
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+32.000000 w
+236.3 182.0 m
+236.6 221.0 L
+S
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+32.000000 w
+20.8 200.0 m
+85.2 182.0 L
 S
 U
 %%PageTrailer

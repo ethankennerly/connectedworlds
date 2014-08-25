@@ -1,10 +1,10 @@
 %!PS-Adobe-3.0 
 %%Creator: Adobe Illustrator(r) 6.0
 %%For: (Macromedia Flash) ()
-%%Title: (C:\archive\flash\connectedworlds\ai\100_starFace.ai)
-%%CreationDate: (08/24/14) (17:37:54)
-%%BoundingBox: 0 0 481 459
-%%HiResBoundingBox: 0.0 0.0 480.1 458.1
+%%Title: (C:\archive\flash\connectedworlds\ai\145_bunny.ai)
+%%CreationDate: (08/24/14) (17:59:57)
+%%BoundingBox: 0 0 574 400
+%%HiResBoundingBox: 0.0 0.0 573.5 399.8
 %%DocumentProcessColors: Cyan Magenta Yellow Black
 %%DocumentNeededResources: procset Adobe_level2_AI5 1.0 0
 %%+ procset Adobe_screens_AI5 1.0 0
@@ -15,7 +15,7 @@
 %AI5_FileFormat 2.0
 %AI3_ColorUsage: Color
 %AI3_TemplateBox: 306 396 306 396
-%AI3_TileBox: 258 -233 863 211
+%AI3_TileBox: 304 -262 909 182
 %AI3_DocumentPreview: None
 %%EndComments
 %%BeginProlog
@@ -41,42 +41,87 @@ u
 1 j
 1 J
 32.000000 w
-464.1 279.4 m
-355.1 149.0 L
-378.4 16.0 L
-240.1 69.0 L
-101.7 16.0 L
-117.1 164.0 L
-16.0 279.4 L
-162.1 315.0 L
-240.1 442.1 L
-319.1 309.0 L
-464.1 279.4 L
+312.6 239.5 m
+358.1 383.8 L
+497.7 346.9 L
+469.2 257.1 L
+396.6 302.9 L
+366.7 228.9 L
+439.3 190.2 L
+437.9 88.2 L
+315.4 16.0 L
+126.1 60.0 L
+123.2 155.0 L
+194.4 209.6 L
+160.3 271.2 L
+97.6 251.8 L
+66.3 327.5 L
+185.8 375.0 L
+249.9 236.0 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
 32.000000 w
-286.1 170.0 m
-240.1 128.0 L
-190.1 165.0 L
+557.5 282.9 m
+557.5 291.1 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
 32.000000 w
-203.1 234.0 m
-203.1 262.2 L
+31.4 210.9 m
+31.4 219.1 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
 32.000000 w
-280.1 232.0 m
-280.1 262.2 L
+237.4 147.9 m
+237.4 156.1 L
+S
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+32.000000 w
+72.0 39.8 m
+16.0 22.2 L
+S
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+32.000000 w
+72.0 100.5 m
+16.4 119.8 L
+S
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+32.000000 w
+485.6 148.0 m
+544.5 167.3 L
+S
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+32.000000 w
+486.3 87.2 m
+546.1 69.7 L
+S
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+32.000000 w
+329.4 151.8 m
+329.4 159.9 L
 S
 U
 %%PageTrailer
