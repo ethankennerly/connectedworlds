@@ -1,10 +1,10 @@
 %!PS-Adobe-3.0 
 %%Creator: Adobe Illustrator(r) 6.0
 %%For: (Macromedia Flash) ()
-%%Title: (C:\archive\flash\connectedworlds\ai\030_square.ai)
-%%CreationDate: (08/24/14) (16:09:25)
-%%BoundingBox: 0 0 382 294
-%%HiResBoundingBox: 0.0 0.0 382.0 293.9
+%%Title: (C:\archive\flash\connectedworlds\ai\130_taurus.ai)
+%%CreationDate: (08/24/14) (15:26:54)
+%%BoundingBox: 0 0 508 389
+%%HiResBoundingBox: 0.0 0.0 508.0 389.0
 %%DocumentProcessColors: Cyan Magenta Yellow Black
 %%DocumentNeededResources: procset Adobe_level2_AI5 1.0 0
 %%+ procset Adobe_screens_AI5 1.0 0
@@ -15,7 +15,7 @@
 %AI5_FileFormat 2.0
 %AI3_ColorUsage: Color
 %AI3_TemplateBox: 306 396 306 396
-%AI3_TileBox: 184 -324 789 120
+%AI3_TileBox: 272 -267 876 177
 %AI3_DocumentPreview: None
 %%EndComments
 %%BeginProlog
@@ -40,12 +40,84 @@ u
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
-8.000000 w
-378.0 250.0 m
-14.1 289.9 L
-4.0 44.0 L
-294.0 4.0 L
-378.0 250.0 L
+16.000000 w
+327.0 347.0 m
+323.0 354.0 L
+S
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+16.000000 w
+454.0 264.0 m
+449.0 273.0 L
+S
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+16.000000 w
+13.0 282.0 m
+8.0 290.0 L
+S
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+16.000000 w
+169.0 210.0 m
+89.0 302.0 L
+S
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+16.000000 w
+151.0 8.0 m
+142.0 21.0 L
+S
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+16.000000 w
+173.0 88.0 m
+169.0 94.0 L
+S
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+16.000000 w
+42.0 135.0 m
+36.0 142.0 L
+S
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+16.000000 w
+500.0 73.0 m
+493.0 79.0 L
+S
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+16.000000 w
+374.0 174.0 m
+370.0 180.0 L
+S
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+16.000000 w
+381.0 22.0 m
+285.0 102.0 L
+239.0 182.0 L
+259.0 271.0 L
+195.0 381.0 L
 S
 U
 %%PageTrailer

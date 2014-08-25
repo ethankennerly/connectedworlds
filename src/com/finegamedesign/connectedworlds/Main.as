@@ -47,8 +47,18 @@ package com.finegamedesign.connectedworlds
             view.screen.addFrameScript(2, trial);
             view.screen.addFrameScript(view.screen.totalFrames - 1, trialLoop);
             // var trialFrame:int = 105;
-            // view.backgroundClip.addFrameScript(trialFrame, trialEnable);
+            view.backgroundClip.addFrameScript(view.backgroundClip.totalFrames - 2, restart);
             // API.connect(root, "", "");
+        }
+
+        private function restart():void
+        {
+            view.clear();
+            view.remove(view.screen);
+            view.backgroundClip.stop();
+            view.screen.stop();
+            view.remove(view.backgroundClip);
+            init();
         }
 
         private function trialEnable():void
@@ -64,7 +74,9 @@ package com.finegamedesign.connectedworlds
                 view.screen.gotoAndPlay("begin");
             }
             else {
-                view.screen.gotoAndStop(view.screen.totalFrames);
+                view.screen.stop();
+                view.screen.visible = false;
+                view.remove(view.screen);
             }
         }
 
@@ -122,7 +134,9 @@ package com.finegamedesign.connectedworlds
                 // loopChannel.stop();
             }
             view.cancel();
-            view.screen.gotoAndPlay("end");
+            if ("end" != view.screen.currentLabel) {
+                view.screen.gotoAndPlay("end");
+            }
         }
 
         private function lose():void

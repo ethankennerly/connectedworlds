@@ -1,10 +1,10 @@
 %!PS-Adobe-3.0 
 %%Creator: Adobe Illustrator(r) 6.0
 %%For: (Macromedia Flash) ()
-%%Title: (C:\archive\flash\connectedworlds\ai\030_square.ai)
-%%CreationDate: (08/24/14) (16:09:25)
-%%BoundingBox: 0 0 382 294
-%%HiResBoundingBox: 0.0 0.0 382.0 293.9
+%%Title: (C:\archive\flash\connectedworlds\ai\140_gemini.ai)
+%%CreationDate: (08/24/14) (15:52:41)
+%%BoundingBox: 0 0 574 413
+%%HiResBoundingBox: 0.0 0.0 573.5 413.0
 %%DocumentProcessColors: Cyan Magenta Yellow Black
 %%DocumentNeededResources: procset Adobe_level2_AI5 1.0 0
 %%+ procset Adobe_screens_AI5 1.0 0
@@ -15,7 +15,7 @@
 %AI5_FileFormat 2.0
 %AI3_ColorUsage: Color
 %AI3_TemplateBox: 306 396 306 396
-%AI3_TileBox: 184 -324 789 120
+%AI3_TileBox: 355 -309 960 135
 %AI3_DocumentPreview: None
 %%EndComments
 %%BeginProlog
@@ -40,12 +40,73 @@ u
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
-8.000000 w
-378.0 250.0 m
-14.1 289.9 L
-4.0 44.0 L
-294.0 4.0 L
-378.0 250.0 L
+16.000000 w
+485.5 273.0 m
+476.5 279.0 L
+S
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+16.000000 w
+524.0 64.0 m
+435.0 61.0 L
+359.0 218.0 L
+352.0 351.0 L
+312.0 405.0 L
+188.0 368.0 L
+200.0 241.0 L
+265.0 159.0 L
+292.0 40.0 L
+204.0 8.0 L
+S
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+16.000000 w
+565.5 134.0 m
+560.5 140.0 L
+S
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+16.000000 w
+120.5 303.0 m
+111.5 309.0 L
+S
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+16.000000 w
+78.0 176.0 m
+69.0 184.0 L
+S
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+16.000000 w
+17.0 366.0 m
+8.0 372.0 L
+S
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+16.000000 w
+159.0 47.0 m
+151.0 58.0 L
+S
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+16.000000 w
+506.0 375.0 m
+501.0 381.0 L
 S
 U
 %%PageTrailer

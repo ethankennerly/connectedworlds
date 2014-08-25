@@ -1,8 +1,9 @@
 TODO
-	Reflect.
-	Rotate.
-	Animate reflecting dots (different colors).
-	Outro:  You win.
+	2014-08-24 Star face.  End.  Diana at The MADE expects more challenging.
+		Distractors.
+		Rotate 180.
+		Reflect horizontal, vertical.
+		Animate reflecting dots (different colors).
 	4pm
 		Connect. hear chime.
 		Correct, more complicated drawing.
@@ -13,6 +14,7 @@ TODO
 	6pm upload to finegamedesign.com, screenshot, ludumdare
 	---
 	Tint lines to black
+	Variety each time you play.
 	Timer
 	Score
 	Widen lines and stars for a finger's length.
@@ -179,3 +181,17 @@ U
 target:
             {connections: [[0, 1], [0, 2], [1, 2]], 
              dots: [[-160, 120], [0, -120], [160, 120]]},
+
+
+Sun 08/24/2014 
+17:07
+
+Image fades in.
+	Movie clip with labels.
+	classes with names.
+
+More images.
+
+Rotate.
+
+

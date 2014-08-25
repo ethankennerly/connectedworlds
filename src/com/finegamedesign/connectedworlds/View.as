@@ -170,7 +170,7 @@ package com.finegamedesign.connectedworlds
             progress.graphics.clear();
         }
 
-        private function remove(dot:DisplayObject):void
+        internal function remove(dot:DisplayObject):void
         {
             if (dot.parent && dot.parent.contains(dot)) {
                 dot.parent.removeChild(dot);

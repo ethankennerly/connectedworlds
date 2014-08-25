@@ -1,10 +1,10 @@
 %!PS-Adobe-3.0 
 %%Creator: Adobe Illustrator(r) 6.0
 %%For: (Macromedia Flash) ()
-%%Title: (C:\archive\flash\connectedworlds\triangle.ai)
-%%CreationDate: (08/22/14) (21:15:04)
-%%BoundingBox: 0 0 336 292
-%%HiResBoundingBox: 0.0 0.0 335.3 291.5
+%%Title: (C:\archive\flash\connectedworlds\ai\010_triangle.ai)
+%%CreationDate: (08/24/14) (16:10:32)
+%%BoundingBox: 0 0 336 201
+%%HiResBoundingBox: 0.0 0.0 335.3 200.5
 %%DocumentProcessColors: Cyan Magenta Yellow Black
 %%DocumentNeededResources: procset Adobe_level2_AI5 1.0 0
 %%+ procset Adobe_screens_AI5 1.0 0
@@ -15,7 +15,7 @@
 %AI5_FileFormat 2.0
 %AI3_ColorUsage: Color
 %AI3_TemplateBox: 306 396 306 396
-%AI3_TileBox: 185 -316 790 128
+%AI3_TileBox: 185 -315 790 129
 %AI3_DocumentPreview: None
 %%EndComments
 %%BeginProlog
@@ -41,10 +41,9 @@ u
 1 j
 1 J
 8.000000 w
-331.3 4.0 m
-167.6 287.5 L
-4.0 4.0 L
-331.3 4.0 L
+4.0 196.5 m
+167.7 4.0 L
+331.3 196.5 L
 S
 U
 %%PageTrailer

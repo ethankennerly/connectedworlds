@@ -28,6 +28,17 @@ U
 %%PageTrailer
 """
 
+_point_ai_text = """
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+16.000000 w
+37.0 318.0 m
+33.0 321.0 L
+f
+"""
+
 _example_dots_text = """
     {connections: [[0, 1], [0, 2], [1, 2]], 
      dots: [[-160, 120], [0, -120], [160, 120]]},
@@ -37,12 +48,18 @@ _example_dots_text = """
 def parse(ai_text):
     """
     Dictionary of lists of dots and connections.
+
+    Collapse nearby points if 10 pixels away.
+    Store key in a dictionary of 10 pixel grid.
+    >>> pprint.pprint(parse(_point_ai_text))
+    {'connections': [], 'dots': [[0, 0]]}
+
     Center by extreme coordinates.
     >>> triangle = parse(_example_ai_text)
     >>> triangle['connections']
     [[0, 1], [0, 2], [1, 2]]
     >>> triangle['dots']
-    [[167, 138], [4, -146], [-160, 138]]
+    [[163, 142], [0, -142], [-164, 142]]
     """
     lines = ai_text.splitlines()
     connections = []
@@ -56,7 +73,7 @@ def parse(ai_text):
         words = line.split(' ')
         if 'U' == words[-1]:
             break;
-        if 'S' == words[-1]:
+        if words[-1] in ['S', 'f']:
             coordinating = False
             connecting = False
         if 'm' == words[-1]:
@@ -67,14 +84,13 @@ def parse(ai_text):
         if coordinating:
             x = int(round(float(words[0]), 0))
             y = int(round(float(words[1]), 0))
-            key = y * 10000 + x
-            if key in coordinates:
-                index = coordinates[key]
+            nearIndex = near(dots, x, y)
+            if 0 <= nearIndex:
+                index = nearIndex
             else:
                 index += 1
-                coordinates[key] = index
                 dots.append([x, y])
-        if connecting:
+        if connecting and previous != index:
             connection = [previous, index]
             connection.sort()
             connections.append(connection)
@@ -83,6 +99,25 @@ def parse(ai_text):
     center(dots)
     graph = {'connections': connections, 'dots': dots}
     return graph
+
+
+def near(dots, x, y):
+    """
+    >>> near([[0, 0]], 20, 40)
+    -1
+    >>> near([[0, 0]], -19, -20)
+    -1
+    >>> near([[0, 0]], 19, 19)
+    0
+    """
+    radius = 20
+    index = -1
+    for d in range(len(dots)):
+        kx, ky = dots[d]
+        if abs(ky - y) < radius and abs(kx - x) < radius:
+            index = d
+            break
+    return index
 
 
 def invert(coordinates):
@@ -102,7 +137,7 @@ def center(coordinates):
     >>> dots = [[331, 4], [168, 288], [4, 4]]
     >>> center(dots)
     >>> dots
-    [[167, 138], [4, -146], [-160, 138]]
+    [[163, 142], [0, -142], [-164, 142]]
     """
     invert(coordinates)
     xMin = 99999
@@ -118,7 +153,7 @@ def center(coordinates):
             yMin = y
         if yMax < y:
             yMax = y
-    xOffset = (xMin - xMax) / 2
+    xOffset = (-xMin - xMax) / 2
     yOffset = (-yMax - yMin) / 2
     for c, coordinate in enumerate(coordinates):
         coordinates[c][0] += xOffset
