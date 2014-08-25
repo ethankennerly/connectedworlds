@@ -21,9 +21,11 @@ TODO
 	Tint lines to black
 	Variety each time you play.
 	Timer
-	Score
+	Increase distractors and connections as connections per minute incrases.
+	persist level.
 	Widen lines and stars for a finger's length.
 	Circle at tip.
+	JSFL export each graph.
 	Load your own illustrator files.
 	Draw your own images.
 

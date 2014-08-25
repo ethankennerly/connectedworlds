@@ -2,6 +2,9 @@ package com.finegamedesign.connectedworlds
 {
     import flash.utils.getTimer;
 
+    /**
+     * 2014-08-24 End.  Kerry at The MADE expects to score.
+     */
     internal final class Referee
     {
         internal var connectionTrial:int = 0;
@@ -24,7 +27,7 @@ package com.finegamedesign.connectedworlds
         {
             this.connectionCount += connectionTrial;
             milliseconds = getTimer() - start;
-            trace("Referee.record: score " + connectionsPerMinute);
+            trace("Referee.record: connectionsPerMinute " + connectionsPerMinute);
         }
     }
 }

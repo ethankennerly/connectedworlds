@@ -63,6 +63,7 @@ package com.finegamedesign.connectedworlds
 
         private function trialEnable():void
         {
+            trace("Main.trialEnable");
             model.enabled = true;
             view.backgroundClip.stop();
             view.screen.gotoAndPlay("begin");
@@ -91,6 +92,11 @@ package com.finegamedesign.connectedworlds
             }
         }
 
+        /**
+         * Cheats to quickly test:
+         *      "ENTER" complete trial.
+         *      "DELETE" this is the last trial. 
+         */
         private function update(event:Event):void
         {
             var now:int = getTimer();
@@ -104,6 +110,9 @@ package com.finegamedesign.connectedworlds
                 FlxKongregate.init(FlxKongregate.connect);
             }
              */
+            if (keyMouse.justPressed("DELETE")) {
+                model.truncate();
+            }
             if (keyMouse.justPressed("ENTER")) {
                 win();
             }
@@ -157,8 +166,11 @@ package com.finegamedesign.connectedworlds
             }
         }
 
-        // **
+        // Game-specific:
 
+        /**
+         * Only play screen if model is still enabled and complete.
+         */
         private function answer(e:MouseEvent):void
         {
             if (model.inTrial) {
@@ -193,7 +205,7 @@ package com.finegamedesign.connectedworlds
                     view.cancel();
                 }
             }
-            if (model.complete) {
+            if (model.enabled && model.complete) {
                 view.screen.play();
             }
         }

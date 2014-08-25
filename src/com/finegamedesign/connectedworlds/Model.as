@@ -17,7 +17,7 @@ package com.finegamedesign.connectedworlds
 		 * 2014-08-24 Diana, Anders, Aubrey, Kerry expect ascending challenge.  Got frustrated at Moon and Bunny.
          * Aries.  Taurus.  Cancer.  Distractors. Star girl.  2014-08-24 Star face.  End.  Diana Salles expects more challenging.
          */
-        internal var levels:Array;
+        private var graphs:Array;
         internal var lines:Boolean;
         internal var to:int;
         internal var referee:Referee;
@@ -25,6 +25,13 @@ package com.finegamedesign.connectedworlds
         public function Model():void
         {
             include "Levels.as"
+            graphs.push({});
+        }
+
+        internal function truncate():void
+        {
+            graphs.length = level + 1;
+            graphs.push({});
         }
 
         internal function populate():void
@@ -32,7 +39,7 @@ package com.finegamedesign.connectedworlds
             connecting = [];
             from = -1;
             to = -1;
-            var params:Object = levels[level];
+            var params:Object = graphs[level];
             for (var prop:String in params) {
                 this[prop] = Util.clone(params[prop]);
             }
@@ -108,9 +115,16 @@ package com.finegamedesign.connectedworlds
 
         internal function levelUp():void
         {
+            if (null == referee) {
+                referee = new Referee();
+            }
             referee.record();
-            level = (level + 1) % levels.length;
+            level = (level + 1) % graphs.length;
             enabled = 0 < level;
+            if (level == graphs.length - 1) {
+                graphs[level] = Format.wholeNumber(
+                    referee.connectionsPerMinute);
+            }
         }
     }
 }
