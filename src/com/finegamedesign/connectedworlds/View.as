@@ -34,6 +34,9 @@ package com.finegamedesign.connectedworlds
          */
         private var tutorClip:TutorClip;
 
+        /**
+         * In BackgroundClip timeline:  After panning, just before first trial, eyes wake up, blink, look up.  Goes to sleep.  2014-08-25 End.  Tyler Hinman expects animation to save the baby.
+         */ 
         public function View(parent:DisplayObjectContainer)
         {
             radiusSquared = radius * radius;
@@ -64,9 +67,18 @@ package com.finegamedesign.connectedworlds
 
         internal function end():void
         {
-            remove(reviewClip);
             backgroundClip.gotoAndPlay("end");
             screen.addFrameScript(screen.totalFrames - 1, screen.stop);
+        }
+
+        internal function hideScreen():void
+        {
+            trace("View.hideScreen");
+            remove(reviewClip);
+            reviewClip.visible = false;
+            screen.stop();
+            screen.visible = false;
+            remove(screen);
         }
 
         internal function populate(model:Model):void

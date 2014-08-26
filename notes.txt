@@ -1,5 +1,4 @@
 TODO
-	Eyes wake up, blink, look up.  Goes to sleep.  2014-08-25 End.  Tyler Hinman expects animation to save the baby.
 	illustrations
 		Arms up in joy.
 	4pm

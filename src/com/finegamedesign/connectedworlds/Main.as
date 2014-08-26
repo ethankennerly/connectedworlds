@@ -45,7 +45,7 @@ package com.finegamedesign.connectedworlds
                 answer, false, 0, true);
             addEventListener(Event.ENTER_FRAME, update, false, 0, true);
             view.screen.addFrameScript(2, trial);
-            view.screen.addFrameScript(view.screen.totalFrames - 1, trialLoop);
+            view.screen.addFrameScript(view.screen.totalFrames - 2, trialLoop);
             // var trialFrame:int = 105;
             view.backgroundClip.addFrameScript(view.backgroundClip.totalFrames - 2, restart);
             // API.connect(root, "", "");
@@ -75,9 +75,7 @@ package com.finegamedesign.connectedworlds
                 view.screen.gotoAndPlay("begin");
             }
             else {
-                view.screen.stop();
-                view.screen.visible = false;
-                view.remove(view.screen);
+                view.hideScreen();
             }
         }
 
