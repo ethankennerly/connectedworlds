@@ -1,8 +1,6 @@
 TODO
-	At top of screen, when showing digits, show "* / @ =", where @ looks like a clock icon.  Black background covers disconnected dots.  2014-08-25 Tyler Hinman expects to recognize speed.  Got dots. 
-	Timer starts at third trial.  2014-08-25 Tyler Hinman expects to timer starts after first trial.
-	Eyes wake up, blink, look up.  Goes to sleep.  2014-08-25 End.  Tyler Hinman expects animation to save the baby.
 	Connect.  Animate dot bigger.  2014-08-25 Erin McCarty expects to see connection event.
+	Eyes wake up, blink, look up.  Goes to sleep.  2014-08-25 End.  Tyler Hinman expects animation to save the baby.
 	illustrations
 		Arms up in joy.
 	4pm

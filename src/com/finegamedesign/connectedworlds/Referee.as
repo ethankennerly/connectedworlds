@@ -9,25 +9,38 @@ package com.finegamedesign.connectedworlds
     {
         internal var connectionTrial:int = 0;
         private var connectionCount:int = 0;
-        private var milliseconds:int;
-        private var start:int;
+        private var millisecondsTotal:int;
+        private var millisecondsStart:int;
+        private var playing:Boolean;
 
         public function Referee()
         {
-            start = getTimer();
         }
 
         internal function get connectionsPerMinute():int
         {
-            var rate:int = Math.ceil(connectionCount * 60000 / milliseconds);
+            var rate:int = Math.ceil(connectionCount * 60000 
+                / millisecondsTotal);
             return rate;
         }
 
-        internal function record():void
+        internal function start(connectionTrial:int):void
         {
-            this.connectionCount += connectionTrial;
-            milliseconds = getTimer() - start;
-            trace("Referee.record: connectionsPerMinute " + connectionsPerMinute);
+            this.connectionTrial = connectionTrial;
+            if (!playing) {
+                playing = true;
+                millisecondsStart = getTimer();
+            }
+        }
+
+        internal function stop():void
+        {
+            if (playing) {
+                playing = false;
+                millisecondsTotal += getTimer() - millisecondsStart;
+                connectionCount += connectionTrial;
+                trace("Referee.stop: connectionsPerMinute " + connectionsPerMinute);
+            }
         }
     }
 }

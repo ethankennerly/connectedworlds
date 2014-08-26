@@ -10,6 +10,10 @@ package com.finegamedesign.connectedworlds
         internal var inTrial:Boolean = false;
         internal var level:int = 0;
         /**
+         * Timer starts at fifth trial, after tutoring disconnected dots.  2014-08-25 Tyler Hinman expects to timer starts after first trial.
+         */
+        internal var levelTutor:int = 4;
+        /**
          * Several levels.
          *
          * Change log:
@@ -20,20 +24,29 @@ package com.finegamedesign.connectedworlds
         private var graphs:Array;
         internal var lines:Boolean;
         internal var to:int;
-        internal var referee:Referee;
+        internal var referee:Referee = new Referee();
 
+        /**
+         * Add review graph.
+         */
         public function Model():void
         {
             include "Levels.as"
             graphs.push({});
         }
 
+        /**
+         * Delete graphs after this one.
+         */
         internal function truncate():void
         {
             graphs.length = level + 1;
             graphs.push({});
         }
 
+        /**
+         *
+         */
         internal function populate():void
         {
             connecting = [];
@@ -44,10 +57,9 @@ package com.finegamedesign.connectedworlds
                 this[prop] = Util.clone(params[prop]);
             }
             lines = true;
-            if (null == referee) {
-                referee = new Referee();
+            if (levelTutor <= level) {
+                referee.start(connections.length);
             }
-            referee.connectionTrial += connections.length;
         }
 
         internal function cancel():void
@@ -115,10 +127,7 @@ package com.finegamedesign.connectedworlds
 
         internal function levelUp():void
         {
-            if (null == referee) {
-                referee = new Referee();
-            }
-            referee.record();
+            referee.stop();
             level = (level + 1) % graphs.length;
             enabled = 0 < level;
             if (review) {

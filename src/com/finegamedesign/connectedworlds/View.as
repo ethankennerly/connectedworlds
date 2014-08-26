@@ -27,6 +27,7 @@ package com.finegamedesign.connectedworlds
         private var radius:Number = 24;
                                     // 40;
         private var radiusSquared:Number;
+        private var reviewClip:ReviewClip;
         /**
          * 2014-08-23 Aaron at The MADE expects to emphasize ring at dot.
          * Diagonal motion with finger to touch.  2014-08-23 Jennifer Russ expects to recognize icon and motion to swipe.  Got confused that it was a loading bar.  2014-08-24 Beth expects to see instructions on what to do.
@@ -63,6 +64,7 @@ package com.finegamedesign.connectedworlds
 
         internal function end():void
         {
+            remove(reviewClip);
             backgroundClip.gotoAndPlay("end");
             screen.addFrameScript(screen.totalFrames - 1, screen.stop);
         }
@@ -86,13 +88,12 @@ package com.finegamedesign.connectedworlds
         /**
          * At top of screen, when showing digits, show "* / @ =", where @ looks like a clock icon.  Black background covers disconnected dots.  2014-08-25 Tyler Hinman expects to recognize speed.  Got dots. 
          */
-        internal function review():MovieClip
+        internal function review():void
         {
             screen.stop();
-            var mc:MovieClip = new Review();
-            screen.addChild(mc);
-            mc.addFrameScript(mc.totalFrames - 2, screen.play);
-            return mc;
+            reviewClip = new ReviewClip();
+            screen.addChild(reviewClip);
+            reviewClip.addFrameScript(reviewClip.totalFrames - 3, screen.play);
         }
 
         internal function win():void
