@@ -131,6 +131,15 @@ package com.finegamedesign.connectedworlds
             // trace("View.drawConnection: from " + xy0 + " to " + xy1);
             connection.graphics.moveTo(xy0[0], xy0[1]);
             connection.graphics.lineTo(xy1[0], xy1[1]);
+            animateDot(toDotIndex);
+        }
+
+        /**
+	     * Connect as shown.  Animate ring exploding and then imploding from dot.  Hopefully reward connecting as shown.  2014-08-25 Trackpad.  Erin McCarty expects to see connection event.  2014-08-25 Tyler expects to realize speed is graded.    
+         */
+        private function animateDot(dotIndex:int):void
+        {
+            dots[dotIndex].play();
         }
 
         internal function drawProgress(dotIndex:int, 
