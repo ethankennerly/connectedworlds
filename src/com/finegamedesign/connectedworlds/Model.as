@@ -121,10 +121,15 @@ package com.finegamedesign.connectedworlds
             referee.record();
             level = (level + 1) % graphs.length;
             enabled = 0 < level;
-            if (level == graphs.length - 1) {
+            if (review) {
                 graphs[level] = Format.wholeNumber(
                     referee.connectionsPerMinute);
             }
+        }
+
+        internal function get review():Boolean
+        {
+            return level == graphs.length - 1;
         }
     }
 }

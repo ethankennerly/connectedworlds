@@ -90,6 +90,9 @@ package com.finegamedesign.connectedworlds
             if (0 == model.level) {
                 view.tutor();
             }
+            else if (model.review) {
+                view.review();
+            }
         }
 
         /**

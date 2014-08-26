@@ -1,9 +1,8 @@
 TODO
-	kerry expects score.
-		Number.
-		Count stars per minute.
-		Trace digits.
-	Fix outro.
+	At top of screen, when showing digits, show "* / @ =", where @ looks like a clock icon.  Black background covers disconnected dots.  2014-08-25 Tyler Hinman expects to recognize speed.  Got dots. 
+	Timer starts at third trial.  2014-08-25 Tyler Hinman expects to timer starts after first trial.
+	Eyes wake up, blink, look up.  Goes to sleep.  2014-08-25 End.  Tyler Hinman expects animation to save the baby.
+	Connect.  Animate dot bigger.  2014-08-25 Erin McCarty expects to see connection event.
 	illustrations
 		Arms up in joy.
 	4pm
@@ -20,9 +19,10 @@ TODO
 	---
 	Tint lines to black
 	Variety each time you play.
-	Timer
+	Time limit.
 	Increase distractors and connections as connections per minute incrases.
 	persist level.
+	Name Dada.
 	Widen lines and stars for a finger's length.
 	Circle at tip.
 	JSFL export each graph.
@@ -104,6 +104,7 @@ REFERENCE ART
 	girl wink  http://www.clipartbest.com/clipart-ncBGGd4cA
 
 NAME BANK
+	Dada
 	Memory Star
 	Stars
 	Star Star
@@ -113,10 +114,12 @@ NAME BANK
 	::
 	*-*
 	**
+	..
 	Star Drawing
 	Drawing with Stars
 	Constellation
 	Star Lines
+	Memo Star
 
 JOURNAL
 

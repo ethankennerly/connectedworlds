@@ -83,6 +83,18 @@ package com.finegamedesign.connectedworlds
             remove(tutorClip);
         }
 
+        /**
+         * At top of screen, when showing digits, show "* / @ =", where @ looks like a clock icon.  Black background covers disconnected dots.  2014-08-25 Tyler Hinman expects to recognize speed.  Got dots. 
+         */
+        internal function review():MovieClip
+        {
+            screen.stop();
+            var mc:MovieClip = new Review();
+            screen.addChild(mc);
+            mc.addFrameScript(mc.totalFrames - 2, screen.play);
+            return mc;
+        }
+
         internal function win():void
         {
             if ("trial" != backgroundClip.currentLabel) {

@@ -63,6 +63,10 @@ def parse(ai_text, vertical=True):
     [[0, 1], [0, 2], [1, 2]]
     >>> triangle['dots']
     [[163, 142], [0, -142], [-164, 142]]
+
+    If not vertical, remove disconnected dots.
+    >>> pprint.pprint(parse(_point_ai_text, False))
+    {'connections': [], 'dots': []}
     """
     lines = ai_text.splitlines()
     connections = []
@@ -182,7 +186,7 @@ if '__main__' == __name__:
     import sys
     vertical = True
     options = ''
-    if '--vertical' == sys.argv[1]:
+    if 2 <= len(sys.argv) and '--vertical' == sys.argv[1]:
         vertical = False
         options = sys.argv[1]
         del sys.argv[1]
