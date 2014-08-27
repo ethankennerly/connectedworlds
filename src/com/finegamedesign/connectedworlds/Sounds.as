@@ -4,9 +4,9 @@ package com.finegamedesign.connectedworlds
     import flash.media.SoundChannel;
 
     /**
-     * Connect.  Hear beat.
+     * Connect.  Hear next note.
      * Misconnect.  Hear higher note.
-     * 2014-08-26 Erin was reminded of Osu.
+     * 2014-08-26 Erin McCarty was reminded of Osu.
      */
     internal final class Sounds
     {
