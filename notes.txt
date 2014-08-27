@@ -1,29 +1,32 @@
 TODO
+	4pm
+		Connect.  Continue next note in Jade Brewer's kalimba melody.
+		To overlap notes, in MuseScore space out with rests.
+		Misconnection.  Higher note.
+		All connected.  hear twinkling chimes.
 	illustrations
 		Arms up in joy.
-	4pm
-		Connect. hear chime.
-		Correct, more complicated drawing.
-		All connected.  hear twinkling chimes.
-		Misconnection.  Hear dissonant chime.
-		Connected.  Animate.
-		Afterward, the image animates.
-	Difficulty
-		Reflect horizontal, vertical.
-		Animate reflecting dots (different colors).
-		Rotate 180, like rotation matrix.
-	---
+	Name DotDot   ..
+	Prehandwriting exercise
 	Tint lines to black
 	Variety each time you play.
+	Correct, more complicated drawing.
+	Connected.  Animate.
+	Afterward, the image animates.
+	Afterward, dots animate.
+	Afterward, bezier spline.
 	Time limit.
 	Increase distractors and connections as connections per minute incrases.
 	persist level.
-	Name Dada.
 	Widen lines and stars for a finger's length.
 	Circle at tip.
 	JSFL export each graph.
 	Load your own illustrator files.
 	Draw your own images.
+	Difficulty
+		Reflect horizontal, vertical.
+		Animate reflecting dots (different colors).
+		Rotate 180, like rotation matrix.
 
 THEME
 Connected Worlds

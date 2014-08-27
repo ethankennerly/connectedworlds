@@ -34,6 +34,7 @@ package com.finegamedesign.connectedworlds
         
         public function init(event:Event=null):void
         {
+            Sounds.instance = new Sounds();
             scrollRect = new Rectangle(0, 0, stage.stageWidth, stage.stageHeight);
             keyMouse = new KeyMouse();
             keyMouse.listen(stage);
@@ -191,12 +192,14 @@ package com.finegamedesign.connectedworlds
                         var correct:int = model.answer(dot.x, dot.y);
                         view.drawConnection(model.from, model.to);
                         if (0 <= correct) {
+                            Sounds.instance.next();
                             if (model.complete)
                             {
                                 win();
                             }
                         }
                         else {
+                            Sounds.instance.wrong();
                             lose();
                         }
                     }
