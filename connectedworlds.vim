@@ -27,9 +27,9 @@ cnoremap   :simalt ~
 inoremap   :simalt ~
 map <silent> \t :call MakeGreen()
 nmap gx <Plug>NetrwBrowseX
-nmap <S-Insert> "+gP
-nnoremap <C-Tab> w
 nnoremap <C-F4> c
+nnoremap <C-Tab> w
+nmap <S-Insert> "+gP
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#NetrwBrowseX(expand("<cWORD>"),0)
 onoremap <C-F4> c
 vnoremap <C-F4> c
@@ -81,8 +81,8 @@ badd +432 \archive\flash\connectedworlds\connectedworlds.ai
 badd +1 \archive\flash\connectedworlds\triangle.ai
 badd +46 \archive\flash\connectedworlds\line.ai
 badd +66 Main.as
-badd +17 Model.as
-badd +137 View.as
+badd +104 Model.as
+badd +38 View.as
 badd +1 \archive\flash\connectedworlds\bin\index.html
 badd +8 Dot.as
 badd +7 DotClip.as
@@ -96,12 +96,17 @@ badd +62 \archive\flash\connectedworlds\ai\040_bigDipper.ai
 badd +53 \archive\flash\connectedworlds\ai\120_aries.ai
 badd +1 \archive\flash\connectedworlds\ai\160_cat.ai
 badd +25 Score.as
-badd +1 Referee.as
+badd +31 Referee.as
 badd +18 Concat.as
 badd +1 Lev
 badd +1 Digits.as
-badd +32 Format.as
+badd +1 Format.as
 badd +1 \archive\flash\connectedworlds\README.md
+badd +0 Sounds.as
+badd +39 \archive\flash\surface\src\com\finegamedesign\surface\Main.as
+badd +98 \audio\jade_brewer_Sonata_flute.xml
+badd +0 SoundScore.as
+badd +0 Sonata.as
 args \archive\flash\connectedworlds\triangle.ai
 edit \archive\flash\connectedworlds\notes.txt
 set splitbelow splitright
@@ -124,9 +129,9 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe '1resize ' . ((&lines * 18 + 16) / 33)
+exe '1resize ' . ((&lines * 19 + 16) / 33)
 exe 'vert 1resize ' . ((&columns * 65 + 66) / 133)
-exe '2resize ' . ((&lines * 12 + 16) / 33)
+exe '2resize ' . ((&lines * 11 + 16) / 33)
 exe 'vert 2resize ' . ((&columns * 65 + 66) / 133)
 exe '3resize ' . ((&lines * 27 + 16) / 33)
 exe 'vert 3resize ' . ((&columns * 67 + 66) / 133)
@@ -236,12 +241,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 16 - ((15 * winheight(0) + 9) / 18)
+let s:l = 27 - ((11 * winheight(0) + 9) / 19)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-16
-normal! 024l
+27
+normal! 030l
 wincmd w
 argglobal
 edit \archive\flash\connectedworlds\README.md
@@ -346,7 +351,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 6 - ((0 * winheight(0) + 6) / 12)
+let s:l = 6 - ((0 * winheight(0) + 5) / 11)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -683,9 +688,9 @@ normal! zt
 1
 normal! 0
 wincmd w
-exe '1resize ' . ((&lines * 18 + 16) / 33)
+exe '1resize ' . ((&lines * 19 + 16) / 33)
 exe 'vert 1resize ' . ((&columns * 65 + 66) / 133)
-exe '2resize ' . ((&lines * 12 + 16) / 33)
+exe '2resize ' . ((&lines * 11 + 16) / 33)
 exe 'vert 2resize ' . ((&columns * 65 + 66) / 133)
 exe '3resize ' . ((&lines * 27 + 16) / 33)
 exe 'vert 3resize ' . ((&columns * 67 + 66) / 133)
@@ -693,7 +698,7 @@ exe '4resize ' . ((&lines * 1 + 16) / 33)
 exe 'vert 4resize ' . ((&columns * 67 + 66) / 133)
 exe '5resize ' . ((&lines * 1 + 16) / 33)
 exe 'vert 5resize ' . ((&columns * 67 + 66) / 133)
-tabedit Referee.as
+tabedit Sonata.as
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -703,22 +708,15 @@ split
 1wincmd k
 wincmd w
 wincmd w
-wincmd _ | wincmd |
-split
-1wincmd k
-wincmd w
 set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe '1resize ' . ((&lines * 9 + 16) / 33)
-exe 'vert 1resize ' . ((&columns * 82 + 66) / 133)
-exe '2resize ' . ((&lines * 21 + 16) / 33)
-exe 'vert 2resize ' . ((&columns * 82 + 66) / 133)
-exe '3resize ' . ((&lines * 15 + 16) / 33)
-exe 'vert 3resize ' . ((&columns * 50 + 66) / 133)
-exe '4resize ' . ((&lines * 15 + 16) / 33)
-exe 'vert 4resize ' . ((&columns * 50 + 66) / 133)
+exe '1resize ' . ((&lines * 7 + 16) / 33)
+exe 'vert 1resize ' . ((&columns * 74 + 66) / 133)
+exe '2resize ' . ((&lines * 23 + 16) / 33)
+exe 'vert 2resize ' . ((&columns * 74 + 66) / 133)
+exe 'vert 3resize ' . ((&columns * 58 + 66) / 133)
 argglobal
 setlocal keymap=
 setlocal noarabic
@@ -821,15 +819,15 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 32 - ((0 * winheight(0) + 4) / 9)
+let s:l = 1 - ((0 * winheight(0) + 3) / 7)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-32
-normal! 015l
+1
+normal! 0
 wincmd w
 argglobal
-edit View.as
+edit Sounds.as
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -931,122 +929,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 38 - ((4 * winheight(0) + 10) / 21)
+let s:l = 19 - ((15 * winheight(0) + 11) / 23)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-38
-normal! 0190l
-wincmd w
-argglobal
-edit Model.as
-setlocal keymap=
-setlocal noarabic
-setlocal autoindent
-setlocal balloonexpr=
-setlocal nobinary
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
-setlocal nocindent
-setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-setlocal colorcolumn=
-setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
-setlocal commentstring=/*%s*/
-setlocal complete=.,w,b,u,t,i
-setlocal concealcursor=
-setlocal conceallevel=0
-setlocal completefunc=
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-setlocal nocursorline
-setlocal define=
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal expandtab
-if &filetype != 'actionscript'
-setlocal filetype=actionscript
-endif
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=
-setlocal formatoptions=tcq
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal grepprg=
-setlocal iminsert=2
-setlocal imsearch=2
-setlocal include=
-setlocal includeexpr=
-setlocal indentexpr=
-setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=
-setlocal nolinebreak
-setlocal nolisp
-setlocal nolist
-setlocal makeprg=mxmlc\ -compiler.debug\ -compiler.incremental
-setlocal matchpairs=(:),{:},[:]
-setlocal modeline
-setlocal modifiable
-setlocal nrformats=octal,hex
-setlocal nonumber
-setlocal numberwidth=4
-setlocal omnifunc=
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
-setlocal noscrollbind
-setlocal shiftwidth=4
-setlocal noshortname
-setlocal smartindent
-setlocal softtabstop=0
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=en
-setlocal statusline=
-setlocal suffixesadd=
-setlocal noswapfile
-setlocal synmaxcol=3000
-if &syntax != 'actionscript'
-setlocal syntax=actionscript
-endif
-setlocal tabstop=4
-setlocal tags=
-setlocal textwidth=0
-setlocal thesaurus=
-setlocal noundofile
-setlocal nowinfixheight
-setlocal nowinfixwidth
-setlocal wrap
-setlocal wrapmargin=0
-silent! normal! zE
-let s:l = 104 - ((0 * winheight(0) + 7) / 15)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-104
-normal! 012l
+19
+normal! 024l
 wincmd w
 argglobal
 edit Main.as
@@ -1151,21 +1039,19 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 48 - ((5 * winheight(0) + 7) / 15)
+let s:l = 202 - ((14 * winheight(0) + 15) / 31)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-48
-normal! 068l
+202
+normal! 048l
 wincmd w
-exe '1resize ' . ((&lines * 9 + 16) / 33)
-exe 'vert 1resize ' . ((&columns * 82 + 66) / 133)
-exe '2resize ' . ((&lines * 21 + 16) / 33)
-exe 'vert 2resize ' . ((&columns * 82 + 66) / 133)
-exe '3resize ' . ((&lines * 15 + 16) / 33)
-exe 'vert 3resize ' . ((&columns * 50 + 66) / 133)
-exe '4resize ' . ((&lines * 15 + 16) / 33)
-exe 'vert 4resize ' . ((&columns * 50 + 66) / 133)
+2wincmd w
+exe '1resize ' . ((&lines * 7 + 16) / 33)
+exe 'vert 1resize ' . ((&columns * 74 + 66) / 133)
+exe '2resize ' . ((&lines * 23 + 16) / 33)
+exe 'vert 2resize ' . ((&columns * 74 + 66) / 133)
+exe 'vert 3resize ' . ((&columns * 58 + 66) / 133)
 tabedit \archive\flash\connectedworlds\bin\index.html
 set splitbelow splitright
 set nosplitbelow
@@ -1280,6 +1166,7 @@ exe s:l
 normal! zt
 35
 normal! 0
+2wincmd w
 tabedit \archive\flash\connectedworlds\ai\160_cat.ai
 set splitbelow splitright
 wincmd _ | wincmd |
@@ -1512,9 +1399,10 @@ normal! zt
 411
 normal! 0
 wincmd w
+2wincmd w
 exe 'vert 1resize ' . ((&columns * 66 + 66) / 133)
 exe 'vert 2resize ' . ((&columns * 66 + 66) / 133)
-tabnext 1
+tabnext 2
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
 endif

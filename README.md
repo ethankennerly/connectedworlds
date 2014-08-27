@@ -1,5 +1,7 @@
-\*\*
+..
 ==
+
+Play at http://finegamedesign.com/dotdot
 
 By Ethan Kennerly
 
@@ -7,7 +9,9 @@ A game jam with the theme voted for "Connected Worlds" during Ludum Dare 30 (Wee
 
 Post compo features:  
 + Score.
-+ Tuned illustrations.  
++ Tuned illustrations.
++ Connect animation and musical notes from a song by Jade Brewer.
++ New name ".." (DotDot).
 
 Playtesters:  Diana Salles, Jennifer Russ, Bethany.  
 Post compo playtesters:  Anders, Aubrey, Kerry.
