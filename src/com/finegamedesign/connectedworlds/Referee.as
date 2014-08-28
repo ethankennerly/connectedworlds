@@ -7,11 +7,11 @@ package com.finegamedesign.connectedworlds
      */
     internal final class Referee
     {
-        internal var connectionTrial:int = 0;
-        private var connectionCount:int = 0;
+        private var _count:int = 0;
         private var millisecondsTotal:int;
         private var millisecondsStart:int;
         private var playing:Boolean;
+        private var trial:int = 0;
 
         public function Referee()
         {
@@ -19,14 +19,14 @@ package com.finegamedesign.connectedworlds
 
         internal function get connectionsPerMinute():int
         {
-            var rate:int = Math.ceil(connectionCount * 60000 
+            var rate:int = Math.ceil(_count * 60000 
                 / millisecondsTotal);
             return rate;
         }
 
-        internal function start(connectionTrial:int):void
+        internal function start(trial:int):void
         {
-            this.connectionTrial = connectionTrial;
+            this.trial = trial;
             if (!playing) {
                 playing = true;
                 millisecondsStart = getTimer();
@@ -38,9 +38,27 @@ package com.finegamedesign.connectedworlds
             if (playing) {
                 playing = false;
                 millisecondsTotal += getTimer() - millisecondsStart;
-                connectionCount += connectionTrial;
+                _count += trial;
                 trace("Referee.stop: connectionsPerMinute " + connectionsPerMinute);
             }
+        }
+
+        /**
+         * 2014-08-27 Jennifer Russ may understand number by reading format like "1:20".
+         */
+        internal function get minutes():String
+        {
+            const secPerMin:int = 60;
+            var seconds:int = Math.ceil(millisecondsTotal / 1000);
+            var min:int = seconds / secPerMin;
+            var sec:int = seconds % secPerMin;
+            var lead:String = sec < 10 ? "0" : "";
+            return min + ":" + lead + sec;
+        }
+
+        internal function get count():String
+        {
+            return _count.toString();
         }
     }
 }

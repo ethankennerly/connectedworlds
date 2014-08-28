@@ -45,7 +45,8 @@ package com.finegamedesign.connectedworlds
         }
 
         /**
-         *
+         * Score total dots.
+         * Distractors make the connections more difficult.
          */
         internal function populate():void
         {
@@ -58,7 +59,7 @@ package com.finegamedesign.connectedworlds
             }
             lines = true;
             if (levelTutor <= level) {
-                referee.start(connections.length);
+                referee.start(dots.length);
             }
         }
 
