@@ -27,9 +27,9 @@ cnoremap   :simalt ~
 inoremap   :simalt ~
 map <silent> \t :call MakeGreen()
 nmap gx <Plug>NetrwBrowseX
-nnoremap <C-F4> c
-nnoremap <C-Tab> w
 nmap <S-Insert> "+gP
+nnoremap <C-Tab> w
+nnoremap <C-F4> c
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#NetrwBrowseX(expand("<cWORD>"),0)
 onoremap <C-F4> c
 vnoremap <C-F4> c
@@ -80,8 +80,8 @@ badd +1 \archive\flash\connectedworlds\notes.txt
 badd +432 \archive\flash\connectedworlds\connectedworlds.ai
 badd +1 \archive\flash\connectedworlds\triangle.ai
 badd +46 \archive\flash\connectedworlds\line.ai
-badd +66 Main.as
-badd +104 Model.as
+badd +1 Main.as
+badd +61 Model.as
 badd +38 View.as
 badd +1 \archive\flash\connectedworlds\bin\index.html
 badd +8 Dot.as
@@ -102,11 +102,11 @@ badd +1 Lev
 badd +1 Digits.as
 badd +1 Format.as
 badd +1 \archive\flash\connectedworlds\README.md
-badd +0 Sounds.as
+badd +19 Sounds.as
 badd +39 \archive\flash\surface\src\com\finegamedesign\surface\Main.as
 badd +98 \audio\jade_brewer_Sonata_flute.xml
-badd +0 SoundScore.as
-badd +0 Sonata.as
+badd +1 SoundScore.as
+badd +1 Sonata.as
 args \archive\flash\connectedworlds\triangle.ai
 edit \archive\flash\connectedworlds\notes.txt
 set splitbelow splitright
@@ -129,11 +129,11 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe '1resize ' . ((&lines * 19 + 16) / 33)
+exe '1resize ' . ((&lines * 20 + 16) / 33)
 exe 'vert 1resize ' . ((&columns * 65 + 66) / 133)
 exe '2resize ' . ((&lines * 11 + 16) / 33)
 exe 'vert 2resize ' . ((&columns * 65 + 66) / 133)
-exe '3resize ' . ((&lines * 27 + 16) / 33)
+exe '3resize ' . ((&lines * 28 + 16) / 33)
 exe 'vert 3resize ' . ((&columns * 67 + 66) / 133)
 exe '4resize ' . ((&lines * 1 + 16) / 33)
 exe 'vert 4resize ' . ((&columns * 67 + 66) / 133)
@@ -241,7 +241,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 27 - ((11 * winheight(0) + 9) / 19)
+let s:l = 27 - ((12 * winheight(0) + 10) / 20)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -356,7 +356,7 @@ if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 6
-normal! 021l
+normal! 016l
 wincmd w
 argglobal
 edit \archive\flash\connectedworlds\ai2dots.py
@@ -461,7 +461,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 111 - ((0 * winheight(0) + 13) / 27)
+let s:l = 111 - ((0 * winheight(0) + 14) / 28)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -688,34 +688,34 @@ normal! zt
 1
 normal! 0
 wincmd w
-exe '1resize ' . ((&lines * 19 + 16) / 33)
+exe '1resize ' . ((&lines * 20 + 16) / 33)
 exe 'vert 1resize ' . ((&columns * 65 + 66) / 133)
 exe '2resize ' . ((&lines * 11 + 16) / 33)
 exe 'vert 2resize ' . ((&columns * 65 + 66) / 133)
-exe '3resize ' . ((&lines * 27 + 16) / 33)
+exe '3resize ' . ((&lines * 28 + 16) / 33)
 exe 'vert 3resize ' . ((&columns * 67 + 66) / 133)
 exe '4resize ' . ((&lines * 1 + 16) / 33)
 exe 'vert 4resize ' . ((&columns * 67 + 66) / 133)
 exe '5resize ' . ((&lines * 1 + 16) / 33)
 exe 'vert 5resize ' . ((&columns * 67 + 66) / 133)
-tabedit Sonata.as
+tabedit Referee.as
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
 1wincmd h
+wincmd w
 wincmd _ | wincmd |
 split
 1wincmd k
-wincmd w
 wincmd w
 set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe '1resize ' . ((&lines * 7 + 16) / 33)
 exe 'vert 1resize ' . ((&columns * 74 + 66) / 133)
-exe '2resize ' . ((&lines * 23 + 16) / 33)
-exe 'vert 2resize ' . ((&columns * 74 + 66) / 133)
+exe '2resize ' . ((&lines * 15 + 16) / 33)
+exe 'vert 2resize ' . ((&columns * 58 + 66) / 133)
+exe '3resize ' . ((&lines * 15 + 16) / 33)
 exe 'vert 3resize ' . ((&columns * 58 + 66) / 133)
 argglobal
 setlocal keymap=
@@ -819,15 +819,15 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 3) / 7)
+let s:l = 55 - ((19 * winheight(0) + 15) / 31)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
-normal! 0
+55
+normal! 018l
 wincmd w
 argglobal
-edit Sounds.as
+edit View.as
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -929,15 +929,15 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 19 - ((15 * winheight(0) + 11) / 23)
+let s:l = 110 - ((8 * winheight(0) + 7) / 15)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-19
-normal! 024l
+110
+normal! 059l
 wincmd w
 argglobal
-edit Main.as
+edit Model.as
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -1039,18 +1039,17 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 202 - ((14 * winheight(0) + 15) / 31)
+let s:l = 49 - ((8 * winheight(0) + 7) / 15)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-202
-normal! 048l
+49
+normal! 058l
 wincmd w
-2wincmd w
-exe '1resize ' . ((&lines * 7 + 16) / 33)
 exe 'vert 1resize ' . ((&columns * 74 + 66) / 133)
-exe '2resize ' . ((&lines * 23 + 16) / 33)
-exe 'vert 2resize ' . ((&columns * 74 + 66) / 133)
+exe '2resize ' . ((&lines * 15 + 16) / 33)
+exe 'vert 2resize ' . ((&columns * 58 + 66) / 133)
+exe '3resize ' . ((&lines * 15 + 16) / 33)
 exe 'vert 3resize ' . ((&columns * 58 + 66) / 133)
 tabedit \archive\flash\connectedworlds\bin\index.html
 set splitbelow splitright
@@ -1166,7 +1165,6 @@ exe s:l
 normal! zt
 35
 normal! 0
-2wincmd w
 tabedit \archive\flash\connectedworlds\ai\160_cat.ai
 set splitbelow splitright
 wincmd _ | wincmd |
@@ -1399,7 +1397,6 @@ normal! zt
 411
 normal! 0
 wincmd w
-2wincmd w
 exe 'vert 1resize ' . ((&columns * 66 + 66) / 133)
 exe 'vert 2resize ' . ((&columns * 66 + 66) / 133)
 tabnext 2

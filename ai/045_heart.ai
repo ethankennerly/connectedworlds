@@ -1,10 +1,10 @@
 %!PS-Adobe-3.0 
 %%Creator: Adobe Illustrator(r) 6.0
 %%For: (Macromedia Flash) ()
-%%Title: (C:\archive\flash\connectedworlds\ai\125_heart.ai)
-%%CreationDate: (08/24/14) (18:02:01)
-%%BoundingBox: 0 0 550 410
-%%HiResBoundingBox: 0.0 0.0 550.0 409.2
+%%Title: (C:\archive\flash\connectedworlds\ai\045_heart.ai)
+%%CreationDate: (08/29/14) (07:24:23)
+%%BoundingBox: 0 0 582 442
+%%HiResBoundingBox: 0.0 0.0 582.0 441.2
 %%DocumentProcessColors: Cyan Magenta Yellow Black
 %%DocumentNeededResources: procset Adobe_level2_AI5 1.0 0
 %%+ procset Adobe_screens_AI5 1.0 0
@@ -15,7 +15,7 @@
 %AI5_FileFormat 2.0
 %AI3_ColorUsage: Color
 %AI3_TemplateBox: 306 396 306 396
-%AI3_TileBox: 295 -257 899 187
+%AI3_TileBox: 311 -241 915 203
 %AI3_DocumentPreview: None
 %%EndComments
 %%BeginProlog
@@ -40,50 +40,48 @@ u
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
-32.000000 w
-534.0 387.2 m
-534.0 393.2 L
+64.000000 w
+550.0 403.2 m
+550.0 409.2 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
-32.000000 w
-510.0 52.2 m
-510.0 59.2 L
+64.000000 w
+32.0 376.2 m
+32.0 387.2 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
-32.000000 w
-16.0 360.2 m
-16.0 371.2 L
+64.000000 w
+76.0 62.2 m
+76.0 69.2 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
-32.000000 w
-60.0 46.2 m
-60.0 53.2 L
+64.000000 w
+526.0 68.2 m
+526.0 75.2 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
-32.000000 w
-298.0 275.2 m
-343.3 365.1 L
-441.0 349.4 L
-500.4 237.7 L
-448.0 124.2 L
-282.2 16.0 L
-107.7 129.4 L
-53.5 228.9 L
-92.0 326.6 L
-196.7 356.4 L
-236.0 275.2 L
+64.000000 w
+322.0 290.6 m
+370.0 378.6 L
+457.0 365.4 L
+515.0 214.6 L
+298.2 32.0 L
+69.0 204.6 L
+108.0 342.6 L
+212.7 372.4 L
+252.0 291.2 L
 S
 U
 %%PageTrailer

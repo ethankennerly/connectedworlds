@@ -2,9 +2,9 @@
 %%Creator: Adobe Illustrator(r) 6.0
 %%For: (Macromedia Flash) ()
 %%Title: (C:\archive\flash\connectedworlds\ai\010_check.ai)
-%%CreationDate: (08/24/14) (21:13:28)
-%%BoundingBox: 0 0 282 244
-%%HiResBoundingBox: 0.0 0.0 281.3 243.6
+%%CreationDate: (08/29/14) (07:06:37)
+%%BoundingBox: 0 0 314 276
+%%HiResBoundingBox: 0.0 0.0 313.3 275.6
 %%DocumentProcessColors: Cyan Magenta Yellow Black
 %%DocumentNeededResources: procset Adobe_level2_AI5 1.0 0
 %%+ procset Adobe_screens_AI5 1.0 0
@@ -15,7 +15,7 @@
 %AI5_FileFormat 2.0
 %AI3_ColorUsage: Color
 %AI3_TemplateBox: 306 396 306 396
-%AI3_TileBox: 157 -330 762 114
+%AI3_TileBox: 173 -314 778 130
 %AI3_DocumentPreview: None
 %%EndComments
 %%BeginProlog
@@ -40,10 +40,10 @@ u
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
-32.000000 w
-16.0 121.8 m
-85.5 16.0 L
-265.3 227.6 L
+64.000000 w
+32.0 137.8 m
+101.5 32.0 L
+281.3 243.6 L
 S
 U
 %%PageTrailer

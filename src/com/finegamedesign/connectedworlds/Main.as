@@ -97,7 +97,7 @@ package com.finegamedesign.connectedworlds
         /**
          * Cheats to quickly test:
          *      "ENTER" complete trial.
-         *      "DELETE" this is the last trial. 
+         *      "DELETE", "ESC", "X" this is the last trial. DELETE key different on Mac than Windows.
          */
         private function update(event:Event):void
         {
@@ -112,7 +112,9 @@ package com.finegamedesign.connectedworlds
                 FlxKongregate.init(FlxKongregate.connect);
             }
              */
-            if (keyMouse.justPressed("DELETE")) {
+            if (keyMouse.justPressed("DELETE")
+             || keyMouse.justPressed("ESCAPE")
+             || keyMouse.justPressed("X")) {
                 model.truncate();
             }
             if (keyMouse.justPressed("ENTER")) {
@@ -125,7 +127,7 @@ package com.finegamedesign.connectedworlds
 
         private function win():void
         {
-            model.levelUp();
+            model.trialEnd(true);
             if (!model.enabled) {
                 view.end();
             }
@@ -152,6 +154,7 @@ package com.finegamedesign.connectedworlds
 
         private function lose():void
         {
+            model.trialEnd(false);
             reset();
             // FlxKongregate.api.stats.submit("Score", Model.score);
             // API.postScore("Score", Model.score);

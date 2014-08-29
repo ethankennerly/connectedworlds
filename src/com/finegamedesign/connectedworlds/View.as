@@ -19,12 +19,14 @@ package com.finegamedesign.connectedworlds
         private var lines:Sprite;
         private var connection:Sprite;
         private var lineThickness:Number = // 8.0;
-                                            32.0;
+                                           // 32.0;
+                                           64.0;
         private var lineColor:Number = 0x006699;
         private var previousDot:DotClip;
         private var progress:Sprite;
         private var progressColor:Number = 0xCCFFFF;
-        private var radius:Number = 24;
+        private var radius:Number = // 24;
+                                    32;
                                     // 40;
         private var radiusSquared:Number;
         private var reviewClip:ReviewClip;

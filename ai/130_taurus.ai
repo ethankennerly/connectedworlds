@@ -2,9 +2,9 @@
 %%Creator: Adobe Illustrator(r) 6.0
 %%For: (Macromedia Flash) ()
 %%Title: (C:\archive\flash\connectedworlds\ai\130_taurus.ai)
-%%CreationDate: (08/24/14) (15:26:54)
-%%BoundingBox: 0 0 508 389
-%%HiResBoundingBox: 0.0 0.0 508.0 389.0
+%%CreationDate: (08/29/14) (07:32:07)
+%%BoundingBox: 0 0 566 437
+%%HiResBoundingBox: 0.0 0.0 566.0 437.0
 %%DocumentProcessColors: Cyan Magenta Yellow Black
 %%DocumentNeededResources: procset Adobe_level2_AI5 1.0 0
 %%+ procset Adobe_screens_AI5 1.0 0
@@ -15,7 +15,7 @@
 %AI5_FileFormat 2.0
 %AI3_ColorUsage: Color
 %AI3_TemplateBox: 306 396 306 396
-%AI3_TileBox: 272 -267 876 177
+%AI3_TileBox: 306 -243 910 201
 %AI3_DocumentPreview: None
 %%EndComments
 %%BeginProlog
@@ -40,85 +40,86 @@ u
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
-16.000000 w
-327.0 347.0 m
-323.0 354.0 L
+64.000000 w
+361.0 371.0 m
+357.0 378.0 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
-16.000000 w
-454.0 264.0 m
-449.0 273.0 L
+64.000000 w
+488.0 288.0 m
+483.0 297.0 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
-16.000000 w
-13.0 282.0 m
-8.0 290.0 L
+64.000000 w
+534.0 97.0 m
+527.0 103.0 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
-16.000000 w
-169.0 210.0 m
-89.0 302.0 L
+64.000000 w
+408.0 198.0 m
+404.0 204.0 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
-16.000000 w
-151.0 8.0 m
-142.0 21.0 L
+64.000000 w
+203.0 234.0 m
+123.0 326.0 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
-16.000000 w
-173.0 88.0 m
-169.0 94.0 L
+64.000000 w
+215.0 121.5 m
+211.0 127.5 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
-16.000000 w
-42.0 135.0 m
-36.0 142.0 L
+64.000000 w
+185.0 32.0 m
+176.0 45.0 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
-16.000000 w
-500.0 73.0 m
-493.0 79.0 L
+64.000000 w
+76.0 159.0 m
+70.0 166.0 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
-16.000000 w
-374.0 174.0 m
-370.0 180.0 L
+64.000000 w
+415.0 46.0 m
+273.0 206.0 L
+293.0 295.0 L
+229.0 405.0 L
 S
+u
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
-16.000000 w
-381.0 22.0 m
-285.0 102.0 L
-239.0 182.0 L
-259.0 271.0 L
-195.0 381.0 L
+64.000000 w
+37.0 297.5 m
+32.0 305.5 L
 S
+U
 U
 %%PageTrailer
 gsave annotatepage grestore showpage

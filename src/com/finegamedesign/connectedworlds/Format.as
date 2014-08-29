@@ -32,7 +32,10 @@ package com.finegamedesign.connectedworlds
          * @param   yScale  Flatten original coordinates.  I accidentally placed the dots too high.
          * @return  Dots and connections centered.  
          */
-        private static function concat(graphsLeftToRight:Array, spacing:int = 60, yScale:Number=0.9):Object
+        private static function concat(graphsLeftToRight:Array, 
+                spacing:int = // 60, 
+                              80,
+                yScale:Number=0.9):Object
         {
             var concatenated:Object = {'connections': [], 'dots': []};
             var connectionOffset:int = 0;

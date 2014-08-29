@@ -1,10 +1,10 @@
 %!PS-Adobe-3.0 
 %%Creator: Adobe Illustrator(r) 6.0
 %%For: (Macromedia Flash) ()
-%%Title: (C:\archive\flash\connectedworlds\ai\135_butterfly.ai)
-%%CreationDate: (08/24/14) (17:45:20)
-%%BoundingBox: 0 0 534 402
-%%HiResBoundingBox: 0.0 0.0 534.0 402.0
+%%Title: (C:\archive\flash\connectedworlds\ai\143_butterfly.ai)
+%%CreationDate: (08/29/14) (07:33:40)
+%%BoundingBox: 0 0 566 434
+%%HiResBoundingBox: 0.0 0.0 566.0 434.0
 %%DocumentProcessColors: Cyan Magenta Yellow Black
 %%DocumentNeededResources: procset Adobe_level2_AI5 1.0 0
 %%+ procset Adobe_screens_AI5 1.0 0
@@ -15,7 +15,7 @@
 %AI5_FileFormat 2.0
 %AI3_ColorUsage: Color
 %AI3_TemplateBox: 306 396 306 396
-%AI3_TileBox: 285 -261 889 183
+%AI3_TileBox: 301 -245 905 199
 %AI3_DocumentPreview: None
 %%EndComments
 %%BeginProlog
@@ -40,49 +40,49 @@ u
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
-32.000000 w
-166.0 190.0 m
-26.0 302.0 L
-118.0 386.0 L
-212.0 290.0 L
+64.000000 w
+356.0 119.0 m
+438.0 32.0 L
+534.0 132.0 L
+472.0 185.0 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
-32.000000 w
-212.0 106.0 m
-112.0 16.0 L
-16.0 116.0 L
-84.0 188.0 L
+64.000000 w
+182.0 206.0 m
+42.0 318.0 L
+134.0 402.0 L
+205.0 318.0 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
-32.000000 w
-322.0 106.0 m
-422.0 16.0 L
-518.0 116.0 L
-450.0 188.0 L
+64.000000 w
+205.0 117.0 m
+128.0 32.0 L
+32.0 132.0 L
+92.0 184.0 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
-32.000000 w
-264.0 42.0 m
-264.0 332.0 L
+64.000000 w
+280.0 58.0 m
+280.0 348.0 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
-32.000000 w
-368.0 190.0 m
-508.0 302.0 L
-416.0 386.0 L
-322.0 290.0 L
+64.000000 w
+384.0 206.0 m
+524.0 318.0 L
+432.0 402.0 L
+351.0 307.0 L
 S
 U
 %%PageTrailer

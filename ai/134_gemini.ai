@@ -1,10 +1,10 @@
 %!PS-Adobe-3.0 
 %%Creator: Adobe Illustrator(r) 6.0
 %%For: (Macromedia Flash) ()
-%%Title: (C:\archive\flash\connectedworlds\ai\160_cat.ai)
-%%CreationDate: (08/29/14) (07:51:54)
-%%BoundingBox: 0 0 577 400
-%%HiResBoundingBox: 0.0 0.0 577.0 400.0
+%%Title: (C:\archive\flash\connectedworlds\ai\140_gemini.ai)
+%%CreationDate: (08/29/14) (07:10:56)
+%%BoundingBox: 0 0 606 448
+%%HiResBoundingBox: 0.0 0.0 605.5 447.6
 %%DocumentProcessColors: Cyan Magenta Yellow Black
 %%DocumentNeededResources: procset Adobe_level2_AI5 1.0 0
 %%+ procset Adobe_screens_AI5 1.0 0
@@ -15,7 +15,7 @@
 %AI5_FileFormat 2.0
 %AI3_ColorUsage: Color
 %AI3_TemplateBox: 306 396 306 396
-%AI3_TileBox: 307 -264 911 180
+%AI3_TileBox: 371 -293 976 151
 %AI3_DocumentPreview: None
 %%EndComments
 %%BeginProlog
@@ -41,91 +41,73 @@ u
 1 j
 1 J
 48.000000 w
-340.0 318.0 m
-251.0 318.0 L
-152.0 376.0 L
-151.8 276.0 L
-114.0 209.0 L
-154.0 77.0 L
-294.8 24.0 L
-417.0 70.0 L
-459.0 194.0 L
-419.5 254.0 L
-427.0 367.0 L
-340.0 318.0 L
+484.4 251.6 m
+475.4 257.6 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
 48.000000 w
-514.9 208.0 m
-553.0 223.0 L
+540.0 80.0 m
+451.0 77.0 L
+360.4 232.6 L
+355.4 423.6 L
+204.0 384.0 L
+208.4 234.6 L
+308.0 56.0 L
+220.0 24.0 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
 48.000000 w
-502.1 135.8 m
-553.0 141.0 L
+581.5 150.0 m
+576.5 156.0 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
 48.000000 w
-486.0 72.0 m
-545.0 30.8 L
+94.0 192.0 m
+85.0 200.0 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
 48.000000 w
-353.8 186.0 m
-354.0 231.0 L
+33.0 382.0 m
+24.0 388.0 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
 48.000000 w
-288.0 101.0 m
-287.8 142.0 L
+144.0 77.0 m
+136.0 88.0 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
 48.000000 w
-24.0 119.0 m
-81.0 123.0 L
+522.0 391.0 m
+517.0 397.0 L
 S
+u
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
 48.000000 w
-29.0 192.0 m
-64.7 183.0 L
+115.4 312.6 m
+106.4 318.6 L
 S
-[]0 d
-0.600 0.000 0.000 0.000 K
-1 j
-1 J
-48.000000 w
-36.0 30.6 m
-98.1 61.0 L
-S
-[]0 d
-0.600 0.000 0.000 0.000 K
-1 j
-1 J
-48.000000 w
-225.8 190.0 m
-226.0 229.0 L
-S
+U
 U
 %%PageTrailer
 gsave annotatepage grestore showpage

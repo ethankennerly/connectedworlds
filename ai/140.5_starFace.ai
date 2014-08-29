@@ -1,10 +1,10 @@
 %!PS-Adobe-3.0 
 %%Creator: Adobe Illustrator(r) 6.0
 %%For: (Macromedia Flash) ()
-%%Title: (C:\archive\flash\connectedworlds\ai\133_moon.ai)
-%%CreationDate: (08/24/14) (21:16:21)
-%%BoundingBox: 0 0 361 416
-%%HiResBoundingBox: 0.0 0.0 360.3 416.0
+%%Title: (C:\archive\flash\connectedworlds\ai\140.5_starFace.ai)
+%%CreationDate: (08/29/14) (08:20:02)
+%%BoundingBox: 0 0 513 491
+%%HiResBoundingBox: 0.0 0.0 512.1 490.1
 %%DocumentProcessColors: Cyan Magenta Yellow Black
 %%DocumentNeededResources: procset Adobe_level2_AI5 1.0 0
 %%+ procset Adobe_screens_AI5 1.0 0
@@ -15,7 +15,7 @@
 %AI5_FileFormat 2.0
 %AI3_ColorUsage: Color
 %AI3_TemplateBox: 306 396 306 396
-%AI3_TileBox: 189 -263 793 181
+%AI3_TileBox: 274 -217 879 227
 %AI3_DocumentPreview: None
 %%EndComments
 %%BeginProlog
@@ -40,42 +40,34 @@ u
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
-32.000000 w
-248.0 365.0 m
-200.6 266.3 L
-230.8 140.2 L
-344.3 111.8 L
-314.0 55.0 L
-165.1 16.0 L
-53.3 90.5 L
-16.0 218.3 L
-48.0 323.0 L
-181.0 400.0 L
+64.000000 w
+287.0 233.4 m
+287.1 237.6 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
-32.000000 w
-130.0 264.0 m
-129.6 264.4 L
+64.000000 w
+219.0 230.4 m
+219.0 237.6 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
-32.000000 w
-174.9 165.8 m
-97.5 158.4 L
-91.0 211.0 L
-S
-[]0 d
-0.600 0.000 0.000 0.000 K
-1 j
-1 J
-32.000000 w
-307.0 256.0 m
-307.1 264.4 L
+64.000000 w
+480.1 295.4 m
+351.1 187.0 L
+394.4 32.0 L
+247.1 113.0 L
+117.7 32.0 L
+144.1 183.0 L
+32.0 295.4 L
+189.1 327.0 L
+256.1 458.1 L
+327.1 312.0 L
+480.1 295.4 L
 S
 U
 %%PageTrailer
