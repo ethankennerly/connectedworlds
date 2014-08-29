@@ -21,10 +21,11 @@ package com.finegamedesign.connectedworlds
         private var lineThickness:Number = // 8.0;
                                            // 32.0;
                                            64.0;
-        private var lineColor:Number = 0x006699;
+        private var lineColor:uint = 0x006699;
+        private var wrongLineColor:uint = 0xFF3299;
         private var previousDot:DotClip;
         private var progress:Sprite;
-        private var progressColor:Number = 0xCCFFFF;
+        private var progressColor:uint = 0xCCFFFF;
         private var radius:Number = // 24;
                                     32;
                                     // 40;
@@ -138,12 +139,14 @@ package com.finegamedesign.connectedworlds
             }
         }
 
-        internal function drawConnection(fromDotIndex:int, toDotIndex:int):void
+        internal function drawConnection(fromDotIndex:int, toDotIndex:int,
+                correct:Boolean):void
         {
             if (fromDotIndex <= -1 || toDotIndex <= -1) {
                 return;
             }
-            connection.graphics.lineStyle(lineThickness, lineColor);
+            var color:uint = correct ? lineColor : wrongLineColor;
+            connection.graphics.lineStyle(lineThickness, color);
             var xy0:Array = model.dots[fromDotIndex];
             var xy1:Array = model.dots[toDotIndex];
             // trace("View.drawConnection: from " + xy0 + " to " + xy1);

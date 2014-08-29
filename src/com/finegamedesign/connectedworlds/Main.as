@@ -194,9 +194,10 @@ package com.finegamedesign.connectedworlds
                             model.lines = false;
                             view.clearLines();
                         }
-                        var correct:int = model.answer(dot.x, dot.y);
-                        view.drawConnection(model.from, model.to);
-                        if (0 <= correct) {
+                        var index:int = model.answer(dot.x, dot.y);
+                        var correct:Boolean = 0 <= index;
+                        view.drawConnection(model.from, model.to, correct);
+                        if (correct) {
                             Sounds.instance.next();
                             if (model.complete)
                             {

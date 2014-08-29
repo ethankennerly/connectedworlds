@@ -1,9 +1,7 @@
 TODO
- 	Correct.  Difficulty up.  Otherwise difficulty down.  list of images in order of difficulty.  Skip each other when correct to have one to go down to.  go down by 2.
-	About 100 dots per session, aim under 2 minutes.
-	If misconnect.  draw line red.
 	Countdown 3-2-1.
 	8 not so touchy.
+	Score dots + time bonus.  2014-08-29 Somewhat careless and quick.  Expected score lower than 100.  42. / 0:18 = 143  more accurate:  67. / 0:27 = 152   miss butterfly 58 / 0:21 = 170
 	illustrations
 		Arms up in joy.
 	All connected.  hear twinkling chimes, next three notes, half second each.
