@@ -7,11 +7,11 @@ package com.finegamedesign.connectedworlds
      */
     internal final class Referee
     {
+        internal var add:int = 0;
         private var _count:int = 0;
         private var millisecondsTotal:int;
         private var millisecondsStart:int;
         private var playing:Boolean;
-        private var trial:int = 0;
 
         public function Referee()
         {
@@ -24,11 +24,11 @@ package com.finegamedesign.connectedworlds
             return rate;
         }
 
-        internal function start(trial:int):void
+        internal function start():void
         {
-            this.trial = trial;
             if (!playing) {
                 playing = true;
+                add = 0;
                 millisecondsStart = getTimer();
             }
         }
@@ -38,7 +38,7 @@ package com.finegamedesign.connectedworlds
             if (playing) {
                 playing = false;
                 millisecondsTotal += getTimer() - millisecondsStart;
-                _count += trial;
+                _count += add;
                 trace("Referee.stop: connectionsPerMinute " + connectionsPerMinute);
             }
         }

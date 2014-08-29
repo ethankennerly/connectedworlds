@@ -31,7 +31,7 @@ package com.finegamedesign.connectedworlds
         /**
          * End after 10 trials.  2014-08-28 After 17 trials of 256 dots. 4 minutes.  Mark Scoptur expects brief.
          */
-        internal var trialMax:int = 10;
+        internal var trialMax:int = 6;
 
         /**
          * Add review graph.
@@ -66,7 +66,7 @@ package com.finegamedesign.connectedworlds
             }
             lines = true;
             if (levelTutor <= level) {
-                referee.start(dots.length);
+                referee.start();
             }
         }
 
@@ -107,6 +107,7 @@ package com.finegamedesign.connectedworlds
                 if (connecting[0] == connection[0] && connecting[1] == connection[1]) {
                     connections.splice(c, 1);
                     correct = dotIndex;
+                    referee.add++;
                 }
             }
             if (connecting[0] == connecting[1]) {
@@ -134,18 +135,26 @@ package com.finegamedesign.connectedworlds
         }
 
         private var reviewing:Boolean = false;
-
         internal function trialEnd(correct:Boolean):void
         {
-            referee.stop();
-            trial++;
+            graphsOld[level] = true;
+            if (correct) {
+                referee.add = dots.length;
+            }
+            if (levelTutor <= level) {
+                referee.stop();
+                trial++;
+            }
             if (correct) {
                 if (reviewing) {
                     enabled = false;
                 }
                 else {
-                    level = (level + 1) % graphs.length;
+                    level = findNewLevel(true);
                 }
+            }
+            else {
+                level = findNewLevel(false);
             }
             if (!reviewing && review) {
                 reviewing = true;
@@ -158,6 +167,47 @@ package com.finegamedesign.connectedworlds
         internal function get review():Boolean
         {
             return trialMax <= trial;
+        }
+
+        private var stepUp:Number = 2.0;
+        private var stepUpMin:Number = 2.0;
+        private var stepUpMax:Number = 4.0;
+        private var stepUpRate:Number = 0.5;
+        private var graphsOld:Object = {};
+        /**
+         * @return  If correct, up by 1 in tutorial, or 2 after tutorial.  If wrong down by 1, or repeat same level in tutorial.  If already seen this level, try next level in that direction.  If cannot find any, find next level in other direction.  If searched all, throw error.
+         * Expects twice as many levels as trials.
+         */
+        private function findNewLevel(correct:Boolean):int
+        {
+            if (level < levelTutor) {
+                return level + (correct ? 1 : 0);
+            }
+            var up:int;
+            if (correct) {
+                up = stepUp;
+                stepUp += stepUpRate;
+            }
+            else {
+                up = -1;
+                stepUp = stepUpMin;
+            }
+            var next:int = Math.min(level + up, graphs.length - 1);
+            up = 1;
+            var head:int = next;
+            var attempt:int = 0;
+            while (next in graphsOld) {
+                next += up;
+                if (next < 0 || graphs.length - 1 <= next) {
+                    head -= up;
+                    next = head - up;
+                }
+                attempt++;
+                if (1024 <= attempt) {
+                    throw new Error("Expected to find new level.");
+                }
+            }
+            return next;
         }
     }
 }

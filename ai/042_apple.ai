@@ -2,9 +2,9 @@
 %%Creator: Adobe Illustrator(r) 6.0
 %%For: (Macromedia Flash) ()
 %%Title: (C:\archive\flash\connectedworlds\ai\141.5_apple.ai)
-%%CreationDate: (08/29/14) (08:19:41)
-%%BoundingBox: 0 0 407 427
-%%HiResBoundingBox: 0.0 0.0 406.1 426.8
+%%CreationDate: (08/29/14) (09:30:10)
+%%BoundingBox: 0 0 535 399
+%%HiResBoundingBox: 0.0 0.0 535.0 398.9
 %%DocumentProcessColors: Cyan Magenta Yellow Black
 %%DocumentNeededResources: procset Adobe_level2_AI5 1.0 0
 %%+ procset Adobe_screens_AI5 1.0 0
@@ -15,7 +15,7 @@
 %AI5_FileFormat 2.0
 %AI3_ColorUsage: Color
 %AI3_TemplateBox: 306 396 306 396
-%AI3_TileBox: 221 -232 825 212
+%AI3_TileBox: 321 -238 925 206
 %AI3_DocumentPreview: None
 %%EndComments
 %%BeginProlog
@@ -41,24 +41,41 @@ u
 1 j
 1 J
 64.000000 w
-194.1 372.9 m
-73.0 322.7 L
-32.0 136.0 L
-223.0 32.0 L
-365.4 201.6 L
-323.0 293.0 L
+503.0 54.0 m
+499.0 62.0 L
 S
-U
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+64.000000 w
+286.0 215.0 m
+282.0 223.0 L
+S
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+64.000000 w
+294.1 366.9 m
+173.1 316.7 L
+132.0 130.0 L
+322.0 32.0 L
+465.4 195.6 L
+423.0 287.0 L
+S
 u
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
 64.000000 w
-374.1 389.6 m
-285.7 394.8 L
-238.2 282.6 L
+36.0 252.0 m
+32.0 260.0 L
 S
+U
+U
+u
 U
 %%PageTrailer
 gsave annotatepage grestore showpage

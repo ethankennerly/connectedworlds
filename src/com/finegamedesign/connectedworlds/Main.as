@@ -118,7 +118,9 @@ package com.finegamedesign.connectedworlds
                 model.truncate();
             }
             if (keyMouse.justPressed("ENTER")) {
-                win();
+                if (model.enabled) {
+                    win();
+                }
             }
             if (!model.enabled && !model.inTrial && "trialEnable" == view.backgroundClip.currentLabel) {
                 trialEnable();
