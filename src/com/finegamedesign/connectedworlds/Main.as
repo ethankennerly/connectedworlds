@@ -82,12 +82,13 @@ package com.finegamedesign.connectedworlds
             model.populate();
             view.populate(model);
             if (model.level < model.levelTutor) {
-                if (model.level <= 0) {
-                    view.prompt();
-                }
+                // if (model.level <= 0) {
+                    view.prompt(model.connections[0]);
+                // }
                 view.hintDistractors(model.distractors);
             }
             else if (model.review) {
+                view.prompt(model.connections[0]);
                 view.review();
             }
         }

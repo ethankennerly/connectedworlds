@@ -57,16 +57,16 @@ def parse(ai_text, vertical=True):
     >>> pprint.pprint(parse(_point_ai_text))
     {'connections': [], 'dots': [[0, 0]]}
 
-    Center by extreme coordinates.
+    Center by extreme coordinates.  Sort dots.
     >>> triangle = parse(_example_ai_text)
     >>> triangle['connections']
     [[0, 1], [0, 2], [1, 2]]
     >>> triangle['dots']
-    [[163, 142], [0, -142], [-164, 142]]
+    [[-164, 142], [0, -142], [163, 142]]
 
-    If not vertical, remove disconnected dots.
+    If not vertical, retain disconnected dots but do not vertically center.
     >>> pprint.pprint(parse(_point_ai_text, False))
-    {'connections': [], 'dots': []}
+    {'connections': [], 'dots': [0, -78]}
     """
     lines = ai_text.splitlines()
     connections = []
@@ -102,8 +102,8 @@ def parse(ai_text, vertical=True):
             connection.sort()
             connections.append(connection)
         previous = index
-    connections.sort()
     center(dots, vertical)
+    sort(dots, connections)
     graph = {'connections': connections, 'dots': dots}
     return graph
 
@@ -171,6 +171,35 @@ def center(coordinates, vertical=True):
     for c, coordinate in enumerate(coordinates):
         coordinates[c][0] += xOffset
         coordinates[c][1] += yOffset
+
+
+def sort(dots, connections):
+    """Sort dots left to right.
+    Trace finger over mark from left to right.  
+    2014-08-29 checkmark.  Samantha Yang expects to feel aware to trace.  Got confused.
+
+    >>> line = {'connections': [[0, 1]], 'dots': [[113, -113], [-113, 113]]}
+    >>> sort(line['dots'], line['connections'])
+    >>> line['dots']
+    [[-113, 113], [113, -113]]
+    >>> line['connections']
+    [[0, 1]]
+    >>> dip = {}
+    >>> dip['connections'] = [[0, 1], [0, 2]]
+    >>> dip['dots'] = [[0, -142], [163, 142], [-164, 142]]
+    >>> sort(dip['dots'], dip['connections'])
+    >>> dip['dots']
+    [[-164, 142], [0, -142], [163, 142]]
+    >>> dip['connections']
+    [[0, 1], [1, 2]]
+    """
+    olds = [dot for dot in dots]
+    dots.sort()
+    for c in connections:
+        c[0] = dots.index(olds[c[0]])
+        c[1] = dots.index(olds[c[1]])
+        c.sort()
+    connections.sort()
 
 
 def main(paths, vertical=True):

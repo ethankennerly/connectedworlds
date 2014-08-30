@@ -80,7 +80,7 @@ package com.finegamedesign.connectedworlds
 
         internal function hideScreen():void
         {
-            trace("View.hideScreen");
+            // trace("View.hideScreen");
             remove(reviewClip);
             reviewClip.visible = false;
             screen.stop();
@@ -128,6 +128,7 @@ package com.finegamedesign.connectedworlds
 
         internal function clearLines():void
         {
+            Trace.destroy();
             screen.gotoAndPlay("input");
         }
 
@@ -241,10 +242,21 @@ package com.finegamedesign.connectedworlds
             }
         }
 
-        internal function prompt():void
+        /**
+         * Prompt traces between a connection.  2014-08-29 checkmark.  Samantha Yang expects to feel aware to trace.  Got confused.
+         */
+        internal function prompt(dotIndexes:Array):void
         {
             progress.addChild(tutorClip);
-            tutorClip.gotoAndPlay(1);
+            var startSeconds:Number = 80.0 / 30.0;
+            var endSeconds:Number = 110.0 / 30.0;
+            var repeatSeconds:Number = 150.0 / 30.0;
+            var dot0:DotClip = dots[dotIndexes[0]];
+            tutorClip.x = dot0.x;
+            tutorClip.y = dot0.y;
+            var dot1:DotClip = dots[dotIndexes[1]];
+            new Trace(tutorClip, startSeconds, endSeconds, repeatSeconds,
+                dot1.x, dot1.y);
         }
 
         internal function hintDistractors(dotIndexes:Array):void
