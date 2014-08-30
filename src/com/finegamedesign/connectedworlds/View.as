@@ -18,9 +18,13 @@ package com.finegamedesign.connectedworlds
         internal var backgroundClip:BackgroundClip;
         private var lines:Sprite;
         private var connection:Sprite;
+        /**
+         * Line narrower than dot diameter.  2014-08-29 Line covers dot.  Samantha Yang expects to feel aware to trace line now.  Got confused.
+         */
         private var lineThickness:Number = // 8.0;
                                            // 32.0;
-                                           64.0;
+                                           48.0;
+                                           // 64.0;
         private var lineColor:uint = 0x006699;
         private var wrongLineColor:uint = 0xFF3299;
         private var previousDot:DotClip;
