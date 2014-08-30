@@ -83,7 +83,6 @@ package com.finegamedesign.connectedworlds
         public function trial():void
         {
             clear();
-            model.inTrial = true;
             model.populate();
             view.populate(model);
             if (0 == model.level) {
@@ -122,6 +121,9 @@ package com.finegamedesign.connectedworlds
                     win();
                 }
             }
+            if (model.inTrial && !model.listening) {
+                model.listening = keyMouse.justPressed("MOUSE");
+            }
             if (!model.enabled && !model.inTrial && "trialEnable" == view.backgroundClip.currentLabel) {
                 trialEnable();
             }
@@ -144,7 +146,6 @@ package com.finegamedesign.connectedworlds
         private function reset():void
         {
             // trace("Main.reset");
-            model.inTrial = false;
             if (null != loopChannel) {
                 // loopChannel.stop();
             }
@@ -177,10 +178,11 @@ package com.finegamedesign.connectedworlds
 
         /**
          * Only play screen if model is still enabled and complete.
+         * Lines remain until mouse button released after previous trial.  2014-08-29 Mouse down. Wrong.  Next.  Mouse still down and happens to be over a dot.  Samantha Yang expects to see lines.  Got lines disappear; felt confused.  
          */
         private function answer(e:MouseEvent):void
         {
-            if (model.inTrial) {
+            if (model.inTrial && model.listening) {
                 var down:Boolean = keyMouse.pressed("MOUSE");
                 if (down) {
                     var x:Number = e.currentTarget.mouseX;

@@ -8,6 +8,7 @@ package com.finegamedesign.connectedworlds
         internal var enabled:Boolean = false;
         internal var from:int;
         internal var inTrial:Boolean = false;
+        internal var listening:Boolean = false;
         internal var level:int = 0;
         /**
          * Timer starts at fifth trial, after tutoring disconnected dots.  2014-08-25 Tyler Hinman expects to timer starts after first trial.
@@ -66,6 +67,8 @@ package com.finegamedesign.connectedworlds
                 this[prop] = Util.clone(params[prop]);
             }
             lines = true;
+            inTrial = true;
+            listening = false;
             if (levelTutor <= level) {
                 referee.start();
             }
@@ -141,6 +144,10 @@ package com.finegamedesign.connectedworlds
          */
         internal function trialEnd(correct:Boolean):void
         {
+            if (!inTrial) {
+                return;
+            }
+            inTrial = false;
             graphsOld[level] = true;
             if (correct) {
                 referee.add = dots.length;
