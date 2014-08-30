@@ -133,6 +133,7 @@ package com.finegamedesign.connectedworlds
 
         private function drawLines(lines:Sprite):void
         {
+            removeAll(lines);
             lines.graphics.clear();
             lines.graphics.lineStyle(lineThickness, lineColor);
             for each(var ij:Array in model.connections) {
@@ -217,17 +218,44 @@ package com.finegamedesign.connectedworlds
             progress.graphics.clear();
         }
 
-        internal function remove(dot:DisplayObject):void
+        internal function restart():void
         {
-            if (dot.parent && dot.parent.contains(dot)) {
+            clear();
+            remove(screen);
+            backgroundClip.stop();
+            screen.stop();
+            remove(backgroundClip);
+        }
+
+        internal static function remove(dot:DisplayObject):void
+        {
+            if (null != dot && null != dot.parent && dot.parent.contains(dot)) {
                 dot.parent.removeChild(dot);
             }
         }
 
-        internal function tutor():void
+        private static function removeAll(lines:DisplayObjectContainer):void
+        {
+            for (var c:int = lines.numChildren - 1; 0 <= c; c--) {
+                remove(lines.getChildAt(c));
+            }
+        }
+
+        internal function prompt():void
         {
             progress.addChild(tutorClip);
             tutorClip.gotoAndPlay(1);
+        }
+
+        internal function hintDistractors(dotIndexes:Array):void
+        {
+            for each(var dotIndex:int in dotIndexes) {
+                var dot:DotClip = dots[dotIndex];
+                var distractorHint:DistractorHint = new DistractorHint();
+                distractorHint.x = dot.x;
+                distractorHint.y = dot.y;
+                screen.lines.addChild(distractorHint);
+            }
         }
     }
 }

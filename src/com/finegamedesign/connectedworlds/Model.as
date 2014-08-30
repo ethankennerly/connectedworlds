@@ -5,6 +5,7 @@ package com.finegamedesign.connectedworlds
         internal var connections:Array;
         internal var connecting:Array;
         internal var dots:Array;
+        internal var distractors:Array;
         internal var enabled:Boolean = false;
         internal var from:int;
         internal var inTrial:Boolean = false;
@@ -74,6 +75,29 @@ package com.finegamedesign.connectedworlds
             if (levelTutor <= level) {
                 referee.start();
             }
+            distractors = findSingles(connections, dots.length);
+        }
+
+        /**
+         * @return  Disconnected dots.
+         * Tutorial.  Pink X over distractor.  2014-08-29 face cheeks disconnected.  Samantha Yang expects to feel aware to trace lines.  Got confused.
+         */
+        private static function findSingles(connections:Array, length:int):Array
+        {
+            var connecteds:Object = {};
+            var index:int;
+            for each(var connection:Array in connections) {
+                for each(index in connection) {
+                    connecteds[index.toString()] = true;
+                }
+            }
+            var singles:Array = [];
+            for (index = 0; index < length; index++) {
+                if (!(index.toString() in connecteds)) {
+                    singles.push(index);
+                }
+            }
+            return singles;
         }
 
         internal function cancel():void

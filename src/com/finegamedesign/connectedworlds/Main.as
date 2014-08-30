@@ -54,11 +54,7 @@ package com.finegamedesign.connectedworlds
 
         private function restart():void
         {
-            view.clear();
-            view.remove(view.screen);
-            view.backgroundClip.stop();
-            view.screen.stop();
-            view.remove(view.backgroundClip);
+            view.restart();
             init();
         }
 
@@ -85,8 +81,11 @@ package com.finegamedesign.connectedworlds
             clear();
             model.populate();
             view.populate(model);
-            if (0 == model.level) {
-                view.tutor();
+            if (model.level < model.levelTutor) {
+                if (model.level <= 0) {
+                    view.prompt();
+                }
+                view.hintDistractors(model.distractors);
             }
             else if (model.review) {
                 view.review();
