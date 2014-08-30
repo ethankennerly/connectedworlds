@@ -27,9 +27,9 @@ cnoremap   :simalt ~
 inoremap   :simalt ~
 map <silent> \t :call MakeGreen()
 nmap gx <Plug>NetrwBrowseX
-nnoremap <C-F4> c
-nnoremap <C-Tab> w
 nmap <S-Insert> "+gP
+nnoremap <C-Tab> w
+nnoremap <C-F4> c
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#NetrwBrowseX(expand("<cWORD>"),0)
 onoremap <C-F4> c
 vnoremap <C-F4> c
@@ -56,7 +56,7 @@ set backspace=indent,eol,start
 set encoding=utf-8
 set expandtab
 set fileencodings=ucs-bom,utf-8,default,latin1
-set guifont=SimHei:h14
+set guifont=SimHei:h12:cANSI
 set helplang=En
 set keymodel=startsel,stopsel
 set selection=exclusive
@@ -65,7 +65,7 @@ set shiftwidth=4
 set noswapfile
 set tabstop=4
 set whichwrap=b,s,<,>,[,]
-set window=32
+set window=38
 set nowritebackup
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
@@ -80,9 +80,9 @@ badd +1 notes.txt
 badd +432 connectedworlds.ai
 badd +1 triangle.ai
 badd +46 line.ai
-badd +123 src\com\finegamedesign\connectedworlds\Main.as
-badd +178 src\com\finegamedesign\connectedworlds\Model.as
-badd +22 src\com\finegamedesign\connectedworlds\View.as
+badd +118 src\com\finegamedesign\connectedworlds\Main.as
+badd +140 src\com\finegamedesign\connectedworlds\Model.as
+badd +232 src\com\finegamedesign\connectedworlds\View.as
 badd +1 bin\index.html
 badd +8 src\com\finegamedesign\connectedworlds\Dot.as
 badd +7 src\com\finegamedesign\connectedworlds\DotClip.as
@@ -107,6 +107,7 @@ badd +39 \archive\flash\surface\src\com\finegamedesign\surface\Main.as
 badd +98 \audio\jade_brewer_Sonata_flute.xml
 badd +1 src\com\finegamedesign\connectedworlds\SoundScore.as
 badd +1 src\com\finegamedesign\connectedworlds\Sonata.as
+badd +0 src\com\finegamedesign\connectedworlds\Trace.as
 args triangle.ai
 edit notes.txt
 set splitbelow splitright
@@ -129,16 +130,16 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe '1resize ' . ((&lines * 20 + 16) / 33)
-exe 'vert 1resize ' . ((&columns * 65 + 66) / 133)
-exe '2resize ' . ((&lines * 10 + 16) / 33)
-exe 'vert 2resize ' . ((&columns * 65 + 66) / 133)
-exe '3resize ' . ((&lines * 10 + 16) / 33)
-exe 'vert 3resize ' . ((&columns * 67 + 66) / 133)
-exe '4resize ' . ((&lines * 4 + 16) / 33)
-exe 'vert 4resize ' . ((&columns * 67 + 66) / 133)
-exe '5resize ' . ((&lines * 15 + 16) / 33)
-exe 'vert 5resize ' . ((&columns * 67 + 66) / 133)
+exe '1resize ' . ((&lines * 18 + 19) / 39)
+exe 'vert 1resize ' . ((&columns * 82 + 83) / 166)
+exe '2resize ' . ((&lines * 18 + 19) / 39)
+exe 'vert 2resize ' . ((&columns * 82 + 83) / 166)
+exe '3resize ' . ((&lines * 12 + 19) / 39)
+exe 'vert 3resize ' . ((&columns * 83 + 83) / 166)
+exe '4resize ' . ((&lines * 12 + 19) / 39)
+exe 'vert 4resize ' . ((&columns * 83 + 83) / 166)
+exe '5resize ' . ((&lines * 11 + 19) / 39)
+exe 'vert 5resize ' . ((&columns * 83 + 83) / 166)
 argglobal
 setlocal keymap=
 setlocal noarabic
@@ -241,12 +242,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 4 - ((3 * winheight(0) + 10) / 20)
+let s:l = 1 - ((0 * winheight(0) + 9) / 18)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-4
-normal! 0182l
+1
+normal! 03l
 wincmd w
 argglobal
 edit README.md
@@ -351,12 +352,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 6 - ((0 * winheight(0) + 5) / 10)
+let s:l = 31 - ((12 * winheight(0) + 9) / 18)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-6
-normal! 016l
+31
+normal! 066l
 wincmd w
 argglobal
 edit ai2dots.py
@@ -461,11 +462,11 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 202 - ((6 * winheight(0) + 5) / 10)
+let s:l = 231 - ((11 * winheight(0) + 6) / 12)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-202
+231
 normal! 012l
 wincmd w
 argglobal
@@ -571,12 +572,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 8 - ((0 * winheight(0) + 2) / 4)
+let s:l = 1 - ((0 * winheight(0) + 6) / 12)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-8
-normal! 014l
+1
+normal! 0
 wincmd w
 argglobal
 edit src\com\finegamedesign\connectedworlds\Levels.as
@@ -681,35 +682,50 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 1 - ((0 * winheight(0) + 7) / 15)
+let s:l = 1 - ((0 * winheight(0) + 5) / 11)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 1
 normal! 0
 wincmd w
-exe '1resize ' . ((&lines * 20 + 16) / 33)
-exe 'vert 1resize ' . ((&columns * 65 + 66) / 133)
-exe '2resize ' . ((&lines * 10 + 16) / 33)
-exe 'vert 2resize ' . ((&columns * 65 + 66) / 133)
-exe '3resize ' . ((&lines * 10 + 16) / 33)
-exe 'vert 3resize ' . ((&columns * 67 + 66) / 133)
-exe '4resize ' . ((&lines * 4 + 16) / 33)
-exe 'vert 4resize ' . ((&columns * 67 + 66) / 133)
-exe '5resize ' . ((&lines * 15 + 16) / 33)
-exe 'vert 5resize ' . ((&columns * 67 + 66) / 133)
-tabedit src\com\finegamedesign\connectedworlds\View.as
+2wincmd w
+exe '1resize ' . ((&lines * 18 + 19) / 39)
+exe 'vert 1resize ' . ((&columns * 82 + 83) / 166)
+exe '2resize ' . ((&lines * 18 + 19) / 39)
+exe 'vert 2resize ' . ((&columns * 82 + 83) / 166)
+exe '3resize ' . ((&lines * 12 + 19) / 39)
+exe 'vert 3resize ' . ((&columns * 83 + 83) / 166)
+exe '4resize ' . ((&lines * 12 + 19) / 39)
+exe 'vert 4resize ' . ((&columns * 83 + 83) / 166)
+exe '5resize ' . ((&lines * 11 + 19) / 39)
+exe 'vert 5resize ' . ((&columns * 83 + 83) / 166)
+tabedit src\com\finegamedesign\connectedworlds\Trace.as
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
 1wincmd h
+wincmd _ | wincmd |
+split
+1wincmd k
+wincmd w
+wincmd w
+wincmd _ | wincmd |
+split
+1wincmd k
 wincmd w
 set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 69 + 66) / 133)
-exe 'vert 2resize ' . ((&columns * 63 + 66) / 133)
+exe '1resize ' . ((&lines * 18 + 19) / 39)
+exe 'vert 1resize ' . ((&columns * 83 + 83) / 166)
+exe '2resize ' . ((&lines * 18 + 19) / 39)
+exe 'vert 2resize ' . ((&columns * 83 + 83) / 166)
+exe '3resize ' . ((&lines * 18 + 19) / 39)
+exe 'vert 3resize ' . ((&columns * 82 + 83) / 166)
+exe '4resize ' . ((&lines * 18 + 19) / 39)
+exe 'vert 4resize ' . ((&columns * 82 + 83) / 166)
 argglobal
 setlocal keymap=
 setlocal noarabic
@@ -812,12 +828,232 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 173 - ((13 * winheight(0) + 15) / 31)
+let s:l = 31 - ((16 * winheight(0) + 9) / 18)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-173
-normal! 055l
+31
+normal! 08l
+wincmd w
+argglobal
+edit src\com\finegamedesign\connectedworlds\View.as
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'actionscript'
+setlocal filetype=actionscript
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=2
+setlocal imsearch=2
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal nolist
+setlocal makeprg=mxmlc\ -compiler.debug\ -compiler.incremental
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal nonumber
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal smartindent
+setlocal softtabstop=0
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=
+setlocal noswapfile
+setlocal synmaxcol=3000
+if &syntax != 'actionscript'
+setlocal syntax=actionscript
+endif
+setlocal tabstop=4
+setlocal tags=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let s:l = 246 - ((2 * winheight(0) + 9) / 18)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+246
+normal! 0130l
+wincmd w
+argglobal
+edit src\com\finegamedesign\connectedworlds\Model.as
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'actionscript'
+setlocal filetype=actionscript
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=2
+setlocal imsearch=2
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal nolist
+setlocal makeprg=mxmlc\ -compiler.debug\ -compiler.incremental
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal nonumber
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal smartindent
+setlocal softtabstop=0
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=
+setlocal noswapfile
+setlocal synmaxcol=3000
+if &syntax != 'actionscript'
+setlocal syntax=actionscript
+endif
+setlocal tabstop=4
+setlocal tags=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let s:l = 112 - ((0 * winheight(0) + 9) / 18)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+112
+normal! 09l
 wincmd w
 argglobal
 edit src\com\finegamedesign\connectedworlds\Main.as
@@ -922,15 +1158,22 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 200 - ((6 * winheight(0) + 15) / 31)
+let s:l = 185 - ((15 * winheight(0) + 9) / 18)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-200
-normal! 034l
+185
+normal! 012l
 wincmd w
-exe 'vert 1resize ' . ((&columns * 69 + 66) / 133)
-exe 'vert 2resize ' . ((&columns * 63 + 66) / 133)
+2wincmd w
+exe '1resize ' . ((&lines * 18 + 19) / 39)
+exe 'vert 1resize ' . ((&columns * 83 + 83) / 166)
+exe '2resize ' . ((&lines * 18 + 19) / 39)
+exe 'vert 2resize ' . ((&columns * 83 + 83) / 166)
+exe '3resize ' . ((&lines * 18 + 19) / 39)
+exe 'vert 3resize ' . ((&columns * 82 + 83) / 166)
+exe '4resize ' . ((&lines * 18 + 19) / 39)
+exe 'vert 4resize ' . ((&columns * 82 + 83) / 166)
 tabedit bin\index.html
 set splitbelow splitright
 set nosplitbelow
@@ -1045,6 +1288,7 @@ exe s:l
 normal! zt
 35
 normal! 0
+2wincmd w
 tabnext 1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
