@@ -2,9 +2,9 @@
 %%Creator: Adobe Illustrator(r) 6.0
 %%For: (Macromedia Flash) ()
 %%Title: (C:\archive\flash\connectedworlds\ai\040_bigDipper.ai)
-%%CreationDate: (08/23/14) (21:41:56)
-%%BoundingBox: 0 0 545 381
-%%HiResBoundingBox: 0.0 0.0 544.1 380.7
+%%CreationDate: (08/30/14) (12:28:36)
+%%BoundingBox: 0 0 577 413
+%%HiResBoundingBox: 0.0 0.0 576.1 412.7
 %%DocumentProcessColors: Cyan Magenta Yellow Black
 %%DocumentNeededResources: procset Adobe_level2_AI5 1.0 0
 %%+ procset Adobe_screens_AI5 1.0 0
@@ -15,7 +15,7 @@
 %AI5_FileFormat 2.0
 %AI3_ColorUsage: Color
 %AI3_TemplateBox: 306 396 306 396
-%AI3_TileBox: 280 -282 885 162
+%AI3_TileBox: 296 -266 901 178
 %AI3_DocumentPreview: None
 %%EndComments
 %%BeginProlog
@@ -40,14 +40,21 @@ u
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
-32.000000 w
-528.1 122.5 m
-473.4 16.0 L
-308.1 52.5 L
-316.7 169.7 L
-221.2 207.4 L
-199.2 310.4 L
-16.0 364.7 L
+64.000000 w
+544.1 138.4 m
+489.4 32.0 L
+324.1 68.5 L
+332.7 185.7 L
+215.2 326.4 L
+32.0 380.7 L
+S
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+64.000000 w
+451.1 236.4 m
+451.1 251.4 L
 S
 U
 %%PageTrailer

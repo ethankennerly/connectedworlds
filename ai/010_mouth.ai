@@ -1,10 +1,10 @@
 %!PS-Adobe-3.0 
 %%Creator: Adobe Illustrator(r) 6.0
 %%For: (Macromedia Flash) ()
-%%Title: (C:\archive\flash\connectedworlds\ai\030_pot.ai)
-%%CreationDate: (08/29/14) (07:29:39)
-%%BoundingBox: 0 0 390 276
-%%HiResBoundingBox: 0.0 0.0 390.0 276.0
+%%Title: (C:\archive\flash\connectedworlds\ai\010_mouth.ai)
+%%CreationDate: (08/30/14) (12:26:48)
+%%BoundingBox: 0 0 400 245
+%%HiResBoundingBox: 0.0 0.0 399.5 244.3
 %%DocumentProcessColors: Cyan Magenta Yellow Black
 %%DocumentNeededResources: procset Adobe_level2_AI5 1.0 0
 %%+ procset Adobe_screens_AI5 1.0 0
@@ -15,7 +15,7 @@
 %AI5_FileFormat 2.0
 %AI3_ColorUsage: Color
 %AI3_TemplateBox: 306 396 306 396
-%AI3_TileBox: 234 -321 838 123
+%AI3_TileBox: 217 -339 822 105
 %AI3_DocumentPreview: None
 %%EndComments
 %%BeginProlog
@@ -41,16 +41,9 @@ u
 1 j
 1 J
 64.000000 w
-91.0 242.0 m
-32.0 43.0 L
-S
-[]0 d
-0.600 0.000 0.000 0.000 K
-1 j
-1 J
-64.000000 w
-358.0 32.0 m
-291.0 244.0 L
+32.0 210.7 m
+197.5 32.0 L
+367.5 212.3 L
 S
 U
 %%PageTrailer

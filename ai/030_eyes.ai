@@ -1,10 +1,10 @@
 %!PS-Adobe-3.0 
 %%Creator: Adobe Illustrator(r) 6.0
 %%For: (Macromedia Flash) ()
-%%Title: (C:\archive\flash\connectedworlds\ai\010_check.ai)
-%%CreationDate: (08/29/14) (07:06:37)
-%%BoundingBox: 0 0 314 276
-%%HiResBoundingBox: 0.0 0.0 313.3 275.6
+%%Title: (C:\archive\flash\connectedworlds\ai\030_eyes.ai)
+%%CreationDate: (08/30/14) (12:25:10)
+%%BoundingBox: 0 0 432 348
+%%HiResBoundingBox: 0.0 0.0 432.0 348.0
 %%DocumentProcessColors: Cyan Magenta Yellow Black
 %%DocumentNeededResources: procset Adobe_level2_AI5 1.0 0
 %%+ procset Adobe_screens_AI5 1.0 0
@@ -15,7 +15,7 @@
 %AI5_FileFormat 2.0
 %AI3_ColorUsage: Color
 %AI3_TemplateBox: 306 396 306 396
-%AI3_TileBox: 173 -314 778 130
+%AI3_TileBox: 234 -247 838 197
 %AI3_DocumentPreview: None
 %%EndComments
 %%BeginProlog
@@ -41,9 +41,24 @@ u
 1 j
 1 J
 64.000000 w
-32.0 137.8 m
-101.5 32.0 L
-281.3 243.6 L
+400.0 106.0 m
+400.0 316.0 L
+S
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+64.000000 w
+32.0 312.0 m
+32.0 117.0 L
+S
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+64.000000 w
+216.0 32.0 m
+216.0 44.0 L
 S
 U
 %%PageTrailer

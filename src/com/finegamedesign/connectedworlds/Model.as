@@ -23,6 +23,8 @@ package com.finegamedesign.connectedworlds
          * Aries.  Taurus.  Cancer.  Distractors. Star girl.  2014-08-24 Star face.  End.  Diana Salles expects more challenging.
          * Remove nearby unnecessary dots.  Gap at least 64 pixels.  2014-08-28 Aaron Kasluzka, Mark Scoptur, Sarah Clark expect to drag approximately.
          * Reorder by observed accuracy, especially: gemini and wink sooner, moon later.  2014-08-28 Aaron Kasluzka, Annie Zhou, Mark Scoptur, Sarah Clark may expect gradual increase in complexity.  Got stumped by moon.
+	     * Two lines.  One distractor.  Big dipper.  Distractor.  2014-08-29 Samantha Yang expects to feel aware of distractors.
+	     * Mouth instead of checkmark.  2014-08-29 Checkmark.  Samantha Yang confused if this is feedback or input.
          */
         private var graphs:Array;
         internal var lines:Boolean;
