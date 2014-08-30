@@ -49,6 +49,7 @@ package com.finegamedesign.connectedworlds
         {
             graphs.length = level + 1;
             graphs.push({});
+            trialMax = trial;
         }
 
         /**
@@ -135,6 +136,9 @@ package com.finegamedesign.connectedworlds
         }
 
         private var reviewing:Boolean = false;
+        /**
+         * Review.  Wrong.  Repeat.  2014-08-29 Review Wrong.  Samantha Yang expects to fix repeat number.
+         */
         internal function trialEnd(correct:Boolean):void
         {
             graphsOld[level] = true;
@@ -142,8 +146,10 @@ package com.finegamedesign.connectedworlds
                 referee.add = dots.length;
             }
             if (levelTutor <= level) {
-                referee.stop();
-                trial++;
+                if (!reviewing) {
+                    referee.stop();
+                    trial++;
+                }
             }
             if (correct) {
                 if (reviewing) {
@@ -154,7 +160,11 @@ package com.finegamedesign.connectedworlds
                 }
             }
             else {
-                level = findNewLevel(false);
+                if (reviewing) {
+                }
+                else {
+                    level = findNewLevel(false);
+                }
             }
             if (!reviewing && review) {
                 reviewing = true;

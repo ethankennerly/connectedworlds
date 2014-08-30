@@ -1,4 +1,12 @@
 TODO
+	Review.  Wrong.  Repeat.  2014-08-29 Review Wrong.  Samantha Yang expects to fix repeat number.
+	Line width less than dot size.  2014-08-29 Line covers dot.  Samantha Yang expects to feel aware to trace line now.  Got confused.
+	Lines remain until mouse button released.  2014-08-29 Mouse down. Wrong.  Next.  Mouse still down and happens to be over a dot.  Samantha Yang expects to see lines.  Got lines disappear; felt confused and indignant.  
+	Trace finger over checkmark.  2014-08-29 checkmark.  Samantha Yang expects to feel aware to trace.  Got confused.
+	Tutorial.  Pink X over distractor.  2014-08-29 face cheeks disconnected.  Samantha Yang expects to feel aware to trace lines.  Got confused.
+	Two lines.  One distractor.  2014-08-29 Samantha Yang expects to feel aware of distractors.
+	Big dipper.  Distractor.  2014-08-29 Samantha Yang expects to feel aware of distractors.
+	Remove distractors based on previous performance.  2014-08-29 Samantha Yang expects to feel competent.  Got overwhelmed.
 	Countdown 3-2-1.
 	8 not so touchy.
 	Score dots + time bonus.  2014-08-29 Somewhat careless and quick.  Expected score lower than 100.  42. / 0:18 = 143  more accurate:  67. / 0:27 = 152   miss butterfly 58 / 0:21 = 170

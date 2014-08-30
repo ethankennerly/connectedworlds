@@ -64,7 +64,7 @@ package com.finegamedesign.connectedworlds
 
         private function trialEnable():void
         {
-            trace("Main.trialEnable");
+            // trace("Main.trialEnable");
             model.enabled = true;
             view.backgroundClip.stop();
             view.screen.gotoAndPlay("begin");
@@ -143,7 +143,7 @@ package com.finegamedesign.connectedworlds
 
         private function reset():void
         {
-            trace("Main.reset");
+            // trace("Main.reset");
             model.inTrial = false;
             if (null != loopChannel) {
                 // loopChannel.stop();
