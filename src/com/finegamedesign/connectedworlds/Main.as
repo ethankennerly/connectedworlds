@@ -88,8 +88,8 @@ package com.finegamedesign.connectedworlds
                 view.hintDistractors(model.distractors);
             }
             else if (model.review) {
-                view.prompt(model.connections[0]);
                 view.review();
+                view.prompt(model.connections[0]);
             }
         }
 

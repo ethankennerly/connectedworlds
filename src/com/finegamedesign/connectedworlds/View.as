@@ -115,6 +115,7 @@ package com.finegamedesign.connectedworlds
             reviewClip.addFrameScript(reviewClip.totalFrames - 3, screen.play);
             reviewClip.count.text = model.referee.count;
             reviewClip.minutes.text = model.referee.minutes;
+            reviewClip.score.text = model.referee.score;
             reviewClip.count.mouseEnabled = false;
             reviewClip.minutes.mouseEnabled = false;
         }
@@ -124,6 +125,7 @@ package com.finegamedesign.connectedworlds
             if ("trial" != backgroundClip.currentLabel) {
                 backgroundClip.gotoAndPlay("trial");
             }
+            Trace.destroy();
         }
 
         internal function clearLines():void

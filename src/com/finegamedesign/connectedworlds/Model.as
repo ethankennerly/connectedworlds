@@ -31,6 +31,7 @@ package com.finegamedesign.connectedworlds
         internal var lines:Boolean;
         internal var to:int;
         internal var referee:Referee = new Referee();
+        internal var reviewing:Boolean = false;
         internal var trial:int = 0;
         /**
          * End after 10 trials.  2014-08-28 After 17 trials of 256 dots. 4 minutes.  Mark Scoptur expects brief.
@@ -164,7 +165,6 @@ package com.finegamedesign.connectedworlds
         {
         }
 
-        private var reviewing:Boolean = false;
         /**
          * Review.  Wrong.  Repeat.  2014-08-29 Review Wrong.  Samantha Yang expects to fix repeat number.
          */
@@ -202,10 +202,21 @@ package com.finegamedesign.connectedworlds
             if (!reviewing && review) {
                 reviewing = true;
                 truncate();
-                graphs[level] = Format.wholeNumber(
-                    referee.connectionsPerMinute);
+                reverseGraph0();
             }
         }
+
+        /**
+         * Trace first line with prompt in reverse.  Was trace score.  Shift down to not overlap score.  2014-09-01 Amy expects not to trace score. (2014-09-05 +Mark Palange, +Ben Ahroni)
+         */
+         private function reverseGraph0():void
+         {
+            graphs[level] = Util.clone(graphs[0]);
+            graphs[level].dots.reverse();
+            var down:int = 90;
+            graphs[level].dots[0][1] += down;
+            graphs[level].dots[1][1] += down;
+         }
 
         internal function get review():Boolean
         {

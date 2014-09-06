@@ -60,5 +60,10 @@ package com.finegamedesign.connectedworlds
         {
             return _count.toString();
         }
+
+        internal function get score():String
+        {
+            return connectionsPerMinute.toString();
+        }
     }
 }

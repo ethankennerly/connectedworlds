@@ -1,5 +1,6 @@
 TODO
-	Post-mortem
+	Print score.  Drag first line in reverse.
+	Rate 6 more Ludum Dare games.
 	Remove distractors based on previous performance.  2014-08-29 Samantha Yang expects to feel competent.  Got overwhelmed.
 	Countdown 3-2-1.
 	8 not so touchy.
@@ -7,6 +8,7 @@ TODO
 	illustrations
 		Arms up in joy.
 	All connected.  hear twinkling chimes, next three notes, half second each.
+	Evolve graphs.
 	Prehandwriting exercise
 	Variety each time you play.
 	Correct, more complicated drawing.
