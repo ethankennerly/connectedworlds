@@ -3,6 +3,7 @@ local ragDogLib = require "ragDogLib"
 
 
 local view = {
+	dots = nil,
 	lineColor = "006699",
 	lineThickness = 48.0,
 	lines = nil,
@@ -11,7 +12,13 @@ local view = {
 
 function view:populate(model)
 	view.model = model
+	view:drawDots()
 	view:drawLines()
+end
+
+
+function view:drawDots()
+	view.dots = {}
 end
 
 
@@ -21,7 +28,18 @@ function view:drawLines()
 		view.lines.removeSelf()
 	end
 	view.lines = display.newGroup()
-	local line = display.newLine(-113, 133, 113, -113)
+	local line = nil
+	local first = true
+	for key, ij in next, view.model.connections, nil do
+		local xy1 = view.model.dots[ij[1]]
+		local xy2 = view.model.dots[ij[2]]
+		if first then
+			line = display.newLine(xy1[1], xy1[2], xy2[1], xy2[2])
+		else
+			line:append(xy1[1], xy1[2], xy2[1], xy2[2])
+		end
+		first = false
+	end
 	line:setStrokeColor(ragDogLib.convertHexToRGB(view.lineColor))
 	line.strokeWidth = view.lineThickness
 	view.lines:insert(line)

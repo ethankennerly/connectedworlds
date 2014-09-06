@@ -6,11 +6,12 @@
 
 display.setStatusBar( display.HiddenStatusBar )
 
-local graphs = require "graphs"
+local model = require "model"
 local view = require "view"
 
 function trial()
-    view:populate()
+    model:populate()
+    view:populate(model)
 end
 
 trial()

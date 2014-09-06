@@ -1,1 +1,1 @@
-return {connections = {{0, 1}}, dots= {{-113, 113}, {113, -113}}}
+return {{connections = {{1, 2}}, dots = {{-113, 113}, {113, -113}}}}
