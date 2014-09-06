@@ -90,8 +90,15 @@ package com.finegamedesign.connectedworlds
 
         internal function populate(model:Model):void
         {
-            dots = [];
             this.model = model;
+            remove(tutorClip);
+            drawDots();
+            drawLines();
+        }
+
+        private function drawDots():void
+        {
+            dots = [];
             for each(var xy:Array in model.dots) {
                 // trace("View.populate: " + xy);
                 var dot:DotClip = new DotClip();
@@ -100,8 +107,20 @@ package com.finegamedesign.connectedworlds
                 dots.push(dot);
                 screen.dots.addChild(dot);
             }
-            drawLines(screen.lines);
-            remove(tutorClip);
+        }
+
+        private function drawLines():void
+        {
+            var lines:Sprite = screen.lines;
+            removeAll(lines);
+            lines.graphics.clear();
+            lines.graphics.lineStyle(lineThickness, lineColor);
+            for each(var ij:Array in model.connections) {
+                var xy0:Array = model.dots[ij[0]];
+                var xy1:Array = model.dots[ij[1]];
+                lines.graphics.moveTo(xy0[0], xy0[1]);
+                lines.graphics.lineTo(xy1[0], xy1[1]);
+            }
         }
 
         /**
@@ -132,19 +151,6 @@ package com.finegamedesign.connectedworlds
         {
             Trace.destroy();
             screen.gotoAndPlay("input");
-        }
-
-        private function drawLines(lines:Sprite):void
-        {
-            removeAll(lines);
-            lines.graphics.clear();
-            lines.graphics.lineStyle(lineThickness, lineColor);
-            for each(var ij:Array in model.connections) {
-                var xy0:Array = model.dots[ij[0]];
-                var xy1:Array = model.dots[ij[1]];
-                lines.graphics.moveTo(xy0[0], xy0[1]);
-                lines.graphics.lineTo(xy1[0], xy1[1]);
-            }
         }
 
         internal function drawConnection(fromDotIndex:int, toDotIndex:int,
