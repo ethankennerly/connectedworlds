@@ -1,5 +1,4 @@
 TODO
-	Print score.  Drag first line in reverse.
 	Rate 6 more Ludum Dare games.
 	Remove distractors based on previous performance.  2014-08-29 Samantha Yang expects to feel competent.  Got overwhelmed.
 	Countdown 3-2-1.

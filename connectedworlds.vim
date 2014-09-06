@@ -27,9 +27,9 @@ cnoremap   :simalt ~
 inoremap   :simalt ~
 map <silent> \t :call MakeGreen()
 nmap gx <Plug>NetrwBrowseX
-nmap <S-Insert> "+gP
-nnoremap <C-Tab> w
 nnoremap <C-F4> c
+nnoremap <C-Tab> w
+nmap <S-Insert> "+gP
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#NetrwBrowseX(expand("<cWORD>"),0)
 onoremap <C-F4> c
 vnoremap <C-F4> c
@@ -96,7 +96,7 @@ badd +62 ai\040_bigDipper.ai
 badd +53 ai\120_aries.ai
 badd +57 ai\160_cat.ai
 badd +25 src\com\finegamedesign\connectedworlds\Score.as
-badd +47 src\com\finegamedesign\connectedworlds\Referee.as
+badd +62 src\com\finegamedesign\connectedworlds\Referee.as
 badd +18 src\com\finegamedesign\connectedworlds\Concat.as
 badd +1 src\com\finegamedesign\connectedworlds\Lev
 badd +1 src\com\finegamedesign\connectedworlds\Digits.as
@@ -107,7 +107,7 @@ badd +39 \archive\flash\surface\src\com\finegamedesign\surface\Main.as
 badd +98 \audio\jade_brewer_Sonata_flute.xml
 badd +1 src\com\finegamedesign\connectedworlds\SoundScore.as
 badd +1 src\com\finegamedesign\connectedworlds\Sonata.as
-badd +0 src\com\finegamedesign\connectedworlds\Trace.as
+badd +31 src\com\finegamedesign\connectedworlds\Trace.as
 args triangle.ai
 edit notes.txt
 set splitbelow splitright
@@ -130,15 +130,15 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe '1resize ' . ((&lines * 18 + 19) / 39)
+exe '1resize ' . ((&lines * 19 + 19) / 39)
 exe 'vert 1resize ' . ((&columns * 82 + 83) / 166)
-exe '2resize ' . ((&lines * 18 + 19) / 39)
+exe '2resize ' . ((&lines * 17 + 19) / 39)
 exe 'vert 2resize ' . ((&columns * 82 + 83) / 166)
 exe '3resize ' . ((&lines * 12 + 19) / 39)
 exe 'vert 3resize ' . ((&columns * 83 + 83) / 166)
-exe '4resize ' . ((&lines * 12 + 19) / 39)
+exe '4resize ' . ((&lines * 13 + 19) / 39)
 exe 'vert 4resize ' . ((&columns * 83 + 83) / 166)
-exe '5resize ' . ((&lines * 11 + 19) / 39)
+exe '5resize ' . ((&lines * 10 + 19) / 39)
 exe 'vert 5resize ' . ((&columns * 83 + 83) / 166)
 argglobal
 setlocal keymap=
@@ -242,12 +242,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 9) / 18)
+let s:l = 11 - ((10 * winheight(0) + 9) / 19)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
-normal! 03l
+11
+normal! 013l
 wincmd w
 argglobal
 edit README.md
@@ -352,7 +352,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 31 - ((12 * winheight(0) + 9) / 18)
+let s:l = 31 - ((0 * winheight(0) + 8) / 17)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -462,12 +462,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 231 - ((11 * winheight(0) + 6) / 12)
+let s:l = 231 - ((0 * winheight(0) + 6) / 12)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 231
-normal! 012l
+normal! 031l
 wincmd w
 argglobal
 edit src\com\finegamedesign\connectedworlds\Digits.as
@@ -572,7 +572,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 6) / 12)
+let s:l = 1 - ((0 * winheight(0) + 6) / 13)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -682,25 +682,24 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 1 - ((0 * winheight(0) + 5) / 11)
+let s:l = 1 - ((0 * winheight(0) + 5) / 10)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 1
 normal! 0
 wincmd w
-2wincmd w
-exe '1resize ' . ((&lines * 18 + 19) / 39)
+exe '1resize ' . ((&lines * 19 + 19) / 39)
 exe 'vert 1resize ' . ((&columns * 82 + 83) / 166)
-exe '2resize ' . ((&lines * 18 + 19) / 39)
+exe '2resize ' . ((&lines * 17 + 19) / 39)
 exe 'vert 2resize ' . ((&columns * 82 + 83) / 166)
 exe '3resize ' . ((&lines * 12 + 19) / 39)
 exe 'vert 3resize ' . ((&columns * 83 + 83) / 166)
-exe '4resize ' . ((&lines * 12 + 19) / 39)
+exe '4resize ' . ((&lines * 13 + 19) / 39)
 exe 'vert 4resize ' . ((&columns * 83 + 83) / 166)
-exe '5resize ' . ((&lines * 11 + 19) / 39)
+exe '5resize ' . ((&lines * 10 + 19) / 39)
 exe 'vert 5resize ' . ((&columns * 83 + 83) / 166)
-tabedit src\com\finegamedesign\connectedworlds\Trace.as
+tabedit src\com\finegamedesign\connectedworlds\Format.as
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -828,12 +827,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 31 - ((16 * winheight(0) + 9) / 18)
+let s:l = 82 - ((3 * winheight(0) + 9) / 18)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-31
-normal! 08l
+82
+normal! 012l
 wincmd w
 argglobal
 edit src\com\finegamedesign\connectedworlds\View.as
@@ -938,12 +937,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 246 - ((2 * winheight(0) + 9) / 18)
+let s:l = 128 - ((9 * winheight(0) + 9) / 18)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-246
-normal! 0130l
+128
+normal! 012l
 wincmd w
 argglobal
 edit src\com\finegamedesign\connectedworlds\Model.as
@@ -1048,12 +1047,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 112 - ((0 * winheight(0) + 9) / 18)
+let s:l = 210 - ((1 * winheight(0) + 9) / 18)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-112
-normal! 09l
+210
+normal! 0186l
 wincmd w
 argglobal
 edit src\com\finegamedesign\connectedworlds\Main.as
@@ -1158,14 +1157,13 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 185 - ((15 * winheight(0) + 9) / 18)
+let s:l = 191 - ((2 * winheight(0) + 9) / 18)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-185
-normal! 012l
+191
+normal! 020l
 wincmd w
-2wincmd w
 exe '1resize ' . ((&lines * 18 + 19) / 39)
 exe 'vert 1resize ' . ((&columns * 83 + 83) / 166)
 exe '2resize ' . ((&lines * 18 + 19) / 39)
@@ -1282,14 +1280,13 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 35 - ((8 * winheight(0) + 16) / 32)
+let s:l = 35 - ((10 * winheight(0) + 19) / 38)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 35
 normal! 0
-2wincmd w
-tabnext 1
+tabnext 2
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
 endif

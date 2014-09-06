@@ -1,0 +1,18 @@
+TODO
+    New project
+    See line.
+        reference PolyLines
+    See dots.
+    Connect line.
+        reference FrameAnimation1
+    See shapes.
+    Prompt.
+        reference Easing
+    Review.
+    Intro.
+        reference http://coronalabs.com/blog/2014/01/21/introducing-the-composer-api-plus-tutorial/
+
+REFERENCES
+    http://www.lua.org/pil/contents.html
+
+JOURNAL
