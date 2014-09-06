@@ -1,8 +1,8 @@
 TODO
-    See dots.
+    Drag.  See progress.
     Connect line.
         reference FrameAnimation1
-    See shapes.
+    Connect dots.  See next dots.
     Prompt.
         reference Easing
     Review.
