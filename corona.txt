@@ -1,7 +1,4 @@
 TODO
-    New project
-    See line.
-        reference PolyLines
     See dots.
     Connect line.
         reference FrameAnimation1

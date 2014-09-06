@@ -24,10 +24,11 @@ function view:drawLines()
 	local line = display.newLine(-113, 133, 113, -113)
 	line:setStrokeColor(ragDogLib.convertHexToRGB(view.lineColor))
 	line.strokeWidth = view.lineThickness
-	line.x = display.contentCenterX - line.height * 0.75
-	line.y = display.contentCenterY + line.height * 0.75
-	line.xScale = 2.0
-	line.yScale = 2.0
+	view.lines:insert(line)
+	view.lines.x = display.contentCenterX
+	view.lines.y = display.contentCenterY
+	view.lines.xScale = 2.0
+	view.lines.yScale = 2.0
 end
 
 return view
