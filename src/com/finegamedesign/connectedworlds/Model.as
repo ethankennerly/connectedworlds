@@ -28,7 +28,7 @@ package com.finegamedesign.connectedworlds
 	     * Mouth instead of checkmark.  2014-08-29 Checkmark.  Samantha Yang confused if this is feedback or input.
          */
         private var graphs:Array;
-        internal var lines:Boolean;
+        internal var linesVisible:Boolean;
         internal var to:int;
         internal var referee:Referee = new Referee();
         internal var reviewing:Boolean = false;
@@ -70,7 +70,7 @@ package com.finegamedesign.connectedworlds
             for (var prop:String in params) {
                 this[prop] = Util.clone(params[prop]);
             }
-            lines = true;
+            linesVisible = true;
             inTrial = true;
             listening = false;
             if (levelTutor <= level) {

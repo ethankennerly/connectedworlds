@@ -1,7 +1,7 @@
 TODO
     Drag.  See progress.
     Connect line.
-        reference FrameAnimation1
+        reference TimeAnimation
     Connect dots.  See next dots.
     Prompt.
         reference Easing

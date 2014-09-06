@@ -29,7 +29,10 @@ function view:newScreen()
 end
 
 function view:drawDots()
-	view.dots = {}
+	view.dots = {} 
+	if view.dotGroup then
+		view.dotGroup:removeSelf()
+	end
 	view.dotGroup = display.newGroup()
 	for key, xy in next, view.model.dots, nil do
 		local dot = display.newImage( "dot.png", xy[1], xy[2])
@@ -43,7 +46,7 @@ end
 -- http://gamedev.stackexchange.com/questions/69810/how-can-i-clear-the-entire-display-in-corona
 function view:drawLines()
 	if view.lineGroup then
-		view.lineGroup.removeSelf()
+		view.lineGroup:removeSelf()
 	end
 	view.lineGroup = display.newGroup()
 	local line = nil
@@ -62,6 +65,12 @@ function view:drawLines()
 	line.strokeWidth = view.lineThickness
 	view.lineGroup:insert(line)
 	view.screen:insert(view.lineGroup)
+end
+
+function view:clearLines()
+	if view.lineGroup then
+		view.lineGroup:removeSelf()
+	end
 end
 
 return view

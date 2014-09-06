@@ -5,6 +5,7 @@ local model = {
 	connections = {},
 	dots = {},
 	level = 1,
+	linesVisible = false,
 }
 
 function model:populate()
@@ -12,6 +13,7 @@ function model:populate()
 	for key, value in next, params, nil do
 		model[key] = value
 	end
+	model.linesVisible = true
 end
 
 

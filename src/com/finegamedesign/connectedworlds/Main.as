@@ -192,8 +192,8 @@ package com.finegamedesign.connectedworlds
                         view.drawProgress(model.to, x, y);
                     }
                     else {
-                        if (model.lines) {
-                            model.lines = false;
+                        if (model.linesVisible) {
+                            model.linesVisible = false;
                             view.clearLines();
                         }
                         var index:int = model.answer(dot.x, dot.y);
