@@ -1,4 +1,5 @@
 TODO
+    Do not touch a dot.  Nothing happens.
     Drag.  See progress.
     Connect line.
         reference TimeAnimation

@@ -14,30 +14,35 @@ function trial()
     view:populate(model)
 end
 
+local function down( event )
+	local t = event.target
+	local phase = event.phase
+    local isDown = false
+	if "began" == phase then
+		t.isFocus = true
+        isDown = true
+	elseif t.isFocus then
+		if "moved" == phase then
+            t.isFocus = true
+            isDown = true
+		elseif "ended" == phase or "cancelled" == phase then
+			t.isFocus = false
+        end
+    end
+    return isDown
+end
 
 -- A general function for dragging objects
 local function answer( event )
-	local t = event.target
-	local phase = event.phase
-
-	if "began" == phase then
-		display.getCurrentStage():setFocus( t )
-		t.isFocus = true
-
-		-- event.x
-		-- event.y
-        if model.linesVisible then
-            model.linesVisible = false
-            view:clearLines()
+	if down(event) then
+        local dot = view:nextDotAt(event.x, event.y)
+        if nil == dot then
+        else   
+            if model.linesVisible then
+                model.linesVisible = false
+                view:clearLines()
+            end
         end
-	elseif t.isFocus then
-		if "moved" == phase then
-            -- event.x
-            -- event.y
-		elseif "ended" == phase or "cancelled" == phase then
-			display.getCurrentStage():setFocus( nil )
-			t.isFocus = false
-		end
 	end
 
 	-- Stop further propagation of touch event!

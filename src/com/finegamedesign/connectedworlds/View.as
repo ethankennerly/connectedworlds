@@ -185,19 +185,20 @@ package com.finegamedesign.connectedworlds
                 return;
             }
             progress.graphics.lineStyle(lineThickness, progressColor);
-            progress.graphics.moveTo(dots[dotIndex].x, dots[dotIndex].y);
+            var dot:DotClip = dots[dotIndex];
+            progress.graphics.moveTo(dot.x, dot.y);
             progress.graphics.lineTo(x, y);
         }
 
-        internal function newDotAt(x:Number, y:Number):DotClip
+        internal function nextDotAt(x:Number, y:Number):DotClip
         {
             var at:DotClip;
             for each(var dot:DotClip in dots) {
                 if (near(dot.x - x, dot.y - y)) {
                     // trace("View.dotAt: x " + x + " y " + y + " dot " + dot.x + ", " + dot.y);
                     if (dot != previousDot) {
-                        at = dot;
                         previousDot = dot;
+                        at = dot;
                     }
                     break;
                 }

@@ -187,7 +187,7 @@ package com.finegamedesign.connectedworlds
                 if (down) {
                     var x:Number = e.currentTarget.mouseX;
                     var y:Number = e.currentTarget.mouseY;
-                    var dot:DotClip = view.newDotAt(x, y);
+                    var dot:DotClip = view.nextDotAt(x, y);
                     if (null == dot) {
                         view.drawProgress(model.to, x, y);
                     }

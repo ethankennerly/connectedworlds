@@ -63,9 +63,7 @@ package com.finegamedesign.connectedworlds
          */
         internal function populate():void
         {
-            connecting = [];
-            from = -1;
-            to = -1;
+            cancel();
             var params:Object = graphs[level];
             for (var prop:String in params) {
                 this[prop] = Util.clone(params[prop]);

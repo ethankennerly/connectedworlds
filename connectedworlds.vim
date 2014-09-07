@@ -80,7 +80,7 @@ badd +432 connectedworlds.ai
 badd +1 triangle.ai
 badd +46 line.ai
 badd +118 src\com\finegamedesign\connectedworlds\Main.as
-badd +140 src\com\finegamedesign\connectedworlds\Model.as
+badd +67 src\com\finegamedesign\connectedworlds\Model.as
 badd +121 src\com\finegamedesign\connectedworlds\View.as
 badd +1 bin\index.html
 badd +8 src\com\finegamedesign\connectedworlds\Dot.as
@@ -128,9 +128,10 @@ badd +121 \Users\Ethan\vimfiles\syntax\python.vim
 badd +1 \Users\Ethan\vimfiles\syntax\actionscript.vim
 badd +2 \Users\Ethan\vimfiles\syntax\lua.vim
 badd +16 corona\DotDot\ragdogLib.lua
-badd +0 \Program\ Files\ (x86)\Corona\ Labs\Corona\ SDK\Sample\ Code\GettingStarted\HelloWorld\main.lua
+badd +13 \Program\ Files\ (x86)\Corona\ Labs\Corona\ SDK\Sample\ Code\GettingStarted\HelloWorld\main.lua
 badd +12 corona\DotDot\model.lua
 badd +12 corona\DotDot\copy.lua
+badd +0 \Program\ Files\ (x86)\Corona\ Labs\Corona\ SDK\Sample\ Code\GettingStarted\TimeAnimation\main.lua
 args triangle.ai
 edit corona.txt
 set splitbelow splitright
@@ -265,12 +266,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 2 - ((1 * winheight(0) + 9) / 19)
+let s:l = 4 - ((3 * winheight(0) + 9) / 19)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-2
-normal! 04l
+4
+normal! 030l
 wincmd w
 argglobal
 edit README.md
@@ -753,21 +754,21 @@ set nosplitright
 wincmd t
 set winheight=1 winwidth=1
 exe '1resize ' . ((&lines * 8 + 19) / 39)
-exe 'vert 1resize ' . ((&columns * 63 + 53) / 107)
+exe 'vert 1resize ' . ((&columns * 53 + 53) / 107)
 exe '2resize ' . ((&lines * 9 + 19) / 39)
-exe 'vert 2resize ' . ((&columns * 63 + 53) / 107)
+exe 'vert 2resize ' . ((&columns * 53 + 53) / 107)
 exe '3resize ' . ((&lines * 9 + 19) / 39)
-exe 'vert 3resize ' . ((&columns * 63 + 53) / 107)
+exe 'vert 3resize ' . ((&columns * 53 + 53) / 107)
 exe '4resize ' . ((&lines * 8 + 19) / 39)
-exe 'vert 4resize ' . ((&columns * 63 + 53) / 107)
+exe 'vert 4resize ' . ((&columns * 53 + 53) / 107)
 exe '5resize ' . ((&lines * 9 + 19) / 39)
-exe 'vert 5resize ' . ((&columns * 43 + 53) / 107)
+exe 'vert 5resize ' . ((&columns * 53 + 53) / 107)
 exe '6resize ' . ((&lines * 8 + 19) / 39)
-exe 'vert 6resize ' . ((&columns * 43 + 53) / 107)
+exe 'vert 6resize ' . ((&columns * 53 + 53) / 107)
 exe '7resize ' . ((&lines * 9 + 19) / 39)
-exe 'vert 7resize ' . ((&columns * 43 + 53) / 107)
+exe 'vert 7resize ' . ((&columns * 53 + 53) / 107)
 exe '8resize ' . ((&lines * 8 + 19) / 39)
-exe 'vert 8resize ' . ((&columns * 43 + 53) / 107)
+exe 'vert 8resize ' . ((&columns * 53 + 53) / 107)
 argglobal
 setlocal keymap=
 setlocal noarabic
@@ -870,12 +871,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 14 - ((5 * winheight(0) + 4) / 8)
+let s:l = 31 - ((3 * winheight(0) + 4) / 8)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-14
-normal! 022l
+31
+normal! 016l
 wincmd w
 argglobal
 edit corona\DotDot\view.lua
@@ -980,15 +981,15 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 37 - ((6 * winheight(0) + 4) / 9)
+let s:l = 32 - ((1 * winheight(0) + 4) / 9)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-37
-normal! 026l
+32
+normal! 014l
 wincmd w
 argglobal
-edit corona\DotDot\copy.lua
+edit corona\DotDot\model.lua
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -1091,12 +1092,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 12 - ((3 * winheight(0) + 4) / 9)
+let s:l = 16 - ((7 * winheight(0) + 4) / 9)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-12
-normal! 027l
+16
+normal! 06l
 wincmd w
 argglobal
 edit corona\DotDot\graphs.lua
@@ -1311,12 +1312,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 107 - ((2 * winheight(0) + 4) / 9)
+let s:l = 194 - ((0 * winheight(0) + 4) / 9)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-107
-normal! 025l
+194
+normal! 026l
 lcd C:\archive\flash\connectedworlds
 wincmd w
 argglobal
@@ -1422,123 +1423,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 85 - ((4 * winheight(0) + 4) / 8)
+let s:l = 185 - ((0 * winheight(0) + 4) / 8)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-85
-normal! 041l
-lcd C:\archive\flash\connectedworlds
-wincmd w
-argglobal
-edit C:\Program\ Files\ (x86)\Corona\ Labs\Corona\ SDK\Sample\ Code\GettingStarted\HelloWorld\main.lua
-setlocal keymap=
-setlocal noarabic
-setlocal autoindent
-setlocal balloonexpr=
-setlocal nobinary
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
-setlocal nocindent
-setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-setlocal colorcolumn=
-setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
-setlocal commentstring=/*%s*/
-setlocal complete=.,w,b,u,t,i
-setlocal concealcursor=
-setlocal conceallevel=0
-setlocal completefunc=
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-setlocal nocursorline
-setlocal define=
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal noexpandtab
-if &filetype != 'lua'
-setlocal filetype=lua
-endif
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=
-setlocal formatoptions=tcq
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal grepprg=
-setlocal iminsert=2
-setlocal imsearch=2
-setlocal include=
-setlocal includeexpr=
-setlocal indentexpr=
-setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=
-setlocal nolinebreak
-setlocal nolisp
-setlocal nolist
-setlocal makeprg=
-setlocal matchpairs=(:),{:},[:]
-setlocal modeline
-setlocal modifiable
-setlocal nrformats=octal,hex
-setlocal nonumber
-setlocal numberwidth=4
-setlocal omnifunc=
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
-setlocal noscrollbind
-setlocal shiftwidth=4
-setlocal noshortname
-setlocal nosmartindent
-setlocal softtabstop=0
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=en
-setlocal statusline=
-setlocal suffixesadd=
-setlocal noswapfile
-setlocal synmaxcol=3000
-if &syntax != 'lua'
-setlocal syntax=lua
-endif
-setlocal tabstop=4
-setlocal tags=
-setlocal textwidth=0
-setlocal thesaurus=
-setlocal noundofile
-setlocal nowinfixheight
-setlocal nowinfixwidth
-setlocal wrap
-setlocal wrapmargin=0
-silent! normal! zE
-let s:l = 13 - ((1 * winheight(0) + 4) / 9)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-13
-normal! 0
+185
+normal! 046l
 lcd C:\archive\flash\connectedworlds
 wincmd w
 argglobal
@@ -1644,31 +1534,142 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 67 - ((2 * winheight(0) + 4) / 8)
+let s:l = 31 - ((4 * winheight(0) + 4) / 9)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-67
-normal! 021l
+31
+normal! 08l
 lcd C:\archive\flash\connectedworlds
 wincmd w
-2wincmd w
+argglobal
+edit C:\Program\ Files\ (x86)\Corona\ Labs\Corona\ SDK\Sample\ Code\GettingStarted\TimeAnimation\main.lua
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal noexpandtab
+if &filetype != 'lua'
+setlocal filetype=lua
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=2
+setlocal imsearch=2
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal nolist
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal nonumber
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=0
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=
+setlocal noswapfile
+setlocal synmaxcol=3000
+if &syntax != 'lua'
+setlocal syntax=lua
+endif
+setlocal tabstop=4
+setlocal tags=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let s:l = 62 - ((3 * winheight(0) + 4) / 8)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+62
+normal! 0
+lcd C:\archive\flash\connectedworlds
+wincmd w
+6wincmd w
 exe '1resize ' . ((&lines * 8 + 19) / 39)
-exe 'vert 1resize ' . ((&columns * 63 + 53) / 107)
+exe 'vert 1resize ' . ((&columns * 53 + 53) / 107)
 exe '2resize ' . ((&lines * 9 + 19) / 39)
-exe 'vert 2resize ' . ((&columns * 63 + 53) / 107)
+exe 'vert 2resize ' . ((&columns * 53 + 53) / 107)
 exe '3resize ' . ((&lines * 9 + 19) / 39)
-exe 'vert 3resize ' . ((&columns * 63 + 53) / 107)
+exe 'vert 3resize ' . ((&columns * 53 + 53) / 107)
 exe '4resize ' . ((&lines * 8 + 19) / 39)
-exe 'vert 4resize ' . ((&columns * 63 + 53) / 107)
+exe 'vert 4resize ' . ((&columns * 53 + 53) / 107)
 exe '5resize ' . ((&lines * 9 + 19) / 39)
-exe 'vert 5resize ' . ((&columns * 43 + 53) / 107)
+exe 'vert 5resize ' . ((&columns * 53 + 53) / 107)
 exe '6resize ' . ((&lines * 8 + 19) / 39)
-exe 'vert 6resize ' . ((&columns * 43 + 53) / 107)
+exe 'vert 6resize ' . ((&columns * 53 + 53) / 107)
 exe '7resize ' . ((&lines * 9 + 19) / 39)
-exe 'vert 7resize ' . ((&columns * 43 + 53) / 107)
+exe 'vert 7resize ' . ((&columns * 53 + 53) / 107)
 exe '8resize ' . ((&lines * 8 + 19) / 39)
-exe 'vert 8resize ' . ((&columns * 43 + 53) / 107)
+exe 'vert 8resize ' . ((&columns * 53 + 53) / 107)
 tabedit C:\archive\flash\connectedworlds\src\com\finegamedesign\connectedworlds\Format.as
 set splitbelow splitright
 wincmd _ | wincmd |
@@ -1692,9 +1693,9 @@ exe 'vert 1resize ' . ((&columns * 83 + 53) / 107)
 exe '2resize ' . ((&lines * 18 + 19) / 39)
 exe 'vert 2resize ' . ((&columns * 83 + 53) / 107)
 exe '3resize ' . ((&lines * 18 + 19) / 39)
-exe 'vert 3resize ' . ((&columns * 82 + 53) / 107)
+exe 'vert 3resize ' . ((&columns * 23 + 53) / 107)
 exe '4resize ' . ((&lines * 18 + 19) / 39)
-exe 'vert 4resize ' . ((&columns * 82 + 53) / 107)
+exe 'vert 4resize ' . ((&columns * 23 + 53) / 107)
 argglobal
 setlocal keymap=
 setlocal noarabic
@@ -2134,15 +2135,15 @@ normal! zt
 191
 normal! 020l
 wincmd w
-2wincmd w
+6wincmd w
 exe '1resize ' . ((&lines * 18 + 19) / 39)
 exe 'vert 1resize ' . ((&columns * 83 + 53) / 107)
 exe '2resize ' . ((&lines * 18 + 19) / 39)
 exe 'vert 2resize ' . ((&columns * 83 + 53) / 107)
 exe '3resize ' . ((&lines * 18 + 19) / 39)
-exe 'vert 3resize ' . ((&columns * 82 + 53) / 107)
+exe 'vert 3resize ' . ((&columns * 23 + 53) / 107)
 exe '4resize ' . ((&lines * 18 + 19) / 39)
-exe 'vert 4resize ' . ((&columns * 82 + 53) / 107)
+exe 'vert 4resize ' . ((&columns * 23 + 53) / 107)
 tabedit C:\archive\flash\connectedworlds\bin\index.html
 set splitbelow splitright
 set nosplitbelow
@@ -2257,7 +2258,7 @@ exe s:l
 normal! zt
 35
 normal! 0
-2wincmd w
+6wincmd w
 tabnext 2
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
