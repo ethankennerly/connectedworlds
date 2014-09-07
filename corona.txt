@@ -1,6 +1,4 @@
 TODO
-    Do not touch a dot.  Nothing happens.
-    Drag.  See progress.
     Connect line.
         reference TimeAnimation
     Connect dots.  See next dots.
@@ -9,6 +7,7 @@ TODO
     Review.
     Intro.
         reference http://coronalabs.com/blog/2014/01/21/introducing-the-composer-api-plus-tutorial/
+    Draw circle at end of line.
 
 REFERENCES
     http://www.lua.org/pil/contents.html

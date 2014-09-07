@@ -19,22 +19,31 @@ local view = {
 
 function newView()
 	view.radiusSquared = view.radius * view.radius
+	view:newScreen()
 	return view
 end
 
-function view:populate(model)
-	view.model = model
-	view:newScreen()
-	view:drawDots()
-	view:drawLines()
-end
-
 function view:newScreen()
+	if view.screen then
+		view.screen:removeSelf()
+	end
 	view.screen = display.newGroup()
 	view.screen.x = display.contentCenterX
 	view.screen.y = display.contentCenterY
 	view.screen.xScale = view.scale
 	view.screen.yScale = view.scale
+end
+
+function view:cancel()
+	view.previousDot = nil
+	view:drawProgress(0, 0, 0)
+end
+
+function view:populate(model)
+	view.model = model
+	view:cancel()
+	view:drawDots()
+	view:drawLines()
 end
 
 function view:drawDots()
@@ -85,12 +94,14 @@ end
 function view:drawProgress(dotIndex, x, y)
 	if view.progressGroup then
 		view.progressGroup:removeSelf()
+		view.progressGroup = nil
 	end
 	if dotIndex <= 0 then
 		return
 	end
 	view.progressGroup = display.newGroup()
 	local dot = view.dots[dotIndex]
+	x, y = view.screen:contentToLocal(x, y)
 	local line = display.newLine(dot.x, dot.y, x, y)
 	line:setStrokeColor(ragDogLib.convertHexToRGB(view.progressColor))
 	line.strokeWidth = view.lineThickness

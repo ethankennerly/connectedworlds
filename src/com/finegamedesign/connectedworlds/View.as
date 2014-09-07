@@ -91,6 +91,7 @@ package com.finegamedesign.connectedworlds
         internal function populate(model:Model):void
         {
             this.model = model;
+            cancel();
             remove(tutorClip);
             drawDots();
             drawLines();

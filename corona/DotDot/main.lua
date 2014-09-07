@@ -32,19 +32,26 @@ local function down( event )
     return isDown
 end
 
--- A general function for dragging objects
 local function answer( event )
 	if down(event) then
-        local dot = view:nextDotAt(event.x, event.y)
+        local x = event.x
+        local y = event.y
+        local dot = view:nextDotAt(x, y)
         if nil == dot then
+            view:drawProgress(model.to, x, y)
         else   
             if model.linesVisible then
                 model.linesVisible = false
                 view:clearLines()
             end
-        end
-	end
+            local index = model:answer(dot.x, dot.y)
+            local correct = 1 <= index
 
+        end
+    else
+        model:cancel()
+        view:cancel()
+	end
 	-- Stop further propagation of touch event!
 	return true
 end

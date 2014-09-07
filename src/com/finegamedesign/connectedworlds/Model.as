@@ -111,14 +111,14 @@ package com.finegamedesign.connectedworlds
          */
         internal function answer(x:int, y:int):int
         {
-            var correct:int = -1;
+            var correctIndex:int = -1;
             if (complete) {
-                correct = 0;
+                correctIndex = 0;
             }
             var dotIndex:int = -1;
             for (var d:int = 0; d < dots.length; d++) {
-                var dot:Array = dots[d];
-                if (x == dot[0] && y == dot[1]) {
+                var xy:Array = dots[d];
+                if (x == xy[0] && y == xy[1]) {
                     dotIndex = d;
                     break;
                 }
@@ -135,18 +135,18 @@ package com.finegamedesign.connectedworlds
                 var connection:Array = connections[c];
                 if (connecting[0] == connection[0] && connecting[1] == connection[1]) {
                     connections.splice(c, 1);
-                    correct = dotIndex;
+                    correctIndex = dotIndex;
                     referee.add++;
                 }
             }
             if (connecting[0] == connecting[1]) {
-                correct = dotIndex;
+                correctIndex = dotIndex;
             }
             connecting = [dotIndex];
             from = to;
             to = dotIndex;
-            // trace("Model.answer: " + correct + " x " + x + " y " + y + " connecting " + connecting);
-            return correct;
+            // trace("Model.answer: " + correctIndex + " x " + x + " y " + y + " connecting " + connecting);
+            return correctIndex;
         }
 
         internal function get only():Boolean
