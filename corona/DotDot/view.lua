@@ -2,6 +2,7 @@
 local ragDogLib = require "ragDogLib"
 
 local view = {
+	connectionGroup = nil,
 	dotGroup = nil,
 	dots = nil,
 	lineColor = "#006699",
@@ -15,17 +16,25 @@ local view = {
 	radiusSquared = nil,
 	scale = 2.0,
 	screen = nil,
+	wrongLineColor = "#FF3299",
 }
 
 function newView()
 	view.radiusSquared = view.radius * view.radius
 	view:newScreen()
+	if view.connectionGroup then
+		view.connectionGroup:removeSelf()
+		view.connectionGroup = nil
+	end
+	view.connectionGroup = display.newGroup()
+	view.screen:insert(view.connectionGroup)
 	return view
 end
 
 function view:newScreen()
 	if view.screen then
 		view.screen:removeSelf()
+		view.screen = nil
 	end
 	view.screen = display.newGroup()
 	view.screen.x = display.contentCenterX
@@ -50,6 +59,7 @@ function view:drawDots()
 	view.dots = {}
 	if view.dotGroup then
 		view.dotGroup:removeSelf()
+		view.dotGroup = nil
 	end
 	view.dotGroup = display.newGroup()
 	for key, xy in next, view.model.dots, nil do
@@ -65,6 +75,7 @@ end
 function view:drawLines()
 	if view.lineGroup then
 		view.lineGroup:removeSelf()
+		view.lineGroup = nil
 	end
 	view.lineGroup = display.newGroup()
 	local line = nil
@@ -108,6 +119,20 @@ function view:drawProgress(dotIndex, x, y)
 	view.progressGroup:insert(line)
 	view.screen:insert(view.progressGroup)
 end
+
+function view:drawConnection(fromDotIndex, toDotIndex, correct)
+	if fromDotIndex <= 0 or toDotIndex <= 0 then
+		return
+	end
+	local dot0 = view.dots[fromDotIndex]
+	local dot1 = view.dots[toDotIndex]
+	local line = display.newLine(dot0.x, dot0.y, dot1.x, dot1.y)
+	local color = correct and view.lineColor or view.wrongLineColor
+	line:setStrokeColor(ragDogLib.convertHexToRGB(color))
+	line.strokeWidth = view.lineThickness
+	view.connectionGroup:insert(line)
+end
+
 
 function view:near(dx, dy)
 	return dx * dx + dy * dy <= view.radiusSquared

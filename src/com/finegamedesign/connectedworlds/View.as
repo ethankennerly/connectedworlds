@@ -162,11 +162,11 @@ package com.finegamedesign.connectedworlds
             }
             var color:uint = correct ? lineColor : wrongLineColor;
             connection.graphics.lineStyle(lineThickness, color);
-            var xy0:Array = model.dots[fromDotIndex];
-            var xy1:Array = model.dots[toDotIndex];
+            var dot0:DotClip = dots[fromDotIndex];
+            var dot1:DotClip = dots[toDotIndex];
             // trace("View.drawConnection: from " + xy0 + " to " + xy1);
-            connection.graphics.moveTo(xy0[0], xy0[1]);
-            connection.graphics.lineTo(xy1[0], xy1[1]);
+            connection.graphics.moveTo(dot0.x, dot0.y);
+            connection.graphics.lineTo(dot1.x, dot1.y);
             animateDot(toDotIndex);
         }
 

@@ -137,6 +137,7 @@ package com.finegamedesign.connectedworlds
                     connections.splice(c, 1);
                     correctIndex = dotIndex;
                     referee.add++;
+                    break;
                 }
             }
             if (connecting[0] == connecting[1]) {

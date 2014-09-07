@@ -46,7 +46,7 @@ local function answer( event )
             end
             local index = model:answer(dot.x, dot.y)
             local correct = 1 <= index
-
+            view:drawConnection(model.from, model.to, correct)
         end
     else
         model:cancel()

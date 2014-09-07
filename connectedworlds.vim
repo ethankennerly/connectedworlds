@@ -747,15 +747,15 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe '1resize ' . ((&lines * 13 + 23) / 47)
+exe '1resize ' . ((&lines * 15 + 23) / 47)
 exe 'vert 1resize ' . ((&columns * 63 + 63) / 126)
-exe '2resize ' . ((&lines * 16 + 23) / 47)
+exe '2resize ' . ((&lines * 14 + 23) / 47)
 exe 'vert 2resize ' . ((&columns * 63 + 63) / 126)
 exe '3resize ' . ((&lines * 14 + 23) / 47)
 exe 'vert 3resize ' . ((&columns * 63 + 63) / 126)
-exe '4resize ' . ((&lines * 15 + 23) / 47)
+exe '4resize ' . ((&lines * 14 + 23) / 47)
 exe 'vert 4resize ' . ((&columns * 62 + 63) / 126)
-exe '5resize ' . ((&lines * 14 + 23) / 47)
+exe '5resize ' . ((&lines * 15 + 23) / 47)
 exe 'vert 5resize ' . ((&columns * 62 + 63) / 126)
 exe '6resize ' . ((&lines * 14 + 23) / 47)
 exe 'vert 6resize ' . ((&columns * 62 + 63) / 126)
@@ -861,12 +861,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 97 - ((4 * winheight(0) + 6) / 13)
+let s:l = 128 - ((6 * winheight(0) + 7) / 15)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-97
-normal! 025l
+128
+normal! 018l
 wincmd w
 argglobal
 edit corona\DotDot\model.lua
@@ -971,12 +971,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 47 - ((6 * winheight(0) + 8) / 16)
+let s:l = 52 - ((5 * winheight(0) + 7) / 14)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-47
-normal! 060l
+52
+normal! 035l
 wincmd w
 argglobal
 edit corona\DotDot\main.lua
@@ -1081,12 +1081,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 35 - ((6 * winheight(0) + 7) / 14)
+let s:l = 49 - ((10 * winheight(0) + 7) / 14)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-35
-normal! 0
+49
+normal! 061l
 wincmd w
 argglobal
 edit src\com\finegamedesign\connectedworlds\View.as
@@ -1191,12 +1191,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 94 - ((8 * winheight(0) + 7) / 15)
+let s:l = 169 - ((9 * winheight(0) + 7) / 14)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-94
-normal! 012l
+169
+normal! 052l
 lcd C:\archive\flash\connectedworlds
 wincmd w
 argglobal
@@ -1302,12 +1302,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 149 - ((10 * winheight(0) + 7) / 14)
+let s:l = 140 - ((10 * winheight(0) + 7) / 15)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-149
-normal! 026l
+140
+normal! 025l
 lcd C:\archive\flash\connectedworlds
 wincmd w
 argglobal
@@ -1413,23 +1413,24 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 211 - ((9 * winheight(0) + 7) / 14)
+let s:l = 204 - ((11 * winheight(0) + 7) / 14)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-211
+204
 normal! 028l
 lcd C:\archive\flash\connectedworlds
 wincmd w
-exe '1resize ' . ((&lines * 13 + 23) / 47)
+2wincmd w
+exe '1resize ' . ((&lines * 15 + 23) / 47)
 exe 'vert 1resize ' . ((&columns * 63 + 63) / 126)
-exe '2resize ' . ((&lines * 16 + 23) / 47)
+exe '2resize ' . ((&lines * 14 + 23) / 47)
 exe 'vert 2resize ' . ((&columns * 63 + 63) / 126)
 exe '3resize ' . ((&lines * 14 + 23) / 47)
 exe 'vert 3resize ' . ((&columns * 63 + 63) / 126)
-exe '4resize ' . ((&lines * 15 + 23) / 47)
+exe '4resize ' . ((&lines * 14 + 23) / 47)
 exe 'vert 4resize ' . ((&columns * 62 + 63) / 126)
-exe '5resize ' . ((&lines * 14 + 23) / 47)
+exe '5resize ' . ((&lines * 15 + 23) / 47)
 exe 'vert 5resize ' . ((&columns * 62 + 63) / 126)
 exe '6resize ' . ((&lines * 14 + 23) / 47)
 exe 'vert 6resize ' . ((&columns * 62 + 63) / 126)
@@ -1783,11 +1784,11 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 208 - ((0 * winheight(0) + 7) / 15)
+let s:l = 209 - ((0 * winheight(0) + 7) / 15)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-208
+209
 normal! 0186l
 lcd C:\archive\flash\connectedworlds
 wincmd w
@@ -1902,6 +1903,7 @@ normal! zt
 normal! 020l
 lcd C:\archive\flash\connectedworlds
 wincmd w
+2wincmd w
 exe '1resize ' . ((&lines * 15 + 23) / 47)
 exe 'vert 1resize ' . ((&columns * 69 + 63) / 126)
 exe '2resize ' . ((&lines * 16 + 23) / 47)
@@ -2025,7 +2027,8 @@ normal! zt
 35
 normal! 0
 lcd C:\archive\flash\connectedworlds
-tabnext 1
+2wincmd w
+tabnext 2
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
 endif

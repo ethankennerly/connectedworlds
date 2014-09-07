@@ -1,13 +1,13 @@
 TODO
-    Connect line.
-        reference TimeAnimation
     Connect dots.  See next dots.
+    Animate connecting a dot.
     Prompt.
         reference Easing
     Review.
     Intro.
         reference http://coronalabs.com/blog/2014/01/21/introducing-the-composer-api-plus-tutorial/
     Draw circle at end of line.
+    Fade
 
 REFERENCES
     http://www.lua.org/pil/contents.html

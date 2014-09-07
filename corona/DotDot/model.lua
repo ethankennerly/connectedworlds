@@ -51,10 +51,11 @@ function model:answer(x, y)
 	end
 	connecting[ #connecting + 1 ] = dotIndex
 	table.sort(connecting)
-	for c, connection in next, model.connections, nil do
+	for c, connection in ipairs(model.connections) do
 		if connecting[1] == connection[1] and connecting[2] == connection[2] then
-			table.remove(connections, connection)
+			table.remove(model.connections, c)
 			correctIndex = dotIndex
+			break
 		end
 	end
 	if connecting[1] == connecting[2] then
