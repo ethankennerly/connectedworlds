@@ -1,5 +1,6 @@
 -- http://ragdogstudios.com/2014/01/04/convert-hex-to-rgb-values-to-new-corona-sdk-standards/
 local ragDogLib = require "ragDogLib"
+local prompt = require "prompt"
 
 local view = {
 	connectionGroup = nil,
@@ -24,6 +25,8 @@ local view = {
 function newView()
 	view.radiusSquared = view.radius * view.radius
 	view:newScreen()
+	view.connectionGroup = display.newGroup()
+	view.progressGroup = display.newGroup()
 	return view
 end
 
@@ -46,8 +49,12 @@ end
 
 function view:clearGroup(groupName)
 	if view[groupName] and view[groupName].parent then
-		view[groupName]:removeSelf()
-		view[groupName] = nil
+		while 1 <= view[groupName].numChildren do
+			local childIndex = view[groupName].numChildren
+			view[groupName][childIndex]:removeSelf()
+		end
+		-- view[groupName]:removeSelf()
+		-- view[groupName] = nil
 	end
 end
 
@@ -64,8 +71,8 @@ function view:populate(model)
 	view:cancel()
 	view:drawDots()
 	view:drawLines()
-	view.connectionGroup = display.newGroup()
 	view.screen:insert(view.connectionGroup)
+	view.screen:insert(view.progressGroup)
 end
 
 function view:drawDots()
@@ -104,24 +111,20 @@ function view:clearLines()
 		view.lineGroup:removeSelf()
 		view.lineGroup = nil
 	end
+	prompt:destroy()
 end
 
 function view:drawProgress(dotIndex, x, y)
-	if view.progressGroup then
-		view.progressGroup:removeSelf()
-		view.progressGroup = nil
-	end
+	view:clearGroup("progressGroup")
 	if dotIndex <= 0 then
 		return
 	end
-	view.progressGroup = display.newGroup()
 	local dot = view.dots[dotIndex]
 	x, y = view.screen:contentToLocal(x, y)
 	local line = display.newLine(dot.x, dot.y, x, y)
 	line:setStrokeColor(ragDogLib.convertHexToRGB(view.progressColor))
 	line.strokeWidth = view.lineThickness
 	view.progressGroup:insert(line)
-	view.screen:insert(view.progressGroup)
 end
 
 function view:drawConnection(fromDotIndex, toDotIndex, correct)
@@ -147,14 +150,27 @@ function view:nextDotAt(x, y)
 	x, y = view.screen:contentToLocal(x, y)
 	for key, dot in next, view.dots, nil do
 		if view:near(dot.x - x, dot.y - y) then
-			if dot ~= previousDot then
-				previousDot = dot
+			if dot ~= view.previousDot then
+				view.previousDot = dot
 				at = dot
 			end
 			break
 		end
 	end
 	return at
+end
+
+-- Why does view.progressGroup:insert fail?
+function view:prompt(dotIndexes)
+	local dot1 = view.dots[dotIndexes[1]]
+	local dot2 = view.dots[dotIndexes[2]]
+	local hand = prompt:line(dot1.x, dot1.y, dot2.x, dot2.y)
+	assert(view.progressGroup, "Expected progressGroup")
+	assert(view.progressGroup.insert, "Expected progressGroup:insert")
+	assert(hand, "Expected hand") 
+	view.progressGroup:insert(hand)
+	-- print(hand, hand.x, hand.y, hand.xScale)
+	-- view.screen:insert(hand)
 end
 
 return newView()

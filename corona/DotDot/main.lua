@@ -13,6 +13,7 @@ function trial()
     clear()
     model:populate()
     view:populate(model)
+	view:prompt(model.connections[1])
 end
 
 local function down( event )

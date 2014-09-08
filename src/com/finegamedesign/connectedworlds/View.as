@@ -35,11 +35,7 @@ package com.finegamedesign.connectedworlds
                                     // 40;
         private var radiusSquared:Number;
         private var reviewClip:ReviewClip;
-        /**
-         * 2014-08-23 Aaron at The MADE expects to emphasize ring at dot.
-         * Diagonal motion with finger to touch.  2014-08-23 Jennifer Russ expects to recognize icon and motion to swipe.  Got confused that it was a loading bar.  2014-08-24 Beth expects to see instructions on what to do.
-         */
-        private var tutorClip:TutorClip;
+        private var _prompt:Prompt;
 
         /**
          * In BackgroundClip timeline:  After panning, just before first trial, eyes wake up, blink, look up.  Goes to sleep.  2014-08-25 End.  Tyler Hinman expects animation to save the baby.
@@ -47,6 +43,7 @@ package com.finegamedesign.connectedworlds
         public function View(parent:DisplayObjectContainer)
         {
             radiusSquared = radius * radius;
+            _prompt = new Prompt();
             screen = new Screen();
             backgroundClip = new BackgroundClip();
             parent.addChild(backgroundClip);
@@ -55,10 +52,6 @@ package com.finegamedesign.connectedworlds
             screen.gotoAndStop(1);
             progress = new Sprite();
             connection = new Sprite();
-            tutorClip = new TutorClip();
-            tutorClip.mouseChildren = false;
-            tutorClip.mouseEnabled = false;
-            tutorClip.gotoAndStop(1);
             screen.dots.mouseChildren = false;
             screen.dots.mouseEnabled = false;
             screen.canvas.mouseChildren = false;
@@ -92,7 +85,7 @@ package com.finegamedesign.connectedworlds
         {
             this.model = model;
             cancel();
-            remove(tutorClip);
+            remove(_prompt.handClip);
             drawDots();
             drawLines();
         }
@@ -145,12 +138,12 @@ package com.finegamedesign.connectedworlds
             if ("trial" != backgroundClip.currentLabel) {
                 backgroundClip.gotoAndPlay("trial");
             }
-            Trace.destroy();
+            _prompt.destroy();
         }
 
         internal function clearLines():void
         {
-            Trace.destroy();
+            _prompt.destroy();
             screen.gotoAndPlay("input");
         }
 
@@ -224,7 +217,7 @@ package com.finegamedesign.connectedworlds
             for each(var dot:DotClip in dots) {
                 remove(dot);
             }
-            remove(tutorClip);
+            remove(_prompt.handClip);
             screen.lines.graphics.clear();
             connection.graphics.clear();
             progress.graphics.clear();
@@ -258,16 +251,11 @@ package com.finegamedesign.connectedworlds
          */
         internal function prompt(dotIndexes:Array):void
         {
-            progress.addChild(tutorClip);
-            var startSeconds:Number = 80.0 / 30.0;
-            var endSeconds:Number = 110.0 / 30.0;
-            var repeatSeconds:Number = 150.0 / 30.0;
             var dot0:DotClip = dots[dotIndexes[0]];
-            tutorClip.x = dot0.x;
-            tutorClip.y = dot0.y;
             var dot1:DotClip = dots[dotIndexes[1]];
-            new Trace(tutorClip, startSeconds, endSeconds, repeatSeconds,
-                dot1.x, dot1.y);
+            var handClip:HandClip = _prompt.line(dot0.x, dot0.y, dot1.x, dot1.y);
+            progress.addChild(handClip);
+            
         }
 
         internal function hintDistractors(dotIndexes:Array):void
