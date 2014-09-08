@@ -220,6 +220,7 @@ package com.finegamedesign.connectedworlds
 
         internal function clear():void
         {
+            cancel();
             for each(var dot:DotClip in dots) {
                 remove(dot);
             }

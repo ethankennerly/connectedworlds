@@ -106,6 +106,13 @@ package com.finegamedesign.connectedworlds
             to = -1;
         }
 
+        internal function listen():void
+        {
+            if (inTrial && !listening) {
+                listening = true;
+            }
+        }
+
         /**
          * Answer expects each connection is numerically sorted.
          */
@@ -160,10 +167,6 @@ package com.finegamedesign.connectedworlds
             return null != connections && connections.length <= 0;
         }
 
-        internal function clear():void
-        {
-        }
-
         /**
          * Review.  Wrong.  Repeat.  2014-08-29 Review Wrong.  Samantha Yang expects to fix repeat number.
          */
@@ -173,6 +176,7 @@ package com.finegamedesign.connectedworlds
                 return;
             }
             inTrial = false;
+            listening = false;
             graphsOld[level] = true;
             if (correct) {
                 referee.add = dots.length;
@@ -183,20 +187,11 @@ package com.finegamedesign.connectedworlds
                     trial++;
                 }
             }
-            if (correct) {
-                if (reviewing) {
-                    enabled = false;
-                }
-                else {
-                    level = findNewLevel(true);
-                }
+            if (reviewing) {
+                enabled = correct;
             }
             else {
-                if (reviewing) {
-                }
-                else {
-                    level = findNewLevel(false);
-                }
+                level = findNewLevel(correct);
             }
             if (!reviewing && review) {
                 reviewing = true;
@@ -245,22 +240,22 @@ package com.finegamedesign.connectedworlds
                 up = -1;
                 stepUp = stepUpMin;
             }
-            var next:int = Math.min(level + up, graphs.length - 1);
+            var nextLevel:int = Math.min(level + up, graphs.length - 1);
             up = 1;
-            var head:int = next;
+            var head:int = nextLevel;
             var attempt:int = 0;
-            while (next in graphsOld) {
-                next += up;
-                if (next < 0 || graphs.length - 1 <= next) {
+            while (nextLevel in graphsOld) {
+                nextLevel += up;
+                if (nextLevel < 0 || graphs.length - 1 <= nextLevel) {
                     head -= up;
-                    next = head - up;
+                    nextLevel = head - up;
                 }
                 attempt++;
                 if (1024 <= attempt) {
                     throw new Error("Expected to find new level.");
                 }
             }
-            return next;
+            return nextLevel;
         }
     }
 }

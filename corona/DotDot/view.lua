@@ -14,7 +14,9 @@ local view = {
 	previousDot = nil,
 	radius = 32,
 	radiusSquared = nil,
-	scale = 2.0,
+	scale = 1.5,
+			-- 1.8,
+			-- 2.0,
 	screen = nil,
 	wrongLineColor = "#FF3299",
 }
@@ -22,12 +24,6 @@ local view = {
 function newView()
 	view.radiusSquared = view.radius * view.radius
 	view:newScreen()
-	if view.connectionGroup then
-		view.connectionGroup:removeSelf()
-		view.connectionGroup = nil
-	end
-	view.connectionGroup = display.newGroup()
-	view.screen:insert(view.connectionGroup)
 	return view
 end
 
@@ -48,19 +44,33 @@ function view:cancel()
 	view:drawProgress(0, 0, 0)
 end
 
+function view:clearGroup(groupName)
+	if view[groupName] and view[groupName].parent then
+		view[groupName]:removeSelf()
+		view[groupName] = nil
+	end
+end
+
+function view:clear()
+	view:cancel()
+	view:clearGroup("dotGroup");
+	view:clearGroup("lineGroup");
+	view:clearGroup("connectionGroup");
+	view:clearGroup("progressGroup");
+end
+
 function view:populate(model)
 	view.model = model
 	view:cancel()
 	view:drawDots()
 	view:drawLines()
+	view.connectionGroup = display.newGroup()
+	view.screen:insert(view.connectionGroup)
 end
 
 function view:drawDots()
 	view.dots = {}
-	if view.dotGroup then
-		view.dotGroup:removeSelf()
-		view.dotGroup = nil
-	end
+	view:clearGroup("dotGroup");
 	view.dotGroup = display.newGroup()
 	for key, xy in next, view.model.dots, nil do
 		local dot = display.newImage( "dot.png", xy[1], xy[2])
@@ -78,27 +88,21 @@ function view:drawLines()
 		view.lineGroup = nil
 	end
 	view.lineGroup = display.newGroup()
-	local line = nil
-	local first = true
 	for key, ij in next, view.model.connections, nil do
 		local xy1 = view.model.dots[ij[1]]
 		local xy2 = view.model.dots[ij[2]]
-		if first then
-			line = display.newLine(xy1[1], xy1[2], xy2[1], xy2[2])
-		else
-			line:append(xy1[1], xy1[2], xy2[1], xy2[2])
-		end
-		first = false
+		local line = display.newLine(xy1[1], xy1[2], xy2[1], xy2[2])
+		line:setStrokeColor(ragDogLib.convertHexToRGB(view.lineColor))
+		line.strokeWidth = view.lineThickness
+		view.lineGroup:insert(line)
 	end
-	line:setStrokeColor(ragDogLib.convertHexToRGB(view.lineColor))
-	line.strokeWidth = view.lineThickness
-	view.lineGroup:insert(line)
 	view.screen:insert(view.lineGroup)
 end
 
 function view:clearLines()
 	if view.lineGroup then
 		view.lineGroup:removeSelf()
+		view.lineGroup = nil
 	end
 end
 

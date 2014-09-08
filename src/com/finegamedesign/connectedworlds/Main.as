@@ -118,58 +118,39 @@ package com.finegamedesign.connectedworlds
             }
             if (keyMouse.justPressed("ENTER")) {
                 if (model.enabled) {
-                    win();
+                    trialEnd(true);
                 }
             }
-            if (model.inTrial && !model.listening) {
-                model.listening = keyMouse.justPressed("MOUSE");
+            if (keyMouse.justPressed("MOUSE")) {
+                model.listen();
             }
             if (!model.enabled && !model.inTrial && "trialEnable" == view.backgroundClip.currentLabel) {
                 trialEnable();
             }
         }
 
-        private function win():void
+        private function trialEnd(correct:Boolean):void
         {
-            model.trialEnd(true);
-            if (!model.enabled) {
-                view.end();
-            }
-            else {
-                view.win();
-            }
-            reset();
-            // FlxKongregate.api.stats.submit("Score", Model.score);
-            // API.postScore("Score", Model.score);
-        }
-
-        private function reset():void
-        {
-            // trace("Main.reset");
-            if (null != loopChannel) {
-                // loopChannel.stop();
+            model.trialEnd(correct);
+            if (correct) {
+                if (!model.enabled) {
+                    view.end();
+                }
+                else {
+                    view.win();
+                }
             }
             view.cancel();
             if ("end" != view.screen.currentLabel) {
                 view.screen.gotoAndPlay("end");
             }
-        }
-
-        private function lose():void
-        {
-            model.trialEnd(false);
-            reset();
             // FlxKongregate.api.stats.submit("Score", Model.score);
             // API.postScore("Score", Model.score);
-            // mouseChildren = false;
         }
 
         public function clear():void
         {
-            if (model) {
-                model.clear();
-            }
-            if (view) {
+            if (null != view) {
                 view.clear();
             }
         }
@@ -182,7 +163,7 @@ package com.finegamedesign.connectedworlds
          */
         private function answer(e:MouseEvent):void
         {
-            if (model.inTrial && model.listening) {
+            if (model.listening) {
                 var down:Boolean = keyMouse.pressed("MOUSE");
                 if (down) {
                     var x:Number = e.currentTarget.mouseX;
@@ -203,12 +184,12 @@ package com.finegamedesign.connectedworlds
                             Sounds.instance.next();
                             if (model.complete)
                             {
-                                win();
+                                trialEnd(correct);
                             }
                         }
                         else {
                             Sounds.instance.wrong();
-                            lose();
+                            trialEnd(correct);
                         }
                     }
                 }

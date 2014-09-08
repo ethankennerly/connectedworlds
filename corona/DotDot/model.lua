@@ -6,11 +6,18 @@ local model = {
 	connections = {},
 	dots = {},
 	from = -1,
+	graphsOld = {},
 	inTrial = false,
 	level = 1,
 	linesVisible = false,
+	listening = false,
 	to = -1,
 }
+
+function newModel()
+	model.graphsOld = {}
+	return model
+end
 
 function model:cancel()
 	model.connecting = {}
@@ -26,16 +33,38 @@ function model:populate()
 	end
 	model.linesVisible = true
 	model.inTrial = true
+	model.listening = false
 end
 
 function model:complete()
 	return table.getn(model.connections) <= 0
 end
 
+function model:trialEnd(correct)
+	if not model.inTrial then
+		return
+	end
+	model.inTrial = false
+	model.listening = false
+	model.graphsOld[model.level] = true
+	model.level = model:findNewLevel(correct)
+	-- print("model:trialEnd: level " .. model.level)
+end
+
+function model:findNewLevel(correct)
+	return model.level + (correct and 1 or 0)
+end
+
+function model:listen()
+	if model.inTrial and not model.listening then
+		model.listening = true
+	end
+end
+
 function model:answer(x, y)
 	local correctIndex = 0
 	if model:complete() then
-		correctIndex = 1
+		correctIndex = 1 
 	end
 	local dotIndex = 0
 	for d, xy in next, model.dots, nil do
@@ -63,9 +92,10 @@ function model:answer(x, y)
 	end
 	connecting = {}
 	table.insert(connecting, dotIndex)
+	model.connecting = connecting
 	model.from = model.to
 	model.to = dotIndex
 	return correctIndex
 end
 
-return model
+return newModel()
