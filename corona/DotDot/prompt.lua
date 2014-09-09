@@ -5,7 +5,7 @@ local prompt = {
 }
 
 -- Anchor copied from Flash position and dimensions.
-function new()
+function prompt:new()
 	prompt.hand = display.newImage("hand.png", -400, -400)
 	prompt.hand.anchorX = 57.0 / 131.0
 	prompt.hand.anchorY = 55.0 / 180.0
@@ -22,7 +22,7 @@ end
 -- Prompt delays, fades in, travels, fades out, delays, and repeats.
 function prompt:line(x1, y1, x2, y2)
 	prompt:destroy()
-	new()
+	prompt:new()
 	local startMilliseconds = 80.0 / 30.0 * 1000.0
 	local endMilliseconds = 110.0 / 30.0 * 1000.0
 	local repeatMilliseconds = 150.0 / 30.0 * 1000.0
@@ -41,4 +41,4 @@ function prompt:line(x1, y1, x2, y2)
 	return prompt.hand
 end
 
-return new()
+return prompt:new()

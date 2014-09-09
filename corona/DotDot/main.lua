@@ -3,13 +3,13 @@ display.setStatusBar( display.HiddenStatusBar )
 local model = require "model"
 local view = require "view"
 
-function clear()
+local function clear()
     if view then
         view:clear()
     end
 end
 
-function trial()
+local function trial()
     clear()
     model:populate()
     view:populate(model)

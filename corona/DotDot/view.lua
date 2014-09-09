@@ -22,7 +22,7 @@ local view = {
 	wrongLineColor = "#FF3299",
 }
 
-function new()
+function view:new()
 	view.radiusSquared = view.radius * view.radius
 	view:newScreen()
 	view.connectionGroup = display.newGroup()
@@ -48,14 +48,13 @@ function view:cancel()
 	prompt:destroy()
 end
 
+-- Remove children.  Keep self.
 function view:clearGroup(groupName)
 	if view[groupName] and view[groupName].parent then
 		while 1 <= view[groupName].numChildren do
 			local childIndex = view[groupName].numChildren
 			view[groupName][childIndex]:removeSelf()
 		end
-		-- view[groupName]:removeSelf()
-		-- view[groupName] = nil
 	end
 end
 
@@ -74,13 +73,14 @@ function view:populate(model)
 	view:drawLines()
 	view.screen:insert(view.connectionGroup)
 	view.screen:insert(view.progressGroup)
-	-- view:screenBegin()
+	view:screenBegin()
 end
 
--- function view:screenBegin()
--- 	local fadeMilliseconds = 7.0 / 30.0 * 1000.0
--- 	transition.fadeIn(view.lineGroup, {time = fadeMilliseconds})
--- end
+function view:screenBegin() 
+ 	local fadeMilliseconds = 7.0 / 30.0 * 1000.0
+	view.lineGroup.alpha = 0.0
+ 	transition.fadeIn(view.lineGroup, {time = fadeMilliseconds})
+end
 
 function view:drawDots()
 	view.dots = {}
@@ -175,4 +175,4 @@ function view:prompt(dotIndexes)
 	view.progressGroup:insert(hand)
 end
 
-return new()
+return view:new()
