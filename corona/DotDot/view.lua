@@ -1,5 +1,5 @@
 -- http://ragdogstudios.com/2014/01/04/convert-hex-to-rgb-values-to-new-corona-sdk-standards/
-local ragDogLib = require "ragDogLib"
+local ragdoglib = require "ragdoglib"
 local prompt = require "prompt"
 
 local view = {
@@ -99,7 +99,7 @@ function view:drawLines()
 		local xy1 = view.model.dots[ij[1]]
 		local xy2 = view.model.dots[ij[2]]
 		local line = display.newLine(xy1[1], xy1[2], xy2[1], xy2[2])
-		line:setStrokeColor(ragDogLib.convertHexToRGB(view.lineColor))
+		line:setStrokeColor(ragdoglib.convertHexToRGB(view.lineColor))
 		line.strokeWidth = view.lineThickness
 		view.lineGroup:insert(line)
 	end
@@ -122,7 +122,7 @@ function view:drawProgress(dotIndex, x, y)
 	local dot = view.dots[dotIndex]
 	x, y = view.screen:contentToLocal(x, y)
 	local line = display.newLine(dot.x, dot.y, x, y)
-	line:setStrokeColor(ragDogLib.convertHexToRGB(view.progressColor))
+	line:setStrokeColor(ragdoglib.convertHexToRGB(view.progressColor))
 	line.strokeWidth = view.lineThickness
 	view.progressGroup:insert(line)
 end
@@ -135,7 +135,7 @@ function view:drawConnection(fromDotIndex, toDotIndex, correct)
 	local dot1 = view.dots[toDotIndex]
 	local line = display.newLine(dot0.x, dot0.y, dot1.x, dot1.y)
 	local color = correct and view.lineColor or view.wrongLineColor
-	line:setStrokeColor(ragDogLib.convertHexToRGB(color))
+	line:setStrokeColor(ragdoglib.convertHexToRGB(color))
 	line.strokeWidth = view.lineThickness
 	view.connectionGroup:insert(line)
 end

@@ -1,7 +1,6 @@
 TODO
-    Prompt.
-        reference Easing
-    Fade dots in and out.
+    Prompt appears and disappears.
+    Bookend trial: Fade dots in and out.
     Animate connecting a dot.
     Draw circle at end of line.
     Connect.  Hear next sound.
@@ -12,5 +11,6 @@ TODO
 
 REFERENCES
     http://www.lua.org/pil/contents.html
+    https://github.com/Olivine-Labs/lua-style-guide
 
 JOURNAL
