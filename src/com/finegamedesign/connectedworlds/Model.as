@@ -169,6 +169,7 @@ package com.finegamedesign.connectedworlds
 
         /**
          * Review.  Wrong.  Repeat.  2014-08-29 Review Wrong.  Samantha Yang expects to fix repeat number.
+         * If reviewing and correct, disable. 2014-09-09 Review.  Complete.  Expect to fix to continue.  Got repeat review.
          */
         internal function trialEnd(correct:Boolean):void
         {
@@ -178,17 +179,17 @@ package com.finegamedesign.connectedworlds
             inTrial = false;
             listening = false;
             graphsOld[level] = true;
-            if (correct) {
-                referee.add = dots.length;
-            }
             if (levelTutor <= level) {
                 if (!reviewing) {
+                    if (correct) {
+                        referee.add = dots.length;
+                    }
                     referee.stop();
                     trial++;
                 }
             }
             if (reviewing) {
-                enabled = correct;
+                enabled = !correct;
             }
             else {
                 level = findNewLevel(correct);

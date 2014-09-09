@@ -194,6 +194,15 @@ def sort(dots, connections):
     [[-164, 142], [0, -142], [163, 142]]
     >>> dip['connections']
     [[0, 1], [1, 2]]
+    
+    Remove duplicate connections, which game does not tolerate.
+    2014-09-08 Cat. Cannot complete.
+    >>> line = {'connections': [[0, 1], [0, 1]], 'dots': [[113, -113], [-113, 113]]}
+    >>> sort(line['dots'], line['connections'])
+    >>> line['dots']
+    [[-113, 113], [113, -113]]
+    >>> line['connections']
+    [[0, 1]]
     """
     olds = [dot for dot in dots]
     dots.sort()
@@ -202,6 +211,11 @@ def sort(dots, connections):
         c[1] = dots.index(olds[c[1]])
         c.sort()
     connections.sort()
+    next = None
+    for current in reversed(connections):
+        if current == next:
+            connections.remove(next)
+        next = current
 
 
 def main(paths, vertical=True):
