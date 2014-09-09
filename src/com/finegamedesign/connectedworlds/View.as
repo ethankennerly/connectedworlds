@@ -84,8 +84,6 @@ package com.finegamedesign.connectedworlds
         internal function populate(model:Model):void
         {
             this.model = model;
-            cancel();
-            remove(_prompt.handClip);
             drawDots();
             drawLines();
         }
@@ -204,6 +202,7 @@ package com.finegamedesign.connectedworlds
         {
             previousDot = null;
             drawProgress(-1, 0, 0);
+            _prompt.destroy();
         }
 
         private function near(dx:Number, dy:Number):Boolean
@@ -217,7 +216,6 @@ package com.finegamedesign.connectedworlds
             for each(var dot:DotClip in dots) {
                 remove(dot);
             }
-            remove(_prompt.handClip);
             screen.lines.graphics.clear();
             connection.graphics.clear();
             progress.graphics.clear();

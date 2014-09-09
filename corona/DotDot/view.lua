@@ -22,7 +22,7 @@ local view = {
 	wrongLineColor = "#FF3299",
 }
 
-function newView()
+function new()
 	view.radiusSquared = view.radius * view.radius
 	view:newScreen()
 	view.connectionGroup = display.newGroup()
@@ -45,6 +45,7 @@ end
 function view:cancel()
 	view.previousDot = nil
 	view:drawProgress(0, 0, 0)
+	prompt:destroy()
 end
 
 function view:clearGroup(groupName)
@@ -73,7 +74,13 @@ function view:populate(model)
 	view:drawLines()
 	view.screen:insert(view.connectionGroup)
 	view.screen:insert(view.progressGroup)
+	-- view:screenBegin()
 end
+
+-- function view:screenBegin()
+-- 	local fadeMilliseconds = 7.0 / 30.0 * 1000.0
+-- 	transition.fadeIn(view.lineGroup, {time = fadeMilliseconds})
+-- end
 
 function view:drawDots()
 	view.dots = {}
@@ -165,12 +172,7 @@ function view:prompt(dotIndexes)
 	local dot1 = view.dots[dotIndexes[1]]
 	local dot2 = view.dots[dotIndexes[2]]
 	local hand = prompt:line(dot1.x, dot1.y, dot2.x, dot2.y)
-	assert(view.progressGroup, "Expected progressGroup")
-	assert(view.progressGroup.insert, "Expected progressGroup:insert")
-	assert(hand, "Expected hand") 
 	view.progressGroup:insert(hand)
-	-- print(hand, hand.x, hand.y, hand.xScale)
-	-- view.screen:insert(hand)
 end
 
-return newView()
+return new()

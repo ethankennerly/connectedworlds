@@ -4,6 +4,7 @@ local prompt = {
 	hand = nil,
 }
 
+-- Anchor copied from Flash position and dimensions.
 function new()
 	prompt.hand = display.newImage("hand.png", -400, -400)
 	prompt.hand.anchorX = 57.0 / 131.0

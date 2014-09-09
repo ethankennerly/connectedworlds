@@ -1,5 +1,5 @@
 TODO
-    Bookend trial: Fade dots in and out.
+    Bookend trial: Fade lines, dots.
     Animate connecting a dot.
     Draw circle at end of line.
     Connect.  Hear sound.

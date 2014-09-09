@@ -132,15 +132,15 @@ package com.finegamedesign.connectedworlds
         private function trialEnd(correct:Boolean):void
         {
             model.trialEnd(correct);
+            view.cancel();
             if (correct) {
-                if (!model.enabled) {
-                    view.end();
-                }
-                else {
+                if (model.enabled) {
                     view.win();
                 }
+                else {
+                    view.end();
+                }
             }
-            view.cancel();
             if ("end" != view.screen.currentLabel) {
                 view.screen.gotoAndPlay("end");
             }
