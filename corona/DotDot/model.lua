@@ -4,6 +4,7 @@ local graphs = require "graphs"
 local model = {
 	connecting = {},
 	connections = {},
+	distractors = {},
 	dots = {},
 	from = -1,
 	graphsOld = {},
@@ -14,7 +15,7 @@ local model = {
 	to = -1,
 }
 
-function newModel()
+function model:new()
 	model.graphsOld = {}
 	return model
 end
@@ -34,6 +35,25 @@ function model:populate()
 	model.linesVisible = true
 	model.inTrial = true
 	model.listening = false
+	model.distractors = model:findSingles(model.connections, #model.dots)
+end
+
+function model:findSingles(connections, length)
+	local connecteds = {}
+	for _, connection in ipairs(connections) do
+		for __, index in ipairs(connection) do
+			connecteds[index] = true
+			-- print("model:findSingles: index", index)
+		end	
+	end
+	local singles = {}
+	for index = 1, length do
+		if not connecteds[index] then
+			singles[#singles + 1] = index
+			-- print("model:findSingles: single", index)
+		end
+	end
+	return singles
 end
 
 function model:complete()
@@ -98,4 +118,4 @@ function model:answer(x, y)
 	return correctIndex
 end
 
-return newModel()
+return model:new()

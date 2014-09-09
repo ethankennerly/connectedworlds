@@ -1,6 +1,4 @@
 TODO
-    Wrong.  Pink line.
-    Do not connect.  See pink X.
     Animate connecting a dot.
     Draw circle at end of line.
     Connect.  Hear sound.

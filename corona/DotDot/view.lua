@@ -198,4 +198,12 @@ function view:prompt(dotIndexes)
 	view.progressGroup:insert(hand)
 end
 
+function view:hintDistractors(dotIndexes)
+	for _, dotIndex in ipairs(dotIndexes) do
+		local dot = view.dots[dotIndex]
+		local distractorHint = display.newImage("distractor.png", dot.x, dot.y)
+		view.lineGroup:insert(distractorHint)
+	end
+end
+
 return view:new()
