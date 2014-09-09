@@ -76,10 +76,14 @@ function view:populate(model)
 	view:screenBegin()
 end
 
-function view:screenBegin() 
+function view:screenBegin()
  	local fadeMilliseconds = 7.0 / 30.0 * 1000.0
+ 	local dotFadeInMilliseconds = 18.0 / 30.0 * 1000.0
 	view.lineGroup.alpha = 0.0
+	view.dotGroup.alpha = 0.0
  	transition.fadeIn(view.lineGroup, {time = fadeMilliseconds})
+ 	transition.fadeIn(view.dotGroup, {delay = dotFadeInMilliseconds, 
+									  time = fadeMilliseconds})
 end
 
 function view:drawDots()
