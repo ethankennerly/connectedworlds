@@ -47,14 +47,13 @@ function view:cancel()
 	view:drawProgress(0, 0, 0)
 end
 
+-- Remove children.  Keep self.
 function view:clearGroup(groupName)
 	if view[groupName] and view[groupName].parent then
 		while 1 <= view[groupName].numChildren do
 			local childIndex = view[groupName].numChildren
 			view[groupName][childIndex]:removeSelf()
 		end
-		-- view[groupName]:removeSelf()
-		-- view[groupName] = nil
 	end
 end
 
@@ -73,6 +72,13 @@ function view:populate(model)
 	view:drawLines()
 	view.screen:insert(view.connectionGroup)
 	view.screen:insert(view.progressGroup)
+	view:screenBegin()
+end
+
+function view:screenBegin() 
+ 	local fadeMilliseconds = 7.0 / 30.0 * 1000.0
+	view.lineGroup.alpha = 0.0
+ 	transition.fadeIn(view.lineGroup, {time = fadeMilliseconds})
 end
 
 function view:drawDots()
