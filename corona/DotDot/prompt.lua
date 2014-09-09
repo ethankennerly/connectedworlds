@@ -18,19 +18,25 @@ function prompt:destroy()
 	end
 end
 
+-- Prompt delays, fades in, travels, fades out, delays, and repeats.
 function prompt:line(x1, y1, x2, y2)
 	prompt:destroy()
 	new()
 	local startMilliseconds = 80.0 / 30.0 * 1000.0
 	local endMilliseconds = 110.0 / 30.0 * 1000.0
 	local repeatMilliseconds = 150.0 / 30.0 * 1000.0
+	local fadeMilliseconds = 8.0 / 30.0 * 1000.0
+	local travelMilliseconds = endMilliseconds - startMilliseconds - fadeMilliseconds
+	local postMilliseconds = repeatMilliseconds - endMilliseconds - 2 * fadeMilliseconds
 	prompt.hand.x = x1
 	prompt.hand.y = y1
 	loop(prompt.hand,  
-		{time = 0, x = x1, y = y1},
+		{time = 0, x = x1, y = y1, alpha = 0.0},
 		{time = startMilliseconds},
-		{time = endMilliseconds - startMilliseconds, x = x2, y = y2},
-		{time = repeatMilliseconds - endMilliseconds})
+		{time = fadeMilliseconds, alpha = 1.0},
+		{time = travelMilliseconds, x = x2, y = y2},
+		{time = fadeMilliseconds, alpha = 0.0},
+		{time = postMilliseconds})
 	return prompt.hand
 end
 

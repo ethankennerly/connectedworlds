@@ -1,8 +1,8 @@
 TODO
-    Prompt appears and disappears.
     Bookend trial: Fade dots in and out.
     Animate connecting a dot.
     Draw circle at end of line.
+    Connect.  Hear sound.
     Connect.  Hear next sound.
     Review.
     Up and down levels.
