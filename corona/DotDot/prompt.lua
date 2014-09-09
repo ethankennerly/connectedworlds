@@ -17,6 +17,7 @@ function prompt:destroy()
 	if prompt.hand and prompt.hand.parent then
 		prompt.hand:removeSelf()
 	end
+	prompt.hand.alpha = 0.0
 end
 
 -- Prompt delays, fades in, travels, fades out, delays, and repeats.
@@ -31,6 +32,7 @@ function prompt:line(x1, y1, x2, y2)
 	local postMilliseconds = repeatMilliseconds - endMilliseconds - 2 * fadeMilliseconds
 	prompt.hand.x = x1
 	prompt.hand.y = y1
+	prompt.hand.alpha = 0.0
 	loop(prompt.hand,  
 		{time = 0, x = x1, y = y1, alpha = 0.0},
 		{time = startMilliseconds},

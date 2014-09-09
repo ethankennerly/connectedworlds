@@ -3,20 +3,26 @@ display.setStatusBar( display.HiddenStatusBar )
 local model = require "model"
 local view = require "view"
 
-local function clear()
+local main = {}
+
+function main:clear()
     if view then
         view:clear()
     end
 end
 
-local function trial()
-    clear()
+function main:trial()
+    main:clear()
     model:populate()
     view:populate(model)
 	view:prompt(model.connections[1])
 end
 
-local function down( event )
+function main:trialLoop()
+	main:trial()
+end
+
+function main:down( event )
 	local t = event.target
 	local phase = event.phase
     local isDown = false
@@ -34,22 +40,21 @@ local function down( event )
     return isDown
 end
 
-local function trialEnd(correct)
+function main:trialEnd(correct)
     model:trialEnd(correct)
-    view:cancel()
-    trial()
+    view:trialEnd()
 end
 
-local function mayListen( event )
+function main:mayListen( event )
 	if "began" == event.phase then
 		model.listen() 
 	end
 end
 
 local function answer( event )
-	mayListen(event)
+	main:mayListen(event)
 	if model.listening then
-		if down(event) then
+		if main:down(event) then
 			local x = event.x
 			local y = event.y
 			local dot = view:nextDotAt(x, y)
@@ -65,10 +70,10 @@ local function answer( event )
 				view:drawConnection(model.from, model.to, correct)
 				if correct then
 					if model.complete() then
-						trialEnd(correct)
+						main:trialEnd(correct)
 					end
 				else
-					trialEnd(correct)
+					main:trialEnd(correct)
 				end
 			end
 		else
@@ -80,5 +85,11 @@ local function answer( event )
 	return true
 end
 
-trial()
-display.getCurrentStage():addEventListener("touch", answer)
+function main:new()
+	view.onScreenEnd = main.trialLoop
+	display.getCurrentStage():addEventListener("touch", answer)
+	main:trial()
+	return main
+end
+
+return main:new()

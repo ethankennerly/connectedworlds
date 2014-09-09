@@ -136,7 +136,6 @@ package com.finegamedesign.connectedworlds
             if ("trial" != backgroundClip.currentLabel) {
                 backgroundClip.gotoAndPlay("trial");
             }
-            _prompt.destroy();
         }
 
         internal function clearLines():void
@@ -203,6 +202,14 @@ package com.finegamedesign.connectedworlds
             previousDot = null;
             drawProgress(-1, 0, 0);
             _prompt.destroy();
+        }
+
+        internal function trialEnd():void
+        {
+            cancel();
+            if ("end" != screen.currentLabel) {
+                screen.gotoAndPlay("end");
+            }
         }
 
         private function near(dx:Number, dy:Number):Boolean

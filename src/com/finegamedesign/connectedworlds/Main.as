@@ -132,7 +132,7 @@ package com.finegamedesign.connectedworlds
         private function trialEnd(correct:Boolean):void
         {
             model.trialEnd(correct);
-            view.cancel();
+            view.trialEnd();
             if (correct) {
                 if (model.enabled) {
                     view.win();
@@ -140,9 +140,6 @@ package com.finegamedesign.connectedworlds
                 else {
                     view.end();
                 }
-            }
-            if ("end" != view.screen.currentLabel) {
-                view.screen.gotoAndPlay("end");
             }
             // FlxKongregate.api.stats.submit("Score", Model.score);
             // API.postScore("Score", Model.score);

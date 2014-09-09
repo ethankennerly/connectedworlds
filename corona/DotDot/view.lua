@@ -10,6 +10,7 @@ local view = {
 	lineThickness = 48.0,
 	lineGroup = nil,
 	model = nil,
+	onScreenEnd = nil,
 	progressColor = "#CCFFFF",
 	progressGroup = nil,
 	previousDot = nil,
@@ -48,6 +49,11 @@ function view:cancel()
 	prompt:destroy()
 end
 
+function view:trialEnd()
+	view:cancel()
+	view:screenEnd()
+end
+
 -- Remove children.  Keep self.
 function view:clearGroup(groupName)
 	if view[groupName] and view[groupName].parent then
@@ -76,14 +82,30 @@ function view:populate(model)
 	view:screenBegin()
 end
 
+local fadeMilliseconds = 7.0 / 30.0 * 1000.0
+
 function view:screenBegin()
- 	local fadeMilliseconds = 7.0 / 30.0 * 1000.0
  	local dotFadeInMilliseconds = 18.0 / 30.0 * 1000.0
 	view.lineGroup.alpha = 0.0
 	view.dotGroup.alpha = 0.0
  	transition.fadeIn(view.lineGroup, {time = fadeMilliseconds})
+ 	transition.fadeIn(view.connectionGroup, {time = fadeMilliseconds})
  	transition.fadeIn(view.dotGroup, {delay = dotFadeInMilliseconds, 
 									  time = fadeMilliseconds})
+end
+
+function view:screenInput()
+ 	transition.fadeOut(view.lineGroup, {time = fadeMilliseconds})
+end
+
+function view:screenEnd()
+ 	local connectionFadeOutMilliseconds = 10.0 / 30.0 * 1000.0
+ 	local endMilliseconds = 10.0 / 30.0 * 1000.0 + connectionFadeOutMilliseconds + fadeMilliseconds
+ 	transition.fadeOut(view.dotGroup, {time = fadeMilliseconds})
+ 	transition.fadeOut(view.connectionGroup, {delay = connectionFadeOutMilliseconds, 
+									  time = fadeMilliseconds})
+ 	transition.to(view.lineGroup, {delay = endMilliseconds, 
+									  time = 0.0, onComplete = view.onScreenEnd})
 end
 
 function view:drawDots()
@@ -118,11 +140,8 @@ function view:drawLines()
 end
 
 function view:clearLines()
-	if view.lineGroup then
-		view.lineGroup:removeSelf()
-		view.lineGroup = nil
-	end
 	prompt:destroy()
+	view:screenInput()
 end
 
 function view:drawProgress(dotIndex, x, y)
