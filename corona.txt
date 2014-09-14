@@ -1,9 +1,10 @@
 TODO
+    Dot and line 20% bigger.
     Animate connecting a dot.
-    Draw circle at end of line.
     Connect.  Hear sound.
     Connect.  Hear next sound.
     Review.
+    Draw circle at end of line.
     Up and down levels.
     Intro.
         reference http://coronalabs.com/blog/2014/01/21/introducing-the-composer-api-plus-tutorial/

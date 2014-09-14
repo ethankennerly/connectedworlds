@@ -74,11 +74,11 @@ def parse(ai_text, vertical=True):
     connections = []
     dots = []
     coordinating = False
-    connecting = False
     coordinates = {}
     index = -1
     previous = -1
     for line in lines:
+        connecting = False
         words = line.split(' ')
         if 'U' == words[-1]:
             break;
@@ -119,7 +119,7 @@ def near(dots, x, y):
     >>> near([[0, 0]], 19, 19)
     0
     """
-    radius = 20
+    radius = 20 # 40 < ? < 120
     index = -1
     for d in range(len(dots)):
         kx, ky = dots[d]

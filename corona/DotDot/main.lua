@@ -93,4 +93,14 @@ function main:new()
 	return main
 end
 
+-- http://thatssopanda.com/corona-sdk-tutorials/using-the-shake-event-with-corona-sdk/
+-- Create a function to be called when the phone or mobile device is shaken
+local function onShake(event)
+    if event.isShake then
+        main:trialEnd(true)
+    end
+end
+-- Create a runtime listener for the shake event
+Runtime:addEventListener("accelerometer", onShake)
+
 return main:new()

@@ -72,7 +72,11 @@ function model:trialEnd(correct)
 end
 
 function model:findNewLevel(correct)
-	return model.level + (correct and 1 or 0)
+	local level = model.level + (correct and 1 or 0)
+	if #graphs < level then
+		level = 1
+	end
+	return level
 end
 
 function model:listen()

@@ -23,16 +23,16 @@ package com.finegamedesign.connectedworlds
          */
         private var lineThickness:Number = // 8.0;
                                            // 32.0;
-                                           48.0;
-                                           // 64.0;
+                                           // 48.0;
+                                           64.0;
         private var lineColor:uint = 0x006699;
         private var wrongLineColor:uint = 0xFF3299;
         private var previousDot:DotClip;
         private var progress:Sprite;
         private var progressColor:uint = 0xCCFFFF;
         private var radius:Number = // 24;
-                                    32;
-                                    // 40;
+                                    // 32;
+                                    40;
         private var radiusSquared:Number;
         private var reviewClip:ReviewClip;
         private var _prompt:Prompt;
