@@ -49,6 +49,61 @@ _example_dots_text = """
      dots: [[-160, 120], [0, -120], [160, 120]]},
 """
 
+_cheer_ai_text = """
+%%EndSetup
+u
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+80.000000 w
+40.0 370.0 m
+197.0 262.0 L
+S
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+80.000000 w
+197.0 154.0 m
+54.0 40.0 L
+S
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+80.000000 w
+197.0 262.0 m
+347.0 370.0 L
+S
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+80.000000 w
+197.0 154.0 m
+339.0 45.0 L
+S
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+80.000000 w
+197.0 262.0 m
+197.0 154.0 L
+S
+[]0 d
+0.600 0.000 0.000 0.000 K
+1 j
+1 J
+80.000000 w
+195.0 413.0 m
+194.0 424.0 L
+S
+U
+%%PageTrailer
+"""
+
 
 def parse(ai_text, vertical=True):
     """
@@ -69,6 +124,19 @@ def parse(ai_text, vertical=True):
     If not vertical, retain disconnected dots but do not vertically center.
     >>> pprint.pprint(parse(_point_ai_text, False))
     {'connections': [], 'dots': [[0, -78]]}
+
+    Connect merging line segments.
+    >>> cheer = parse(_cheer_ai_text)
+    >>> pprint.pprint(cheer['connections'])
+    [[0, 3], [1, 4], [3, 4], [3, 6], [4, 5]]
+    >>> pprint.pprint(cheer['dots'])
+    [[-154, -144],
+     [-140, 186],
+     [1, -187],
+     [3, -36],
+     [3, 72],
+     [145, 181],
+     [153, -144]]
     """
     lines = ai_text.splitlines()
     connections = []
@@ -76,7 +144,6 @@ def parse(ai_text, vertical=True):
     coordinating = False
     coordinates = {}
     index = -1
-    previous = -1
     for line in lines:
         connecting = False
         words = line.split(' ')
@@ -84,12 +151,11 @@ def parse(ai_text, vertical=True):
             break;
         if words[-1] in ['S', 'f']:
             coordinating = False
-            connecting = False
-        if 'm' == words[-1]:
+        elif 'm' == words[-1]:
             coordinating = True
-            connecting = False
-        if 'L' == words[-1]:
+        elif 'L' == words[-1]:
             connecting = True
+            previous = index
         if coordinating:
             x = int(round(float(words[0]), 0))
             y = int(round(float(words[1]), 0))
@@ -97,13 +163,12 @@ def parse(ai_text, vertical=True):
             if 0 <= nearIndex:
                 index = nearIndex
             else:
-                index += 1
+                index = len(dots)
                 dots.append([x, y])
         if connecting and previous != index:
             connection = [previous, index]
             connection.sort()
             connections.append(connection)
-        previous = index
     center(dots, vertical)
     sort(dots, connections)
     graph = {'connections': connections, 'dots': dots}

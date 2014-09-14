@@ -1,5 +1,4 @@
 TODO
-    Dot and line 20% bigger.
     Animate connecting a dot.
     Connect.  Hear sound.
     Connect.  Hear next sound.
