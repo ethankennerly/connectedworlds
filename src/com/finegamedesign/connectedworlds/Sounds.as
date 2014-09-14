@@ -42,8 +42,8 @@ package com.finegamedesign.connectedworlds
         private var silenceChannel:SoundChannel;
 
         internal var notes:Object;
-        private var score:Array;
-        private var scoreIndex:int;
+        private var sonata:Array;
+        private var sonataIndex:int;
 
         /**
          * To prevent sound manager from sleeping, loop silence.
@@ -53,24 +53,24 @@ package com.finegamedesign.connectedworlds
         {
             notes = {
                 a3_f4: kalimba_a3_f4,
-                g3: kalimba_g3, 
                 c4: kalimba_c4, 
                 d4: kalimba_d4, 
                 d5: kalimba_d5, 
-                e4: kalimba_e4 
+                e4: kalimba_e4,
+                g3: kalimba_g3
             };
             include "Sonata.as"
-            scoreIndex = 0;
+            sonataIndex = 0;
             if (null != instance) {
                 instance.silenceChannel.stop();
             }
             silenceChannel = silence.play(0, int.MAX_VALUE);
         }
 
-        internal function next():void
+        internal function correct():void
         {
-            notes[score[scoreIndex]].play();
-            scoreIndex = (scoreIndex + 1) % score.length;
+            notes[sonata[sonataIndex]].play();
+            sonataIndex = (sonataIndex + 1) % sonata.length;
         }
 
         internal function wrong():void

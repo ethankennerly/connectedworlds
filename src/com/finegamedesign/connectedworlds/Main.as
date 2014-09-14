@@ -20,7 +20,7 @@ package com.finegamedesign.connectedworlds
         internal var keyMouse:KeyMouse;
         private var model:Model;
         private var view:View;
-        private var loopChannel:SoundChannel;
+        private var sounds:Sounds;
 
         public function Main()
         {
@@ -34,11 +34,10 @@ package com.finegamedesign.connectedworlds
         
         public function init(event:Event=null):void
         {
-            Sounds.instance = new Sounds();
+            sounds = new Sounds();
             scrollRect = new Rectangle(0, 0, stage.stageWidth, stage.stageHeight);
             keyMouse = new KeyMouse();
             keyMouse.listen(stage);
-            //+ loopChannel = loop.play(0);
             model = new Model();
             view = new View(this);
             view.screen.easel.addEventListener(
@@ -178,14 +177,14 @@ package com.finegamedesign.connectedworlds
                         var correct:Boolean = 0 <= index;
                         view.drawConnection(model.from, model.to, correct);
                         if (correct) {
-                            Sounds.instance.next();
+                            sounds.correct();
                             if (model.complete)
                             {
                                 trialEnd(correct);
                             }
                         }
                         else {
-                            Sounds.instance.wrong();
+                            sounds.wrong();
                             trialEnd(correct);
                         }
                     }

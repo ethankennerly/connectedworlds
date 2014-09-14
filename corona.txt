@@ -1,11 +1,10 @@
 TODO
-    Animate connecting a dot.
     Connect.  Hear sound.
     Connect.  Hear next sound.
     Review.
-    Draw circle at end of line.
+    Continue next level.
     Up and down levels.
-	After tutorial, Jessica Mack may expect to delay prompt for a long time.
+    Draw circle at end of line.
     Intro.
         reference http://coronalabs.com/blog/2014/01/21/introducing-the-composer-api-plus-tutorial/
 	Portrait layout.

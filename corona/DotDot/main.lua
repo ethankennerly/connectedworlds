@@ -2,6 +2,7 @@ display.setStatusBar( display.HiddenStatusBar )
 
 local model = require "model"
 local view = require "view"
+local sounds = require "sounds"
 
 local main = {}
 
@@ -72,10 +73,12 @@ local function answer( event )
 				local correct = 1 <= index
 				view:drawConnection(model.from, model.to, correct)
 				if correct then
+					sounds:correct()
 					if model.complete() then
 						main:trialEnd(correct)
 					end
 				else
+					sounds:wrong()
 					main:trialEnd(correct)
 				end
 			end
