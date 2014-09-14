@@ -37,6 +37,8 @@ package com.finegamedesign.connectedworlds
          * End after 10 trials.  2014-08-28 After 17 trials of 256 dots. 4 minutes.  Mark Scoptur expects brief.
          */
         internal var trialMax:int = 6;
+        internal var tutor:Boolean;
+
         internal function get graphsLength():int
         {
             return graphs.length - 1;
@@ -75,10 +77,11 @@ package com.finegamedesign.connectedworlds
             linesVisible = true;
             inTrial = true;
             listening = false;
-            if (levelTutor <= level) {
+            distractors = findSingles(connections, dots.length);
+            tutor = level < levelTutor;
+            if (!tutor) {
                 referee.start();
             }
-            distractors = findSingles(connections, dots.length);
         }
 
         /**
@@ -183,7 +186,7 @@ package com.finegamedesign.connectedworlds
             inTrial = false;
             listening = false;
             graphsOld[level] = true;
-            if (levelTutor <= level) {
+            if (tutor) {
                 if (!reviewing) {
                     if (correct) {
                         referee.add = dots.length;
@@ -233,7 +236,7 @@ package com.finegamedesign.connectedworlds
          */
         private function findNewLevel(correct:Boolean):int
         {
-            if (level < levelTutor) {
+            if (tutor) {
                 return level + (correct ? 1 : 0);
             }
             var up:int;

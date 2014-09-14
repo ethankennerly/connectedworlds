@@ -16,7 +16,9 @@ function main:trial()
     model:populate()
     view:populate(model)
 	view:hintDistractors(model.distractors)
-	view:prompt(model.connections[1])
+	if model.tutor then
+		view:prompt(model.connections[1])
+	end
 end
 
 function main:trialLoop()

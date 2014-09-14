@@ -10,9 +10,11 @@ local model = {
 	graphsOld = {},
 	inTrial = false,
 	level = 1,
+	levelTutor = 5,
 	linesVisible = false,
 	listening = false,
 	to = -1,
+	tutor = false,
 }
 
 function model:new()
@@ -28,7 +30,7 @@ end
 
 function model:populate()
 	model:cancel()
-	print("model:populate: " .. model.level)
+	-- print("model:populate: " .. model.level)
 	local params = copy.deepcopy(graphs[model.level])
 	for key, value in next, params, nil do
 		model[key] = value
@@ -37,6 +39,7 @@ function model:populate()
 	model.inTrial = true
 	model.listening = false
 	model.distractors = model:findSingles(model.connections, #model.dots)
+	model.tutor = model.level < model.levelTutor
 end
 
 function model:findSingles(connections, length)

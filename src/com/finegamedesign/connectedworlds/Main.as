@@ -89,7 +89,7 @@ package com.finegamedesign.connectedworlds
             }
             else if (model.review) {
                 view.review();
-                view.prompt(model.connections[0]);
+                // view.prompt(model.connections[0]);
             }
         }
 
