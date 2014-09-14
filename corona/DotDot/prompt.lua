@@ -1,4 +1,4 @@
-local loop = require "loop"
+local sequence = require "sequence"
 
 local prompt = {
 	hand = nil,
@@ -33,7 +33,7 @@ function prompt:line(x1, y1, x2, y2)
 	prompt.hand.x = x1
 	prompt.hand.y = y1
 	prompt.hand.alpha = 0.0
-	loop(prompt.hand,  
+	sequence:to(prompt.hand, true, 
 		{time = 0, x = x1, y = y1, alpha = 0.0},
 		{time = startMilliseconds},
 		{time = fadeMilliseconds, alpha = 1.0},

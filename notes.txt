@@ -1,7 +1,28 @@
 TODO
 	Retrace is no penalty.
-	Portrait layout.
+	Load a level.
 	Rate 6 more Ludum Dare games.
+	Draw more emoji:
+		Devil face
+		stickman running
+		+
+		-
+		% (division symbol)
+		x
+		!
+		?
+		umbrella open
+		hammer
+		wrench
+		car
+		pentagram
+		scissors
+		guitar
+		ring
+		hat
+		balloon
+		cake
+		http://cypressnorth.com/social-media/google-hangouts-emoji-under-the-microscope/
 	Remove distractors based on previous performance.  2014-08-29 Samantha Yang expects to feel competent.  Got overwhelmed.
 	Countdown 3-2-1.
 	8 not so touchy.

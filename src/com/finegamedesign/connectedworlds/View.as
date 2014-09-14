@@ -32,7 +32,8 @@ package com.finegamedesign.connectedworlds
         private var progressColor:uint = 0xCCFFFF;
         private var radius:Number = // 24;
                                     // 32;
-                                    40;
+                                    // 40;
+                                    60;
         private var radiusSquared:Number;
         private var reviewClip:ReviewClip;
         private var _prompt:Prompt;
@@ -157,7 +158,7 @@ package com.finegamedesign.connectedworlds
             // trace("View.drawConnection: from " + xy0 + " to " + xy1);
             connection.graphics.moveTo(dot0.x, dot0.y);
             connection.graphics.lineTo(dot1.x, dot1.y);
-            animateDot(toDotIndex);
+            animateDot(dot);
         }
 
         /**
@@ -165,7 +166,7 @@ package com.finegamedesign.connectedworlds
          */
         private function animateDot(dotIndex:int):void
         {
-            dots[dotIndex].play();
+            dot.play();
         }
 
         internal function drawProgress(dotIndex:int, 

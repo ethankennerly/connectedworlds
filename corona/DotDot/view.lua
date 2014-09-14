@@ -1,6 +1,7 @@
 -- http://ragdogstudios.com/2014/01/04/convert-hex-to-rgb-values-to-new-corona-sdk-standards/
 local ragdoglib = require "ragdoglib"
 local prompt = require "prompt"
+local sequence = require "sequence"
 
 local view = {
 	connectionGroup = nil,
@@ -14,7 +15,7 @@ local view = {
 	progressColor = "#CCFFFF",
 	progressGroup = nil,
 	previousDot = nil,
-	radius = 40,
+	radius = 60,
 	radiusSquared = nil,
 	scale = 1.5,
 			-- 1.8,
@@ -168,8 +169,18 @@ function view:drawConnection(fromDotIndex, toDotIndex, correct)
 	line:setStrokeColor(ragdoglib.convertHexToRGB(color))
 	line.strokeWidth = view.lineThickness
 	view.connectionGroup:insert(line)
+	view:animateDot(dot1)
 end
 
+function view:animateDot(dot)
+	local ring = display.newImage("dotconnectedring.png", dot.x, dot.y)
+	view.dotGroup:insert(ring)
+	local bigMilliseconds = 3.0 / 30.0 * 1000.0 
+	local smallMilliseconds = 8.0 / 30.0 * 1000.0
+	sequence:to(ring, false, 
+		{time = bigMilliseconds, xScale = 3.0, yScale = 3.0},
+		{time = smallMilliseconds, xScale = 1.0, yScale = 1.0, onComplete = display.remove})
+end
 
 function view:near(dx, dy)
 	return dx * dx + dy * dy <= view.radiusSquared
