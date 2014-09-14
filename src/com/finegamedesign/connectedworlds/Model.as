@@ -37,6 +37,10 @@ package com.finegamedesign.connectedworlds
          * End after 10 trials.  2014-08-28 After 17 trials of 256 dots. 4 minutes.  Mark Scoptur expects brief.
          */
         internal var trialMax:int = 6;
+        internal function get graphsLength():int
+        {
+            return graphs.length - 1;
+        }
 
         /**
          * Add review graph.

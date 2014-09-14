@@ -28,6 +28,7 @@ end
 
 function model:populate()
 	model:cancel()
+	print("model:populate: " .. model.level)
 	local params = copy.deepcopy(graphs[model.level])
 	for key, value in next, params, nil do
 		model[key] = value

@@ -1,11 +1,13 @@
 TODO
 	Add 12 simple drawings.
+	Portrait layout.
 	Rate 6 more Ludum Dare games.
 	Remove distractors based on previous performance.  2014-08-29 Samantha Yang expects to feel competent.  Got overwhelmed.
 	Countdown 3-2-1.
 	8 not so touchy.
 	Score dots + time bonus.  2014-08-29 Somewhat careless and quick.  Expected score lower than 100.  42. / 0:18 = 143  more accurate:  67. / 0:27 = 152   miss butterfly 58 / 0:21 = 170
 	All connected.  hear twinkling chimes, next three notes, half second each.
+	Draw sample of all images.
 	Evolve graphs.
 	Prehandwriting exercise
 	Variety each time you play.
@@ -102,6 +104,7 @@ REFERENCE ART
 	hedgehog http://www.branchfloridians.org/images/HEDGE.jpg
 	zodiac   http://cdn1.notonthehighstreet.com/system/product_images/images/001/300/620/original_personalised-zodiac-constellation-necklace.jpg?1380567552
 	girl wink  http://www.clipartbest.com/clipart-ncBGGd4cA
+	Emoji http://cypressnorth.com/social-media/google-hangouts-emoji-under-the-microscope/
 
 NAME BANK
 	Dada
