@@ -23,7 +23,7 @@ function main:trial()
 end
 
 function main:trialLoop()
-	main:trial()
+	main:trial() 
 end
 
 function main:down( event )
@@ -47,6 +47,9 @@ end
 function main:trialEnd(correct)
     model:trialEnd(correct)
     view:trialEnd()
+	if correct then
+		view:win()
+	end
 end
 
 function main:mayListen( event )
@@ -95,7 +98,7 @@ end
 function main:new()
 	view.onScreenEnd = main.trialLoop
 	display.getCurrentStage():addEventListener("touch", answer)
-	main:trial()
+	view.background:begin(main.trialLoop)
 	return main
 end
 

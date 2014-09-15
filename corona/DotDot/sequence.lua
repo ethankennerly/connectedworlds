@@ -7,7 +7,7 @@ function sequence:wrap(target, looping, ...)
 	local steps = {...}
 	for s, step in ipairs(steps) do
 		local originalOnComplete = step.onComplete
-		step.onComplete = function(target)
+		local function wrapOnComplete(target)
 			if originalOnComplete then
 				originalOnComplete(target)
 			end
@@ -16,6 +16,7 @@ function sequence:wrap(target, looping, ...)
 				transition.to(target, steps[nextIndex])
 			end
 		end
+		step.onComplete = wrapOnComplete
 	end
 end
 

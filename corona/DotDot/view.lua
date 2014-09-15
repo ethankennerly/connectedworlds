@@ -1,7 +1,8 @@
 -- http://ragdogstudios.com/2014/01/04/convert-hex-to-rgb-values-to-new-corona-sdk-standards/
 local ragdoglib = require "ragdoglib"
-local prompt = require "prompt"
 local sequence = require "sequence"
+local background = require "background"
+local prompt = require "prompt"
 
 local view = {
 	connectionGroup = nil,
@@ -28,6 +29,10 @@ function view:new()
 	view.radius = view.radius / view.scale
 	view.radiusSquared = view.radius * view.radius
 	view:newScreen()
+	view.background = background
+	view.backgroundGroup = display.newGroup()
+	view.backgroundGroup:insert(background.scene)
+	view.screen:insert(view.backgroundGroup)
 	view.connectionGroup = display.newGroup()
 	view.progressGroup = display.newGroup()
 	return view
@@ -236,6 +241,12 @@ function view:hintDistractors(dotIndexes)
 		local dot = view.dots[dotIndex]
 		local distractorHint = display.newImage("distractor.png", dot.x, dot.y)
 		view.lineGroup:insert(distractorHint)
+	end
+end
+
+function view:win()
+	if "trial" ~= background.currentLabel then
+		background:trial()
 	end
 end
 

@@ -1,5 +1,4 @@
 TODO
-    Draw circle at end of line.
     Intro.
         reference http://coronalabs.com/blog/2014/01/21/introducing-the-composer-api-plus-tutorial/
     Review.

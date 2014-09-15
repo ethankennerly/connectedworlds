@@ -11,7 +11,7 @@ local model = {
 	graphsOld = {},
 	inTrial = false,
 	level = 1,
-	levelTutor = 5,
+	levelTutor = 7,
 	linesVisible = false,
 	listening = false,
 	to = -1,
@@ -92,7 +92,7 @@ function model:listen()
 end
 
 function model:answer(x, y)
-	local result = 0
+	local result = -1
 	if model:complete() then
 		result = 1 
 	end
@@ -110,7 +110,7 @@ function model:answer(x, y)
 	end
 	connecting[ #connecting + 1 ] = dotIndex
 	table.sort(connecting)
-	local c = model:indexOf(connections, connecting)
+	local c = model:indexOf(model.connections, connecting)
 	if 1 <= c then
 		table.remove(model.connections, c)
 		model.connectionsOld[ #model.connectionsOld + 1 ] = connecting
@@ -120,7 +120,7 @@ function model:answer(x, y)
 		result = 1
 	end
 	if result <= -1 then
-		local old = 1 <= indexOf(model.connectionsOld, connecting)
+		local old = 1 <= model:indexOf(model.connectionsOld, connecting)
 		if old then
 			result = 0
 		end
@@ -135,7 +135,7 @@ end
 
 function model:indexOf(connections, connecting)
 	local index = 0
-	for c, connection in ipairs(model.connections) do
+	for c, connection in ipairs(connections) do
 		if connecting[1] == connection[1] and connecting[2] == connection[2] then
 			index = c
 			break

@@ -15,7 +15,7 @@ package com.finegamedesign.connectedworlds
         /**
          * Timer starts at fifth trial, after tutoring disconnected dots.  2014-08-25 Tyler Hinman expects to timer starts after first trial.
          */
-        internal var levelTutor:int = 4;
+        internal var levelTutor:int = 6;
         /**
          * Several levels.
          *
@@ -37,7 +37,7 @@ package com.finegamedesign.connectedworlds
         /**
          * End after 10 trials.  2014-08-28 After 17 trials of 256 dots. 4 minutes.  Mark Scoptur expects brief.
          */
-        internal var trialMax:int = 6;
+        internal var trialMax:int = 8;
         internal var tutor:Boolean;
 
         internal function get graphsLength():int
@@ -208,7 +208,7 @@ package com.finegamedesign.connectedworlds
             inTrial = false;
             listening = false;
             graphsOld[level] = true;
-            if (tutor) {
+            if (!tutor) {
                 if (!reviewing) {
                     if (correct) {
                         referee.add = dots.length;
@@ -250,7 +250,11 @@ package com.finegamedesign.connectedworlds
         private var stepUp:Number = 2.0;
         private var stepUpMin:Number = 2.0;
         private var stepUpMax:Number = 4.0;
-        private var stepUpRate:Number = 0.5;
+        /**
+         * If too high, repeats.
+         */
+        private var stepUpRate:Number = 1.25;  
+                                        // 1.5;
         private var graphsOld:Object = {};
         /**
          * @return  If correct, up by 1 in tutorial, or 2 after tutorial.  If wrong down by 1, or repeat same level in tutorial.  If already seen this level, try next level in that direction.  If cannot find any, find next level in other direction.  If searched all, throw error.
@@ -270,6 +274,7 @@ package com.finegamedesign.connectedworlds
                 up = -1;
                 stepUp = stepUpMin;
             }
+            trace("findNewLevel: level " + level + " stepUp " + stepUp);
             var nextLevel:int = Math.min(level + up, graphs.length - 1);
             up = 1;
             var head:int = nextLevel;
