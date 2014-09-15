@@ -69,17 +69,18 @@ local function answer( event )
 					model.linesVisible = false
 					view:clearLines()
 				end
-				local index = model:answer(dot.x, dot.y)
-				local correct = 1 <= index
-				view:drawConnection(model.from, model.to, correct)
-				if correct then
-					sounds:correct()
-					if model.complete() then
-						main:trialEnd(correct)
-					end
-				else
+				local result = model:answer(dot.x, dot.y)
+				if result <= - 1 then
+					view:drawConnection(model.from, model.to, false)
 					sounds:wrong()
-					main:trialEnd(correct)
+					main:trialEnd(false)
+				end
+				if 1 <= result then
+					sounds:correct()
+					view:drawConnection(model.from, model.to, true)
+					if model.complete() then
+						main:trialEnd(true)
+					end
 				end
 			end
 		else

@@ -155,6 +155,7 @@ package com.finegamedesign.connectedworlds
 
         /**
          * Only play screen if model is still enabled and complete.
+         * If already connected, play no sound.
          * Lines remain until mouse button released after previous trial.  2014-08-29 Mouse down. Wrong.  Next.  Mouse still down and happens to be over a dot.  Samantha Yang expects to see lines.  Got lines disappear; felt confused.  
          */
         private function answer(e:MouseEvent):void
@@ -173,19 +174,19 @@ package com.finegamedesign.connectedworlds
                             model.linesVisible = false;
                             view.clearLines();
                         }
-                        var index:int = model.answer(dot.x, dot.y);
-                        var correct:Boolean = 0 <= index;
-                        view.drawConnection(model.from, model.to, correct);
-                        if (correct) {
+                        var result:int = model.answer(dot.x, dot.y);
+                        if (result <= -1) {
+                            view.drawConnection(model.from, model.to, false);
+                            sounds.wrong();
+                            trialEnd(false);
+                        }
+                        if (1 <= result) {
                             sounds.correct();
+                            view.drawConnection(model.from, model.to, true);
                             if (model.complete)
                             {
-                                trialEnd(correct);
+                                trialEnd(true);
                             }
-                        }
-                        else {
-                            sounds.wrong();
-                            trialEnd(correct);
                         }
                     }
                 }

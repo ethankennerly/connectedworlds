@@ -1,6 +1,4 @@
 TODO
-    Connect.  Hear sound.
-    Connect.  Hear next sound.
     Review.
     Continue next level.
     Up and down levels.

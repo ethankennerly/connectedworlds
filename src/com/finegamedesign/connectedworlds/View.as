@@ -158,13 +158,13 @@ package com.finegamedesign.connectedworlds
             // trace("View.drawConnection: from " + xy0 + " to " + xy1);
             connection.graphics.moveTo(dot0.x, dot0.y);
             connection.graphics.lineTo(dot1.x, dot1.y);
-            animateDot(dot);
+            animateDot(dot1);
         }
 
         /**
 	     * Connect as shown.  Animate ring exploding and then imploding from dot.  Hopefully reward connecting as shown.  2014-08-25 Trackpad.  Erin McCarty expects to see connection event.  2014-08-25 Tyler expects to realize speed is graded.    
          */
-        private function animateDot(dotIndex:int):void
+        private function animateDot(dot:DotClip):void
         {
             dot.play();
         }
@@ -182,20 +182,40 @@ package com.finegamedesign.connectedworlds
             progress.graphics.lineTo(x, y);
         }
 
+        /**
+         * @return  Distance squared, unless out of range, then infinity.
+         */
+        private function near(dx:Number, dy:Number):Number
+        {
+            var distanceSquared:Number = dx * dx + dy * dy;
+            if (distanceSquared < radiusSquared) {
+                return distanceSquared;
+            }
+            else {
+                return Number.POSITIVE_INFINITY;
+            }
+        }
+
+        /**
+         * @return  Nearest dot.
+         */
         internal function nextDotAt(x:Number, y:Number):DotClip
         {
-            var at:DotClip;
+            var nearest:DotClip;
+            var nearestDistanceSquared:Number = Number.POSITIVE_INFINITY;
             for each(var dot:DotClip in dots) {
-                if (near(dot.x - x, dot.y - y)) {
+                var distanceSquared:Number = near(dot.x - x, dot.y - y);
+                if (distanceSquared < nearestDistanceSquared) {
                     // trace("View.dotAt: x " + x + " y " + y + " dot " + dot.x + ", " + dot.y);
                     if (dot != previousDot) {
                         previousDot = dot;
-                        at = dot;
+                        nearest = dot;
+                        nearestDistanceSquared = distanceSquared;
                     }
                     break;
                 }
             }
-            return at;
+            return nearest;
         }
 
         internal function cancel():void
@@ -211,11 +231,6 @@ package com.finegamedesign.connectedworlds
             if ("end" != screen.currentLabel) {
                 screen.gotoAndPlay("end");
             }
-        }
-
-        private function near(dx:Number, dy:Number):Boolean
-        {
-            return ((dx * dx + dy * dy) <= radiusSquared);
         }
 
         internal function clear():void

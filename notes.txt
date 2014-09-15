@@ -1,8 +1,7 @@
 TODO
-	Retrace is no penalty.
+	Trim whiskers, nearby eyes.
 	Load a level.
 	Rate 6 more Ludum Dare games.
-	Trim whiskers, nearby eyes.
 	Draw more emoji:
 		Devil face
 		stickman running

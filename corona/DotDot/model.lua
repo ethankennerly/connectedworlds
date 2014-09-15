@@ -4,6 +4,7 @@ local graphs = require "graphs"
 local model = {
 	connecting = {},
 	connections = {},
+	connectionsOld = {},
 	distractors = {},
 	dots = {},
 	from = -1,
@@ -31,6 +32,7 @@ end
 function model:populate()
 	model:cancel()
 	-- print("model:populate: " .. model.level)
+	model.connectionsOld = {}
 	local params = copy.deepcopy(graphs[model.level])
 	for key, value in next, params, nil do
 		model[key] = value
@@ -90,9 +92,9 @@ function model:listen()
 end
 
 function model:answer(x, y)
-	local correctIndex = 0
+	local result = 0
 	if model:complete() then
-		correctIndex = 1 
+		result = 1 
 	end
 	local dotIndex = 0
 	for d, xy in next, model.dots, nil do
@@ -108,22 +110,39 @@ function model:answer(x, y)
 	end
 	connecting[ #connecting + 1 ] = dotIndex
 	table.sort(connecting)
-	for c, connection in ipairs(model.connections) do
-		if connecting[1] == connection[1] and connecting[2] == connection[2] then
-			table.remove(model.connections, c)
-			correctIndex = dotIndex
-			break
-		end
+	local c = model:indexOf(connections, connecting)
+	if 1 <= c then
+		table.remove(model.connections, c)
+		model.connectionsOld[ #model.connectionsOld + 1 ] = connecting
+		result = 1
 	end
 	if connecting[1] == connecting[2] then
-		correctIndex = dotIndex
+		result = 1
+	end
+	if result <= -1 then
+		local old = 1 <= indexOf(model.connectionsOld, connecting)
+		if old then
+			result = 0
+		end
 	end
 	connecting = {}
 	table.insert(connecting, dotIndex)
 	model.connecting = connecting
 	model.from = model.to
 	model.to = dotIndex
-	return correctIndex
+	return result
 end
+
+function model:indexOf(connections, connecting)
+	local index = 0
+	for c, connection in ipairs(model.connections) do
+		if connecting[1] == connection[1] and connecting[2] == connection[2] then
+			index = c
+			break
+		end
+	end
+	return index
+end
+
 
 return model:new()

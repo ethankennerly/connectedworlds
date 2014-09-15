@@ -25,6 +25,7 @@ local view = {
 }
 
 function view:new()
+	view.radius = view.radius / view.scale
 	view.radiusSquared = view.radius * view.radius
 	view:newScreen()
 	view.connectionGroup = display.newGroup()
@@ -183,22 +184,29 @@ function view:animateDot(dot)
 end
 
 function view:near(dx, dy)
-	return dx * dx + dy * dy <= view.radiusSquared
+	local distanceSquared = dx * dx + dy * dy
+	if distanceSquared < view.radiusSquared then
+		return distanceSquared
+	else
+		return math.huge
+	end
 end
 
 function view:nextDotAt(x, y)
-	local at = nil
+	local nearest = nil
+	local nearestDistanceSquared = math.huge
 	x, y = view.screen:contentToLocal(x, y)
 	for key, dot in next, view.dots, nil do
-		if view:near(dot.x - x, dot.y - y) then
+		local distanceSquared = view:near(dot.x - x, dot.y - y)
+		if distanceSquared < nearestDistanceSquared then
 			if dot ~= view.previousDot then
 				view.previousDot = dot
-				at = dot
+				nearest = dot
+				nearestDistanceSquared = distanceSquared
 			end
-			break
 		end
 	end
-	return at
+	return nearest
 end
 
 -- Why does view.progressGroup:insert fail?

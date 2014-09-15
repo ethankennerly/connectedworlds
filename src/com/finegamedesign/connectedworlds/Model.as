@@ -3,6 +3,7 @@ package com.finegamedesign.connectedworlds
     public class Model
     {
         internal var connections:Array;
+        internal var connectionsOld:Array;
         internal var connecting:Array;
         internal var dots:Array;
         internal var distractors:Array;
@@ -70,6 +71,7 @@ package com.finegamedesign.connectedworlds
         internal function populate():void
         {
             cancel();
+            connectionsOld = [];
             var params:Object = graphs[level];
             for (var prop:String in params) {
                 this[prop] = Util.clone(params[prop]);
@@ -122,12 +124,14 @@ package com.finegamedesign.connectedworlds
 
         /**
          * Answer expects each connection is numerically sorted.
+         * @return  -1: example was not connected, 0: already connected, 1: new connection.
+         * 2014-09-11 Retrace already connected.  Ben expects to not be judged.
          */
         internal function answer(x:int, y:int):int
         {
-            var correctIndex:int = -1;
+            var result:int = -1;
             if (complete) {
-                correctIndex = 0;
+                result = 0;
             }
             var dotIndex:int = -1;
             for (var d:int = 0; d < dots.length; d++) {
@@ -145,23 +149,41 @@ package com.finegamedesign.connectedworlds
             }
             connecting.push(dotIndex);
             connecting.sort(Array.NUMERIC);
-            for (var c:int = connections.length - 1; 0 <= c; c--) {
-                var connection:Array = connections[c];
-                if (connecting[0] == connection[0] && connecting[1] == connection[1]) {
-                    connections.splice(c, 1);
-                    correctIndex = dotIndex;
-                    referee.add++;
-                    break;
-                }
+            var c:int = indexOf(connections, connecting);
+            if (0 <= c) {
+                connections.splice(c, 1);
+                connectionsOld.push(connecting);
+                result = 1;
+                referee.add++;
             }
             if (connecting[0] == connecting[1]) {
-                correctIndex = dotIndex;
+                result = 1;
+            }
+            if (result <= -1) {
+                var old:Boolean = 0 <= indexOf(connectionsOld, connecting);
+                if (old) {
+                    result = 0;
+                }
             }
             connecting = [dotIndex];
             from = to;
             to = dotIndex;
-            // trace("Model.answer: " + correctIndex + " x " + x + " y " + y + " connecting " + connecting);
-            return correctIndex;
+            // trace("Model.answer: " + result + " x " + x + " y " + y + " connecting " + connecting);
+            return result;
+        }
+
+        private function indexOf(connections:Array, connecting:Array):int
+        {
+            var index:int = -1;
+            for (var c:int = 0; c < connections.length; c++) {
+                var connection:Array = connections[c];
+                if (connecting[0] == connection[0] 
+                        && connecting[1] == connection[1]) {
+                    index = c;
+                    break;
+                }
+            }
+            return index;
         }
 
         internal function get only():Boolean

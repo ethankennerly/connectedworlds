@@ -41,7 +41,7 @@ package com.finegamedesign.connectedworlds
         private var silence:Sound = new silenceClass();
         private var silenceChannel:SoundChannel;
 
-        internal var notes:Object;
+        private var notes:Object;
         private var sonata:Array;
         private var sonataIndex:int;
 
