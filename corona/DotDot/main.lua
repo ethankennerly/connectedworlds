@@ -1,7 +1,11 @@
 display.setStatusBar( display.HiddenStatusBar )
 
+-- display.newImage("Icon-Small-40.png", 72, 72)
+-- display.newImage("Icon-Small-50.png", 72, 480)
+-- display.newImage("Icon-60.png", 480, 72)
+-- display.newImage("Icon-72.png", 480, 480)
 local model = require "model"
-local view = require "view"
+local view = require "view" 
 local sounds = require "sounds"
 
 local main = {}
