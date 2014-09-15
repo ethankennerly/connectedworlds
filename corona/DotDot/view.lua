@@ -133,10 +133,8 @@ function view:drawLines()
 	for key, ij in next, view.model.connections, nil do
 		local xy1 = view.model.dots[ij[1]]
 		local xy2 = view.model.dots[ij[2]]
-		local line = display.newLine(xy1[1], xy1[2], xy2[1], xy2[2])
-		line:setStrokeColor(ragdoglib.convertHexToRGB(view.lineColor))
-		line.strokeWidth = view.lineThickness
-		view.lineGroup:insert(line)
+		view:drawLineRounded(view.lineGroup, 
+			xy1[1], xy1[2], xy2[1], xy2[2], view.lineColor)
 	end
 	view.screen:insert(view.lineGroup)
 end
@@ -160,17 +158,33 @@ function view:drawProgress(dotIndex, x, y)
 end
 
 function view:drawConnection(fromDotIndex, toDotIndex, correct)
-	if fromDotIndex <= 0 or toDotIndex <= 0 then
+	if toDotIndex <= 0 then
 		return
 	end
-	local dot0 = view.dots[fromDotIndex]
-	local dot1 = view.dots[toDotIndex]
-	local line = display.newLine(dot0.x, dot0.y, dot1.x, dot1.y)
+	local dot2 = view.dots[toDotIndex]
+	view:animateDot(dot2)
+	if fromDotIndex <= 0 then
+		return
+	end
+	local dot1 = view.dots[fromDotIndex]
 	local color = correct and view.lineColor or view.wrongLineColor
-	line:setStrokeColor(ragdoglib.convertHexToRGB(color))
+	view:drawLineRounded(view.connectionGroup, 
+		dot1.x, dot1.y, dot2.x, dot2.y, color)
+end
+
+function view:drawLineRounded(group, x1, y1, x2, y2, color)
+	local line = display.newLine(x1, y1, x2, y2)
+	local r, g, b = ragdoglib.convertHexToRGB(color)
+	line:setStrokeColor(r, g, b)
 	line.strokeWidth = view.lineThickness
-	view.connectionGroup:insert(line)
-	view:animateDot(dot1)
+	group:insert(line)
+	local radius = view.lineThickness * 0.5
+	local circle0 = display.newCircle(x1, y1, radius)
+	circle0:setFillColor(r, g, b)
+	group:insert(circle0)
+	local circle1 = display.newCircle(x2, y2, radius)
+	circle1:setFillColor(r, g, b)
+	group:insert(circle1)
 end
 
 function view:animateDot(dot)

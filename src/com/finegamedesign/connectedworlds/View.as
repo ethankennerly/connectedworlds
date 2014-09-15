@@ -148,17 +148,20 @@ package com.finegamedesign.connectedworlds
         internal function drawConnection(fromDotIndex:int, toDotIndex:int,
                 correct:Boolean):void
         {
-            if (fromDotIndex <= -1 || toDotIndex <= -1) {
+            if (toDotIndex <= -1) {
                 return;
             }
+            var dot1:DotClip = dots[toDotIndex];
+            animateDot(dot1);
+            if (fromDotIndex <= -1) {
+                return;
+            }
+            var dot0:DotClip = dots[fromDotIndex];
             var color:uint = correct ? lineColor : wrongLineColor;
             connection.graphics.lineStyle(lineThickness, color);
-            var dot0:DotClip = dots[fromDotIndex];
-            var dot1:DotClip = dots[toDotIndex];
             // trace("View.drawConnection: from " + xy0 + " to " + xy1);
             connection.graphics.moveTo(dot0.x, dot0.y);
             connection.graphics.lineTo(dot1.x, dot1.y);
-            animateDot(dot1);
         }
 
         /**

@@ -131,7 +131,7 @@ package com.finegamedesign.connectedworlds
         {
             var result:int = -1;
             if (complete) {
-                result = 0;
+                result = 1;
             }
             var dotIndex:int = -1;
             for (var d:int = 0; d < dots.length; d++) {
