@@ -2,9 +2,9 @@
 %%Creator: Adobe Illustrator(r) 6.0
 %%For: (Macromedia Flash) ()
 %%Title: (C:\archive\flash\connectedworlds\ai\145_bunny.ai)
-%%CreationDate: (09/14/14) (09:00:56)
-%%BoundingBox: 0 0 646 471
-%%HiResBoundingBox: 0.0 0.0 645.9 471.0
+%%CreationDate: (09/14/14) (17:27:03)
+%%BoundingBox: 0 0 622 471
+%%HiResBoundingBox: 0.0 0.0 621.7 471.0
 %%DocumentProcessColors: Cyan Magenta Yellow Black
 %%DocumentNeededResources: procset Adobe_level2_AI5 1.0 0
 %%+ procset Adobe_screens_AI5 1.0 0
@@ -15,7 +15,7 @@
 %AI5_FileFormat 2.0
 %AI3_ColorUsage: Color
 %AI3_TemplateBox: 306 396 306 396
-%AI3_TileBox: 340 -223 945 221
+%AI3_TileBox: 331 -223 935 221
 %AI3_DocumentPreview: None
 %%EndComments
 %%BeginProlog
@@ -41,84 +41,86 @@ u
 1 j
 1 J
 80.000000 w
-356.0 328.0 m
-374.0 426.0 L
-529.0 431.0 L
-413.3 262.4 L
-474.9 228.8 L
-463.0 122.0 L
-331.0 40.0 L
-178.0 101.0 L
-158.8 193.6 L
-223.3 248.4 L
-92.0 415.0 L
-252.0 428.0 L
-272.0 319.0 L
+581.7 345.0 m
+581.7 353.1 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
 80.000000 w
-591.0 329.0 m
-591.0 337.1 L
+40.0 305.4 m
+40.0 313.6 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
 80.000000 w
-49.0 288.0 m
-49.0 296.1 L
+270.7 174.8 m
+270.7 183.0 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
 80.000000 w
-280.0 174.8 m
-280.0 183.0 L
+62.0 149.2 m
+47.7 157.7 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
 80.000000 w
-86.0 146.0 m
-40.0 174.0 L
+72.7 53.5 m
+59.4 49.0 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
 80.000000 w
-105.0 61.0 m
-49.0 43.0 L
+556.5 112.5 m
+568.0 112.5 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
 80.000000 w
-546.0 118.0 m
-605.9 100.5 L
+355.8 177.3 m
+355.8 185.5 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
 80.000000 w
-555.0 200.3 m
-599.8 217.7 L
+346.7 328.0 m
+364.7 426.0 L
+519.7 431.0 L
+404.0 262.4 L
+465.6 228.8 L
+453.7 122.0 L
+321.7 40.0 L
+168.7 101.0 L
+149.5 193.6 L
+214.0 248.4 L
+82.7 415.0 L
+242.7 428.0 L
+262.7 319.0 L
 S
+u
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
 80.000000 w
-365.1 177.3 m
-365.1 185.5 L
+560.0 205.4 m
+570.5 210.7 L
 S
+U
 U
 %%PageTrailer
 gsave annotatepage grestore showpage

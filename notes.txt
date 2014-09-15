@@ -1,5 +1,4 @@
 TODO
-	Trim whiskers, nearby eyes.
 	Load a level.
 	Rate 6 more Ludum Dare games.
 	Draw more emoji:
@@ -11,6 +10,7 @@ TODO
 		x
 		!
 		?
+		cat with whiskers
 		umbrella open
 		hammer
 		wrench

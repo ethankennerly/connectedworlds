@@ -2,9 +2,9 @@
 %%Creator: Adobe Illustrator(r) 6.0
 %%For: (Macromedia Flash) ()
 %%Title: (C:\archive\flash\connectedworlds\ai\044_bird.ai)
-%%CreationDate: (09/14/14) (10:38:44)
-%%BoundingBox: 0 0 603 401
-%%HiResBoundingBox: 0.0 0.0 603.0 401.0
+%%CreationDate: (09/14/14) (17:25:45)
+%%BoundingBox: 0 0 603 400
+%%HiResBoundingBox: 0.0 0.0 603.0 400.0
 %%DocumentProcessColors: Cyan Magenta Yellow Black
 %%DocumentNeededResources: procset Adobe_level2_AI5 1.0 0
 %%+ procset Adobe_screens_AI5 1.0 0
@@ -15,7 +15,7 @@
 %AI5_FileFormat 2.0
 %AI3_ColorUsage: Color
 %AI3_TemplateBox: 306 396 306 396
-%AI3_TileBox: 319 -259 924 185
+%AI3_TileBox: 319 -260 924 184
 %AI3_DocumentPreview: None
 %%EndComments
 %%BeginProlog
@@ -41,40 +41,34 @@ u
 1 j
 1 J
 80.000000 w
-209.8 356.0 m
-155.8 359.0 L
+303.0 200.0 m
+302.0 206.0 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
 80.000000 w
-199.0 40.0 m
-40.0 191.0 L
+40.0 190.0 m
+198.8 40.0 L
+392.0 40.0 L
+563.0 208.0 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
 80.000000 w
-392.0 41.0 m
-563.0 209.0 L
+209.8 355.0 m
+98.8 355.0 L
 S
 []0 d
 0.600 0.000 0.000 0.000 K
 1 j
 1 J
 80.000000 w
-303.0 201.0 m
-302.0 207.0 L
-S
-[]0 d
-0.600 0.000 0.000 0.000 K
-1 j
-1 J
-80.000000 w
-436.8 359.0 m
-368.8 361.0 L
+488.8 360.0 m
+368.8 360.0 L
 S
 U
 %%PageTrailer
