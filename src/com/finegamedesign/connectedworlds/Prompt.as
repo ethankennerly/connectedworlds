@@ -39,20 +39,28 @@ package com.finegamedesign.connectedworlds
             }
         }
 
+        private function copy(connections:Array):Array
+        {
+            var copied:Array = [];
+            for (var c:int = 0; c < connections.length; c++) {
+                 copied.push(connections[c].concat());
+            }
+            return copied;
+        }
+
         /**
          * Shuffle 2D array of edges.
          */
         private function shuffle(connections:Array):Array
         {
-            var shuffled:Array = [];
-            for (var c:int = 0; c < connections.length; c++) {
-                 shuffled.push(connections[c].concat());
-            }
+            var shuffled:Array = copy(connections);
             for (var s:int = shuffled.length - 1; 1 <= s; s--) {
                 var r:int = Math.random() * (s + 1);
-                var swap:Array = shuffled[s];
-                shuffled[s] = shuffled[r];
-                shuffled[r] = swap;
+                if (s != r) {
+                    var swap:Array = shuffled[s];
+                    shuffled[s] = shuffled[r];
+                    shuffled[r] = swap;
+                }
                 if (Math.random() < 0.5) {
                     var swapInteger:int = shuffled[s][0];
                     shuffled[s][0] = shuffled[s][1];
@@ -72,13 +80,13 @@ package com.finegamedesign.connectedworlds
             this.dots = dots;
             this.parent = parent;
             connectionIndex = 0;
-            next();
+            nextLine();
         }
 
         /**
          * Prompt traces between a connection.  2014-08-29 checkmark.  Samantha Yang expects to feel aware to trace.  Got confused.
          */
-        internal function next():void
+        internal function nextLine():void
         {
             if (connections.length <= connectionIndex) {
                 connectionIndex = 0;
@@ -113,7 +121,7 @@ package com.finegamedesign.connectedworlds
             timeline.add(TweenLite.to(handClip, endSeconds - startSeconds, {x: x1, y: y1,
                 onComplete: end}));
             timeline.add(TweenLite.to(handClip, repeatSeconds - endSeconds, {x: x1, y: y1,
-                onComplete: next}));
+                onComplete: nextLine}));
             return handClip;
         }
 

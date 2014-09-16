@@ -229,11 +229,8 @@ function view:nextDotAt(x, y)
 end
 
 -- Why does view.progressGroup:insert fail?
-function view:prompt(dotIndexes)
-	local dot1 = view.dots[dotIndexes[1]]
-	local dot2 = view.dots[dotIndexes[2]]
-	local hand = prompt:line(dot1.x, dot1.y, dot2.x, dot2.y)
-	view.progressGroup:insert(hand)
+function view:prompt(connections)
+	prompt:lines(connections, view.dots, view.progressGroup)
 end
 
 function view:hintDistractors(dotIndexes)
