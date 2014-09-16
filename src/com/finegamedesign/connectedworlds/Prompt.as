@@ -1,5 +1,7 @@
 package com.finegamedesign.connectedworlds
 {
+    import flash.display.DisplayObject;
+    import flash.display.DisplayObjectContainer;
     import flash.display.MovieClip;
 
     import com.greensock.TweenLite;
@@ -12,6 +14,10 @@ package com.finegamedesign.connectedworlds
          * Diagonal motion with finger to touch.  2014-08-23 Jennifer Russ expects to recognize icon and motion to swipe.  Got confused that it was a loading bar.  2014-08-24 Beth expects to see instructions on what to do.
          */
         internal var handClip:HandClip;
+        private var dots:Array;
+        private var connectionIndex:int;
+        private var connections:Array;
+        private var parent:DisplayObjectContainer;
         private var timeline:TimelineMax;
 
         public function Prompt()
@@ -34,28 +40,91 @@ package com.finegamedesign.connectedworlds
         }
 
         /**
+         * Shuffle 2D array of edges.
+         */
+        private function shuffle(connections:Array):Array
+        {
+            var shuffled:Array = [];
+            for (var c:int = 0; c < connections.length; c++) {
+                 shuffled.push(connections[c].concat());
+            }
+            for (var s:int = shuffled.length - 1; 1 <= s; s--) {
+                var r:int = Math.random() * (s + 1);
+                var swap:Array = shuffled[s];
+                shuffled[s] = shuffled[r];
+                shuffled[r] = swap;
+                if (Math.random() < 0.5) {
+                    var swapInteger:int = shuffled[s][0];
+                    shuffled[s][0] = shuffled[s][1];
+                    shuffled[s][1] = swapInteger;
+                }
+            }
+            return shuffled;
+        }
+
+        /**
+         * Animate shuffle lines.
+         * 2014-09-15 Eyes diagram.  Mary Ann Quintin may expect to see hand lift.  Got confused and tried to connect separate lines.
+         */
+        internal function lines(connections:Array, dots:Array, parent:DisplayObjectContainer):void
+        {
+            this.connections = shuffle(connections);
+            this.dots = dots;
+            this.parent = parent;
+            connectionIndex = 0;
+            next();
+        }
+
+        /**
+         * Prompt traces between a connection.  2014-08-29 checkmark.  Samantha Yang expects to feel aware to trace.  Got confused.
+         */
+        internal function next():void
+        {
+            if (connections.length <= connectionIndex) {
+                connectionIndex = 0;
+                connections = shuffle(connections);
+            }
+            var dotIndexes:Array = connections[connectionIndex];
+            var dot0:DisplayObject = dots[dotIndexes[0]];
+            var dot1:DisplayObject = dots[dotIndexes[1]];
+            var handClip:HandClip = line(dot0.x, dot0.y, dot1.x, dot1.y);
+            parent.addChild(handClip);
+            connectionIndex++;
+        }
+
+        /**
          * Trace from current position to end position at start seconds until end seconds.  Repeat.
          */
         internal function line(
                 x0:Number, y0:Number, x1:Number, y1:Number):HandClip
         {
             destroy();
-            var startSeconds:Number = 80.0 / 30.0;
-            var endSeconds:Number = 110.0 / 30.0;
-            var repeatSeconds:Number = 150.0 / 30.0;
+            var startSeconds:Number = 40.0 / 30.0;
+            var holdSeconds:Number = 20.0 / 30.0;
+            var endSeconds:Number = 90.0 / 30.0;
+            var repeatSeconds:Number = 101.0 / 30.0;
             handClip.x = x0;
             handClip.y = y0;
-            timeline = new TimelineMax({repeat: -1});
-            timeline.add(TweenLite.to(handClip, 0.0, {x: handClip.x, y: handClip.y, onComplete: start}));
-            timeline.add(TweenLite.to(handClip, startSeconds, {x: handClip.x, y: handClip.y}));
-            timeline.add(TweenLite.to(handClip, endSeconds - startSeconds, {x: x1, y: y1}));
-            timeline.add(TweenLite.to(handClip, repeatSeconds - endSeconds, {x: x1, y: y1}));
+            handClip.gotoAndStop("none");
+            timeline = new TimelineMax();
+            timeline.add(TweenLite.to(handClip, startSeconds, {x: handClip.x, y: handClip.y,
+                onComplete: begin}));
+            timeline.add(TweenLite.to(handClip, holdSeconds, {x: handClip.x, y: handClip.y}));
+            timeline.add(TweenLite.to(handClip, endSeconds - startSeconds, {x: x1, y: y1,
+                onComplete: end}));
+            timeline.add(TweenLite.to(handClip, repeatSeconds - endSeconds, {x: x1, y: y1,
+                onComplete: next}));
             return handClip;
         }
 
-        private function start():void
+        private function begin():void
         {
-            handClip.gotoAndPlay(1);
+            handClip.gotoAndPlay("begin");
+        }
+
+        private function end():void
+        {
+            handClip.gotoAndPlay("end");
         }
     }
 }

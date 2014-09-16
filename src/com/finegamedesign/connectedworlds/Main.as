@@ -81,7 +81,7 @@ package com.finegamedesign.connectedworlds
             model.populate();
             view.populate(model);
             if (model.level < model.levelTutor) {
-                view.prompt(model.connections[0]);
+                view.prompt(model.connections);
                 view.hintDistractors(model.distractors);
             }
             else if (model.review) {

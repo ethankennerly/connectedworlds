@@ -270,16 +270,9 @@ package com.finegamedesign.connectedworlds
             }
         }
 
-        /**
-         * Prompt traces between a connection.  2014-08-29 checkmark.  Samantha Yang expects to feel aware to trace.  Got confused.
-         */
-        internal function prompt(dotIndexes:Array):void
+        internal function prompt(connections:Array):void
         {
-            var dot0:DotClip = dots[dotIndexes[0]];
-            var dot1:DotClip = dots[dotIndexes[1]];
-            var handClip:HandClip = _prompt.line(dot0.x, dot0.y, dot1.x, dot1.y);
-            progress.addChild(handClip);
-            
+            _prompt.lines(connections, dots, progress);
         }
 
         internal function hintDistractors(dotIndexes:Array):void
