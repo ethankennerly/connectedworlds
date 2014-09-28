@@ -1,6 +1,11 @@
 TODO
+	Random position at bottom of upper left quadrant.
+	Minimum distance.
+	Random position in upper left quadrant.
+	Random angle in bounds.
+	Draw upper half of long axis.
+	Reflect across long axis.
 	Load a level.
-	Rate 6 more Ludum Dare games.
 	Draw more emoji:
 		Devil face
 		stickman running

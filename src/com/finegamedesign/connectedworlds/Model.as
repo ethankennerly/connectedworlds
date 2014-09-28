@@ -52,6 +52,7 @@ package com.finegamedesign.connectedworlds
         {
             include "Levels.as"
             graphs.push({});
+            graphs = new GraphGen().graphs.concat(graphs);
         }
 
         /**
