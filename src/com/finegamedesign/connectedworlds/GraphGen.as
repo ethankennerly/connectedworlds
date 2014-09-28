@@ -16,21 +16,23 @@ package com.finegamedesign.connectedworlds
         }
 
         /**
-         * TODO: Prevent duplicate dots and connections.
+         * Turtle only concatenates unique dots and connections.
          */
         internal static function concat(graphA:Object, graphB:Object):Object
         {
-            var concatenated:Object = Util.clone(graphA);
-            var cloneB:Object = Util.clone(graphB);
-            var connectionCountA:int = concatenated.connections.length;
-            concatenated.dots = concatenated.dots.concat(cloneB.dots);
-            var connections:Array = cloneB.connections;
-            for (var c:int = 0; c < connections.length; c++) {
-                connections[c][0] += connectionCountA;
-                connections[c][1] += connectionCountA;
+            var turtle:Turtle = new Turtle();
+            for each(var graph:Object in [graphA, graphB]) {
+                for each(var connection:Array in graph.connections) {
+                    for each(var dotIndex:int in connection) {
+                        turtle.dot.apply(turtle, graph.dots[dotIndex]);
+                    }
+                    turtle.connect();
+                }
+                for each(var dot:Array in graph.dots) {
+                    turtle.dot.apply(turtle, dot);
+                }
             }
-            concatenated.connections = concatenated.connections.concat(cloneB.connections);
-            return concatenated;
+            return turtle.graph;
         }
 
         internal static function reflectY(graph:Object):Object

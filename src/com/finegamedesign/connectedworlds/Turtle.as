@@ -16,8 +16,6 @@ package com.finegamedesign.connectedworlds
         internal var y:int = 0;
         private var connections:Object = {};
         private var dots:Object = {};
-        private var dotIndex:int = -1;
-        private var previousIndex:int = -1;
 
         public function Turtle()
         {
