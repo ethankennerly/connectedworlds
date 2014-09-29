@@ -5,7 +5,7 @@ package com.finegamedesign.connectedworlds
     import flash.geom.Rectangle;
 
     /**
-     * Generate graphs.
+     * Generate graphs by turtle, transforming, and concatenating.
      */
     internal final class GraphGen
     {
@@ -15,8 +15,8 @@ package com.finegamedesign.connectedworlds
                                             60;
         private static var height:int = 480;
         private static var width:int = 640;
-        private static var space:Rectangle = new Rectangle(-0.5 * width - dotRadius, 
-                                                           -0.5 * height - dotRadius, 
+        private static var space:Rectangle = new Rectangle(-0.5 * width + dotRadius, 
+                                                           -0.5 * height + dotRadius, 
                                                            width - dotRadius * 2, 
                                                            height - dotRadius * 2);
         internal var graphs:Array = [];
@@ -35,6 +35,9 @@ package com.finegamedesign.connectedworlds
             graphs.push(randomFan(randomInt(3, 4)));
             graphs.push(randomFan(4));
             graphs.push(randomFan(4));
+            graphs.push(randomLeaf(2));
+            graphs.push(randomLeaf(3));
+            graphs.push(randomLeaf(4));
         }
 
         /**
@@ -44,6 +47,9 @@ package com.finegamedesign.connectedworlds
         {
             var turtle:Turtle = new Turtle();
             for each(var graph:Object in [graphA, graphB]) {
+                if (null == graph) {
+                    continue;
+                }
                 for each(var connection:Array in graph.connections) {
                     for each(var dotIndex:int in connection) {
                         turtle.dot.apply(turtle, graph.dots[dotIndex]);
@@ -75,6 +81,48 @@ package com.finegamedesign.connectedworlds
             return concatenated;
         }
 
+        internal function randomInt(min:int, max:int):int
+        {
+            return Math.random() * (max - min + 1) + min;
+        }
+
+        /**
+         * @param   spokeCount  With 5 or more spokes, the dots are too close together.
+         */
+        internal function randomFan(spokeCount:int):Object
+        {
+            return pinwheel(randomSpoke(radius, spokeCount), spokeCount);
+        }
+
+        /**
+         * @param   spokeCount  With 5 or more spokes, the dots are too close together.
+         */
+        internal function randomLeaf(spokeCount:int):Object
+        {
+            var spokeRadians:Number = 0.75 - spokeCount * 0.05;
+            var radians:Number = Math.random() * spokeRadians + -0.5 * Math.PI + 0.5 * spokeRadians;
+            var turtle:Turtle = new Turtle();
+            turtle.dot(0, 0);
+            turtle.directionRadians = radians;
+            turtle.forward(space.height / 2 * (Math.random() * 0.2 + 0.8));
+            var spoke:Object = turtle.graph;
+            var distance:int = space.width / Math.max(1, spokeCount + 1);
+            var max:int = 0.5 * spokeCount * distance;
+            var min:int = -max + 0.5 * distance;
+            var half:Object = null;
+            for (var offset:int = min; offset <= max; offset += distance) {
+                var translating:Matrix = new Matrix();
+                translating.translate(offset, 0);
+                var translated:Object = transform(spoke, translating);
+                half = concat(half, translated);
+            }
+            var graph:Object = concat(half, reflectY(half));
+            if (Math.random() < 0.5) {
+                graph = reflectX(graph);
+            }
+            return graph;
+        }
+
         internal static function randomSpoke(radius:int, spokeCount:int):Object
         {
             var turtle:Turtle = new Turtle();
@@ -82,29 +130,16 @@ package com.finegamedesign.connectedworlds
             var stepCount:int = 2;
             var spokeRadians:Number = 0.5 - spokeCount * 0.05;
             for (var step:int = 0; step < stepCount; step++) {
-                var radians:Number = (Math.random() * spokeRadians + 0.5 * spokeRadians) * Math.PI;
-                turtle.rotate(radians);
                 var distance:int = 1.25 * radius * (Math.random() * 0.1 + 0.9) / stepCount;
                 turtle.forward(distance);
+                var radians:Number = (Math.random() * spokeRadians + 0.5 * spokeRadians) * Math.PI;
+                turtle.rotate(radians);
             }
             var graph:Object = turtle.graph;
             if (Math.random() < 0.5) {
                 graph = reflectX(graph);
             }
             return graph;
-        }
-
-        internal function randomInt(min:int, max:int):int
-        {
-            return Math.random() * (max - min + 1) + min;
-        }
-
-        /**
-         * With 5 or more spokes, the dots are too close together.
-         */
-        internal function randomFan(spokeCount:int):Object
-        {
-            return pinwheel(randomSpoke(radius, spokeCount), spokeCount);
         }
 
         internal static function reflect(graph:Object, xyIndex:int):Object

@@ -1,6 +1,8 @@
 TODO
-	Fan: Pinwheel random turn by random number of times.
-	Fern: Reflect and scale random turn.
+	Fern: Reflect and scale random spoke.
+	Wave:  half Fern, rotated.
+	Graph library common names and drawing.
+	Graphviz.
 	Random position at bottom of upper left quadrant.
 	Minimum distance.
 	Random position in upper left quadrant.
@@ -9,6 +11,8 @@ TODO
 	Random distractors near dots but outside of path.
 	Fit to screen.
 	Prohibit variants of Buddhist peace icon (random fan of 4 near 90 degrees).
+	Drawing like macro language http://badassjs.com/post/758184509/turtle-graphics-in-the-browser
+	Visualize transforms and concatenations like drawing symbols in Flash.
 	Load a level.
 	Draw more emoji:
 		Devil face
