@@ -1,10 +1,14 @@
 TODO
+	Fan: Pinwheel random turn by random number of times.
+	Fern: Reflect and scale random turn.
 	Random position at bottom of upper left quadrant.
 	Minimum distance.
 	Random position in upper left quadrant.
 	Random angle in bounds.
 	Jitter.
 	Random distractors near dots but outside of path.
+	Fit to screen.
+	Prohibit variants of Buddhist peace icon (random fan of 4 near 90 degrees).
 	Load a level.
 	Draw more emoji:
 		Devil face

@@ -30,10 +30,7 @@ package com.finegamedesign.connectedworlds
         private var previousDot:DotClip;
         private var progress:Sprite;
         private var progressColor:uint = 0xCCFFFF;
-        private var radius:Number = // 24;
-                                    // 32;
-                                    // 40;
-                                    60;
+        private var radius:Number = GraphGen.dotRadius;
         private var radiusSquared:Number;
         private var reviewClip:ReviewClip;
         private var _prompt:Prompt;
