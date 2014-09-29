@@ -52,7 +52,8 @@ package com.finegamedesign.connectedworlds
         {
             include "Levels.as"
             graphs.push({});
-            graphs = new GraphGen().graphs.concat(graphs);
+            var spliceArguments:Array = [levelTutor, 0].concat(new GraphGen().graphs);
+            graphs.splice.apply(graphs, spliceArguments);
         }
 
         /**

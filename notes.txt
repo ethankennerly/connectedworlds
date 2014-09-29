@@ -3,8 +3,8 @@ TODO
 	Minimum distance.
 	Random position in upper left quadrant.
 	Random angle in bounds.
-	Draw upper half of long axis.
-	Reflect across long axis.
+	Jitter.
+	Random distractors near dots but outside of path.
 	Load a level.
 	Draw more emoji:
 		Devil face

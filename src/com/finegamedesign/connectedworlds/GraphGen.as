@@ -18,6 +18,7 @@ package com.finegamedesign.connectedworlds
             graphs.push(concat(triangle, reflectY(triangle)));
             graphs.push(pinwheel(triangle, 3));
             graphs.push(pinwheel(triangle, 4));
+            graphs.push(unfoldQuarter(triangle));
         }
 
         /**
@@ -40,14 +41,24 @@ package com.finegamedesign.connectedworlds
             return turtle.graph;
         }
 
-        internal static function reflectY(graph:Object):Object
+        internal static function reflect(graph:Object, xyIndex:int):Object
         {
             var reflected:Object = Util.clone(graph);
             var dots:Array = reflected.dots;
             for (var d:int = 0; d < dots.length; d++) {
-                dots[d][1] *= -1;
+                dots[d][xyIndex] *= -1;
             }
             return reflected;
+        }
+
+        internal static function reflectX(graph:Object):Object
+        {
+            return reflect(graph, 0);
+        }
+
+        internal static function reflectY(graph:Object):Object
+        {
+            return reflect(graph, 1);
         }
 
         /**
@@ -78,6 +89,18 @@ package com.finegamedesign.connectedworlds
             return transform(graph, rotating);
         }
 
+        internal static function specifyTriangle():Object
+        {
+            var turtle:Turtle = new Turtle();
+            turtle.dot(-150, 0);
+            turtle.forward(150);
+            turtle.rotate(-0.75 * Math.PI);
+            turtle.forward(150 * Math.sqrt(2));
+            turtle.rotate(-0.75 * Math.PI);
+            turtle.forward(150);
+            return turtle.graph;
+        }
+
         internal static function transform(graph:Object, matrix:Matrix):Object
         {
             var transformed:Object = Util.clone(graph);
@@ -93,16 +116,14 @@ package com.finegamedesign.connectedworlds
             return transformed;
         }
 
-        internal static function specifyTriangle():Object
+        /**
+         * Reflect vertically, then horizontally.
+         */
+        internal static function unfoldQuarter(graph:Object):Object
         {
-            var turtle:Turtle = new Turtle();
-            turtle.dot(-150, 0);
-            turtle.forward(150);
-            turtle.rotate(-0.75 * Math.PI);
-            turtle.forward(150 * Math.sqrt(2));
-            turtle.rotate(-0.75 * Math.PI);
-            turtle.forward(150);
-            return turtle.graph;
+            var concatenated:Object = concat(graph, reflectY(graph));
+            concatenated = concat(concatenated, reflectX(concatenated));
+            return concatenated;
         }
     }
 }
