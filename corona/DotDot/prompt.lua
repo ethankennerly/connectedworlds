@@ -31,6 +31,7 @@ function prompt:copy(connections)
 	return copied
 end
 
+-- DEPRECATED 
 function prompt:shuffle(connections)
 	local shuffled = prompt:copy(connections)
 	for s=#shuffled,1,-1 do
@@ -46,7 +47,8 @@ function prompt:shuffle(connections)
 end
 
 function prompt:lines(connections, dots, parent)
-	prompt.connections = prompt:shuffle(connections)
+	prompt.connections = prompt:copy(connections)
+	-- prompt.connections = prompt:shuffle(connections)
 	prompt.dots = dots
 	prompt.parent = parent
 	prompt.connectionIndex = 1
@@ -56,7 +58,7 @@ end
 function prompt:nextLine()
 	if #prompt.connections < prompt.connectionIndex then
 		prompt.connectionIndex = 1
-		prompt.connections = prompt:shuffle(prompt.connections)
+		-- prompt.connections = prompt:shuffle(prompt.connections)
 	end
 	local dotIndexes = prompt.connections[prompt.connectionIndex]
 	local dot1 = prompt.dots[dotIndexes[1]]

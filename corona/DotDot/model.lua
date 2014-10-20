@@ -5,6 +5,7 @@ local model = {
 	connecting = {},
 	connections = {},
 	connectionsOld = {},
+	_connectionsSorted = {},
 	distractors = {},
 	dots = {},
 	from = -1,
@@ -42,6 +43,10 @@ function model:populate()
 	model.listening = false
 	model.distractors = model:findSingles(model.connections, #model.dots)
 	model.tutor = model.level < model.levelTutor
+	model._connectionsSorted = copy.deepcopy(model.connections)
+	for c, connection in ipairs(model._connectionsSorted) do
+		table.sort(model._connectionsSorted[c])
+	end
 end
 
 function model:findSingles(connections, length)
@@ -63,7 +68,7 @@ function model:findSingles(connections, length)
 end
 
 function model:complete()
-	return table.getn(model.connections) <= 0
+	return table.getn(model._connectionsSorted) <= 0
 end
 
 function model:trialEnd(correct)
@@ -110,9 +115,9 @@ function model:answer(x, y)
 	end
 	connecting[ #connecting + 1 ] = dotIndex
 	table.sort(connecting)
-	local c = model:indexOf(model.connections, connecting)
+	local c = model:indexOf(model._connectionsSorted, connecting)
 	if 1 <= c then
-		table.remove(model.connections, c)
+		table.remove(model._connectionsSorted, c)
 		model.connectionsOld[ #model.connectionsOld + 1 ] = connecting
 		result = 1
 	end

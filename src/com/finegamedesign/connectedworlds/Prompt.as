@@ -49,6 +49,7 @@ package com.finegamedesign.connectedworlds
         }
 
         /**
+         * DEPRECATED
          * Shuffle 2D array of edges.
          */
         private function shuffle(connections:Array):Array
