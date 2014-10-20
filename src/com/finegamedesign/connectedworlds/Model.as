@@ -3,6 +3,7 @@ package com.finegamedesign.connectedworlds
     public class Model
     {
         internal var connections:Array;
+        private var _connectionsSorted:Array;
         internal var connectionsOld:Array;
         internal var connecting:Array;
         internal var dots:Array;
@@ -69,6 +70,7 @@ package com.finegamedesign.connectedworlds
         /**
          * Score total dots.
          * Distractors make the connections more difficult.
+         * Cache sorted connections for faster lookup.
          */
         internal function populate():void
         {
@@ -85,6 +87,10 @@ package com.finegamedesign.connectedworlds
             tutor = level < levelTutor;
             if (!tutor) {
                 referee.start();
+            }
+            _connectionsSorted = Util.clone(connections);
+            for (var c:int = 0; c < _connectionsSorted.length; c++) {
+                _connectionsSorted[c].sort(Array.NUMERIC);
             }
         }
 
@@ -125,7 +131,6 @@ package com.finegamedesign.connectedworlds
         }
 
         /**
-         * Answer expects each connection is numerically sorted.
          * @return  -1: example was not connected, 0: already connected, 1: new connection.
          * 2014-09-11 Retrace already connected.  Ben expects to not be judged.
          */
@@ -151,9 +156,9 @@ package com.finegamedesign.connectedworlds
             }
             connecting.push(dotIndex);
             connecting.sort(Array.NUMERIC);
-            var c:int = indexOf(connections, connecting);
+            var c:int = indexOf(_connectionsSorted, connecting);
             if (0 <= c) {
-                connections.splice(c, 1);
+                _connectionsSorted.splice(c, 1);
                 connectionsOld.push(connecting);
                 result = 1;
                 referee.add++;
@@ -195,7 +200,7 @@ package com.finegamedesign.connectedworlds
 
         internal function get complete():Boolean
         {
-            return null != connections && connections.length <= 0;
+            return null != _connectionsSorted && _connectionsSorted.length <= 0;
         }
 
         /**

@@ -1,4 +1,11 @@
 TODO
+	Hint in order of connections (+Chris Hewitt)
+	Faces.
+	Labyrinth
+		Square tile labyrinth
+		Hexagonal labyrinth
+		Triangular labyrinth
+		Jittered labyrinth
 	Fern: Reflect and scale random spoke.
 	Wave:  half Fern, rotated.
 	Graph library common names and drawing.
