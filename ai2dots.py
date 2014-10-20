@@ -117,7 +117,7 @@ def parse(ai_text, vertical=True):
     Center by extreme coordinates.  Sort dots.
     >>> triangle = parse(_example_ai_text)
     >>> triangle['connections']
-    [[0, 1], [0, 2], [1, 2]]
+    [[0, 1], [1, 2], [2, 0]]
     >>> triangle['dots']
     [[-164, 142], [0, -142], [163, 142]]
 
@@ -128,7 +128,7 @@ def parse(ai_text, vertical=True):
     Connect merging line segments.
     >>> cheer = parse(_cheer_ai_text)
     >>> pprint.pprint(cheer['connections'])
-    [[0, 3], [1, 4], [3, 4], [3, 6], [4, 5]]
+    [[0, 3], [3, 4], [4, 5], [1, 4], [6, 3]]
     >>> pprint.pprint(cheer['dots'])
     [[-154, -144],
      [-140, 186],
@@ -268,9 +268,33 @@ def sort(dots, connections):
     [[-113, 113], [113, -113]]
     >>> line['connections']
     [[0, 1]]
+
+    Pendant dots first.
+    2014-09-19 Chris Hewitt expects to see a hint of a unicursal trace.
+    >>> line = {'connections': [[0, 1], [1, 2]], 'dots': [[113, -113], [0, 0], [-113, 113]]}
+    >>> sort(line['dots'], line['connections'])
+    >>> line['dots']
+    [[-113, 113], [0, 0], [113, -113]]
+    >>> line['connections']
+    [[0, 1], [1, 2]]
+
+    If no difference in connection count, top left first.
+    >>> line = {'connections': [[0, 1], [1, 2], [0, 2]], 
+    ...     'dots': [[113, -113], [-113, -113], [-113, 113]]}
+    >>> sort(line['dots'], line['connections'])
+    >>> line['dots']
+    [[-113, -113], [-113, 113], [113, -113]]
+
+    Connected in drawing order.
+    >>> line['connections']
+    [[0, 1], [1, 2], [2, 0]]
     """
+    if not dots:
+        return
     olds = [dot for dot in dots]
     dots.sort()
+    if not connections:
+        return
     for c in connections:
         c[0] = dots.index(olds[c[0]])
         c[1] = dots.index(olds[c[1]])
@@ -281,6 +305,81 @@ def sort(dots, connections):
         if current == next:
             connections.remove(next)
         next = current
+    counts = {}
+    for a, b in connections:
+        counts[a] = counts.setdefault(a, 0) + 1
+        counts[b] = counts.setdefault(b, 0) + 1
+    minicursal = []
+    head = _minicurse(connections, minicursal, counts)
+    c = 0
+    attempt = 0
+    while 1 <= len(connections):
+        assert c < len(connections), 'Expected %i less than %r' % (c, connections)
+        a, b = connections[c]
+        next = None
+        if a == head:
+            next = b
+        elif b == head:
+            next = a
+        if next is None:
+            c = (c + 1) % len(connections)
+            if 0 == c:
+                head = _minicurse(connections, minicursal, counts)
+        else:
+            minicursal.append([head, next])
+            del connections[c]
+            if len(connections) <= c:
+                c = 0
+            head = next
+            next = None
+        attempt += 1
+        assert attempt < 1024, 'Expected to traverse all dots by now'
+    connections[:] = minicursal        
+
+
+def _minicurse(connections, minicursal, counts):
+    """
+    Attempt to find nearest pendant of a unicursal graph.
+    Parameters are modified in place.  Return head.
+    >>> _minicurse([], [], {})
+    >>> conns = [[0, 1]]
+    >>> counts = {0: 1, 1: 1}
+    >>> curse = []
+    >>> _minicurse(conns, curse, counts)
+    1
+    >>> conns
+    []
+    >>> curse
+    [[0, 1]]
+    >>> counts[0]
+    0
+    >>> counts[1]
+    0
+    """
+    min = 1
+    head = None
+    first = None
+    start = len(minicursal)
+    attempt = 0
+    while len(minicursal) == start and connections:
+        for c, (a, b) in enumerate(connections):
+            if counts[a] == min:
+                first = [a, b]
+                head = b
+            elif counts[b] == min:
+                first = [b, a]
+                head = a
+            if first:
+                minicursal.append(first)
+                del connections[c]
+                counts[a] -= 1
+                counts[b] -= 1
+                break
+        else:
+            min += 1
+        attempt += 1
+        assert attempt < 1024, 'Expected to find least connected node.'
+    return head
 
 
 def main(paths, vertical=True):

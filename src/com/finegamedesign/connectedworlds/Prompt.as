@@ -71,12 +71,13 @@ package com.finegamedesign.connectedworlds
         }
 
         /**
-         * Animate shuffle lines.
+         * Animate lines that were already ordered in drawing order.
          * 2014-09-15 Eyes diagram.  Mary Ann Quintin may expect to see hand lift.  Got confused and tried to connect separate lines.
          */
         internal function lines(connections:Array, dots:Array, parent:DisplayObjectContainer):void
         {
-            this.connections = shuffle(connections);
+            this.connections = copy(connections);
+            //- this.connections = shuffle(connections);
             this.dots = dots;
             this.parent = parent;
             connectionIndex = 0;
@@ -90,7 +91,7 @@ package com.finegamedesign.connectedworlds
         {
             if (connections.length <= connectionIndex) {
                 connectionIndex = 0;
-                connections = shuffle(connections);
+                //- connections = shuffle(connections);
             }
             var dotIndexes:Array = connections[connectionIndex];
             var dot0:DisplayObject = dots[dotIndexes[0]];
