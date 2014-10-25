@@ -13,6 +13,8 @@ package com.finegamedesign.connectedworlds
         internal var inTrial:Boolean = false;
         internal var listening:Boolean = false;
         internal var level:int = 0;
+        internal var milestoneCount:int = 0;
+        internal var milestoneMax:int = 0;
         /**
          * Timer starts at fifth trial, after tutoring disconnected dots.  2014-08-25 Tyler Hinman expects to timer starts after first trial.
          */
@@ -48,10 +50,13 @@ package com.finegamedesign.connectedworlds
 
         /**
          * Add review graph.
+         * All milestones available except last.
          */
         public function Model():void
         {
             include "Levels.as"
+            milestoneCount = graphs.length / trialMax;
+            milestoneMax = milestoneCount - 2;
             graphs.push({});
             var spliceArguments:Array = [levelTutor, 0].concat(new GraphGen().graphs);
             graphs.splice.apply(graphs, spliceArguments);
@@ -93,6 +98,12 @@ package com.finegamedesign.connectedworlds
                 _connectionsSorted[c].sort(Array.NUMERIC);
             }
         }
+
+        internal function selectMilestone(milestone:int):void
+        {
+            level = milestone * trialMax;
+        }
+
 
         /**
          * @return  Disconnected dots.

@@ -1,5 +1,6 @@
 TODO
-	Hint in order of connections (+Chris Hewitt)
+	Vithushan expects to see a level to unlock.
+	Level in local storage object.
 	Faces.
 	Labyrinth
 		Square tile labyrinth
@@ -7,8 +8,20 @@ TODO
 		Triangular labyrinth
 		Jittered labyrinth
 	Fern: Reflect and scale random spoke.
+	Early trials:  Primitive shape.  Later trials:  Compound primitives.
+	Boolean subtraction.
+	Diagonal reflection on a grid.
 	Wave:  half Fern, rotated.
 	Graph library common names and drawing.
+	Patterns inspired by 
+		Ravens progressive matrices.
+		Thurston paper folding.
+		Hilbert space filling.	
+		Knotwork.
+	Jitter
+		length
+		angle
+	Drawing tool
 	Graphviz.
 	Random position at bottom of upper left quadrant.
 	Minimum distance.
@@ -67,10 +80,14 @@ TODO
 	JSFL export each graph.
 	Load your own illustrator files.
 	Draw your own images.
+	Draw reflection, rotation.
+	Procedural drawing tool, like werkzeug
 	Difficulty
 		Reflect horizontal, vertical.
 		Animate reflecting dots (different colors).
 		Rotate 180, like rotation matrix.
+	Motion tracking
+
 
 THEME
 Connected Worlds

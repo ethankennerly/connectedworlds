@@ -39,6 +39,9 @@ package com.finegamedesign.connectedworlds
             keyMouse = new KeyMouse();
             keyMouse.listen(stage);
             model = new Model();
+            LevelSelect.milestoneCount = model.milestoneCount;
+            LevelSelect.milestoneMax = model.milestoneMax;
+            LevelSelect.onSelect = selectMilestone;
             view = new View(this);
             view.screen.easel.addEventListener(
                 MouseEvent.MOUSE_MOVE,
@@ -55,6 +58,14 @@ package com.finegamedesign.connectedworlds
         {
             view.restart();
             init();
+        }
+
+        private function selectMilestone(milestone:int):void
+        {
+            if ("trialEnable" != view.backgroundClip.currentLabel) {
+                model.selectMilestone(milestone);
+                view.backgroundClip.gotoAndPlay("trialEnable");
+            }
         }
 
         private function trialEnable():void

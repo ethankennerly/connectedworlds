@@ -27,9 +27,9 @@ cnoremap   :simalt ~
 inoremap   :simalt ~
 map <silent> \t :call MakeGreen()
 nmap gx <Plug>NetrwBrowseX
-nnoremap <C-F4> c
-nnoremap <C-Tab> w
 nmap <S-Insert> "+gP
+nnoremap <C-Tab> w
+nnoremap <C-F4> c
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#NetrwBrowseX(expand("<cWORD>"),0)
 onoremap <C-F4> c
 vnoremap <C-F4> c
@@ -78,7 +78,7 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 set shortmess=aoO
 badd +1 connectedworlds.vim
-badd +2 notes.txt
+badd +262 notes.txt
 badd +432 connectedworlds.ai
 badd +1 triangle.ai
 badd +46 line.ai
@@ -126,7 +126,7 @@ badd +30 \Program\ Files\ (x86)\Corona\ Labs\Corona\ SDK\Sample\ Code\Graphics-P
 badd +48 \Program\ Files\ (x86)\Corona\ Labs\Corona\ SDK\Sample\ Code\Storage\SaveTable\main.lua
 badd +20 \Program\ Files\ (x86)\Corona\ Labs\Corona\ SDK\Sample\ Code\Storage\SaveTable\str.lua
 badd +4 corona\DotDot\graphs.lua
-badd +250 corona\DotDot\view.lua
+badd +235 corona\DotDot\view.lua
 badd +121 \Users\Ethan\vimfiles\syntax\python.vim
 badd +1 \Users\Ethan\vimfiles\syntax\actionscript.vim
 badd +2 \Users\Ethan\vimfiles\syntax\lua.vim
@@ -137,7 +137,7 @@ badd +18 corona\DotDot\copy.lua
 badd +82 \Program\ Files\ (x86)\Corona\ Labs\Corona\ SDK\Sample\ Code\GettingStarted\TimeAnimation\main.lua
 badd +1 \Program\ Files\ (x86)\Corona\ Labs\Corona\ SDK\Sample\ Code\Graphics\Easing_Examples\main.lua
 badd +5 corona\DotDot\trace.lua
-badd +78 src\com\finegamedesign\connectedworlds\Prompt.as
+badd +65 src\com\finegamedesign\connectedworlds\Prompt.as
 badd +26 corona\DotDot\prompt.lua
 badd +4 corona\DotDot\transitionSequence.lua
 badd +8 corona\DotDot\sequence.lua
@@ -149,8 +149,10 @@ badd +2 corona\DotDot\sound.lua
 badd +20 corona\DotDot\sounds.lua
 badd +1 corona\DotDot\sonata.lua
 badd +26 corona\DotDot\background.lua
-badd +23 src\com\finegamedesign\connectedworlds\GraphGen.as
+badd +122 src\com\finegamedesign\connectedworlds\GraphGen.as
 badd +41 src\com\finegamedesign\connectedworlds\Turtle.as
+badd +0 src\com\finegamedesign\connectedworlds\Util.as
+badd +0 ai2dots.py.log
 args triangle.ai
 edit corona.txt
 set splitbelow splitright
@@ -173,16 +175,16 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe '1resize ' . ((&lines * 13 + 24) / 48)
-exe 'vert 1resize ' . ((&columns * 104 + 95) / 190)
-exe '2resize ' . ((&lines * 32 + 24) / 48)
-exe 'vert 2resize ' . ((&columns * 104 + 95) / 190)
+exe '1resize ' . ((&lines * 23 + 24) / 48)
+exe 'vert 1resize ' . ((&columns * 94 + 95) / 190)
+exe '2resize ' . ((&lines * 22 + 24) / 48)
+exe 'vert 2resize ' . ((&columns * 94 + 95) / 190)
 exe '3resize ' . ((&lines * 15 + 24) / 48)
-exe 'vert 3resize ' . ((&columns * 85 + 95) / 190)
-exe '4resize ' . ((&lines * 9 + 24) / 48)
-exe 'vert 4resize ' . ((&columns * 85 + 95) / 190)
-exe '5resize ' . ((&lines * 20 + 24) / 48)
-exe 'vert 5resize ' . ((&columns * 85 + 95) / 190)
+exe 'vert 3resize ' . ((&columns * 95 + 95) / 190)
+exe '4resize ' . ((&lines * 15 + 24) / 48)
+exe 'vert 4resize ' . ((&columns * 95 + 95) / 190)
+exe '5resize ' . ((&lines * 14 + 24) / 48)
+exe 'vert 5resize ' . ((&columns * 95 + 95) / 190)
 argglobal
 setlocal keymap=
 setlocal noarabic
@@ -285,15 +287,15 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 13 - ((8 * winheight(0) + 6) / 13)
+let s:l = 13 - ((12 * winheight(0) + 11) / 23)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 13
-normal! 07l
+normal! 06l
 wincmd w
 argglobal
-edit notes.txt
+edit ai2dots.py.log
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -355,7 +357,7 @@ setlocal nolisp
 setlocal nolist
 setlocal makeprg=
 setlocal matchpairs=(:),{:},[:]
-setlocal modeline
+setlocal nomodeline
 setlocal modifiable
 setlocal nrformats=octal,hex
 setlocal nonumber
@@ -395,12 +397,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 15 - ((5 * winheight(0) + 16) / 32)
+let s:l = 1 - ((0 * winheight(0) + 11) / 22)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-15
-normal! 061l
+1
+normal! 0
 wincmd w
 argglobal
 edit ai2dots.py
@@ -505,12 +507,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 146 - ((7 * winheight(0) + 7) / 15)
+let s:l = 272 - ((11 * winheight(0) + 7) / 15)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-146
-normal! 014l
+272
+normal! 022l
 wincmd w
 argglobal
 edit corona\DotDot\graphs.lua
@@ -615,12 +617,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 4 - ((3 * winheight(0) + 4) / 9)
+let s:l = 1 - ((0 * winheight(0) + 7) / 15)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-4
-normal! 03l
+1
+normal! 0
 wincmd w
 argglobal
 edit src\com\finegamedesign\connectedworlds\Levels.as
@@ -1175,24 +1177,24 @@ normal zo
 normal zo
 603
 normal zo
-let s:l = 6 - ((5 * winheight(0) + 10) / 20)
+let s:l = 1 - ((0 * winheight(0) + 7) / 14)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-6
-normal! 01l
+1
+normal! 0
 wincmd w
-exe '1resize ' . ((&lines * 13 + 24) / 48)
-exe 'vert 1resize ' . ((&columns * 104 + 95) / 190)
-exe '2resize ' . ((&lines * 32 + 24) / 48)
-exe 'vert 2resize ' . ((&columns * 104 + 95) / 190)
+exe '1resize ' . ((&lines * 23 + 24) / 48)
+exe 'vert 1resize ' . ((&columns * 94 + 95) / 190)
+exe '2resize ' . ((&lines * 22 + 24) / 48)
+exe 'vert 2resize ' . ((&columns * 94 + 95) / 190)
 exe '3resize ' . ((&lines * 15 + 24) / 48)
-exe 'vert 3resize ' . ((&columns * 85 + 95) / 190)
-exe '4resize ' . ((&lines * 9 + 24) / 48)
-exe 'vert 4resize ' . ((&columns * 85 + 95) / 190)
-exe '5resize ' . ((&lines * 20 + 24) / 48)
-exe 'vert 5resize ' . ((&columns * 85 + 95) / 190)
-tabedit src\com\finegamedesign\connectedworlds\GraphGen.as
+exe 'vert 3resize ' . ((&columns * 95 + 95) / 190)
+exe '4resize ' . ((&lines * 15 + 24) / 48)
+exe 'vert 4resize ' . ((&columns * 95 + 95) / 190)
+exe '5resize ' . ((&lines * 14 + 24) / 48)
+exe 'vert 5resize ' . ((&columns * 95 + 95) / 190)
+tabedit src\com\finegamedesign\connectedworlds\Prompt.as
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -1207,9 +1209,9 @@ set nosplitright
 wincmd t
 set winheight=1 winwidth=1
 exe 'vert 1resize ' . ((&columns * 111 + 95) / 190)
-exe '2resize ' . ((&lines * 23 + 24) / 48)
+exe '2resize ' . ((&lines * 1 + 24) / 48)
 exe 'vert 2resize ' . ((&columns * 78 + 95) / 190)
-exe '3resize ' . ((&lines * 22 + 24) / 48)
+exe '3resize ' . ((&lines * 44 + 24) / 48)
 exe 'vert 3resize ' . ((&columns * 78 + 95) / 190)
 argglobal
 setlocal keymap=
@@ -1313,12 +1315,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 122 - ((33 * winheight(0) + 23) / 46)
+let s:l = 52 - ((2 * winheight(0) + 23) / 46)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-122
-normal! 012l
+52
+normal! 09l
 lcd C:\archive\flash\connectedworlds
 wincmd w
 argglobal
@@ -1424,7 +1426,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 33 - ((10 * winheight(0) + 11) / 23)
+let s:l = 33 - ((0 * winheight(0) + 0) / 1)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1535,18 +1537,18 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 33 - ((0 * winheight(0) + 11) / 22)
+let s:l = 6 - ((5 * winheight(0) + 22) / 44)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-33
-normal! 08l
+6
+normal! 021l
 lcd C:\archive\flash\connectedworlds
 wincmd w
 exe 'vert 1resize ' . ((&columns * 111 + 95) / 190)
-exe '2resize ' . ((&lines * 23 + 24) / 48)
+exe '2resize ' . ((&lines * 1 + 24) / 48)
 exe 'vert 2resize ' . ((&columns * 78 + 95) / 190)
-exe '3resize ' . ((&lines * 22 + 24) / 48)
+exe '3resize ' . ((&lines * 44 + 24) / 48)
 exe 'vert 3resize ' . ((&columns * 78 + 95) / 190)
 tabedit C:\archive\flash\connectedworlds\corona\DotDot\main.lua
 set splitbelow splitright
@@ -1572,11 +1574,11 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe '1resize ' . ((&lines * 14 + 24) / 48)
+exe '1resize ' . ((&lines * 1 + 24) / 48)
 exe 'vert 1resize ' . ((&columns * 89 + 95) / 190)
-exe '2resize ' . ((&lines * 15 + 24) / 48)
+exe '2resize ' . ((&lines * 42 + 24) / 48)
 exe 'vert 2resize ' . ((&columns * 89 + 95) / 190)
-exe '3resize ' . ((&lines * 15 + 24) / 48)
+exe '3resize ' . ((&lines * 1 + 24) / 48)
 exe 'vert 3resize ' . ((&columns * 89 + 95) / 190)
 exe '4resize ' . ((&lines * 16 + 24) / 48)
 exe 'vert 4resize ' . ((&columns * 100 + 95) / 190)
@@ -1686,15 +1688,16 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 25 - ((13 * winheight(0) + 7) / 14)
+let s:l = 21 - ((0 * winheight(0) + 0) / 1)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-25
-normal! 031l
+21
+normal! 09l
+lcd C:\archive\flash\connectedworlds
 wincmd w
 argglobal
-edit C:\archive\flash\connectedworlds\corona\DotDot\view.lua
+edit C:\archive\flash\connectedworlds\corona\DotDot\model.lua
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -1796,12 +1799,13 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 235 - ((0 * winheight(0) + 7) / 15)
+let s:l = 48 - ((37 * winheight(0) + 21) / 42)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-235
-normal! 0
+48
+normal! 011l
+lcd C:\archive\flash\connectedworlds
 wincmd w
 argglobal
 edit C:\archive\flash\connectedworlds\corona\DotDot\prompt.lua
@@ -1906,12 +1910,13 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 92 - ((0 * winheight(0) + 7) / 15)
+let s:l = 34 - ((0 * winheight(0) + 0) / 1)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-92
-normal! 0
+34
+normal! 013l
+lcd C:\archive\flash\connectedworlds
 wincmd w
 argglobal
 edit C:\archive\flash\connectedworlds\src\com\finegamedesign\connectedworlds\Model.as
@@ -2016,12 +2021,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 256 - ((0 * winheight(0) + 8) / 16)
+let s:l = 93 - ((9 * winheight(0) + 8) / 16)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-256
-normal! 030l
+93
+normal! 016l
 lcd C:\archive\flash\connectedworlds
 wincmd w
 argglobal
@@ -2127,12 +2132,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 271 - ((0 * winheight(0) + 7) / 14)
+let s:l = 280 - ((9 * winheight(0) + 7) / 14)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-271
-normal! 08l
+280
+normal! 028l
 lcd C:\archive\flash\connectedworlds
 wincmd w
 argglobal
@@ -2246,11 +2251,12 @@ normal! zt
 normal! 012l
 lcd C:\archive\flash\connectedworlds
 wincmd w
-exe '1resize ' . ((&lines * 14 + 24) / 48)
+2wincmd w
+exe '1resize ' . ((&lines * 1 + 24) / 48)
 exe 'vert 1resize ' . ((&columns * 89 + 95) / 190)
-exe '2resize ' . ((&lines * 15 + 24) / 48)
+exe '2resize ' . ((&lines * 42 + 24) / 48)
 exe 'vert 2resize ' . ((&columns * 89 + 95) / 190)
-exe '3resize ' . ((&lines * 15 + 24) / 48)
+exe '3resize ' . ((&lines * 1 + 24) / 48)
 exe 'vert 3resize ' . ((&columns * 89 + 95) / 190)
 exe '4resize ' . ((&lines * 16 + 24) / 48)
 exe 'vert 4resize ' . ((&columns * 100 + 95) / 190)
@@ -2258,7 +2264,7 @@ exe '5resize ' . ((&lines * 14 + 24) / 48)
 exe 'vert 5resize ' . ((&columns * 100 + 95) / 190)
 exe '6resize ' . ((&lines * 14 + 24) / 48)
 exe 'vert 6resize ' . ((&columns * 100 + 95) / 190)
-tabnext 2
+tabnext 3
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
 endif
