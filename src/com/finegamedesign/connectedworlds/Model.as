@@ -266,13 +266,15 @@ package com.finegamedesign.connectedworlds
             return trialMax <= trial;
         }
 
-        private var stepUp:Number = 2.0;
-        private var stepUpMin:Number = 2.0;
-        private var stepUpMax:Number = 4.0;
+        private var stepUp:Number = 1.0;
+        private var stepUpMin:Number = 1.0;
+        private var stepUpMax:Number = 3.0;
         /**
          * If too high, repeats.
          */
-        private var stepUpRate:Number = 1.25;  
+        private var stepUpRate:Number = 0.25;
+                                        // 0.5;
+                                        // 1.25;  
                                         // 1.5;
         private var graphsOld:Object = {};
         /**
@@ -288,6 +290,7 @@ package com.finegamedesign.connectedworlds
             if (correct) {
                 up = stepUp;
                 stepUp += stepUpRate;
+                stepUp = Math.min(stepUpMax, stepUp);
             }
             else {
                 up = -1;
