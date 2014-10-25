@@ -28,7 +28,7 @@ package com.finegamedesign.connectedworlds
             var length:int = model.graphsLength;
             trace("TestGraphs.drawGraphs: length " + length);
             for (var level:int = 0; level < length; level++) {
-                trace("TestGraphs.drawGraphs: " + level);
+                // trace("TestGraphs.drawGraphs: " + level);
                 model = new Model();
                 model.level = level;
                 model.populate();

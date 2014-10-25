@@ -63,6 +63,12 @@ package com.finegamedesign.connectedworlds
             return connect();
         }
 
+        internal function lineTo(x:int, y:int):int
+        {
+            dot(x, y);
+            return connect();
+        }
+
         /**
          * @param   container    Push new dot or connection if not already there.  
          * @return  index.

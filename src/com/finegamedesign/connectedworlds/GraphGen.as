@@ -26,8 +26,8 @@ package com.finegamedesign.connectedworlds
         {
             var triangle:Object = specifyTriangle();
             graphs.push(triangle);
-            graphs.push(reflectY(triangle));
             graphs.push(smileyFace());
+            graphs.push(reflectY(triangle));
             graphs.push(concat(triangle, reflectY(triangle)));
             graphs.push(pinwheel(triangle, 3));
             graphs.push(smileyFaceRandom());
@@ -35,14 +35,17 @@ package com.finegamedesign.connectedworlds
             graphs.push(unfoldQuarter(triangle));
             graphs.push(smileyFaceRandom());
             graphs.push(randomFan(randomInt(3, 4)));
+            graphs.push(headRandom());
             graphs.push(randomFan(randomInt(3, 4)));
             graphs.push(randomFan(4));
             graphs.push(smileyFaceRandom());
             graphs.push(randomFan(4));
             graphs.push(randomLeaf(2));
+            graphs.push(headRandom());
             graphs.push(randomLeaf(3));
             graphs.push(randomLeaf(4));
             graphs.push(smileyFaceRandom());
+            graphs.push(headRandom());
         }
 
         /**
@@ -65,6 +68,29 @@ package com.finegamedesign.connectedworlds
                     turtle.dot.apply(turtle, dot);
                 }
             }
+            return turtle.graph;
+        }
+
+        private static function headRandom():Object
+        {
+            var turtle:Turtle = new Turtle();
+            turtle.space = space;
+            var points:int = 5 + jitter(2);
+            for (var r:int = 0; r < points; r++) {
+                var distance:Number = 160 + jitter(40);
+                var radians:Number = (r + 0.5) * -Math.PI / points - 0.5 * Math.PI;
+                var x:int = distance * Math.cos(radians);
+                var y:int = distance * Math.sin(radians);
+                var draw:Function = 0 == r ? turtle.dot : turtle.lineTo;
+                draw(x, y);
+            }
+            var previous:int = turtle.graph.dots.length - 1;
+            turtle.dot(-40 + jitter(20), -20 + jitter(40));
+            turtle.graph = concat(turtle.graph, reflectX(turtle.graph));
+            var index:int = turtle.graph.dots.length - 2;
+            turtle.connect(0, previous + 2);
+            turtle.connect(previous, index);
+            turtle.graph = rotate(turtle.graph, jitter(0.25 * Math.PI));
             return turtle.graph;
         }
 
