@@ -255,5 +255,24 @@ package com.finegamedesign.connectedworlds
             concatenated = concat(concatenated, reflectX(concatenated));
             return concatenated;
         }
+
+        /**
+         * Randomly reflect or rotate.
+         */
+        internal static function vary(graph:Object):Object
+        {
+            var varied:Object = graph;
+            if (Math.random() < 0.5) {
+                reflectX(graph);
+            }
+            if (Math.random() < 0.5) {
+                reflectY(graph);
+            }
+            var halfTurns:int = 2 * Math.random();
+            if (1 <= halfTurns) {
+                varied = rotate(varied, halfTurns * Math.PI);
+            }
+            return varied;
+        }
     }
 }

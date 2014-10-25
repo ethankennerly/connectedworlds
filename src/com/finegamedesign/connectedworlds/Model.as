@@ -83,6 +83,10 @@ package com.finegamedesign.connectedworlds
             cancel();
             connectionsOld = [];
             var params:Object = graphs[level];
+            tutor = level < levelTutor;
+            if (!tutor) {
+                params = GraphGen.vary(params);
+            }
             for (var prop:String in params) {
                 this[prop] = Util.clone(params[prop]);
             }
@@ -90,7 +94,6 @@ package com.finegamedesign.connectedworlds
             inTrial = true;
             listening = false;
             distractors = findSingles(connections, dots.length);
-            tutor = level < levelTutor;
             if (!tutor) {
                 referee.start();
             }
@@ -155,7 +158,7 @@ package com.finegamedesign.connectedworlds
             var dotIndex:int = -1;
             for (var d:int = 0; d < dots.length; d++) {
                 var xy:Array = dots[d];
-                if (x == xy[0] && y == xy[1]) {
+                if (x == Math.round(xy[0]) && y == Math.round(xy[1])) {
                     dotIndex = d;
                     break;
                 }

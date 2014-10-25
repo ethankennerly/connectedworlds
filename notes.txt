@@ -1,5 +1,5 @@
 TODO
-	Faces.
+	Head
 	Labyrinth
 		Square tile labyrinth
 		Hexagonal labyrinth
