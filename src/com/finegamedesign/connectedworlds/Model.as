@@ -52,11 +52,12 @@ package com.finegamedesign.connectedworlds
          * Add review graph.
          * All milestones available except last.
          */
-        public function Model():void
+        public function Model(levelPrevious:int):void
         {
             include "Levels.as"
             milestoneCount = graphs.length / trialMax;
-            milestoneMax = milestoneCount - 2;
+            level = levelPrevious;
+            milestoneMax = milestoneCount * level / graphs.length + 1;
             graphs.push({});
             var spliceArguments:Array = [levelTutor, 0].concat(new GraphGen().graphs);
             graphs.splice.apply(graphs, spliceArguments);
@@ -101,7 +102,7 @@ package com.finegamedesign.connectedworlds
 
         internal function selectMilestone(milestone:int):void
         {
-            level = milestone * trialMax;
+            level = (milestone - 1) * trialMax;
         }
 
 

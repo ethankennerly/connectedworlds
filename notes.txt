@@ -1,6 +1,7 @@
 TODO
 	Vithushan expects to see a level to unlock.
 	Level in local storage object.
+	Layout levels as diagrams with numbers.  Connect unlocked.
 	Faces.
 	Labyrinth
 		Square tile labyrinth

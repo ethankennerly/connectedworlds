@@ -21,6 +21,7 @@ package com.finegamedesign.connectedworlds
         private var model:Model;
         private var view:View;
         private var sounds:Sounds;
+        private var levelPrevious:int = 0;
 
         public function Main()
         {
@@ -38,11 +39,16 @@ package com.finegamedesign.connectedworlds
             scrollRect = new Rectangle(0, 0, stage.stageWidth, stage.stageHeight);
             keyMouse = new KeyMouse();
             keyMouse.listen(stage);
-            model = new Model();
+            if (null != model) {
+                levelPrevious = model.level;
+            }
+            model = new Model(levelPrevious);
             LevelSelect.milestoneCount = model.milestoneCount;
             LevelSelect.milestoneMax = model.milestoneMax;
             LevelSelect.onSelect = selectMilestone;
             view = new View(this);
+            view.screen.mouseChildren = false;
+            view.screen.mouseEnabled = false;
             view.screen.easel.addEventListener(
                 MouseEvent.MOUSE_MOVE,
                 answer, false, 0, true);
@@ -74,6 +80,8 @@ package com.finegamedesign.connectedworlds
             model.enabled = true;
             view.backgroundClip.stop();
             view.screen.gotoAndPlay("begin");
+            view.screen.mouseChildren = true;
+            view.screen.mouseEnabled = true;
         }
 
         private function trialLoop():void
@@ -131,7 +139,8 @@ package com.finegamedesign.connectedworlds
             if (keyMouse.justPressed("MOUSE")) {
                 model.listen();
             }
-            if (!model.enabled && !model.inTrial && "trialEnable" == view.backgroundClip.currentLabel) {
+            if (!model.enabled && !model.inTrial 
+            && "trialEnable" == view.backgroundClip.currentLabel) {
                 trialEnable();
             }
         }

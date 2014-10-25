@@ -4,7 +4,6 @@ package com.finegamedesign.connectedworlds
     import flash.display.DisplayObjectContainer;
     import flash.display.MovieClip;
     import flash.display.Sprite;
-    import flash.events.MouseEvent;
 
     public class View
     {
