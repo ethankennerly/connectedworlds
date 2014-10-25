@@ -146,13 +146,17 @@ package com.finegamedesign.connectedworlds
             }
         }
 
+        /**
+         * Save level at highest of previous level or current.
+         */
         private function trialEnd(correct:Boolean):void
         {
             model.trialEnd(correct);
             view.trialEnd();
             if (correct) {
                 if (model.reviewing) {
-                    Shared.level = model.level;
+                    var next:int = Math.max(levelPrevious, model.level);
+                    Shared.level = next;
                 }
                 if (model.enabled) {
                     view.win();

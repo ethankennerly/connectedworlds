@@ -1,7 +1,4 @@
 TODO
-	Vithushan expects to see a level to unlock.
-	Level in local storage object.
-	Layout levels as diagrams with numbers.  Connect unlocked.
 	Faces.
 	Labyrinth
 		Square tile labyrinth
@@ -31,6 +28,7 @@ TODO
 	Jitter.
 	Random distractors near dots but outside of path.
 	Fit to screen.
+	Aaron may expect score inverse of time viewed.
 	Prohibit variants of Buddhist peace icon (random fan of 4 near 90 degrees).
 	Drawing like macro language http://badassjs.com/post/758184509/turtle-graphics-in-the-browser
 	Visualize transforms and concatenations like drawing symbols in Flash.
@@ -82,6 +80,7 @@ TODO
 	Load your own illustrator files.
 	Draw your own images.
 	Draw reflection, rotation.
+	Layout levels as diagrams with numbers.  Connect unlocked.
 	Procedural drawing tool, like werkzeug
 	Difficulty
 		Reflect horizontal, vertical.

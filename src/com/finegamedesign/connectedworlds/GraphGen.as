@@ -27,23 +27,28 @@ package com.finegamedesign.connectedworlds
             var triangle:Object = specifyTriangle();
             graphs.push(triangle);
             graphs.push(reflectY(triangle));
+            graphs.push(smileyFace());
             graphs.push(concat(triangle, reflectY(triangle)));
             graphs.push(pinwheel(triangle, 3));
+            graphs.push(smileyFaceRandom());
             graphs.push(pinwheel(triangle, 4));
             graphs.push(unfoldQuarter(triangle));
+            graphs.push(smileyFaceRandom());
             graphs.push(randomFan(randomInt(3, 4)));
             graphs.push(randomFan(randomInt(3, 4)));
             graphs.push(randomFan(4));
+            graphs.push(smileyFaceRandom());
             graphs.push(randomFan(4));
             graphs.push(randomLeaf(2));
             graphs.push(randomLeaf(3));
             graphs.push(randomLeaf(4));
+            graphs.push(smileyFaceRandom());
         }
 
         /**
          * Turtle only concatenates unique dots and connections.
          */
-        internal static function concat(graphA:Object, graphB:Object):Object
+        private static function concat(graphA:Object, graphB:Object):Object
         {
             var turtle:Turtle = new Turtle();
             for each(var graph:Object in [graphA, graphB]) {
@@ -67,7 +72,7 @@ package com.finegamedesign.connectedworlds
          * Rotate about origin proportional to count.
          * @param   count   1 or less does nothing.
          */
-        internal static function pinwheel(graph:Object, count:int):Object
+        private static function pinwheel(graph:Object, count:int):Object
         {
             var radians:Number = 2 * Math.PI / count;
             var rotating:Matrix = new Matrix();
@@ -81,7 +86,7 @@ package com.finegamedesign.connectedworlds
             return concatenated;
         }
 
-        internal function randomInt(min:int, max:int):int
+        private function randomInt(min:int, max:int):int
         {
             return Math.random() * (max - min + 1) + min;
         }
@@ -89,7 +94,7 @@ package com.finegamedesign.connectedworlds
         /**
          * @param   spokeCount  With 5 or more spokes, the dots are too close together.
          */
-        internal function randomFan(spokeCount:int):Object
+        private function randomFan(spokeCount:int):Object
         {
             return pinwheel(randomSpoke(radius, spokeCount), spokeCount);
         }
@@ -97,7 +102,7 @@ package com.finegamedesign.connectedworlds
         /**
          * @param   spokeCount  With 5 or more spokes, the dots are too close together.
          */
-        internal function randomLeaf(spokeCount:int):Object
+        private function randomLeaf(spokeCount:int):Object
         {
             var spokeRadians:Number = 0.75 - spokeCount * 0.05;
             var radians:Number = Math.random() * spokeRadians + -0.5 * Math.PI + 0.5 * spokeRadians;
@@ -123,7 +128,7 @@ package com.finegamedesign.connectedworlds
             return graph;
         }
 
-        internal static function randomSpoke(radius:int, spokeCount:int):Object
+        private static function randomSpoke(radius:int, spokeCount:int):Object
         {
             var turtle:Turtle = new Turtle();
             turtle.dot(0, 0);
@@ -142,7 +147,7 @@ package com.finegamedesign.connectedworlds
             return graph;
         }
 
-        internal static function reflect(graph:Object, xyIndex:int):Object
+        private static function reflect(graph:Object, xyIndex:int):Object
         {
             var reflected:Object = Util.clone(graph);
             var dots:Array = reflected.dots;
@@ -152,12 +157,12 @@ package com.finegamedesign.connectedworlds
             return reflected;
         }
 
-        internal static function reflectX(graph:Object):Object
+        private static function reflectX(graph:Object):Object
         {
             return reflect(graph, 0);
         }
 
-        internal static function reflectY(graph:Object):Object
+        private static function reflectY(graph:Object):Object
         {
             return reflect(graph, 1);
         }
@@ -165,14 +170,56 @@ package com.finegamedesign.connectedworlds
         /**
          * Matrix rotates about origin.
          */
-        internal static function rotate(graph:Object, radians:Number):Object
+        private static function rotate(graph:Object, radians:Number):Object
         {
             var rotating:Matrix = new Matrix();
             rotating.rotate(radians);
             return transform(graph, rotating);
         }
 
-        internal static function specifyTriangle():Object
+        private static function smileyFace():Object
+        {
+            var turtle:Turtle = new Turtle();
+            turtle.dot(-100, -160);
+            turtle.rotate(0.5 * Math.PI);
+            turtle.forward(160);
+            turtle.dot(-200, 40);
+            turtle.rotate(-0.25 * Math.PI);
+            turtle.forward(160);
+            var previous:int = turtle.graph.dots.length - 1;
+            turtle.graph = concat(turtle.graph, reflectX(turtle.graph));
+            var index:int = turtle.graph.dots.length - 1;
+            turtle.connect(previous, index);
+            return turtle.graph;
+        }
+
+        private static function jitter(arc:Number):Number
+        {
+            return 2 * arc * Math.random() - arc;
+        }
+
+        private static function smileyFaceRandom():Object
+        {
+            var turtle:Turtle = new Turtle();
+            turtle.space = space;
+            turtle.dot(-120 + jitter(40), -160 + jitter(40));
+            turtle.rotate(0.5 * Math.PI + jitter(0.25 * Math.PI));
+            turtle.forward(100 + jitter(20));
+            turtle.dot(-160 + jitter(40), 80 + jitter(40));
+            turtle.directionRadians = 0.325 * Math.PI + jitter(0.25 * Math.PI);
+            turtle.forward(120 + jitter(40));
+            var previous:int = turtle.graph.dots.length - 1;
+            turtle.graph = concat(turtle.graph, reflectX(turtle.graph));
+            var index:int = turtle.graph.dots.length - 1;
+            turtle.connect(previous, index);
+            if (Math.random() < 0.5) {
+                turtle.dot(0, 0 + jitter(40));
+            }
+            turtle.graph = rotate(turtle.graph, jitter(0.25 * Math.PI));
+            return turtle.graph;
+        }
+
+        private static function specifyTriangle():Object
         {
             var turtle:Turtle = new Turtle();
             turtle.dot(-150, 0);
@@ -184,7 +231,7 @@ package com.finegamedesign.connectedworlds
             return turtle.graph;
         }
 
-        internal static function transform(graph:Object, matrix:Matrix):Object
+        private static function transform(graph:Object, matrix:Matrix):Object
         {
             var transformed:Object = Util.clone(graph);
             var dots:Array = transformed.dots;
@@ -202,7 +249,7 @@ package com.finegamedesign.connectedworlds
         /**
          * Reflect vertically, then horizontally.
          */
-        internal static function unfoldQuarter(graph:Object):Object
+        private static function unfoldQuarter(graph:Object):Object
         {
             var concatenated:Object = concat(graph, reflectY(graph));
             concatenated = concat(concatenated, reflectX(concatenated));

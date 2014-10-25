@@ -52,7 +52,7 @@ package com.finegamedesign.connectedworlds
          * Add review graph.
          * All milestones available except last.
          */
-        public function Model(levelPrevious:int):void
+        public function Model(levelPrevious:int=0):void
         {
             include "Levels.as"
             milestoneCount = graphs.length / trialMax;

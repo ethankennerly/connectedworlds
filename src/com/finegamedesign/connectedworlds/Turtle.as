@@ -1,5 +1,7 @@
 package com.finegamedesign.connectedworlds
 {
+    import flash.geom.Rectangle;
+
     /**
      * Abstract turtle for making coordinates of graphs.
      * Does no drawing.
@@ -10,31 +12,44 @@ package com.finegamedesign.connectedworlds
     internal final class Turtle
     {
         internal var directionRadians:Number = 0.0;
+        internal var dots:Object = {};
         internal var graph:Object = {"connections": [],
             "dots": []}
         internal var x:int = 0;
         internal var y:int = 0;
         private var connections:Object = {};
-        private var dots:Object = {};
+        internal var space:Rectangle;
 
         public function Turtle()
         {
         }
 
         /**
-         * Model expects each connection is sorted.
          * Connections are bidirectional, so only store once.
          */
-        internal function connect():int
+        internal function connect(previous:int=-1, index:int=-1):int
         {
-            var connection :Array = [dots.previous, dots.index];
+            if (previous <= -1) {
+                previous = dots.previous;
+            }
+            if (index <= -1) {
+                index = dots.index;
+            }
+            var connection :Array = [previous, index];
             connection.sort(Array.NUMERIC);
             var connectionIndex:int = push("connections", connection[0], connection[1]);
             return connectionIndex;
         }
 
+        /**
+         * Clamp points into space, if defined.
+         */
         internal function dot(x:int, y:int):int
         {
+            if (null != space) {
+                x = Math.max(space.left, Math.min(space.right, x));
+                y = Math.max(space.top, Math.min(space.bottom, y));
+            }
             this.x = x;
             this.y = y;
             return push("dots", x, y);

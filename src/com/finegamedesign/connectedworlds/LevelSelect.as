@@ -17,8 +17,8 @@ package com.finegamedesign.connectedworlds
         /**
          * Level buttons, horizontally centered, vertical from top.
          * LevelTile:
-         *      txt
          *      btn
+         *      txt
          * If above milestoneMax, transparent and no button response.
          */
         public function LevelSelect() 
@@ -27,7 +27,7 @@ package com.finegamedesign.connectedworlds
             for (var c:int = numChildren - 1; 0 <= c; c--) {
                 removeChildAt(c);
             }
-            var columnCount:int = 2;
+            var columnCount:int = 5;
             var columnWidth:int = 100;
             for (var i:int = 0; i < milestoneCount; i++) {
                 var tile:LevelTile = new LevelTile();
