@@ -39,6 +39,7 @@ package com.finegamedesign.connectedworlds
             scrollRect = new Rectangle(0, 0, stage.stageWidth, stage.stageHeight);
             keyMouse = new KeyMouse();
             keyMouse.listen(stage);
+            levelPrevious = Shared.level;
             if (null != model) {
                 levelPrevious = model.level;
             }
@@ -150,6 +151,9 @@ package com.finegamedesign.connectedworlds
             model.trialEnd(correct);
             view.trialEnd();
             if (correct) {
+                if (model.reviewing) {
+                    Shared.level = model.level;
+                }
                 if (model.enabled) {
                     view.win();
                 }
