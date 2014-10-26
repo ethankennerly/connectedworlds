@@ -137,6 +137,12 @@ package com.finegamedesign.connectedworlds
                     trialEnd(true);
                 }
             }
+            if (keyMouse.justPressed("LEFT")) {
+                model.level = model.findNewLevel(false);
+            }
+            if (keyMouse.justPressed("RIGHT")) {
+                model.level = model.findNewLevel(true);
+            }
             if (keyMouse.justPressed("MOUSE")) {
                 model.listen();
             }

@@ -71,6 +71,16 @@ package com.finegamedesign.connectedworlds
             return turtle.graph;
         }
 
+        internal static function disconnect(graph:Object, count:int=1):Object
+        {
+            var disconnected:Object = Util.clone(graph);
+            for (var disconnecting:int = 0; disconnecting < count; disconnecting++) {
+                var index:int = disconnected.connections.length * Math.random();
+                disconnected.connections.splice(index, 1);
+            }
+            return disconnected;
+        }
+
         private static function headRandom():Object
         {
             var turtle:Turtle = new Turtle();
@@ -285,18 +295,22 @@ package com.finegamedesign.connectedworlds
         /**
          * Randomly reflect or rotate.
          */
-        internal static function vary(graph:Object):Object
+        internal static function vary(graph:Object, level:int):Object
         {
             var varied:Object = graph;
             if (Math.random() < 0.5) {
-                reflectX(graph);
-            }
-            if (Math.random() < 0.5) {
-                reflectY(graph);
+                varied = reflectX(varied);
             }
             var halfTurns:int = 2 * Math.random();
-            if (1 <= halfTurns) {
+            if (10 <= level && 1 <= halfTurns) {
                 varied = rotate(varied, halfTurns * Math.PI);
+            }
+            if (20 <= level && Math.random() < 0.5) {
+                varied = reflectY(varied);
+            }
+            if (40 <= level) {
+                var count:int = Math.min(2, (level - 20) / 20);
+                varied = disconnect(varied, count);
             }
             return varied;
         }

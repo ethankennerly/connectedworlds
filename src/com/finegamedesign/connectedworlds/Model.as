@@ -55,12 +55,14 @@ package com.finegamedesign.connectedworlds
         public function Model(levelPrevious:int=0):void
         {
             include "Levels.as"
-            milestoneCount = graphs.length / trialMax;
             level = levelPrevious;
-            milestoneMax = milestoneCount * level / graphs.length + 1;
             graphs.push({});
             var spliceArguments:Array = [levelTutor, 0].concat(new GraphGen().graphs);
             graphs.splice.apply(graphs, spliceArguments);
+            spliceArguments = [graphs.length - 1, 0].concat(new GraphGen().graphs);
+            graphs.splice.apply(graphs, spliceArguments);
+            milestoneCount = graphs.length / trialMax;
+            milestoneMax = milestoneCount * level / graphs.length + 1;
         }
 
         /**
@@ -84,8 +86,8 @@ package com.finegamedesign.connectedworlds
             connectionsOld = [];
             var params:Object = graphs[level];
             tutor = level < levelTutor;
-            if (!tutor) {
-                params = GraphGen.vary(params);
+            if (!tutor && level < graphs.length - 1) {
+                params = GraphGen.vary(params, level);
             }
             for (var prop:String in params) {
                 this[prop] = Util.clone(params[prop]);
@@ -284,7 +286,7 @@ package com.finegamedesign.connectedworlds
          * @return  If correct, up by 1 in tutorial, or 2 after tutorial.  If wrong down by 1, or repeat same level in tutorial.  If already seen this level, try next level in that direction.  If cannot find any, find next level in other direction.  If searched all, throw error.
          * Expects twice as many levels as trials.
          */
-        private function findNewLevel(correct:Boolean):int
+        internal function findNewLevel(correct:Boolean):int
         {
             if (tutor) {
                 return level + (correct ? 1 : 0);

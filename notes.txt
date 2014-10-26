@@ -1,5 +1,6 @@
 TODO
-	Head
+	Remove random connection
+	Distractors
 	Labyrinth
 		Square tile labyrinth
 		Hexagonal labyrinth
