@@ -36,7 +36,7 @@ package com.finegamedesign.connectedworlds
         public function init(event:Event=null):void
         {
             sounds = new Sounds();
-            scrollRect = new Rectangle(0, 0, stage.stageWidth, stage.stageHeight);
+            // scrollRect = new Rectangle(0, 0, stage.stageWidth, stage.stageHeight);
             keyMouse = new KeyMouse();
             keyMouse.listen(stage);
             levelPrevious = Shared.level;

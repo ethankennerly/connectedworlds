@@ -86,7 +86,7 @@ package com.finegamedesign.connectedworlds
             connectionsOld = [];
             var params:Object = graphs[level];
             tutor = level < levelTutor;
-            if (!tutor && level < graphs.length - 1) {
+            if (!tutor && level && trial < trialMax) {
                 params = GraphGen.vary(params, level);
             }
             for (var prop:String in params) {

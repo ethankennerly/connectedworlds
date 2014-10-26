@@ -1,6 +1,5 @@
 TODO
-	Remove random connection
-	Distractors
+	Add random distractors
 	Labyrinth
 		Square tile labyrinth
 		Hexagonal labyrinth
@@ -131,6 +130,11 @@ REFERENCE TOYS
 	Legos
 		http://www.mgefc.org/695999.ihtml
 	Pre hand writing worksheet http://printablekindergarten.com/wp-content/uploads/2013/08/PreHandwritingWorksheets3.jpg
+	Mazes  http://www.jamisbuck.org/presentations/rubyconf2011/index.html   http://www.jamisbuck.org/mazes/
+	http://www.astrolog.org/labyrnth/algrithm.htm
+	Jamis says any maze can become unicursal.
+	Unicursal maze  http://www.michaelchaney.com/2014/03/unicursal-mazes/
+
 
 REFERENCE VERBS
 	Explore
@@ -278,3 +282,21 @@ digits
 offset.
 
 last trial.
+
+
+
+Sun 10/26/2014 
+10:56
+
+
+	Add random distractors
+
+square:  20x20 pixels.
+For each square:  array.
+For each dot:  For each square:  remove squares that are too near.
+For each connection:  Remove squares that would overlap a connection.
+Randomly select next square.  Remove squares that are too near.
+Randomly select position in square.
+
+
+
