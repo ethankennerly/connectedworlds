@@ -28,24 +28,24 @@ package com.finegamedesign.connectedworlds
             graphs.push(triangle);
             graphs.push(smileyFace());
             graphs.push(reflectY(triangle));
+            graphs.push(smileyFaceRandom());
             graphs.push(concat(triangle, reflectY(triangle)));
             graphs.push(pinwheel(triangle, 3));
             graphs.push(smileyFaceRandom());
-            graphs.push(pinwheel(triangle, 4));
-            graphs.push(unfoldQuarter(triangle));
-            graphs.push(smileyFaceRandom());
-            graphs.push(randomFan(randomInt(3, 4)));
-            graphs.push(headRandom());
-            graphs.push(randomFan(randomInt(3, 4)));
-            graphs.push(randomFan(4));
-            graphs.push(smileyFaceRandom());
-            graphs.push(randomFan(4));
             graphs.push(randomLeaf(2));
-            graphs.push(headRandom());
-            graphs.push(randomLeaf(3));
-            graphs.push(randomLeaf(4));
+            graphs.push(randomFan(3));
             graphs.push(smileyFaceRandom());
             graphs.push(headRandom());
+            graphs.push(randomFan(3));
+            graphs.push(randomFan(5, 1));
+            graphs.push(smileyFaceRandom());
+            graphs.push(randomFan(5, 1));
+            graphs.push(headRandom());
+            graphs.push(unfoldQuarter(triangle));
+            graphs.push(randomLeaf(3));
+            graphs.push(headRandom());
+            graphs.push(randomLeaf(4));
+            graphs.push(pinwheel(triangle, 4));
         }
 
         /**
@@ -191,6 +191,9 @@ package com.finegamedesign.connectedworlds
             return disconnected;
         }
 
+        /**
+         * 2014-11-01 Jennifer Russ likes.
+         */
         private static function headRandom():Object
         {
             var turtle:Turtle = new Turtle();
@@ -217,15 +220,17 @@ package com.finegamedesign.connectedworlds
         /**
          * Rotate about origin proportional to count.
          * @param   count   1 or less does nothing.
+         * @param   gap     How many not to display at end.
+         * 2014-11-01 Jennifer Russ expects no pinwheels that resemble swastikas.
          */
-        private static function pinwheel(graph:Object, count:int):Object
+        private static function pinwheel(graph:Object, count:int, gap:int=0):Object
         {
             var radians:Number = 2 * Math.PI / count;
             var rotating:Matrix = new Matrix();
             rotating.rotate(radians);
             var concatenated:Object = Util.clone(graph);
             var transformed:Object = graph;
-            for (var i:int = 1; i < count; i++) {
+            for (var i:int = 1; i < count - gap; i++) {
                 transformed = transform(transformed, rotating);
                 concatenated = concat(concatenated, transformed);
             }
@@ -240,9 +245,9 @@ package com.finegamedesign.connectedworlds
         /**
          * @param   spokeCount  With 5 or more spokes, the dots are too close together.
          */
-        private function randomFan(spokeCount:int):Object
+        private function randomFan(spokeCount:int, gap:int=0):Object
         {
-            return pinwheel(randomSpoke(radius, spokeCount), spokeCount);
+            return pinwheel(randomSpoke(radius, spokeCount), spokeCount, gap);
         }
 
         /**
@@ -346,6 +351,9 @@ package com.finegamedesign.connectedworlds
             return 2 * arc * Math.random() - arc;
         }
 
+        /**
+         * 2014-11-01 Smiley face.  Jennifer infers this is a reward for performance.
+         */
         private static function smileyFaceRandom():Object
         {
             var turtle:Turtle = new Turtle();

@@ -59,7 +59,7 @@ package com.finegamedesign.connectedworlds
             graphs.push({});
             var spliceArguments:Array = [levelTutor, 0].concat(new GraphGen().graphs);
             graphs.splice.apply(graphs, spliceArguments);
-            spliceArguments = [graphs.length - 1, 0].concat(new GraphGen().graphs);
+            spliceArguments = [graphs.length - 1, 0].concat(new GraphGen().graphs.slice(10));
             graphs.splice.apply(graphs, spliceArguments);
             milestoneCount = graphs.length / trialMax;
             milestoneMax = milestoneCount * level / graphs.length + 1;
@@ -110,7 +110,6 @@ package com.finegamedesign.connectedworlds
             level = (milestone - 1) * trialMax;
         }
 
-
         /**
          * @return  Disconnected dots.
          * Tutorial.  Pink X over distractor.  2014-08-29 face cheeks disconnected.  Samantha Yang expects to feel aware to trace lines.  Got confused.
@@ -156,6 +155,9 @@ package com.finegamedesign.connectedworlds
             var result:int = -1;
             if (complete) {
                 result = 1;
+            }
+            else {
+                referee.stop();
             }
             var dotIndex:int = -1;
             for (var d:int = 0; d < dots.length; d++) {
@@ -237,7 +239,6 @@ package com.finegamedesign.connectedworlds
                     if (correct) {
                         referee.add = dots.length;
                     }
-                    referee.stop();
                     trial++;
                 }
             }
