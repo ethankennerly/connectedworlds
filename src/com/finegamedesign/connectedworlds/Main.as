@@ -32,7 +32,10 @@ package com.finegamedesign.connectedworlds
                 addEventListener(Event.ADDED_TO_STAGE, init, false, 0, true);
             }
         }
-        
+       
+        /**
+         * 2014-11-01 Repeat.  Jennifer Russ expects to not have a level taken away.
+         */
         public function init(event:Event=null):void
         {
             sounds = new Sounds();
@@ -41,7 +44,7 @@ package com.finegamedesign.connectedworlds
             keyMouse.listen(stage);
             levelPrevious = Shared.level;
             if (null != model) {
-                levelPrevious = model.level;
+                levelPrevious = Math.max(levelPrevious, model.level);
             }
             model = new Model(levelPrevious);
             LevelSelect.milestoneCount = model.milestoneCount;

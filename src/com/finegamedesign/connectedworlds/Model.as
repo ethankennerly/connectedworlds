@@ -277,9 +277,10 @@ package com.finegamedesign.connectedworlds
         private var stepUpMax:Number = 3.0;
         /**
          * If too high, repeats.
+         * 2014-11-01 Jennifer Russ expects to unlock a level if making one mistake.
          */
-        private var stepUpRate:Number = 0.25;
-                                        // 0.5;
+        private var stepUpRate:Number = // 0.25;
+                                        0.5;
                                         // 1.25;  
                                         // 1.5;
         private var graphsOld:Object = {};
