@@ -3,7 +3,6 @@ package com.finegamedesign.connectedworlds
     public class Model
     {
         internal var connections:Array;
-        private var _connectionsSorted:Array;
         internal var connectionsOld:Array;
         internal var connecting:Array;
         internal var dots:Array;
@@ -99,10 +98,6 @@ package com.finegamedesign.connectedworlds
             if (!tutor) {
                 referee.start();
             }
-            _connectionsSorted = Util.clone(connections);
-            for (var c:int = 0; c < _connectionsSorted.length; c++) {
-                _connectionsSorted[c].sort(Array.NUMERIC);
-            }
         }
 
         internal function selectMilestone(milestone:int):void
@@ -175,12 +170,12 @@ package com.finegamedesign.connectedworlds
             }
             connecting.push(dotIndex);
             connecting.sort(Array.NUMERIC);
-            var c:int = indexOf(_connectionsSorted, connecting);
+            var c:int = indexOf(connections, connecting);
             if (0 <= c) {
-                _connectionsSorted.splice(c, 1);
+                connections.splice(c, 1);
                 connectionsOld.push(connecting);
                 result = 1;
-                referee.add++;
+                referee.count++;
             }
             if (connecting[0] == connecting[1]) {
                 result = 1;
@@ -198,13 +193,18 @@ package com.finegamedesign.connectedworlds
             return result;
         }
 
+        /**
+         * @return index of either pair matches in either order.  else -1.
+         */
         private function indexOf(connections:Array, connecting:Array):int
         {
             var index:int = -1;
             for (var c:int = 0; c < connections.length; c++) {
                 var connection:Array = connections[c];
-                if (connecting[0] == connection[0] 
-                        && connecting[1] == connection[1]) {
+                if ((connecting[0] == connection[0] 
+                        && connecting[1] == connection[1])
+                || (connecting[1] == connection[0] 
+                        && connecting[0] == connection[1])) {
                     index = c;
                     break;
                 }
@@ -219,7 +219,7 @@ package com.finegamedesign.connectedworlds
 
         internal function get complete():Boolean
         {
-            return null != _connectionsSorted && _connectionsSorted.length <= 0;
+            return null != connections && connections.length <= 0;
         }
 
         /**
@@ -237,7 +237,7 @@ package com.finegamedesign.connectedworlds
             if (!tutor) {
                 if (!reviewing) {
                     if (correct) {
-                        referee.add = dots.length;
+                        referee.count += dots.length;
                     }
                     trial++;
                 }

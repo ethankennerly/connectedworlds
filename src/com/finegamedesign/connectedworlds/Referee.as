@@ -7,8 +7,7 @@ package com.finegamedesign.connectedworlds
      */
     internal final class Referee
     {
-        internal var add:int = 0;
-        private var _count:int = 0;
+        internal var count:int = 0;
         private var millisecondsTotal:int;
         private var millisecondsStart:int;
         private var playing:Boolean;
@@ -19,7 +18,7 @@ package com.finegamedesign.connectedworlds
 
         internal function get connectionsPerMinute():int
         {
-            var rate:int = Math.ceil(_count * 60000 
+            var rate:int = Math.ceil(count * 60000 
                 / millisecondsTotal);
             return rate;
         }
@@ -28,7 +27,6 @@ package com.finegamedesign.connectedworlds
         {
             if (!playing) {
                 playing = true;
-                add = 0;
                 millisecondsStart = getTimer();
             }
         }
@@ -37,9 +35,10 @@ package com.finegamedesign.connectedworlds
         {
             if (playing) {
                 playing = false;
-                millisecondsTotal += getTimer() - millisecondsStart;
-                _count += add;
-                trace("Referee.stop: connectionsPerMinute " + connectionsPerMinute);
+                var milliseconds:int = getTimer() - millisecondsStart;
+                millisecondsTotal += milliseconds;
+                trace("Referee.stop: connectionsPerMinute " + connectionsPerMinute + " milliseconds " 
+                    + milliseconds + " count " + count);
             }
         }
 
@@ -56,14 +55,9 @@ package com.finegamedesign.connectedworlds
             return min + ":" + lead + sec;
         }
 
-        internal function get count():String
+        internal function get score():int
         {
-            return _count.toString();
-        }
-
-        internal function get score():String
-        {
-            return connectionsPerMinute.toString();
+            return connectionsPerMinute;
         }
     }
 }

@@ -121,9 +121,9 @@ package com.finegamedesign.connectedworlds
             reviewClip = new ReviewClip();
             screen.addChild(reviewClip);
             reviewClip.addFrameScript(reviewClip.totalFrames - 3, screen.play);
-            reviewClip.count.text = model.referee.count;
+            reviewClip.count.text = model.referee.count.toString();
             reviewClip.minutes.text = model.referee.minutes;
-            reviewClip.score.text = model.referee.score;
+            reviewClip.score.text = model.referee.score.toString();
             reviewClip.count.mouseEnabled = false;
             reviewClip.minutes.mouseEnabled = false;
         }
