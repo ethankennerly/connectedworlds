@@ -68,6 +68,7 @@ package com.finegamedesign.connectedworlds
             }
             else {
                 trialMax = graphs.length;
+                graphs = GraphGen.introduce(graphs);
             }
             adjustAlpha(false);
             tutor = true;
@@ -94,6 +95,24 @@ package com.finegamedesign.connectedworlds
         }
 
         /**
+         * @return 0 to 5.
+         */
+        internal function get degree():int
+        {
+            var degree:int = level / 10;
+            if (tutor) {
+                degree = Math.min(0, degree);
+            }
+            if (!advanced) {
+                degree = Math.min(2, degree);
+            }
+            else {
+                degree = Math.min(5, degree);
+            }
+            return degree;
+        }
+
+        /**
          * Score total dots.
          * Distractors make the connections more difficult.
          * Cache sorted connections for faster lookup.
@@ -108,7 +127,7 @@ package com.finegamedesign.connectedworlds
                 tutor = level < levelTutor;
             }
             if (!tutor && level && trial < trialMax) {
-                params = GraphGen.vary(params, level);
+                params = GraphGen.vary(params, degree);
             }
             for (var prop:String in params) {
                 this[prop] = Util.clone(params[prop]);

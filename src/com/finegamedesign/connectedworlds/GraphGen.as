@@ -6,6 +6,8 @@ package com.finegamedesign.connectedworlds
 
     /**
      * Generate graphs by turtle, transforming, and concatenating.
+     * The word "dot" is used synonymously with a vertex, except that it also has radius.
+     * The word "connection" is used synonymously with an edge, except it also has a width.
      */
     internal final class GraphGen
     {
@@ -177,7 +179,6 @@ package com.finegamedesign.connectedworlds
             }
             return turtle.graph;
         }
-
 
         internal static function disconnect(graph:Object, count:int=1):Object
         {
@@ -416,26 +417,50 @@ package com.finegamedesign.connectedworlds
 
         /**
          * Randomly reflect or rotate.
+         * @param   degree  0: x, 1: half turn, 2: flip y.  3+: disconnect, add dots.
          */
-        internal static function vary(graph:Object, level:int):Object
+        internal static function vary(graph:Object, degree:int):Object
         {
             var varied:Object = graph;
             if (Math.random() < 0.5) {
                 varied = reflectX(varied);
             }
             var halfTurns:int = 2 * Math.random();
-            if (10 <= level && 1 <= halfTurns) {
+            if (1 <= degree && 1 <= halfTurns) {
                 varied = rotate(varied, halfTurns * Math.PI);
             }
-            if (20 <= level && Math.random() < 0.5) {
+            if (2 <= degree && Math.random() < 0.5) {
                 varied = reflectY(varied);
             }
-            if (40 <= level) {
-                var count:int = Math.min(2, (level - 20) / 20);
+            if (3 <= degree) {
+                var count:int = degree - 2;
                 varied = disconnect(varied, count);
                 varied = addDots(varied, 2 * count);
             }
             return varied;
+        }
+
+	    /**
+         * Increment lines and dots of an image.
+         * Backwards:  Remove one connection.  
+         * @param   graphs  Not modified.  Example:  1, 2, 2, 3.
+         * @return  New graphs with introductions.  Example:  1, 1, 2, 1, 2, 1, 2, 3.
+         * 2014-11-25 Faraz expects gradually introduce number of lines.
+         * Trace. 3-year-old boy expects to feel competent.
+         */
+        internal static function introduce(graphs:Array):Array
+        {
+            var introduced:Array = [];
+            for (var g:int = graphs.length - 1; 0 <= g; g--) {
+                var reduced:Object = Util.clone(graphs[g]);
+                introduced.unshift(reduced);
+                while (2 <= reduced.connections.length) {
+                    reduced = Util.clone(reduced);
+                    reduced = disconnect(reduced);
+                    introduced.unshift(reduced);
+                }
+            }
+            return introduced;
         }
     }
 }

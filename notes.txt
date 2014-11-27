@@ -1,7 +1,6 @@
 TODO
+	Increment lines and dots of an image.
 	Increase rate of dots gradually:  1 / 3.  Wrong trial resets rate.
-	Hint to draw at review and low levels.
-	At low levels, no review.
 	5 in a row:  Any:  some stars.  connect them.  press arrow to go to next.
 	Add random distractors
 	Labyrinth
