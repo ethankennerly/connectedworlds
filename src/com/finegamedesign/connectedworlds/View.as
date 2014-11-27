@@ -5,6 +5,9 @@ package com.finegamedesign.connectedworlds
     import flash.display.MovieClip;
     import flash.display.Sprite;
 
+    import fl.transitions.Tween;
+    import fl.transitions.easing.Strong;
+
     public class View
     {
         internal var dots:Array;
@@ -42,8 +45,8 @@ package com.finegamedesign.connectedworlds
         {
             radiusSquared = radius * radius;
             screen = new Screen();
+            _prompt = new Prompt();
             if (!minimal) {
-                _prompt = new Prompt();
                 backgroundClip = new BackgroundClip();
                 parent.addChild(backgroundClip);
                 backgroundClip.gotoAndPlay("begin");
@@ -187,10 +190,24 @@ package com.finegamedesign.connectedworlds
             progress.graphics.lineTo(x, y);
         }
 
+        private var alphaTarget:Number = NaN;
+        private function fade(target:DisplayObject, to:Number):void
+        {
+            var from:Number = target.alpha;
+            if (isNaN(alphaTarget)) {
+                alphaTarget = from;
+            }
+            if (from != to && alphaTarget != to) {
+                var duration:Number = 3.0;
+                alphaTarget = to;
+                new Tween(target, "alpha", Strong.easeOut, from, to, duration, true);
+            }
+        }
+
         internal function update()
         {
             if (model) {
-                screen.lines.alpha = model.alpha;
+                fade(screen.lines, model.alpha);
             }
         }
 

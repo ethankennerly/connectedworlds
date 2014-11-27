@@ -3,6 +3,7 @@ package com.finegamedesign.connectedworlds
     public class Model
     {
         internal var alpha:Number;
+        internal var fadeDuration:Number;
         internal var alphaDraw:Number;
         internal var connections:Array;
         internal var connectionsOld:Array;
@@ -135,7 +136,7 @@ package com.finegamedesign.connectedworlds
             linesVisible = true;
             inTrial = true;
             listening = false;
-            distractors = findSingles(connections, dots.length);
+            distractors = GraphGen.findSingles(connections, dots.length);
             if (!tutor) {
                 referee.start();
             }
@@ -144,28 +145,6 @@ package com.finegamedesign.connectedworlds
         internal function selectMilestone(milestone:int):void
         {
             level = (milestone - 1) * trialMax;
-        }
-
-        /**
-         * @return  Disconnected dots.
-         * Tutorial.  Pink X over distractor.  2014-08-29 face cheeks disconnected.  Samantha Yang expects to feel aware to trace lines.  Got confused.
-         */
-        private static function findSingles(connections:Array, length:int):Array
-        {
-            var connecteds:Object = {};
-            var index:int;
-            for each(var connection:Array in connections) {
-                for each(index in connection) {
-                    connecteds[index.toString()] = true;
-                }
-            }
-            var singles:Array = [];
-            for (index = 0; index < length; index++) {
-                if (!(index.toString() in connecteds)) {
-                    singles.push(index);
-                }
-            }
-            return singles;
         }
 
         internal function cancel():void
@@ -274,11 +253,14 @@ package com.finegamedesign.connectedworlds
         {
             if (advanced) {
                 alphaDraw = 0.0;
+                fadeDuration = 0.5;
             }
             else {
-                alphaDraw = correct ? Math.max(0.0, alphaDraw - 1.0 / 10.0 * 0.5)
+                var trialCount:int = 16.0;
+                alphaDraw = correct ? Math.max(0.0, alphaDraw - 1.0 / trialCount * 0.5)
                                     : 0.5;
                 tutor = 0.0 < alphaDraw;
+                fadeDuration = 4.0;
             }
         }
 

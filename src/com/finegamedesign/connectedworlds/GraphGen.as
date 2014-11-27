@@ -17,6 +17,7 @@ package com.finegamedesign.connectedworlds
                                             60;
         private static var height:int = 480;
         private static var width:int = 640;
+        private static var offscreen:int = -640;
         private static var space:Rectangle = new Rectangle(-0.5 * width + dotRadius, 
                                                            -0.5 * height + dotRadius, 
                                                            width - dotRadius * 2, 
@@ -180,13 +181,53 @@ package com.finegamedesign.connectedworlds
             return turtle.graph;
         }
 
-        internal static function disconnect(graph:Object, count:int=1):Object
+        /**
+         * @param   dotsLength  In case dots are at end.
+         * @return  Indexes of disconnected dots.
+         * Tutorial.  Pink X over distractor.  2014-08-29 face cheeks disconnected.  Samantha Yang expects to feel aware to trace lines.  Got confused.
+         */
+        internal static function findSingles(connections:Array, dotsLength:int):Array
+        {
+            var connecteds:Object = {};
+            var index:int;
+            for each(var connection:Array in connections) {
+                for each(index in connection) {
+                    connecteds[index.toString()] = true;
+                }
+            }
+            var singles:Array = [];
+            for (index = 0; index < dotsLength; index++) {
+                if (!(index.toString() in connecteds)) {
+                    singles.push(index);
+                }
+            }
+            return singles;
+        }
+
+        /**
+         * @param   removeDot   From the dots.  Both if neither is connected now.
+         */
+        internal static function disconnect(graph:Object, 
+                                            count:int=1, 
+                                            removeDot:Boolean=false):Object
         {
             var disconnected:Object = Util.clone(graph);
             if (null != graph.connections) {
                 for (var disconnecting:int = 0; disconnecting < count; disconnecting++) {
                     var index:int = disconnected.connections.length * Math.random();
+                    var connection:Array = disconnected.connections[index];
                     disconnected.connections.splice(index, 1);
+                    if (removeDot) {
+                        var singles:Array = findSingles(disconnected.connections, 
+                                                        disconnected.dots.length);
+                        for (var c:int = 0; c < connection.length; c++) {
+                            if (0 <= singles.indexOf(connection[c])) {
+                                var xy:Array = disconnected.dots[connection[c]];
+                                xy[0] = offscreen;
+                                xy[1] = offscreen;
+                            }
+                        }
+                    }
                 }
             }
             return disconnected;
@@ -442,7 +483,7 @@ package com.finegamedesign.connectedworlds
 
 	    /**
          * Increment lines and dots of an image.
-         * Backwards:  Remove one connection.  
+         * Backwards:  Remove one connection.  Remove that dot.
          * @param   graphs  Not modified.  Example:  1, 2, 2, 3.
          * @return  New graphs with introductions.  Example:  1, 1, 2, 1, 2, 1, 2, 3.
          * 2014-11-25 Faraz expects gradually introduce number of lines.
@@ -455,8 +496,7 @@ package com.finegamedesign.connectedworlds
                 var reduced:Object = Util.clone(graphs[g]);
                 introduced.unshift(reduced);
                 while (2 <= reduced.connections.length) {
-                    reduced = Util.clone(reduced);
-                    reduced = disconnect(reduced);
+                    reduced = disconnect(reduced, 1, true);
                     introduced.unshift(reduced);
                 }
             }
