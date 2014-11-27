@@ -7,10 +7,14 @@ package com.finegamedesign.connectedworlds
      */
     internal final class Referee
     {
+        /**
+         * Add count of connections.
+         * 2014-11-04 Shelby Macleod expects score.  
+         */
         internal var count:int = 0;
-        private var millisecondsTotal:int;
-        private var millisecondsStart:int;
-        private var playing:Boolean;
+        private var millisecondsTotal:int = 0;
+        private var millisecondsStart:int = 0;
+        private var playing:Boolean = false;
 
         public function Referee()
         {

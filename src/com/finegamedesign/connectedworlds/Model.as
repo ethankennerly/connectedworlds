@@ -2,6 +2,8 @@ package com.finegamedesign.connectedworlds
 {
     public class Model
     {
+        internal var alpha:Number;
+        internal var alphaDraw:Number;
         internal var connections:Array;
         internal var connectionsOld:Array;
         internal var connecting:Array;
@@ -62,6 +64,7 @@ package com.finegamedesign.connectedworlds
             graphs.splice.apply(graphs, spliceArguments);
             milestoneCount = graphs.length / trialMax;
             milestoneMax = milestoneCount * level / graphs.length + 1;
+            alphaDraw = 0.5;
         }
 
         /**
@@ -83,6 +86,7 @@ package com.finegamedesign.connectedworlds
         {
             cancel();
             connectionsOld = [];
+            alpha = 1.0;
             var params:Object = graphs[level];
             tutor = level < levelTutor;
             if (!tutor && level && trial < trialMax) {
@@ -147,6 +151,7 @@ package com.finegamedesign.connectedworlds
          */
         internal function answer(x:int, y:int):int
         {
+            alpha = alphaDraw;
             var result:int = -1;
             if (complete) {
                 result = 1;
@@ -223,6 +228,18 @@ package com.finegamedesign.connectedworlds
         }
 
         /**
+         * Gradually reduce opacity over 8 consecutive correct trials.
+         * A wrong response resets opacity.
+         * 2014-11-25 Faraz expects outline remains.  
+         * 3-year-old boy expects to feel aware of goal to connect only some dots.
+         */
+        private function adjustAlpha(correct:Boolean):void
+        {
+            alphaDraw = correct ? alphaDraw - 1.0 / 8.0 * 0.5
+                                : 0.5;
+        }
+
+        /**
          * Review.  Wrong.  Repeat.  2014-08-29 Review Wrong.  Samantha Yang expects to fix repeat number.
          * If reviewing and correct, disable. 2014-09-09 Review.  Complete.  Expect to fix to continue.  Got repeat review.
          */
@@ -231,6 +248,8 @@ package com.finegamedesign.connectedworlds
             if (!inTrial) {
                 return;
             }
+            alpha = 0.0;
+            adjustAlpha(correct);
             inTrial = false;
             listening = false;
             graphsOld[level] = true;

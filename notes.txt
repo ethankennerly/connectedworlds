@@ -1,4 +1,8 @@
 TODO
+	Variable alpha.  Each successful trial reduces alpha.  Wrong trial resets alpha.
+	Increase rate of dots gradually:  1 / 3.  Wrong trial resets rate.
+	Hint to draw.
+	5 in a row:  Any:  some stars.  connect them.  press arrow to go to next.
 	Add random distractors
 	Labyrinth
 		Square tile labyrinth
@@ -300,3 +304,9 @@ Randomly select position in square.
 
 
 
+Thu 11/27/2014 
+07:36
+
+Tweening alpha in code breaks timeline animation.
+Always tween in code and not in timeline.
+Bone that tweens.

@@ -181,6 +181,13 @@ package com.finegamedesign.connectedworlds
             progress.graphics.lineTo(x, y);
         }
 
+        internal function update()
+        {
+            if (model) {
+                screen.lines.alpha = model.alpha;
+            }
+        }
+
         /**
          * @return  Distance squared, unless out of range, then infinity.
          */

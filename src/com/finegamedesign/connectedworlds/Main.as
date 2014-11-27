@@ -153,6 +153,7 @@ package com.finegamedesign.connectedworlds
             && "trialEnable" == view.backgroundClip.currentLabel) {
                 trialEnable();
             }
+            view.update();
         }
 
         /**
