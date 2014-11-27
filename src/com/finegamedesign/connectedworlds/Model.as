@@ -41,8 +41,12 @@ package com.finegamedesign.connectedworlds
         /**
          * End after 10 trials.  2014-08-28 After 17 trials of 256 dots. 4 minutes.  Mark Scoptur expects brief.
          */
-        internal var trialMax:int = 8;
+        internal var trialMax:int;
         internal var tutor:Boolean;
+        /**
+         * Otherwise keep it simple.
+         */
+        internal var advanced:Boolean = false;
 
         internal function get graphsLength():int
         {
@@ -57,14 +61,26 @@ package com.finegamedesign.connectedworlds
         {
             include "Levels.as"
             level = levelPrevious;
-            graphs.push({});
+            if (advanced) {
+                graphs.push({});
+                spliceGraphs();
+                trialMax = 8;
+            }
+            else {
+                trialMax = graphs.length;
+            }
+            adjustAlpha(false);
+            tutor = true;
+            milestoneCount = graphs.length / trialMax;
+            milestoneMax = milestoneCount * level / graphs.length + 1;
+        }
+
+        private function spliceGraphs():void
+        {
             var spliceArguments:Array = [levelTutor, 0].concat(new GraphGen().graphs);
             graphs.splice.apply(graphs, spliceArguments);
             spliceArguments = [graphs.length - 1, 0].concat(new GraphGen().graphs.slice(10));
             graphs.splice.apply(graphs, spliceArguments);
-            milestoneCount = graphs.length / trialMax;
-            milestoneMax = milestoneCount * level / graphs.length + 1;
-            alphaDraw = 0.5;
         }
 
         /**
@@ -88,7 +104,9 @@ package com.finegamedesign.connectedworlds
             connectionsOld = [];
             alpha = 1.0;
             var params:Object = graphs[level];
-            tutor = level < levelTutor;
+            if (advanced) {
+                tutor = level < levelTutor;
+            }
             if (!tutor && level && trial < trialMax) {
                 params = GraphGen.vary(params, level);
             }
@@ -228,15 +246,21 @@ package com.finegamedesign.connectedworlds
         }
 
         /**
-         * Gradually reduce opacity over 8 consecutive correct trials.
+         * Gradually reduce opacity over 10 consecutive correct trials.
          * A wrong response resets opacity.
          * 2014-11-25 Faraz expects outline remains.  
          * 3-year-old boy expects to feel aware of goal to connect only some dots.
          */
         private function adjustAlpha(correct:Boolean):void
         {
-            alphaDraw = correct ? alphaDraw - 1.0 / 8.0 * 0.5
-                                : 0.5;
+            if (advanced) {
+                alphaDraw = 0.0;
+            }
+            else {
+                alphaDraw = correct ? Math.max(0.0, alphaDraw - 1.0 / 10.0 * 0.5)
+                                    : 0.5;
+                tutor = 0.0 < alphaDraw;
+            }
         }
 
         /**
@@ -268,9 +292,14 @@ package com.finegamedesign.connectedworlds
                 level = findNewLevel(correct);
             }
             if (!reviewing && review) {
-                reviewing = true;
-                truncate();
-                reverseGraph0();
+                if (advanced) {
+                    reviewing = true;
+                    truncate();
+                    reverseGraph0();
+                }
+                else {
+                    enabled = false;
+                }
             }
         }
 
@@ -309,10 +338,13 @@ package com.finegamedesign.connectedworlds
          */
         internal function findNewLevel(correct:Boolean):int
         {
-            if (tutor) {
-                return level + (correct ? 1 : 0);
-            }
             var up:int;
+            var nextLevel:int;
+            if (tutor || !advanced) {
+                up = correct ? 1 : 0;
+                nextLevel = Math.min(level + up, graphs.length - 1);
+                return nextLevel;
+            }
             if (correct) {
                 up = stepUp;
                 stepUp += stepUpRate;
@@ -323,7 +355,7 @@ package com.finegamedesign.connectedworlds
                 stepUp = stepUpMin;
             }
             trace("findNewLevel: level " + level + " stepUp " + stepUp);
-            var nextLevel:int = Math.min(level + up, graphs.length - 1);
+            nextLevel = Math.min(level + up, graphs.length - 1);
             up = 1;
             var head:int = nextLevel;
             var attempt:int = 0;

@@ -71,11 +71,14 @@ package com.finegamedesign.connectedworlds
         internal function hideScreen():void
         {
             // trace("View.hideScreen");
-            remove(reviewClip);
-            reviewClip.visible = false;
+            if (reviewClip) {
+                reviewClip.stop();
+                remove(reviewClip);
+                reviewClip.visible = false;
+            }
             screen.stop();
-            screen.visible = false;
             remove(screen);
+            screen.visible = false;
         }
 
         internal function populate(model:Model):void

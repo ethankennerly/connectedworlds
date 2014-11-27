@@ -50,6 +50,7 @@ package com.finegamedesign.connectedworlds
             LevelSelect.milestoneCount = model.milestoneCount;
             LevelSelect.milestoneMax = model.milestoneMax;
             LevelSelect.onSelect = selectMilestone;
+            advance(model.advanced);
             view = new View(this);
             view.screen.mouseChildren = false;
             view.screen.mouseEnabled = false;
@@ -64,6 +65,12 @@ package com.finegamedesign.connectedworlds
             // API.connect(root, "", "");
         }
 
+        private function advance(enabled:Boolean):void
+        {
+            model.advanced = enabled;
+            LevelSelect.enabled = enabled;
+        }
+
         private function restart():void
         {
             view.restart();
@@ -73,6 +80,7 @@ package com.finegamedesign.connectedworlds
         private function selectMilestone(milestone:int):void
         {
             if ("trialEnable" != view.backgroundClip.currentLabel) {
+                trace("Main.selectMilestone: " + milestone);
                 model.selectMilestone(milestone);
                 view.backgroundClip.gotoAndPlay("trialEnable");
             }
@@ -103,7 +111,7 @@ package com.finegamedesign.connectedworlds
             clear();
             model.populate();
             view.populate(model);
-            if (model.level < model.levelTutor) {
+            if (model.tutor) {
                 view.prompt(model.connections);
                 view.hintDistractors(model.distractors);
             }
@@ -116,6 +124,7 @@ package com.finegamedesign.connectedworlds
          * Cheats to quickly test:
          *      "ENTER" complete trial.
          *      "DELETE", "ESC", "X" this is the last trial. DELETE key different on Mac than Windows.
+         *      "UP" / "DOWN" Advanced or not advanced mode.
          */
         private function update(event:Event):void
         {
@@ -139,6 +148,12 @@ package com.finegamedesign.connectedworlds
                 if (model.enabled) {
                     trialEnd(true);
                 }
+            }
+            if (keyMouse.justPressed("UP")) {
+                advance(true);
+            }
+            if (keyMouse.justPressed("DOWN")) {
+                advance(false);
             }
             if (keyMouse.justPressed("LEFT")) {
                 model.level = model.findNewLevel(false);

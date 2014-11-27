@@ -7,6 +7,7 @@ package com.finegamedesign.connectedworlds
 
     public class LevelSelect extends Sprite
     {
+        internal static var enabled:Boolean = true;
         internal static var milestoneCount:int;
         internal static var milestoneMax:int;
         /**
@@ -26,6 +27,11 @@ package com.finegamedesign.connectedworlds
             super();
             for (var c:int = numChildren - 1; 0 <= c; c--) {
                 removeChildAt(c);
+            }
+            if (!LevelSelect.enabled) {
+                onSelect(1);
+                visible = false;
+                return;
             }
             var columnCount:int = 5;
             var columnWidth:int = 100;
