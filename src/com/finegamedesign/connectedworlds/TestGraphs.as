@@ -29,14 +29,12 @@ package com.finegamedesign.connectedworlds
             trace("TestGraphs.drawGraphs: length " + length);
             for (var level:int = 0; level < length; level++) {
                 // trace("TestGraphs.drawGraphs: " + level);
-                model = new Model();
+                // model = new Model();
                 model.level = level;
                 model.populate();
                 var parent:Sprite = new Sprite();
-                var view:View = new View(parent);
+                var view:View = new View(parent, true);
                 view.populate(model);
-                view.backgroundClip.scrollRect = new Rectangle(0, 0, stage.stageWidth, stage.stageHeight);
-                view.backgroundClip.visible = false;
                 view.screen.gotoAndPlay("begin");
                 parent.x = (level % columnCount) * stage.stageWidth / columnCount;
                 parent.y = int(level / columnCount) * stage.stageHeight / columnCount;

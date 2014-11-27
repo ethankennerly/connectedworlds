@@ -36,15 +36,18 @@ package com.finegamedesign.connectedworlds
 
         /**
          * In BackgroundClip timeline:  After panning, just before first trial, eyes wake up, blink, look up.  Goes to sleep.  2014-08-25 End.  Tyler Hinman expects animation to save the baby.
+         * @param   minimal Do not create background clip.  Example @see TestGraphs
          */ 
-        public function View(parent:DisplayObjectContainer)
+        public function View(parent:DisplayObjectContainer, minimal:Boolean=false)
         {
             radiusSquared = radius * radius;
-            _prompt = new Prompt();
             screen = new Screen();
-            backgroundClip = new BackgroundClip();
-            parent.addChild(backgroundClip);
-            backgroundClip.gotoAndPlay("begin");
+            if (!minimal) {
+                _prompt = new Prompt();
+                backgroundClip = new BackgroundClip();
+                parent.addChild(backgroundClip);
+                backgroundClip.gotoAndPlay("begin");
+            }
             parent.addChild(screen);
             screen.gotoAndStop(1);
             progress = new Sprite();
